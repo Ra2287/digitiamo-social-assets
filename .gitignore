@@ -1,0 +1,15 @@
+# Working/scratch files for this project - not meant to be published in the
+# public digitiamo-social-assets repo. Only the final carousel PNGs are tracked.
+*.pdf
+*.html
+build_*.py
+render*.js
+logo_base64.txt
+logo_dark_base64.txt
+logo_crop*.png
+logo_dark.png
+logo_dark_test.png
+logo_dark_transparent.png
+logo_white_transparent.png
+preview_*.png
+template_demo*.png

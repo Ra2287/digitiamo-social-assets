@@ -1,6 +1,7 @@
 # Working/scratch files for this project - not meant to be published in the
-# public digitiamo-social-assets repo. Only the final carousel PNGs are tracked.
+# public digitiamo-social-assets repo. Only the final carousel PNGs/PDFs are tracked.
 *.pdf
+!carosello_*.pdf
 *.html
 build_*.py
 render*.js

@@ -1,0 +1,3 @@
+playwright>=1.50
+img2pdf>=0.5
+pypdf>=4.0

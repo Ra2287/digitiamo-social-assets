@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Archivo+Black&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Manrope', sans-serif; }
+  .slide { width:1080px; height:1350px; position:relative; overflow:hidden; display:flex; flex-direction:column; }
+  .navy { background:#0e0a48; color:#ffffff; }
+  .blue { background:#4a3aff; color:#ffffff; }
+  .white { background:#ffffff; color:#0e0a48; }
+  .logo { position:absolute; top:56px; left:64px; font-weight:800; font-size:28px; letter-spacing:0.5px; }
+  .logo.dark { color:#ffffff; }
+  .logo.light { color:#0e0a48; }
+  .pagenum { position:absolute; top:60px; right:64px; font-size:20px; font-weight:700; opacity:0.7; }
+  .pill { display:inline-block; padding:10px 26px; border-radius:999px; font-size:22px; font-weight:800; letter-spacing:1px; text-transform:uppercase; }
+  .pill-green { background:#43ef84; color:#0e0a48; }
+  .pill-tint { background:#ebeefc; color:#0e0a48; }
+  .pill-white { background:#ffffff; color:#0e0a48; }
+  .content { flex:1; display:flex; flex-direction:column; justify-content:center; padding:0 90px; }
+  .content.top { justify-content:flex-start; padding-top:220px; }
+  .huge-title { font-family:'Archivo Black', sans-serif; font-size:76px; line-height:1.08; text-transform:uppercase; margin-top:36px; }
+  .huge-title .accent { color:#43ef84; }
+  .subtitle { font-size:32px; font-weight:500; line-height:1.4; margin-top:36px; opacity:0.92; max-width:850px; }
+  .datanum { font-family:'Archivo Black', sans-serif; font-size:150px; line-height:1; color:#43ef84; margin-bottom:24px; }
+  .datanum.small { font-size:100px; }
+  .dataexpl { font-size:34px; font-weight:700; line-height:1.35; max-width:880px; }
+  .datasub { font-size:26px; font-weight:500; line-height:1.5; margin-top:20px; max-width:860px; opacity:0.85; }
+  .footer-tag { position:absolute; bottom:56px; left:64px; font-size:22px; font-weight:600; opacity:0.75; }
+  .checklist { display:flex; flex-direction:column; gap:28px; margin-top:20px; }
+  .check-item { display:flex; align-items:flex-start; gap:22px; }
+  .check-badge { min-width:56px; height:56px; border-radius:50%; background:#43ef84; color:#0e0a48; display:flex; align-items:center; justify-content:center; font-weight:800; font-size:28px; flex-shrink:0; }
+  .check-text { font-size:30px; font-weight:600; line-height:1.4; padding-top:8px; }
+  .cta-box { background:#ffffff; color:#0e0a48; border-radius:24px; padding:50px 56px; margin-top:60px; }
+  .cta-title { font-family:'Archivo Black', sans-serif; font-size:52px; line-height:1.15; }
+  .cta-sub { font-size:28px; font-weight:600; margin-top:20px; color:#4a3aff; }
+  .brand-dot { width:16px; height:16px; border-radius:50%; display:inline-block; margin-right:8px; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: HOOK -->
+<div class="slide navy">
+  <div class="logo dark">Digitiamo</div>
+  <div class="pagenum">01 / 06</div>
+  <div class="content">
+    <span class="pill pill-green">Analisi settimanale</span>
+    <div class="huge-title">L'AI ACT<br>NON È PIÙ<br>UNA <span class="accent">PROMESSA</span></div>
+    <div class="subtitle">È entrato in vigore il 2 agosto 2026. Ecco cosa cambia davvero per chi fa software in Italia — in 5 numeri.</div>
+  </div>
+  <div class="footer-tag">Digitiamo · Piano Editoriale Digitale</div>
+</div>
+
+<!-- SLIDE 2: DATA POINT 1 -->
+<div class="slide blue">
+  <div class="logo dark">Digitiamo</div>
+  <div class="pagenum">02 / 06</div>
+  <div class="content">
+    <span class="pill pill-white">Data chiave</span>
+    <div class="datanum">2 AGOSTO<br>2026</div>
+    <div class="dataexpl">Il giorno in cui gli obblighi dell'AI Act sono passati dalla teoria alla pratica in tutta l'Unione Europea.</div>
+    <div class="datasub">Non è più una scadenza futura da tenere d'occhio: da questa data, le regole si applicano.</div>
+  </div>
+  <div class="footer-tag">Fonte: Commissione Europea, Axios</div>
+</div>
+
+<!-- SLIDE 3: DATA POINT 2 -->
+<div class="slide white">
+  <div class="logo light">Digitiamo</div>
+  <div class="pagenum">03 / 06</div>
+  <div class="content">
+    <span class="pill pill-tint">Cosa è già attivo</span>
+    <div class="huge-title" style="font-size:60px; margin-top:30px;">3 OBBLIGHI<br>GIÀ IN <span class="accent" style="color:#4a3aff;">VIGORE</span></div>
+    <div class="checklist">
+      <div class="check-item"><div class="check-badge">1</div><div class="check-text">Trasparenza sui contenuti generati da AI, chatbot inclusi</div></div>
+      <div class="check-item"><div class="check-badge">2</div><div class="check-text">Notifica obbligatoria agli utenti quando interagiscono con materiale creato dall'AI</div></div>
+      <div class="check-item"><div class="check-badge">3</div><div class="check-text">Watermarking per tracciare l'origine dei contenuti generati</div></div>
+    </div>
+  </div>
+  <div class="footer-tag" style="color:#0e0a48; opacity:0.6;">Fonte: digital-strategy.ec.europa.eu</div>
+</div>
+
+<!-- SLIDE 4: DATA POINT 3 -->
+<div class="slide navy">
+  <div class="logo dark">Digitiamo</div>
+  <div class="pagenum">04 / 06</div>
+  <div class="content">
+    <span class="pill pill-green">Cosa manca ancora</span>
+    <div class="datanum small">DIC 2027<br>→ AGO 2028</div>
+    <div class="dataexpl">Le regole più severe, per i sistemi AI "ad alto rischio", arrivano in due tappe successive.</div>
+    <div class="datasub">Non tutto è già in vigore — ma chi aspetta l'ultima scadenza per organizzarsi parte già in ritardo.</div>
+  </div>
+  <div class="footer-tag">Fonte: artificialintelligenceact.eu</div>
+</div>
+
+<!-- SLIDE 5: DATA POINT 4 -->
+<div class="slide blue">
+  <div class="logo dark">Digitiamo</div>
+  <div class="pagenum">05 / 06</div>
+  <div class="content">
+    <span class="pill pill-white">Il punto debole</span>
+    <div class="huge-title" style="font-size:58px;">L'EU AI OFFICE<br>PUÒ GIÀ CHIEDERE<br><span class="accent">ACCESSO E DATI</span></div>
+    <div class="subtitle">Anche senza multe già codificate in questa fase, l'Autorità europea ha ora il potere di richiedere informazioni e accesso ai modelli usati in azienda.</div>
+    <div class="datasub" style="margin-top:10px;">Tradotto: se non sai ancora dove e come la tua azienda usa l'AI, è il momento di scoprirlo — prima che te lo chiedano loro.</div>
+  </div>
+  <div class="footer-tag">Fonte: digital-strategy.ec.europa.eu</div>
+</div>
+
+<!-- SLIDE 6: CTA -->
+<div class="slide navy">
+  <div class="logo dark">Digitiamo</div>
+  <div class="pagenum">06 / 06</div>
+  <div class="content" style="justify-content:center;">
+    <div class="huge-title" style="font-size:58px;">GOVERNARE L'AI<br>NON È UN'OPZIONE,<br><span class="accent">È IL LAVORO</span></div>
+    <div class="cta-box">
+      <div class="cta-title">SCRIVICI ADESSO ↗</div>
+      <div class="cta-sub">Team Augmentation Digitiamo: professionisti AI Engineer &amp; Dev che si integrano nel tuo team per governare compliance, architettura e produzione — senza costi di recruiting.</div>
+    </div>
+  </div>
+  <div class="footer-tag">Digitiamo · digitiamo.com</div>
+</div>
+
+</body>
+</html>

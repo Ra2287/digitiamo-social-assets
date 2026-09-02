@@ -1,9 +1,14 @@
 # Working/scratch files for this project - not meant to be published in the
 # public digitiamo-social-assets repo. Only the final carousel PNGs/PDFs are tracked.
+# Eccezione: generator/ contiene il codice sorgente ufficiale del generatore
+# PED (voluto in repo per poterci lavorare direttamente) ed è escluso da
+# queste regole scratch.
 *.pdf
 !carosello_*.pdf
 *.html
+!generator/*.html
 build_*.py
+!generator/build_*.py
 render*.js
 logo_base64.txt
 logo_dark_base64.txt

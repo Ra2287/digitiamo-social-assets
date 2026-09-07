@@ -1,99 +1,122 @@
 # Generatore PED Digitiamo (Piano Editoriale settimanale)
 
-Codice usato per generare in automatico il report PDF settimanale, le immagini
-dei post LinkedIn e il carosello dati, e per caricarli come bozze su Buffer.
-Le immagini e i PDF gia' generati sono nella cartella superiore di questa
-repository; questa cartella (`generator/`) contiene solo il codice sorgente.
+Genera il report PDF settimanale, le grafiche social (carosello + immagini dei
+post) e crea le bozze su Buffer. Gli asset già generati stanno nella cartella
+superiore, che fa da **CDN pubblica**: Buffer scarica le immagini da
+`raw.githubusercontent.com`.
 
-## Struttura
+## Come è organizzato
 
-- `build_report.py` — contiene tutti i contenuti testuali del report settimanale
-  (trend, analisi competitor, le 7 idee di post, calendario pubblicazione) come
-  strutture dati Python. **E' il file da modificare ogni settimana** con i nuovi
-  contenuti.
-- `generate_html.py` — legge `build_report.py` e genera `report.html` (il
-  layout HTML/CSS del PDF, con la palette brand Digitiamo).
-- `render_pdf.py` — apre `report.html` con Playwright/Chromium e lo stampa in
-  PDF (`../PED_Digitiamo_<data>.pdf`).
-- `carousel_slides.html` — template HTML delle slide del carosello dati (6
-  slide, formato 1080x1350). Da personalizzare con i dati della settimana.
-- `render_carousel.py` — screenshot di ogni slide di `carousel_slides.html` →
-  PNG, poi da unire in PDF con `img2pdf` (vedi sotto).
-- `single_images.html` — template delle 4 immagini di accompagnamento ai post
-  prioritari (stesso stile grafico del carosello: navy/blu/bianco, Archivo
-  Black, accento verde/blu, palette brand Digitiamo).
-- `render_single_images.py` — screenshot delle 4 slide di `single_images.html`
-  → PNG.
-- `captions.py` — testo finale (caption) di ciascun post, pronto per Buffer.
-- `publish_buffer.py` — crea le bozze su Buffer via GraphQL (immagini +
-  documento/carosello). Le chiavi API **non sono incluse**: vanno passate come
-  variabili d'ambiente (vedi sotto).
+Il principio: **contenuto, layout e brand sono tre cose separate.**
+
+```
+brand-spec.md        La verità sul brand: asset, palette, font, formati, divieti.
+                     Estratta dai template Canva reali — leggila prima di
+                     toccare qualsiasi cosa di visivo.
+brand/
+  tokens.py          Palette, font, formati, asset come dati. UNICA fonte.
+  fonts/*.woff2      Montserrat 700/800 + Lato 400/700 (i font del brand)
+  bg/*.png           Gli sfondi Canva reali
+  logo/*.png         Wordmark e icone-categoria, con alpha
+
+week.py              ← CONTENUTO della settimana per le grafiche
+build_report.py      ← CONTENUTO della settimana per il report
+captions.py          ← TESTI dei post per Buffer
+
+templates.py         Layout delle grafiche social (da week.py a HTML)
+generate_html.py     Layout del report (da build_report.py a HTML)
+render.py            HTML -> PNG/PDF (unico renderer)
+publish_buffer.py    Crea le bozze su Buffer, con preflight degli URL
+```
+
+Ogni settimana si modificano **solo i tre file di contenuto**. Layout e brand
+non si toccano.
 
 ## Flusso settimanale
 
-1. Ricerca trend/news della settimana (fuori da questo codice).
-2. Aggiornare `build_report.py` con i nuovi trend, competitor, 7 idee di post.
-3. `python3 generate_html.py` → produce `report.html`.
-4. `python3 render_pdf.py <YYYY-MM-DD>` → produce `../PED_Digitiamo_<data>.pdf`.
-5. Aggiornare `carousel_slides.html` e `single_images.html` con i contenuti
-   della settimana (titoli, dati, hook).
-6. `python3 render_carousel.py <slug> <YYYY-MM-DD>` → produce le 6 PNG del
-   carosello nella cartella superiore.
-7. Unire le PNG del carosello in un unico PDF con `img2pdf`:
-   ```python
-   import img2pdf
-   files = [f"carosello_<slug>_<data>_slide{i}.png" for i in range(1, 7)]
-   with open("carosello_<slug>_<data>.pdf", "wb") as f:
-       f.write(img2pdf.convert(files))
+1. **Ricerca** trend/news della settimana (fuori da questo codice).
+2. **Contenuti**: aggiorna `build_report.py` (trend, competitor, 7 idee),
+   `week.py` (slide del carosello + immagini singole) e `captions.py` (testi
+   dei post). In `week.py` imposta la nuova `DATE`.
+3. **Genera tutto**:
+   ```bash
+   python3 render.py all
    ```
-8. `python3 render_single_images.py <YYYY-MM-DD>` → produce le 4 PNG delle
-   immagini prioritarie nella cartella superiore.
-9. `git add`, `git commit`, `git push` di tutti i nuovi file generati (PDF,
-   PNG) — **non riusare mai un nome file gia' usato in settimane precedenti**,
-   perche' Buffer scarica il file dall'URL solo al momento della
-   pubblicazione effettiva della bozza, che puo' avvenire giorni dopo la
-   creazione.
-10. Aggiornare `captions.py` con le nuove caption e lanciare
-    `publish_buffer.py` (con le variabili d'ambiente impostate) per creare le
-    bozze su Buffer.
+   Produce nella cartella superiore: `PED_Digitiamo_<data>.pdf`, le 6 PNG del
+   carosello + `carosello_<slug>_<data>.pdf`, e le 4 PNG delle immagini singole.
+   (Anche `render.py carousel` / `singles` / `report` singolarmente.)
+4. **Controlla le grafiche a occhio.** Il renderer blocca l'esecuzione se un
+   testo sfora il suo riquadro, ma non giudica se è *bello*.
+5. **Commit e push** dei nuovi asset. Il push deve avvenire **prima** del passo 6.
+6. **Bozze su Buffer**:
+   ```bash
+   export BUFFER_API_KEY="..."
+   export BUFFER_CHANNEL_ID="..."
+   python3 publish_buffer.py
+   ```
+   Fa un preflight su ogni URL prima di creare qualsiasi bozza: se un asset non
+   è raggiungibile, non crea niente.
+7. **Approvazione umana** in Buffer. Lo script crea solo bozze, mai post
+   programmati.
+
+## Regola dei nomi file (non negoziabile)
+
+**Non riusare mai un nome file già pubblicato.** Buffer scarica l'asset
+dall'URL al momento della pubblicazione effettiva della bozza, che può avvenire
+giorni dopo la creazione: sovrascrivere un file cambia in silenzio l'immagine
+di un post già approvato. `render.py` si rifiuta di sovrascrivere un file
+esistente — se serve rigenerare, cambia `DATE` o lo slug in `week.py`, oppure
+cancella a mano l'asset non ancora pubblicato.
 
 ## Dipendenze
 
+```bash
+pip3 install -r requirements.txt
+python3 -m playwright install chromium
 ```
-pip install playwright img2pdf pypdf --break-system-packages
-python3 -m playwright install chromium   # se non gia' presente
+
+Se Chromium è già presente nell'ambiente, indicalo invece di riscaricarlo:
+
+```bash
+export CHROMIUM_PATH=/opt/pw-browsers/chromium
 ```
 
-Negli ambienti dove Chromium e' gia' preinstallato (es. il container usato per
-questa automazione), passare `executable_path='/opt/pw-browsers/chromium'` a
-`playwright.chromium.launch()` invece di scaricarlo di nuovo (vedi gli script
-esistenti).
+Senza quella variabile si usa il Chromium di Playwright.
 
-## Credenziali (MAI hardcodare nel codice — repo pubblica)
+## Credenziali (MAI nel codice — la repo è pubblica)
 
-`publish_buffer.py` legge le credenziali da variabili d'ambiente:
+`publish_buffer.py` legge tutto dall'ambiente:
 
 - `BUFFER_API_KEY` — token Bearer per `api.buffer.com`
 - `BUFFER_CHANNEL_ID` — id del canale LinkedIn "digitiamo" (tipo `ChannelId!`
   nello schema GraphQL Buffer, non `String!`)
+- `ASSETS_RAW_BASE` — opzionale, per puntare a un altro host degli asset
 
-Il push su GitHub richiede un Personal Access Token fine-grained con permesso
-"Contents: Read and write" sulla sola repo `digitiamo-social-assets`, passato
-inline nel comando `git push` (mai salvato su file):
+Per il push su GitHub usa un credential helper o `gh auth login`. **Non**
+passare il token inline nell'URL di `git push`: resta nella cronologia della
+shell.
 
-```bash
-env -u https_proxy -u HTTPS_PROXY -u http_proxy -u HTTP_PROXY \
-  git push "https://<TOKEN>@github.com/Ra2287/digitiamo-social-assets.git" main
-```
-
-## Nota nota sul carosello/documento Buffer
+## Note sul carosello/documento Buffer
 
 Buffer accetta la creazione di bozze "documento" via API (asset type
-`document`, con `url` + `title` + `thumbnailUrl`), ma al momento della
-scrittura di questo README **non genera l'anteprima a pagine sfogliabili**
-per documenti allegati via URL esterno (i campi `numPages`/`thumbnails`
-restano vuoti anche dopo ore, testato sia con `raw.githubusercontent.com` sia
-con un mirror CDN). Il documento resta comunque funzionante e viene scaricato
-correttamente da Buffer al momento della pubblicazione effettiva. Per vedere
-l'anteprima a pagine prima di approvare, l'unica via nota e' aprire la bozza
-nell'editor Buffer e ri-allegare il PDF manualmente da li' (drag & drop).
+`document`, con `url` + `title` + `thumbnailUrl`), ma **non genera l'anteprima
+a pagine sfogliabili** per documenti allegati via URL esterno: i campi
+`numPages`/`thumbnails` restano vuoti anche dopo ore (testato sia con
+`raw.githubusercontent.com` sia con un mirror CDN). Il documento resta
+funzionante e viene scaricato correttamente alla pubblicazione. Per vedere
+l'anteprima prima di approvare, l'unica via nota è aprire la bozza nell'editor
+Buffer e ri-allegare il PDF a mano (drag & drop).
+
+Nota collaterale: `raw.githubusercontent.com` serve i PDF come
+`application/octet-stream`, non `application/pdf`. È normale e il preflight lo
+accetta.
+
+## Da dove viene il brand
+
+Gli asset in `brand/` non sono ricostruzioni: vengono dai template Canva reali
+usati in produzione dal renderer del progetto `social-ped`. Provenienza di ogni
+singolo valore (incluse le coordinate dei ritagli del logo) in `brand-spec.md`.
+
+Cosa manca ancora, in breve: il logo in **vettoriale** (gli asset sono PNG
+ritagliati), la versione **navy del wordmark** per fondi chiari, e le
+**icone-categoria** oltre a News AI e Webinar. Dettagli in `brand-spec.md` §8.

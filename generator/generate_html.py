@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import html as htmlmod
+from brand import tokens
 from build_report import trends, competitors, ideas, publishing, WEEK_LABEL, GENERATED_ON, C
 
 def esc(s):
@@ -9,31 +10,34 @@ def para_multiline(s):
     parts = s.split("\n\n")
     return "".join(f"<p>{esc(p)}</p>" for p in parts)
 
+# I font sono quelli del brand (Montserrat/Lato) INCORPORATI in base64: un
+# @import a Google Fonts che fallisce produrrebbe un PDF in un font di
+# fallback, senza alcun errore. Vedi brand-spec.md §4.
 CSS = f"""
-@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Archivo+Black&display=swap');
+{tokens.font_face_css()}
 * {{ box-sizing: border-box; }}
-body {{ margin:0; font-family:'Manrope',sans-serif; color:{C['navy']}; font-size:14.5px; line-height:1.55; }}
+body {{ margin:0; font-family:{tokens.FONTS['body_stack']}; color:{C['navy']}; font-size:14.5px; line-height:1.55; }}
 .page {{ width:794px; min-height:1123px; padding:64px 60px; position:relative; page-break-after:always; }}
 .page:last-child {{ page-break-after:auto; }}
 
 /* COVER */
 .cover {{ background:{C['navy']}; color:{C['white']}; display:flex; flex-direction:column; justify-content:space-between; }}
-.cover .brandmark {{ font-weight:800; font-size:22px; letter-spacing:0.5px; }}
+.cover .brandmark {{ display:block; width:190px; height:auto; }}
 .cover .eyebrow {{ display:inline-block; background:{C['green']}; color:{C['navy']}; font-weight:800; font-size:13px; letter-spacing:1.5px; text-transform:uppercase; padding:8px 18px; border-radius:999px; margin-top:60px; }}
-.cover h1 {{ font-family:'Archivo Black',sans-serif; font-size:52px; line-height:1.12; margin:28px 0 0 0; max-width:640px; }}
+.cover h1 {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:52px; line-height:1.12; margin:28px 0 0 0; max-width:640px; }}
 .cover .accent {{ color:{C['green']}; }}
 .cover .sub {{ font-size:19px; font-weight:500; color:{C['secondary']}; margin-top:24px; max-width:560px; }}
 .cover .footer {{ display:flex; justify-content:space-between; align-items:flex-end; border-top:1px solid rgba(255,255,255,0.15); padding-top:24px; font-size:13px; color:{C['secondary']}; }}
 
 /* GENERIC HEADINGS */
-h2.section-title {{ font-family:'Archivo Black',sans-serif; font-size:28px; color:{C['navy']}; margin:0 0 6px 0; text-transform:uppercase; letter-spacing:0.3px; }}
+h2.section-title {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:28px; color:{C['navy']}; margin:0 0 6px 0; text-transform:uppercase; letter-spacing:0.3px; }}
 .section-num {{ color:{C['brand']}; }}
 .section-sub {{ font-size:14px; color:#5b5f8f; margin-bottom:30px; font-weight:500; }}
 .divider {{ height:4px; width:56px; background:{C['green']}; border-radius:2px; margin:14px 0 28px 0; }}
 
 /* TOC */
 .toc-item {{ display:flex; align-items:baseline; gap:14px; padding:14px 0; border-bottom:1px solid {C['tint']}; }}
-.toc-num {{ font-family:'Archivo Black',sans-serif; color:{C['brand']}; font-size:20px; min-width:34px; }}
+.toc-num {{ font-family:'Montserrat',sans-serif; font-weight:800; color:{C['brand']}; font-size:20px; min-width:34px; }}
 .toc-label {{ font-weight:700; font-size:16px; flex:1; }}
 .toc-desc {{ font-size:12.5px; color:#5b5f8f; }}
 
@@ -48,7 +52,7 @@ h2.section-title {{ font-family:'Archivo Black',sans-serif; font-size:28px; colo
 
 /* COMPETITOR CARDS */
 .comp-card {{ background:{C['tint']}; border-radius:12px; padding:24px 26px; margin-bottom:18px; page-break-inside:avoid; }}
-.comp-name {{ font-family:'Archivo Black',sans-serif; font-size:18px; color:{C['navy']}; margin-bottom:14px; }}
+.comp-name {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:18px; color:{C['navy']}; margin-bottom:14px; }}
 .comp-row {{ display:flex; gap:14px; margin-bottom:10px; }}
 .comp-label {{ min-width:110px; font-weight:800; font-size:11px; text-transform:uppercase; color:{C['brand']}; letter-spacing:0.4px; padding-top:2px; }}
 .comp-value {{ font-size:13.3px; flex:1; }}
@@ -62,7 +66,7 @@ h2.section-title {{ font-family:'Archivo Black',sans-serif; font-size:28px; colo
 .badge-reserve {{ background:{C['tint']}; color:{C['navy']}; border:1px solid {C['secondary']}; }}
 .idea-meta {{ font-size:12px; color:{C['secondary']}; font-weight:700; margin-top:6px; }}
 .idea-format {{ font-size:12px; color:{C['brand']}; font-weight:800; text-transform:uppercase; letter-spacing:0.4px; }}
-.idea-title {{ font-family:'Archivo Black',sans-serif; font-size:20px; color:{C['navy']}; margin:14px 0 10px 0; line-height:1.25; }}
+.idea-title {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:20px; color:{C['navy']}; margin:14px 0 10px 0; line-height:1.25; }}
 .idea-news {{ font-size:12px; color:#5b5f8f; margin-bottom:14px; }}
 .idea-news a {{ color:{C['brand']}; text-decoration:none; }}
 .idea-hook {{ background:{C['tint']}; border-radius:8px; padding:14px 18px; font-weight:700; font-size:13.6px; margin-bottom:14px; }}
@@ -82,11 +86,11 @@ table.pubtable td {{ padding:12px 14px; font-size:12.5px; border-bottom:1px soli
 table.pubtable tr:nth-child(even) td {{ background:{C['tint']}; }}
 
 .freq-box {{ background:{C['navy']}; color:#fff; border-radius:14px; padding:28px 30px; margin-top:10px; page-break-inside:avoid; }}
-.freq-box h3 {{ font-family:'Archivo Black',sans-serif; font-size:18px; margin:0 0 12px 0; color:{C['green']}; }}
+.freq-box h3 {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:18px; margin:0 0 12px 0; color:{C['green']}; }}
 .freq-box p {{ font-size:13px; margin:0 0 10px 0; color:#dfe1fb; }}
 .freq-stats {{ display:flex; gap:20px; margin-top:16px; }}
 .freq-stat {{ background:rgba(255,255,255,0.06); border-radius:10px; padding:14px 18px; flex:1; }}
-.freq-stat .num {{ font-family:'Archivo Black',sans-serif; font-size:26px; color:{C['green']}; }}
+.freq-stat .num {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:26px; color:{C['green']}; }}
 .freq-stat .lbl {{ font-size:11px; color:#c7c9f2; margin-top:4px; }}
 
 .pagefoot {{ position:absolute; bottom:28px; left:60px; right:60px; display:flex; justify-content:space-between; font-size:10.5px; color:#9498c4; border-top:1px solid {C['tint']}; padding-top:10px; }}
@@ -96,7 +100,7 @@ def cover_page():
     return f"""
 <div class="page cover">
   <div>
-    <div class="brandmark">Digitiamo</div>
+    <img class="brandmark" src="{tokens.data_uri(tokens.LOGO['wordmark_white'])}" alt="Digitiamo">
     <span class="eyebrow">Piano Editoriale Digitale</span>
     <h1>PED Digitiamo<br>Settimana del<br><span class="accent">{esc(WEEK_LABEL)}</span></h1>
     <div class="sub">Analisi del settore AI/software tech, mosse dei competitor e piano contenuti LinkedIn pronto all'uso.</div>

@@ -7,6 +7,19 @@
 !carosello_*.pdf
 *.html
 !generator/*.html
+# Artefatti generati, non sorgente
+generator/report.html
+generator/review.html
+
+# Bytecode Python
+__pycache__/
+*.pyc
+
+# Anteprime dei design-demos: rigenerabili con i rispettivi make_*.py,
+# e questo repo e' una CDN pubblica dove ogni byte resta per sempre.
+# I sorgenti (make_*.py) e le valutazioni (direction-*.md) sono tracciati.
+generator/design-demos/*.png
+generator/design-demos/*.jpg
 build_*.py
 !generator/build_*.py
 render*.js

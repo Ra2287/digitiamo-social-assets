@@ -2,13 +2,18 @@
 """Genera l'HTML del report PED settimanale Digitiamo."""
 import html
 
+# La palette NON e' dichiarata qui: viene dai token di brand, estratti dagli
+# asset Canva reali (vedi brand-spec.md). I nomi storici usati dal layout del
+# report sono mappati sui token, cosi' esiste una sola fonte di verita'.
+from brand.tokens import COLORS as _C  # noqa: E402
+
 C = {
-    "navy": "#0e0a48",
-    "brand": "#4a3aff",
-    "secondary": "#717ffe",
-    "tint": "#ebeefc",
-    "green": "#43ef84",
-    "white": "#ffffff",
+    "navy": _C["navy"],
+    "brand": _C["blue"],
+    "secondary": _C["blue_soft"],
+    "tint": _C["tint"],
+    "green": _C["green"],
+    "white": _C["white"],
 }
 
 WEEK_LABEL = "31 agosto – 4 settembre 2026"

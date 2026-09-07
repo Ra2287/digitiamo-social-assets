@@ -16,9 +16,17 @@ Uso tipico (da adattare ogni settimana con le nuove caption/URL immagine):
 """
 import json
 import os
+import ssl
+import urllib.error
 import urllib.request
 
 BUFFER_ENDPOINT = "https://api.buffer.com"
+
+# Base degli asset pubblici. La repo fa da CDN: Buffer scarica da qui.
+RAW_BASE = os.environ.get(
+    "ASSETS_RAW_BASE",
+    "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/",
+)
 
 CREATE_IMAGE_POST_QUERY = """
 mutation CreateDraftPost($text: String!, $channelId: ChannelId!, $imageUrl: String!) {
@@ -102,6 +110,111 @@ def delete_post(api_key, post_id):
     return result
 
 
+def _ssl_context():
+    """Contesto TLS che funziona anche dove OpenSSL non trova la CA di sistema.
+
+    Su macOS il Python di python.org spesso ha `ssl.get_default_verify_paths()`
+    che punta a un cert.pem inesistente: senza questo, ogni verifica fallirebbe
+    con CERTIFICATE_VERIFY_FAILED e il preflight bocciherebbe URL validi —
+    peggio che non averlo. Si usa il bundle di certifi quando disponibile.
+    """
+    try:
+        import certifi
+        return ssl.create_default_context(cafile=certifi.where())
+    except ImportError:
+        return ssl.create_default_context()
+
+
+# Esiti distinti: un problema di trasporto locale (TLS, DNS, timeout) NON e' la
+# stessa cosa di un asset mancante, e non va trattato come tale.
+OK, MISSING, UNKNOWN = "ok", "missing", "unknown"
+
+
+def check_url(url):
+    """Verifica che l'asset esista DAVVERO e sia servito come immagine/PDF.
+
+    Perche' serve: Buffer scarica l'asset dall'URL al momento della
+    pubblicazione effettiva della bozza, non alla creazione. Un URL sbagliato
+    (typo nel nome file, push dimenticato) produce una bozza accettata senza
+    errori che fallisce giorni dopo, quando nessuno sta piu' guardando.
+
+    Ritorna (esito, dettaglio) con esito in {OK, MISSING, UNKNOWN}.
+    """
+    req = urllib.request.Request(url, method="HEAD", headers={"User-Agent": "digitiamo-ped/1"})
+    try:
+        with urllib.request.urlopen(req, timeout=20, context=_ssl_context()) as resp:
+            ctype = (resp.headers.get("Content-Type") or "").split(";")[0].strip()
+            length = int(resp.headers.get("Content-Length") or 0)
+    except urllib.error.HTTPError as e:
+        # Il server ha risposto: qui l'asset manca per davvero.
+        return MISSING, "HTTP %s" % e.code
+    except Exception as e:
+        # Non siamo riusciti a chiedere: non sappiamo se l'asset esista.
+        return UNKNOWN, "%s: %s" % (type(e).__name__, e)
+    # raw.githubusercontent.com serve i PDF come application/octet-stream, non
+    # come application/pdf: va accettato (Buffer li scarica correttamente).
+    # Quello che va respinto e' il text/html della pagina 404 di GitHub.
+    if ctype.startswith("text/"):
+        return MISSING, "il server ha risposto HTML, non un asset (%s)" % ctype
+    if not (ctype.startswith("image/") or ctype in ("application/pdf", "application/octet-stream")):
+        return MISSING, "Content-Type inatteso: %s" % (ctype or "assente")
+    if length and length < 1024:
+        return MISSING, "file troppo piccolo (%d byte)" % length
+    return OK, "%s, %d KB" % (ctype, length // 1024)
+
+
+def preflight(urls, strict=True):
+    """Controlla tutti gli URL. Interrompe se un asset manca davvero.
+
+    Gli esiti UNKNOWN (rete/TLS locale) non bloccano: vengono segnalati come
+    avviso, perche' bocciare un asset valido per un problema di trasporto
+    locale fermerebbe la pubblicazione senza motivo. Con strict=False anche i
+    MISSING diventano avvisi.
+    """
+    print("Preflight di %d URL:" % len(urls))
+    missing, unknown = [], []
+    for u in urls:
+        outcome, detail = check_url(u)
+        tag = {OK: "OK   ", MISSING: "MANCA", UNKNOWN: "?    "}[outcome]
+        print("  %s %s  (%s)" % (tag, u.rsplit("/", 1)[-1], detail))
+        if outcome == MISSING:
+            missing.append((u, detail))
+        elif outcome == UNKNOWN:
+            unknown.append((u, detail))
+
+    if unknown:
+        print("\nAVVISO: %d URL non verificabili da questa macchina (rete/TLS)."
+              "\n        Non e' detto che manchino: verifica a mano prima di approvare le bozze."
+              % len(unknown))
+    if missing and strict:
+        raise SystemExit(
+            "\n%d asset non raggiungibili: nessuna bozza creata.\n"
+            "Controlla di aver committato E pushato gli asset prima di pubblicare."
+            % len(missing)
+        )
+    if not missing and not unknown:
+        print("Tutti gli URL sono raggiungibili.")
+    print()
+
+
+def _check_result(res, label):
+    """Solleva un errore sui fallimenti GraphQL invece di limitarsi a stamparli.
+
+    Prima un MutationError su uno dei 4 post veniva stampato e ignorato: il
+    ciclo continuava e l'esecuzione terminava con successo apparente.
+    """
+    if res.get("errors"):
+        raise SystemExit("[%s] errore GraphQL: %s" % (label, json.dumps(res["errors"], ensure_ascii=False)))
+    payload = (res.get("data") or {}).get("createPost") or {}
+    if payload.get("message"):
+        raise SystemExit("[%s] Buffer ha rifiutato la bozza: %s" % (label, payload["message"]))
+    post = payload.get("post") or {}
+    if not post.get("id"):
+        raise SystemExit("[%s] risposta inattesa: %s" % (label, json.dumps(res, ensure_ascii=False)[:400]))
+    print("[%s] bozza creata: %s" % (label, post["id"]))
+    return post
+
+
 def main():
     api_key = os.environ.get("BUFFER_API_KEY")
     channel_id = os.environ.get("BUFFER_CHANNEL_ID")
@@ -110,22 +223,32 @@ def main():
             "Imposta BUFFER_API_KEY e BUFFER_CHANNEL_ID come variabili d'ambiente prima di eseguire lo script."
         )
 
-    # Esempio: personalizzare con le caption/URL della settimana corrente
-    # (vedi captions.py per il testo dei post e il repo per gli URL immagine
-    # gia' pubblicati su GitHub raw).
-    from captions import CAPTION_1, CAPTION_2, CAPTION_4, CAPTION_5  # noqa: E402
+    # Le caption stanno in captions.py, la data e gli slug in week.py: gli URL
+    # si derivano da li' invece di essere riscritti a mano ogni settimana.
+    import captions
+    import week
 
-    base_img = "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/"
-    posts = [
-        (CAPTION_1, base_img + "brandstyle_idea1-claudeforce_2026-08-31.png"),
-        (CAPTION_2, base_img + "brandstyle_idea2-vibecoding-mito_2026-08-31.png"),
-        (CAPTION_4, base_img + "brandstyle_idea4-esperienza-diretta_2026-08-31.png"),
-        (CAPTION_5, base_img + "brandstyle_idea5-rag-datapizza_2026-08-31.png"),
-    ]
+    posts = []
+    for single in week.SINGLES:
+        # week.py dice quale caption va con quale immagine: la corrispondenza
+        # non e' posizionale (CAPTION_3 e' il carosello, non un'immagine singola).
+        name = single["caption"]
+        caption = getattr(captions, name, None)
+        if caption is None:
+            raise SystemExit("captions.py non definisce %s (richiesto da %s)"
+                             % (name, single["slug"]))
+        posts.append((
+            single["slug"],
+            caption,
+            RAW_BASE + "brandstyle_%s_%s.png" % (single["slug"], week.DATE),
+        ))
 
-    for text, img_url in posts:
-        res = create_image_post(api_key, channel_id, text, img_url)
-        print(json.dumps(res, ensure_ascii=False, indent=2))
+    preflight([url for _, _, url in posts])
+
+    for label, text, img_url in posts:
+        _check_result(create_image_post(api_key, channel_id, text, img_url), label)
+
+    print("\nFatto: %d bozze create su Buffer (da approvare a mano)." % len(posts))
 
 
 if __name__ == "__main__":

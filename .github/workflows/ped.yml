@@ -1,23 +1,22 @@
 name: PED — genera gli asset e crea le bozze Buffer
 
-# Parte quando Claude pusha CONTENUTO. La parte editoriale (ricerca, report,
-# caption) resta a una persona con Claude; qui gira solo la meccanica, che e'
-# deterministica e non ha bisogno di nessuno che guardi.
+# Non parte su ogni push: parte quando il CONTENUTO E' COMPLETO, e chi lo sa e'
+# la sessione che l'ha scritto, non un filtro di percorsi.
 #
-# Perche' i `paths`: il job ricommitta gli asset in settimane/**, che NON e'
-# fra i percorsi che lo innescano. Senza quel filtro si richiamerebbe da solo,
-# all'infinito.
+# Il perche' e' importante. La sessione del lunedi' fa piu' commit mentre
+# lavora (storia reale: 07:31, 08:35, 09:00, 14:01). Con un innesco sui
+# percorsi, un push di `build_report.py` fatto prima di aver scritto
+# `captions.py` avvia una corsa che arriva a Buffer e si ferma su una caption
+# mancante: job rosso e mail, per del lavoro a meta'. Dopo tre mail cosi'
+# nessuno le apre piu' — e quella mail e' l'unica rete di sicurezza che questo
+# sistema ha. Un segnale rumoroso e' un segnale spento.
+#
+# Quindi: si committa quanto si vuole, e si mette `[pubblica]` nel messaggio
+# dell'ULTIMO commit. Serve solo git, nessuno strumento in piu'.
 on:
   push:
     branches: [main]
-    paths:
-      - 'generator/build_report.py'
-      - 'generator/captions.py'
-      - 'generator/week.py'
-      - 'generator/plan.py'
-      - 'generator/templates.py'
-      - 'generator/brand/**'
-  workflow_dispatch:        # per lanciarlo a mano dalla tab Actions
+  workflow_dispatch:        # oppure a mano, dalla tab Actions
 
 # Due esecuzioni in parallelo sugli stessi nomi file sarebbero una corsa: la
 # seconda troverebbe gli asset a metà. Si accodano, senza cancellare la prima
@@ -31,6 +30,12 @@ permissions:
 
 jobs:
   genera-e-pubblica:
+    # `[pubblica]` nel messaggio del commit di testa, oppure lancio a mano.
+    # I commit che il workflow fa da se' portano `[skip ci]`, quindi non si
+    # richiama nemmeno come corsa saltata.
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      contains(github.event.head_commit.message, '[pubblica]')
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v7
@@ -80,7 +85,7 @@ jobs:
             echo "Nessun asset nuovo: erano gia' tutti generati."
             echo "nuovi=no" >> "$GITHUB_OUTPUT"
           else
-            git commit -m "PED ${{ github.run_number }}: asset generati dal workflow"
+            git commit -m "PED ${{ github.run_number }}: asset generati dal workflow [skip ci]"
             git push
             echo "nuovi=si" >> "$GITHUB_OUTPUT"
           fi
@@ -103,7 +108,7 @@ jobs:
           if git diff --cached --quiet; then
             echo "Registro invariato."
           else
-            git commit -m "PED ${{ github.run_number }}: registro delle bozze Buffer"
+            git commit -m "PED ${{ github.run_number }}: registro delle bozze Buffer [skip ci]"
             git pull --rebase --autostash
             git push
           fi

@@ -92,7 +92,7 @@ git rebase origin/main
 
 Leggi sempre la riga `[sync]` all'avvio: dice su che base stai lavorando.
 
-Poi:
+Poi, in locale, per vedere cosa esce:
 
 ```bash
 cd generator
@@ -101,6 +101,35 @@ python3 plan.py              # mostra quale template è stato scelto per ogni id
 python3 render.py all        # tutto in settimane/<data>/: report PDF, caroselli, singole
 python3 preview.py           # sfoglia le slide nel browser, come su LinkedIn
 ```
+
+## Pubblicare: `[pubblica]` nel messaggio dell'ultimo commit
+
+Gli asset e le bozze Buffer **non** li produci a mano. Li fa un workflow
+(`.github/workflows/ped.yml`), e parte solo quando glielo dici:
+
+```bash
+git add generator/build_report.py generator/captions.py generator/week.py
+git commit -m "PED <data>: contenuti della settimana [pubblica]"
+git push
+```
+
+Committa quante volte vuoi mentre lavori: **il marcatore va solo sull'ultimo**.
+Senza `[pubblica]`, il push non avvia niente.
+
+Perché non parte da sé a ogni push: la sessione del lunedì fa più commit mentre
+scrive, e un push di `build_report.py` fatto prima di `captions.py` avvierebbe
+una corsa che arriva a Buffer e si ferma su una caption mancante. Job rosso e
+mail, per del lavoro a metà. Dopo tre mail così nessuno le apre più — e quella
+mail è l'unica rete di sicurezza di questo sistema. **Un segnale rumoroso è un
+segnale spento.**
+
+Il workflow fa, in ordine: prove → `plan.py` → `render.py all` → commit degli
+asset → bozze Buffer → commit del registro. Il token arriva da un secret di
+GitHub (`BUFFER_API_KEY`), quindi non serve averlo sulla propria macchina. Se
+qualcosa si rompe, arriva una mail e il log sta nella tab Actions.
+
+Si può lanciare anche a mano, dalla tab **Actions → Run workflow**: è ripetibile,
+salta gli asset già generati e le bozze già create, quindi non fa doppioni.
 
 ### Iniziare una settimana nuova
 

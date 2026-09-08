@@ -1,3 +1,6 @@
 playwright>=1.50   # rendering headless HTML -> PNG/PDF
 img2pdf>=0.5       # unione delle PNG del carosello in un unico PDF
 certifi>=2024.0    # bundle CA per il preflight degli URL (macOS senza CA di sistema)
+Pillow>=10.0        # misura dei PNG prodotti (render.py::_check_size) e
+                   # miniature dell'artifact. Arrivava di rimbalzo da
+                   # img2pdf: dichiarata perche' la importiamo direttamente.

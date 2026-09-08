@@ -1,0 +1,103 @@
+name: PED — genera gli asset e crea le bozze Buffer
+
+# Parte quando Claude pusha CONTENUTO. La parte editoriale (ricerca, report,
+# caption) resta a una persona con Claude; qui gira solo la meccanica, che e'
+# deterministica e non ha bisogno di nessuno che guardi.
+#
+# Perche' i `paths`: il job ricommitta gli asset in settimane/**, che NON e'
+# fra i percorsi che lo innescano. Senza quel filtro si richiamerebbe da solo,
+# all'infinito.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'generator/build_report.py'
+      - 'generator/captions.py'
+      - 'generator/week.py'
+      - 'generator/plan.py'
+      - 'generator/templates.py'
+      - 'generator/brand/**'
+  workflow_dispatch:        # per lanciarlo a mano dalla tab Actions
+
+# Due esecuzioni in parallelo sugli stessi nomi file sarebbero una corsa: la
+# seconda troverebbe gli asset a metà. Si accodano, senza cancellare la prima
+# (che potrebbe aver già creato bozze su Buffer).
+concurrency:
+  group: ped-assets
+  cancel-in-progress: false
+
+permissions:
+  contents: write           # serve a ricommittare gli asset generati
+
+jobs:
+  genera-e-pubblica:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: generator/requirements.txt
+
+      - name: Dipendenze
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r generator/requirements.txt
+
+      # `--with-deps` installa anche le librerie di sistema che Chromium
+      # richiede su ubuntu-latest: senza, il render fallisce all'avvio.
+      - name: Chromium per Playwright
+        run: python -m playwright install --with-deps chromium
+
+      - name: Quale template per quale idea
+        working-directory: generator
+        run: python3 plan.py
+
+      # Le guardie del renderer sono la difesa in un'esecuzione non presidiata:
+      # si fermano su formato non riconosciuto, testo che sfora, PNG fuori
+      # misura. Se questo passo fallisce, non si arriva a Buffer.
+      - name: Genera gli asset
+        working-directory: generator
+        run: python3 render.py all
+
+      # Buffer scarica l'immagine dall'URL al momento della pubblicazione
+      # effettiva: gli asset devono stare su main PRIMA che la bozza esista.
+      - name: Committa gli asset nuovi
+        id: commit
+        run: |
+          git config user.name  "Digitiamo PED Bot"
+          git config user.email "ramona.scalise@digitiamo.com"
+          git add settimane
+          if git diff --cached --quiet; then
+            echo "Nessun asset nuovo: erano gia' tutti generati."
+            echo "nuovi=no" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "PED ${{ github.run_number }}: asset generati dal workflow"
+            git push
+            echo "nuovi=si" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Il token arriva dal secret e non viene scritto da nessuna parte:
+      # publish_buffer.py cerca BUFFER_API_KEY nell'ambiente per primo.
+      # Lo script e' ripetibile: salta i post la cui bozza esiste già, quindi
+      # un rilancio non crea doppioni.
+      - name: Crea le bozze su Buffer
+        working-directory: generator
+        env:
+          BUFFER_API_KEY: ${{ secrets.BUFFER_API_KEY }}
+        run: python3 publish_buffer.py
+
+      # Il registro dice quale bozza va rifatta a una revisione successiva: se
+      # non torna su main, la settimana dopo nessuno sa piu' quali esistono.
+      - name: Committa il registro delle bozze
+        run: |
+          git add generator/buffer-drafts.json
+          if git diff --cached --quiet; then
+            echo "Registro invariato."
+          else
+            git commit -m "PED ${{ github.run_number }}: registro delle bozze Buffer"
+            git pull --rebase --autostash
+            git push
+          fi

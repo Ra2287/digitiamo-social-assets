@@ -24,6 +24,7 @@ import os
 import ssl
 import subprocess
 import sys
+import time
 import urllib.error
 import urllib.request
 
@@ -391,6 +392,16 @@ def check_url(url):
     return OK, "%s, %d KB" % (ctype, length // 1024)
 
 
+# Quanti tentativi sugli asset che risultano mancanti, e con quale attesa.
+# raw.githubusercontent.com di norma serve un file nuovo subito, ma in
+# un'esecuzione automatica il push e la pubblicazione sono a pochi secondi di
+# distanza: qualche secondo di pazienza evita un falso "manca l'asset". Pochi
+# tentativi di proposito — un push dimenticato deve restare un errore, non
+# diventare un'attesa di minuti.
+PREFLIGHT_TENTATIVI = 4
+PREFLIGHT_ATTESA = 5
+
+
 def preflight(urls, strict=True):
     """Controlla tutti gli URL. Interrompe se un asset manca davvero.
 
@@ -402,7 +413,14 @@ def preflight(urls, strict=True):
     print("Preflight di %d URL:" % len(urls))
     missing, unknown = [], []
     for u in urls:
-        outcome, detail = check_url(u)
+        for tentativo in range(1, PREFLIGHT_TENTATIVI + 1):
+            outcome, detail = check_url(u)
+            if outcome != MISSING or tentativo == PREFLIGHT_TENTATIVI:
+                break
+            print("  ...   %s non c'e' ancora (%s): riprovo fra %ds (%d/%d)"
+                  % (u.rsplit("/", 1)[-1], detail, PREFLIGHT_ATTESA,
+                     tentativo, PREFLIGHT_TENTATIVI))
+            time.sleep(PREFLIGHT_ATTESA)
         tag = {OK: "OK   ", MISSING: "MANCA", UNKNOWN: "?    "}[outcome]
         print("  %s %s  (%s)" % (tag, u.rsplit("/", 1)[-1], detail))
         if outcome == MISSING:

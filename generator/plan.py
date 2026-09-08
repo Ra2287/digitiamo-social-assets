@@ -346,9 +346,24 @@ def content():
 
 if __name__ == "__main__":
     import build_report
+    import week
+
     print("Piano derivato dal report:\n")
     cs, ss, rep = build(build_report.ideas)
     for i, title, ptype, note in rep:
         print("  %d. %-34s %-20s %s"
               % (i, (title or "")[:34], ptype or "—", note))
     print("\n  caroselli: %d   immagini singole: %d" % (len(cs), len(ss)))
+
+    # In un'esecuzione automatica questo output finisce in un log che nessuno
+    # sta guardando: deve dire cosa verra' generato DAVVERO, non il piano
+    # teorico. Con l'interruttore attivo le due cose sono diverse.
+    if getattr(week, "SOSTITUISCE_IL_PIANO", False):
+        vc, vs = content()
+        print("\n  ATTENZIONE: week.SOSTITUISCE_IL_PIANO e' attivo, quindi il")
+        print("  piano qui sopra NON viene usato. Verranno generati:\n")
+        for x in vc:
+            print("  - carosello  %-34s %-20s %d slide"
+                  % (x["slug"][:34], x.get("post_type") or "—", len(x["slides"])))
+        for x in vs:
+            print("  - singola    %-34s %s" % (x["slug"][:34], x.get("post_type") or "—"))

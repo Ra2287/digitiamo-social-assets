@@ -219,21 +219,32 @@ funziona sempre.
 python3 publish_buffer.py
 ```
 
-**Il token non va chiesto a nessuno**: lo script lo cerca prima in
-`BUFFER_API_KEY`, poi nel **Keychain di macOS** (servizio `digitiamo-buffer`).
-Il Keychain è la via prevista per il flusso automatico del lunedì, perché una
-variabile d'ambiente vive solo nella shell dove è stata esportata, e questa
-sessione non la eredita da nessuno.
+**Il token non va chiesto a nessuno**: lo script lo cerca da sé, in tre posti,
+nel primo che ce l'ha.
 
-Se manca, lo script si ferma e stampa il comando per salvarlo — una volta sola:
+| | Dove | Quando |
+|---|---|---|
+| 1 | `BUFFER_API_KEY` nell'ambiente | esecuzione automatica (GitHub Actions): il token arriva da un secret e non si scrive su disco |
+| 2 | Keychain di macOS, servizio `digitiamo-buffer` | su un Mac, è la via migliore — non è un file |
+| 3 | `~/.config/digitiamo/buffer-token` | Linux e Windows |
 
 ```bash
+# macOS
 security add-generic-password -a "$USER" -s digitiamo-buffer -w
+
+# Linux / Windows — il file va FUORI dalla repo
+mkdir -p ~/.config/digitiamo && chmod 700 ~/.config/digitiamo
+printf '%s' 'IL_TOKEN' > ~/.config/digitiamo/buffer-token
+chmod 600 ~/.config/digitiamo/buffer-token
 ```
 
-Il token si incolla al prompt, quindi non entra nella cronologia della shell.
-La prima lettura può far comparire una richiesta di autorizzazione di macOS:
-si concede con «Consenti sempre».
+Se manca, lo script si ferma e stampa tutte tre le strade con i comandi.
+
+**Perché il file sta fuori dalla repo e non è un `.env` accanto al codice**:
+questa repo è pubblica, e un file nell'albero di lavoro è a un `git add -A`
+dall'essere pubblicato per sempre. Il `.gitignore` protegge fino al primo
+errore; una cartella diversa protegge sempre. (Le regole in `.gitignore` per
+`.env` e `*-token` sono solo una rete, non il meccanismo.)
 
 **Mai nel codice né in un file della repo**: questa repo è pubblica. Se un token
 è finito in una chat, in un commit o in un log, va rigenerato su Buffer.

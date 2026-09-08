@@ -23,6 +23,7 @@ import json
 import os
 import ssl
 import subprocess
+import sys
 import urllib.error
 import urllib.request
 
@@ -82,18 +83,14 @@ Il token NON va nel codice ne' in un file della repo: questa repo e' pubblica.""
 
 
 def _from_keychain():
-    """Il token dal Keychain di macOS. None se non c'e' o non e' leggibile.
+    """Il token dal Keychain di macOS. None se non c'e', non e' leggibile, o
+    non siamo su un Mac.
 
-    Perche' il Keychain e non una variabile d'ambiente: il flusso del lunedi' e'
-    automatico, quindi il token deve essere disponibile a una sessione che
-    nessuno ha preparato a mano. Una variabile esportata vive solo nella shell
-    dove e' stata scritta; metterla in `.zshrc` la lascia in chiaro in un file;
-    metterla in un file della repo la pubblica.
-
-    Il Keychain e' l'unico posto che risolve tutti e tre i problemi. La prima
-    volta macOS puo' chiedere l'autorizzazione con una finestra: si concede una
-    volta ("Consenti sempre").
+    La prima volta macOS puo' chiedere l'autorizzazione con una finestra: si
+    concede una volta ("Consenti sempre").
     """
+    if sys.platform != "darwin":
+        return None
     try:
         out = subprocess.run(
             ["security", "find-generic-password", "-s", KEYCHAIN_SERVICE, "-w"],
@@ -103,14 +100,87 @@ def _from_keychain():
     return out.stdout.strip() or None if out.returncode == 0 else None
 
 
+def token_file():
+    """Il percorso del file con il token, FUORI dalla cartella della repo.
+
+    Perche' fuori e non un `.env` accanto al codice: questa repo e' pubblica, e
+    un file dentro l'albero di lavoro e' a un `git add -A` di distanza
+    dall'essere pubblicato per sempre. Il `.gitignore` protegge fino al primo
+    errore; una cartella diversa protegge sempre.
+
+    Segue XDG dove definito, cosi' funziona su Linux, macOS e Windows.
+    """
+    base = os.environ.get("XDG_CONFIG_HOME") or os.path.join(
+        os.path.expanduser("~"), ".config")
+    return os.path.join(base, "digitiamo", "buffer-token")
+
+
+def _from_file():
+    """Il token dal file di configurazione. None se non c'e'."""
+    path = token_file()
+    try:
+        with open(path, encoding="utf-8") as f:
+            token = f.read().strip()
+    except (IOError, OSError, UnicodeDecodeError):
+        return None
+    if not token:
+        return None
+
+    # Su POSIX un file di segreti leggibile da altri utenti e' un problema:
+    # lo si segnala, ma non si rifiuta il token — bloccare la pubblicazione
+    # per i permessi sarebbe peggio del rischio che si vuole evitare.
+    if os.name == "posix":
+        mode = os.stat(path).st_mode & 0o077
+        if mode:
+            print("AVVISO: %s e' leggibile da altri utenti.\n"
+                  "        Restringilo con:  chmod 600 %s" % (path, path))
+    return token
+
+
 def api_key():
-    """Il token Buffer: prima l'ambiente, poi il Keychain, altrimenti spiega."""
-    return (os.environ.get("BUFFER_API_KEY") or "").strip() or \
-        _from_keychain() or _exit_senza_token()
+    """Il token Buffer, dalla prima fonte che ce l'ha.
+
+    Ordine: ambiente, Keychain (solo macOS), file di configurazione. L'ambiente
+    per primo perche' e' quello che usa un'esecuzione automatica in CI, dove il
+    token arriva da un secret e non deve essere scritto da nessuna parte.
+    """
+    return ((os.environ.get("BUFFER_API_KEY") or "").strip()
+            or _from_keychain()
+            or _from_file()
+            or _exit_senza_token())
 
 
 def _exit_senza_token():
-    raise SystemExit(ISTRUZIONI_TOKEN)
+    mac = """Sul Mac, nel Keychain (la via migliore: non e' un file):
+
+    security add-generic-password -a "$USER" -s %s -w
+
+(premi invio, poi incolla il token al prompt: non viene mostrato)""" % KEYCHAIN_SERVICE
+
+    raise SystemExit("""Il token Buffer non e' disponibile. Tre modi, in ordine di preferenza.
+
+1. In un'esecuzione automatica (GitHub Actions e simili): la variabile
+   d'ambiente BUFFER_API_KEY, da un secret. Non va scritta su disco.
+
+2. %s
+
+3. Su Linux e Windows, in un file FUORI dalla repo:
+
+    %s
+
+   Crealo con la sola riga del token, poi restringi i permessi:
+    mkdir -p "%s" && chmod 600 "%s"
+
+   Fuori dalla repo di proposito: questa repo e' PUBBLICA, e un file dentro
+   l'albero di lavoro e' a un `git add -A` dall'essere pubblicato per sempre.
+
+Per un uso una volta sola, senza scrivere niente:
+
+    read -rs "KEY?Buffer access token: " && export BUFFER_API_KEY="$KEY" && unset KEY
+
+Il token NON va nel codice, in un file della repo, o in una chat: se e'
+finito in una conversazione, va rigenerato su Buffer.""" % (
+        mac, token_file(), os.path.dirname(token_file()), token_file()))
 
 
 def _graphql(api_key, query, variables):
@@ -545,7 +615,6 @@ def list_channels():
 
 
 if __name__ == "__main__":
-    import sys
     if "--canali" in sys.argv:
         list_channels()
     elif "--elimina-obsolete" in sys.argv:

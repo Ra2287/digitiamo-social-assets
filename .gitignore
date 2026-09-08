@@ -37,3 +37,14 @@ logo_dark_transparent.png
 logo_white_transparent.png
 preview_*.png
 template_demo*.png
+
+# Segreti: MAI dentro questa repo, che e' pubblica. Il token Buffer va in una
+# variabile d'ambiente, nel Keychain (macOS) o in ~/.config/digitiamo/
+# (vedi generator/publish_buffer.py). Queste righe sono solo una rete: se
+# qualcuno crea comunque un file qui, non finisce in un commit per sbaglio.
+.env
+.env.*
+*-token
+*.token
+*secret*
+buffer-token

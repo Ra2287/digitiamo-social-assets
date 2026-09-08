@@ -114,6 +114,14 @@ def _exit_senza_token():
 
 
 def _graphql(api_key, query, variables):
+    if not isinstance(api_key, str):
+        # Succede se si passa per sbaglio la FUNZIONE api_key invece del token
+        # che restituisce: l'header diventa "Bearer <function ...>" e Buffer
+        # risponde 401, cioe' un errore che incolpa la chiave invece del codice.
+        raise TypeError(
+            "il token deve essere una stringa, non %s: probabilmente e' stata "
+            "passata la funzione api_key invece di api_key()"
+            % type(api_key).__name__)
     payload = json.dumps({"query": query, "variables": variables}).encode("utf-8")
     req = urllib.request.Request(
         BUFFER_ENDPOINT,
@@ -156,7 +164,7 @@ def _graphql(api_key, query, variables):
         raise SystemExit("Buffer non raggiungibile: %s" % e.reason)
 
 
-def create_image_post(key, channel_id, text, image_url):
+def create_image_post(api_key, channel_id, text, image_url):
     """Crea una bozza con immagine allegata (asset type: image)."""
     result = _graphql(
         api_key,
@@ -166,7 +174,7 @@ def create_image_post(key, channel_id, text, image_url):
     return result
 
 
-def create_document_post(key, channel_id, text, doc_url, doc_title, thumb_url):
+def create_document_post(api_key, channel_id, text, doc_url, doc_title, thumb_url):
     """Crea una bozza con documento/carosello allegato (asset type: document).
 
     NOTA: al momento della scrittura, Buffer non genera l'anteprima a pagine

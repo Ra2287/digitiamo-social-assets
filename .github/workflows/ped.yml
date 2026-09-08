@@ -33,9 +33,9 @@ jobs:
   genera-e-pubblica:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
           cache: pip
@@ -50,6 +50,12 @@ jobs:
       # richiede su ubuntu-latest: senza, il render fallisce all'avvio.
       - name: Chromium per Playwright
         run: python -m playwright install --with-deps chromium
+
+      # Prima di renderizzare e prima di toccare Buffer: una regressione qui
+      # costa un job rosso, non una settimana di post sbagliati.
+      - name: Prove della pipeline
+        working-directory: generator
+        run: python3 test_pipeline.py
 
       - name: Quale template per quale idea
         working-directory: generator

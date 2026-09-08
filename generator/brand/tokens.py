@@ -27,9 +27,18 @@ COLORS = {
     "blue_tint": "#6052ff",  # traccia circuito su fondo blu (12.3-12.4%)
     "navy_tint": "#2c285e",  # traccia circuito su fondo navy (13.3%)
     # Gradiente cielo (dall'alto verso il basso) di newsai_bg
-    "sky_top": "#d0f0ff",
-    "sky_mid": "#d8f2ff",
-    "sky_bottom": "#ddf3ff",
+    # Azzurro pallido usato come INCHIOSTRO su fondo scuro (accento di testo su
+    # navy e blu). NON e' il gradiente del campo cielo: quello vive in
+    # brand/make_editorial_bg.py (SKY_TOP/SKY_BOTTOM, campionati da newsai_bg) ed
+    # e' cotto dentro editorial_sky.png.
+    #
+    # Prima questo token si chiamava `sky_top` e ce n'erano altri due, `sky_mid`
+    # e `sky_bottom`, mai usati: dichiaravano il gradiente una seconda volta con
+    # valori diversi da quelli reali (#d0f0ff invece di #c5ebff). Il PNG e' la
+    # verita' — il render usa l'immagine, non i token — quindi le slide erano
+    # giuste, ma la discrepanza ha fatto diagnosticare a qualcuno un refuso che
+    # non c'era. Un valore duplicato in due file e' un bug che aspetta.
+    "sky_ink": "#d0f0ff",
     # Testo — valori tarati sul renderer social-ped (leggibilita' verificata)
     "text_on_blue": "#eef0ff",   # corpo su pannello blu
     "text_muted_navy": "#b9c0f5",  # metadati su navy

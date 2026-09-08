@@ -96,6 +96,7 @@ Poi:
 
 ```bash
 cd generator
+python3 test_pipeline.py     # le prove della pipeline: nessuna rete, niente toccato
 python3 plan.py              # mostra quale template è stato scelto per ogni idea
 python3 render.py all        # tutto in settimane/<data>/: report PDF, caroselli, singole
 python3 preview.py           # sfoglia le slide nel browser, come su LinkedIn
@@ -271,6 +272,27 @@ Fa un **preflight su ogni URL prima di creare qualsiasi bozza**: se un asset non
 lanciarlo. Come `render.py`, salta i post per cui la bozza esiste già: si può
 rilanciare senza creare doppioni. Crea solo bozze, mai post programmati:
 l'approvazione umana resta obbligatoria.
+
+## Le prove
+
+`python3 generator/test_pipeline.py` — quattro prove, nessuna rete, nessun
+asset pubblicato toccato. Girano anche in CI **prima** del render:
+
+1. **La scelta del template** su nove diciture reali, più il rifiuto di un
+   formato ignoto: indovinare un template significa pubblicare un post
+   sbagliato.
+2. **I nomi degli asset e gli URL su Buffer coincidono** — il bug la cui unica
+   manifestazione sarebbe una bozza che punta a un URL inesistente, visibile
+   giorni dopo, alla pubblicazione.
+3. **Il formato è imposto**, non solo documentato: 1080×1350 e anche un pixel
+   di scarto vengono respinti, e il file fuori misura rimosso.
+4. **Il ciclo con l'umano**: che un rilancio non tocchi niente, e che un
+   rifacimento rigeneri **solo** quel post lasciando intatti gli asset a cui
+   puntano le bozze già viste.
+
+I bersagli si ricavano dal piano corrente, non sono scritti a mano: due prove
+precedenti erano già diventate stantie perché riferivano gli slug di una
+settimana passata.
 
 ## Tornare indietro
 

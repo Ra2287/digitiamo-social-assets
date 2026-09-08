@@ -101,10 +101,10 @@ SURFACES = {
         footer_y=1400,
         ink="#fff",
         furniture="baked",
-        # L'accento di TESTO e' il cielo del brand. Ma il cielo non e' una tinta
-        # dati (chroma 0.039, "reads gray"): per i marchi numerici si usa il
-        # verde, che su questo fondo misura contrasto PASS >=3:1.
-        accent="var(--c-sky-top)",
+        # L'accento di TESTO e' l'azzurro pallido del brand (sky_ink). Non e'
+        # una tinta dati (chroma 0.039, "reads gray"): per i marchi numerici si
+        # usa il verde, che su questo fondo misura contrasto PASS >=3:1.
+        accent="var(--c-sky-ink)",
         data="var(--c-green)",
         neutral="rgba(255,255,255,.22)",
         body="var(--c-text-on-blue)",
@@ -120,7 +120,7 @@ SURFACES = {
         footer_y=1280,
         ink="#fff",
         furniture="baked",
-        accent="var(--c-sky-top)",
+        accent="var(--c-sky-ink)",
         data="var(--c-green)",
         neutral="rgba(255,255,255,.22)",
         body="var(--c-text-on-blue)",
@@ -134,7 +134,7 @@ SURFACES = {
         footer_y=1352,
         ink="#fff",
         furniture="baked",
-        accent="var(--c-sky-top)",
+        accent="var(--c-sky-ink)",
         data="var(--c-green)",
         neutral="rgba(255,255,255,.22)",
         body="var(--c-text-on-blue)",

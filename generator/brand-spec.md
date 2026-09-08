@@ -94,9 +94,7 @@ l'unica fonte di verita' in codice; qui c'e' il ragionamento.
 | `--c-white` | `#ffffff` | Testo su fondi saturi, marchio, nuvola | — |
 | `--c-blue-tint` | `#6052ff` | Filigrana circuito su blu | 12.3% di `newsai_bg` |
 | `--c-navy-tint` | `#2c285e` | Filigrana circuito su navy | 13.3% di `webinar_bg` |
-| `--c-sky-top` | `#d0f0ff` | Gradiente cielo (alto) | `newsai_bg` |
-| `--c-sky-mid` | `#d8f2ff` | Gradiente cielo (medio) | `newsai_bg` |
-| `--c-sky-bottom` | `#ddf3ff` | Gradiente cielo (basso) | `newsai_bg` |
+| `--c-sky-ink` | `#d0f0ff` | Azzurro pallido come **inchiostro** su fondo scuro (accento di testo su navy e blu) | `newsai_bg`, famiglia cielo |
 | `--c-text-on-blue` | `#eef0ff` | Corpo su pannello blu | `social-ped/renderer/server.js` |
 | `--c-text-muted-navy` | `#b9c0f5` | Metadati su navy | idem |
 | `--c-text-muted-soft` | `#c7ccf0` | Ruoli/didascalie su navy | idem |
@@ -152,6 +150,28 @@ Fonts che fallisce produce PNG in un font di fallback — sbagliati e senza erro
 
 1200×1500 e' la dimensione dei template Canva reali. E' il formato canonico:
 1080×1350 ha lo stesso rapporto ma risoluzione minore, senza motivo.
+
+### Il gradiente cielo NON e' un token
+
+E' cotto dentro `bg/editorial_sky.png`, e i suoi valori vivono in un solo
+posto: `brand/make_editorial_bg.py`, che quel PNG lo genera.
+
+| | Valore | Da dove |
+|---|---|---|
+| `SKY_TOP` | `#c5ebff` | campionato su `newsai_bg.png`, colonna x=40 (fuori dalla nuvola) |
+| `SKY_BOTTOM` | `#dbf3ff` | idem |
+
+Misurato sul PNG prodotto: y=0 `#c5ebff`, y=1499 `#dbf3ff` — corrispondono.
+
+Fino all'8 settembre 2026 `tokens.py` dichiarava *anche* un gradiente, con
+`sky_top #d0f0ff`, `sky_mid` e `sky_bottom` — valori diversi da quelli reali, e
+gli ultimi due mai usati. Il render legge l'immagine e non i token, quindi le
+slide erano corrette; ma la discrepanza ha portato una revisione esterna a
+diagnosticare un refuso inesistente sul fondo di una slide. Ora `sky_ink` e'
+solo un colore di testo e dice cosa e'.
+
+**Regola generale**: un colore che finisce dentro un asset non va dichiarato
+una seconda volta come token. Il posto dove nasce e' l'unica fonte.
 
 Dall'8 settembre 2026 non e' piu' solo una convenzione: `render.py::_check_size`
 misura ogni PNG prodotto e rifiuta qualunque scostamento, cancellando il file.

@@ -76,6 +76,14 @@ Ogni settimana si modificano **solo i file di contenuto**:
 | `generator/week.py` | `DATE`, i rifacimenti (`REDO`) e le eventuali correzioni a mano |
 | `generator/captions.py` | i testi dei post per Buffer |
 
+**Prima di qualunque cosa, allinea la repo.** Il codice cambia, e una sessione
+che lavora su una copia vecchia non ha `plan.py` né `names.py` e finisce per
+riscrivere l'HTML da zero — cioè l'errore che questo sistema esiste per evitare:
+
+```bash
+git pull --ff-only origin main
+```
+
 Poi:
 
 ```bash
@@ -164,9 +172,27 @@ funziona sempre.
 ## Pubblicazione su Buffer
 
 ```bash
-export BUFFER_API_KEY="..."          # mai nel codice: la repo è pubblica
 python3 publish_buffer.py
 ```
+
+**Il token non va chiesto a nessuno**: lo script lo cerca prima in
+`BUFFER_API_KEY`, poi nel **Keychain di macOS** (servizio `digitiamo-buffer`).
+Il Keychain è la via prevista per il flusso automatico del lunedì, perché una
+variabile d'ambiente vive solo nella shell dove è stata esportata, e questa
+sessione non la eredita da nessuno.
+
+Se manca, lo script si ferma e stampa il comando per salvarlo — una volta sola:
+
+```bash
+security add-generic-password -a "$USER" -s digitiamo-buffer -w
+```
+
+Il token si incolla al prompt, quindi non entra nella cronologia della shell.
+La prima lettura può far comparire una richiesta di autorizzazione di macOS:
+si concede con «Consenti sempre».
+
+**Mai nel codice né in un file della repo**: questa repo è pubblica. Se un token
+è finito in una chat, in un commit o in un log, va rigenerato su Buffer.
 
 **Il canale non va configurato**: lo script lo ricava dall'API cercando quello
 LinkedIn (come fa `social-ped`, dove l'id non è memorizzato da nessuna parte).

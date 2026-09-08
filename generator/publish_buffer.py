@@ -22,6 +22,7 @@ Caption e URL non si scrivono piu' a mano: vengono da `plan.content()` e
 import json
 import os
 import ssl
+import subprocess
 import urllib.error
 import urllib.request
 
@@ -59,6 +60,57 @@ mutation DelPost($input: DeletePostInput!) {
   }
 }
 """
+
+
+KEYCHAIN_SERVICE = "digitiamo-buffer"
+
+ISTRUZIONI_TOKEN = """Il token Buffer non e' disponibile.
+
+Sul Mac, salvalo una volta sola nel Keychain (non chiede di incollarlo in un
+comando, quindi non finisce nella cronologia della shell):
+
+    security add-generic-password -a "$USER" -s %s -w
+
+(premi invio, poi incolla il token al prompt: non viene mostrato)
+
+Da quel momento qualunque sessione lo trova da sola, anche quando e' Claude a
+lanciare lo script. In alternativa, per un uso una volta sola:
+
+    read -rs "KEY?Buffer access token: " && export BUFFER_API_KEY="$KEY" && unset KEY
+
+Il token NON va nel codice ne' in un file della repo: questa repo e' pubblica.""" % KEYCHAIN_SERVICE
+
+
+def _from_keychain():
+    """Il token dal Keychain di macOS. None se non c'e' o non e' leggibile.
+
+    Perche' il Keychain e non una variabile d'ambiente: il flusso del lunedi' e'
+    automatico, quindi il token deve essere disponibile a una sessione che
+    nessuno ha preparato a mano. Una variabile esportata vive solo nella shell
+    dove e' stata scritta; metterla in `.zshrc` la lascia in chiaro in un file;
+    metterla in un file della repo la pubblica.
+
+    Il Keychain e' l'unico posto che risolve tutti e tre i problemi. La prima
+    volta macOS puo' chiedere l'autorizzazione con una finestra: si concede una
+    volta ("Consenti sempre").
+    """
+    try:
+        out = subprocess.run(
+            ["security", "find-generic-password", "-s", KEYCHAIN_SERVICE, "-w"],
+            capture_output=True, text=True, timeout=30)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return out.stdout.strip() or None if out.returncode == 0 else None
+
+
+def api_key():
+    """Il token Buffer: prima l'ambiente, poi il Keychain, altrimenti spiega."""
+    return (os.environ.get("BUFFER_API_KEY") or "").strip() or \
+        _from_keychain() or _exit_senza_token()
+
+
+def _exit_senza_token():
+    raise SystemExit(ISTRUZIONI_TOKEN)
 
 
 def _graphql(api_key, query, variables):
@@ -104,7 +156,7 @@ def _graphql(api_key, query, variables):
         raise SystemExit("Buffer non raggiungibile: %s" % e.reason)
 
 
-def create_image_post(api_key, channel_id, text, image_url):
+def create_image_post(key, channel_id, text, image_url):
     """Crea una bozza con immagine allegata (asset type: image)."""
     result = _graphql(
         api_key,
@@ -114,7 +166,7 @@ def create_image_post(api_key, channel_id, text, image_url):
     return result
 
 
-def create_document_post(api_key, channel_id, text, doc_url, doc_title, thumb_url):
+def create_document_post(key, channel_id, text, doc_url, doc_title, thumb_url):
     """Crea una bozza con documento/carosello allegato (asset type: document).
 
     NOTA: al momento della scrittura, Buffer non genera l'anteprima a pagine
@@ -405,14 +457,9 @@ def _posts():
 
 
 def main():
-    api_key = os.environ.get("BUFFER_API_KEY")
-    if not api_key:
-        raise SystemExit(
-            "Imposta BUFFER_API_KEY come variabile d'ambiente. Mai nel codice: "
-            "la repo e' pubblica."
-        )
+    key = api_key()
     # Il canale si ricava dall'API; la variabile serve solo per forzarlo.
-    channel_id = os.environ.get("BUFFER_CHANNEL_ID") or resolve_channel(api_key)
+    channel_id = os.environ.get("BUFFER_CHANNEL_ID") or resolve_channel(key)
 
     import names
     import week
@@ -446,10 +493,10 @@ def main():
     created = []
     for p in todo:
         if p["kind"] == "document":
-            res = create_document_post(api_key, channel_id, p["text"],
+            res = create_document_post(key, channel_id, p["text"],
                                        p["doc_url"], p["title"], p["thumb_url"])
         else:
-            res = create_image_post(api_key, channel_id, p["text"], p["image_url"])
+            res = create_image_post(key, channel_id, p["text"], p["image_url"])
         post = _check_result(res, p["slug"])
         created.append(dict(date=week.DATE, revision=names.revision(p["slug"]),
                             slug=p["slug"], id=post["id"], url=p["urls"][0]))
@@ -460,9 +507,7 @@ def main():
 
 def delete_stale():
     """Cancella le bozze di questa settimana rimaste da revisioni precedenti."""
-    api_key = os.environ.get("BUFFER_API_KEY")
-    if not api_key:
-        raise SystemExit("Imposta BUFFER_API_KEY.")
+    key = api_key()
     import week
     _, _, stale = _split(_posts())
     if not stale:
@@ -470,7 +515,7 @@ def delete_stale():
         return
     for e in stale:
         print("cancello r%s %s (id %s):" % (e.get("revision"), e.get("slug"), e.get("id")),
-              json.dumps(delete_post(api_key, e["id"]), ensure_ascii=False)[:200])
+              json.dumps(delete_post(key, e["id"]), ensure_ascii=False)[:200])
     ledger = [e for e in _load_ledger() if e not in stale]
     with open(LEDGER, "w", encoding="utf-8") as f:
         json.dump(ledger, f, ensure_ascii=False, indent=2)
@@ -479,10 +524,7 @@ def delete_stale():
 
 def list_channels():
     """Stampa i canali collegati. Utile per capire cosa vede la chiave."""
-    api_key = os.environ.get("BUFFER_API_KEY")
-    if not api_key:
-        raise SystemExit("Imposta BUFFER_API_KEY.")
-    found = channels(api_key)
+    found = channels(api_key())
     print("%d canali collegati:" % len(found))
     for c in found:
         print("  %-11s %-28s %s" % (c.get("service"),

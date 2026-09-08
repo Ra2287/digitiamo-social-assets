@@ -119,7 +119,12 @@ Senza quella variabile si usa il Chromium di Playwright.
 
 `publish_buffer.py` legge tutto dall'ambiente:
 
-- `BUFFER_API_KEY` — token Bearer per `api.buffer.com` (obbligatoria)
+- `BUFFER_API_KEY` — token Bearer per `api.buffer.com`. **Opzionale se il token
+  è nel Keychain di macOS** sotto il servizio `digitiamo-buffer`:
+  `security add-generic-password -a "$USER" -s digitiamo-buffer -w`.
+  Il Keychain è la via prevista quando è un'automazione a lanciare lo script:
+  una variabile esportata vive solo nella shell dove è stata scritta, `.zshrc`
+  la lascia in chiaro, e un file della repo la pubblicherebbe.
 - `BUFFER_CHANNEL_ID` — **opzionale**: di norma il canale LinkedIn viene ricavato
   dall'API. Serve solo se all'account sono collegati più canali LinkedIn, caso in
   cui lo script si ferma invece di indovinare (tipo `ChannelId!` nello schema

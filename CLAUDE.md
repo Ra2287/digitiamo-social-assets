@@ -76,13 +76,21 @@ Ogni settimana si modificano **solo i file di contenuto**:
 | `generator/week.py` | `DATE`, i rifacimenti (`REDO`) e le eventuali correzioni a mano |
 | `generator/captions.py` | i testi dei post per Buffer |
 
-**Prima di qualunque cosa, allinea la repo.** Il codice cambia, e una sessione
-che lavora su una copia vecchia non ha `plan.py` né `names.py` e finisce per
-riscrivere l'HTML da zero — cioè l'errore che questo sistema esiste per evitare:
+**L'allineamento è automatico.** Un hook `SessionStart`
+(`.claude/sync-main.sh`) allinea la copia locale a `origin/main` all'avvio,
+perché una sessione su codice vecchio non ha `plan.py` né `names.py` e
+riscrive l'HTML da zero — l'errore che questo sistema esiste per evitare.
+
+L'hook **non distrugge mai** lavoro locale: se ci sono modifiche non
+committate, o se il ramo è divergente da `origin/main`, si limita a dirlo e non
+tocca niente. In quel caso l'integrazione va fatta a mano **prima** di
+generare, altrimenti si lavora su una base che non è quella pubblicata:
 
 ```bash
-git pull --ff-only origin main
+git rebase origin/main
 ```
+
+Leggi sempre la riga `[sync]` all'avvio: dice su che base stai lavorando.
 
 Poi:
 
@@ -216,6 +224,45 @@ Fa un **preflight su ogni URL prima di creare qualsiasi bozza**: se un asset non
 lanciarlo. Come `render.py`, salta i post per cui la bozza esiste già: si può
 rilanciare senza creare doppioni. Crea solo bozze, mai post programmati:
 l'approvazione umana resta obbligatoria.
+
+## Tornare indietro
+
+Su `main` scrivono **due produttori**: questa automazione e chiunque lavori a
+mano sul generatore. Perciò serve saper tornare indietro — con una distinzione
+che non va confusa.
+
+**Il codice si può revertire. Un asset pubblicato no.**
+
+- `generator/` è codice: un revert lo riporta a uno stato precedente senza
+  conseguenze esterne.
+- `settimane/*/` e i `carosello_*` nella radice sono la **CDN**: una bozza
+  Buffer può puntare a quei file, e Buffer li scarica al momento della
+  pubblicazione effettiva. Rimuoverli con un revert **rompe un post già
+  approvato**, e l'errore si vede solo il giorno in cui esce.
+
+Quindi: revert solo del codice, e mai `git push --force` su `main` (altri
+hanno già clonato, e i file spariti restano rotti negli URL).
+
+**Punti di ritorno.** Prima di un'integrazione importante si mette un tag
+annotato su `main`, che è un nome ricordabile per uno stato pubblicato:
+
+```bash
+git tag -a main-prima-di-<cosa> -m "perché questo punto conta" origin/main
+git push origin main-prima-di-<cosa>
+```
+
+Tag esistenti: `git tag -n`. Per vedere com'era: `git show <tag>`, oppure
+`git switch --detach <tag>` per guardarci dentro senza spostare niente.
+
+Per annullare un cambiamento **di codice** già pubblicato:
+
+```bash
+git revert --no-commit <sha>..HEAD -- generator/
+git commit -m "Torna al generatore di <tag>: <motivo>"
+```
+
+`git revert` aggiunge un commit che disfa, invece di riscrivere la storia: è
+l'unica forma sicura su una repo pubblica che altri hanno clonato.
 
 ## Cosa è tracciato e cosa no
 

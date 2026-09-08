@@ -1,5 +1,8 @@
 # Working/scratch files for this project - not meant to be published in the
 # public digitiamo-social-assets repo. Only the final carousel PNGs/PDFs are tracked.
+# Gli asset di ogni settimana stanno in settimane/<data>/. Le regole qui sotto
+# non hanno slash, quindi valgono a ogni livello: il PDF del report resta
+# escluso anche in sottocartella, i carosello_*.pdf restano tracciati.
 # Eccezione: generator/ contiene il codice sorgente ufficiale del generatore
 # PED (voluto in repo per poterci lavorare direttamente) ed è escluso da
 # queste regole scratch.
@@ -10,6 +13,8 @@
 # Artefatti generati, non sorgente
 generator/report.html
 generator/review.html
+generator/preview.html
+generator/artifact.html
 
 # Bytecode Python
 __pycache__/

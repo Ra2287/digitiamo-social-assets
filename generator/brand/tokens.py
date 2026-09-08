@@ -82,6 +82,23 @@ FORMATS = {
 # ASSET
 # ---------------------------------------------------------------------------
 LOGO = {
+    # Il marchio VETTORIALE ufficiale, fornito dal team design l'8 settembre
+    # 2026. E' la sorgente: un solo file per tutti i colori, perche' il fill si
+    # sovrascrive via CSS (la classe `.cls-1`).
+    #
+    # Non e' ancora usato dal renderer, ed e' voluto: il marchio e' COTTO dentro
+    # gli sfondi editoriali (editorial_navy/blue), non disegnato dal layout.
+    # Passare al vettore vuol dire rigenerare gli sfondi con
+    # make_editorial_bg.py, quindi cambiare l'aspetto di ogni slide — un lavoro
+    # deliberato, non un effetto collaterale. Gli asset gia' pubblicati non
+    # devono cambiare.
+    #
+    # Verificato che sia lo stesso marchio dei PNG: ritagliati sull'inchiostro i
+    # rapporti sono 3.561 (PNG) e 3.508 (SVG), e le sagome si sovrappongono al
+    # 91,2%. Lo scarto e' l'antialiasing del PNG, che era stato ESTRATTO dagli
+    # sfondi rasterizzati.
+    "wordmark_vector": "logo/digitiamo-wordmark.svg",
+
     "wordmark_white": "logo/digitiamo-wordmark-white.png",  # 245x78, alpha
     "icon_news_white": "logo/icon-news-white.png",          # 200x181, alpha
     "icon_webinar_white": "logo/icon-webinar-white.png",    # 154x104, alpha

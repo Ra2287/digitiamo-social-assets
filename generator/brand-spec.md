@@ -41,6 +41,7 @@ file standalone, e' stato ricavato dagli sfondi con alpha da luminanza.
 
 | Asset | File | Dim. | Provenienza |
 |---|---|---|---|
+| **Marchio vettoriale** | `logo/digitiamo-wordmark.svg` | viewBox 620×250 | **fornito dal team design l'8 settembre 2026.** E' la sorgente ufficiale: un file per tutti i colori (il fill si sovrascrive via CSS). Non ancora usato dal renderer — vedi §8 |
 | Wordmark bianco | `logo/digitiamo-wordmark-white.png` | 245×78 | ritagliato da `webinar_bg.png` (142,143)-(375,209), bianco su navy |
 | Icona "News AI" | `logo/icon-news-white.png` | 200×181 | ritagliata da `newsai_cover_bg.png` (506,169)-(694,338), bianco su blu |
 | Icona "Webinar" | `logo/icon-webinar-white.png` | 154×104 | ritagliata da `webinar_bg.png` (937,130)-(1079,222) |
@@ -239,14 +240,39 @@ un fondo scuro, ed e' da li' che nasceva la monotonia.
 
 ## 8. Cosa manca ancora (onesto)
 
-- **Logo vettoriale ufficiale.** Le varianti navy e blu sono *derivazioni*
-  ottenute ricolorando l'alpha del wordmark bianco. Il marchio e' piatto e
-  monocromatico in tutti gli asset Canva, quindi la derivazione e' fedele — ma
-  se il team design ha l'SVG originale, quello vince.
-- **Scale >2× e stampa**: gli asset sono PNG ricavati per ritaglio.
+- ~~**Logo vettoriale ufficiale.**~~ **Arrivato l'8 settembre 2026**:
+  `logo/digitiamo-wordmark.svg`. Non ancora in uso dal renderer, per un motivo
+  spiegato in fondo a questo documento. Le varianti navy e blu restano
+  *derivazioni* dall'alpha del wordmark bianco finche' gli sfondi non vengono
+  rigenerati dal vettore.
+- **Scale >2× e stampa**: gli asset in uso sono ancora i PNG ricavati per
+  ritaglio. Il vettore le risolve, quando verra' adottato.
 - **Icone-categoria oltre news/webinar**: `Talenti AI`, `Modelli`, `Normativa`,
   `Investimenti`, `Prodotti`, `Ricerca` non hanno un badge dedicato. Da disegnare
   con la grammatica §2 (quadrato arrotondato + spillo/nodo).
 - **Nuvola sul fondo chiaro**: `editorial_sky.png` porta il gradiente cielo e la
   filigrana a circuito, ma non la nuvola bianca di `newsai_bg` (estrarla da un
   gradiente non da' un alpha pulito). Se serve, va chiesta come asset separato.
+
+
+## Il marchio vettoriale (dall'8 settembre 2026)
+
+`logo/digitiamo-wordmark.svg` — viewBox 620×250, fornito dal team design. E' la
+**sorgente**: i PNG in `logo/` erano stati *estratti* dagli sfondi rasterizzati
+ricavando l'alpha dalla luminanza, quindi portano l'antialiasing dello sfondo.
+
+Verificato che sia lo stesso marchio, non una variante: ritagliati
+sull'inchiostro i rapporti sono 3.561 (PNG) e 3.508 (SVG) — 1,5% di scarto — e
+le sagome si sovrappongono al **91,2%**, con soli 97 pixel presenti nel PNG e
+assenti nel vettore.
+
+Un solo file serve tutti i colori: il fill sta nella classe `.cls-1` e si
+sovrascrive via CSS. Non serve una variante per fondo.
+
+**Non e' ancora usato dal renderer, ed e' deliberato.** Il marchio e' **cotto
+dentro** gli sfondi editoriali (`editorial_navy.png`, `editorial_blue.png`), non
+disegnato dal layout: solo la superficie `sky` lo sovrappone. Passare al vettore
+significa rigenerare gli sfondi con `make_editorial_bg.py`, e quindi cambiare
+l'aspetto di **ogni** slide. Va fatto come lavoro voluto, con il confronto dei
+pixel prima e dopo — non come effetto collaterale di un commit su altro. Gli
+asset gia' pubblicati non devono cambiare: una bozza Buffer punta a quei file.

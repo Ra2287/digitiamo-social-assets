@@ -286,6 +286,9 @@ def build(ideas, only_priority=True):
         if spec["format"] == "carousel":
             # La caption serve anche ai caroselli: la bozza Buffer e' un post
             # con documento allegato, non un PDF muto.
+            # Convenzione: il testo del post e' `CAPTION_<numero dell'idea nel
+            # report>` in captions.py. Legata all'indice e non allo slug perche'
+            # chi scrive i testi lavora sul report, dove le idee sono numerate.
             carousels.append(dict(slug=slug, post_type=ptype,
                                   caption="CAPTION_%d" % i,
                                   title=idea.get("title") or slug,

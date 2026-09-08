@@ -1,8 +1,20 @@
 # -*- coding: utf-8 -*-
 """I testi dei post per Buffer, settimana 7-13 settembre 2026.
 
-Uno per ogni post approvato in revisione. Il nome della costante e' dichiarato
-dal post in `week.py` (campo `caption`): la corrispondenza non e' posizionale.
+## Come si chiamano
+
+Due casi, e questa settimana e' il secondo:
+
+1. **Post derivati dal report** (il caso normale): il nome e'
+   `CAPTION_<numero dell'idea nel report>` — `CAPTION_1` per la prima idea,
+   e cosi' via. Lo assegna `plan.py`, ed e' legato all'indice perche' chi
+   scrive i testi lavora sul report, dove le idee sono numerate.
+2. **Post dichiarati a mano in `week.py`**: usano il nome che il post scrive
+   nel proprio campo `caption`, come qui sotto. La corrispondenza non e'
+   posizionale.
+
+`python3 plan.py` elenca quali servono; `publish_buffer.py` si ferma se ne
+manca uno, invece di creare una bozza senza testo.
 
 I fatti citati qui sono gli stessi delle slide, con le stesse fonti. Se una
 caption va corretta dopo la revisione umana, si corregge qui e si alza la

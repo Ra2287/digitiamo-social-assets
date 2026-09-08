@@ -101,6 +101,42 @@ python3 render.py all        # tutto in settimane/<data>/: report PDF, caroselli
 python3 preview.py           # sfoglia le slide nel browser, come su LinkedIn
 ```
 
+### Iniziare una settimana nuova
+
+`week.py` conserva lo stato della settimana **in corso**, comprese le eventuali
+correzioni a mano: serve al ciclo di rifacimento, che vive per giorni dopo la
+generazione. Quindi all'inizio di una settimana nuova va riportato al punto di
+partenza, in quest'ordine:
+
+| Campo | A cosa |
+|---|---|
+| `DATE`, `WEEK_LABEL` | la settimana nuova |
+| `OVERRIDES_FOR` | **la stessa** `DATE` |
+| `REDO` | `{}` — i rifacimenti valgono per una settimana sola |
+| `CAROUSELS`, `SINGLES` | `[]`, se le grafiche vengono dal report |
+| `SOSTITUISCE_IL_PIANO` | `False`, salvo il caso descritto sotto |
+
+Non serve ricordarselo a memoria: se resta qualcosa della settimana scorsa,
+`render.py` **si ferma** e dice cosa non torna (`OVERRIDES_FOR` diverso da
+`DATE`, oppure l'interruttore attivo senza niente dichiarato). Il rischio non è
+pubblicare i post sbagliati — è non pubblicare niente finché non si sistema.
+
+Perché `week.py` non si svuota subito dopo la generazione: appena generato, i
+post di quella settimana sono bozze in attesa di revisione, e un rifacimento ha
+bisogno di trovarli lì. Svuotarlo prima romperebbe proprio il ciclo con
+l'umano.
+
+### Quando i post approvati non sono le idee del report
+
+`SOSTITUISCE_IL_PIANO = True` in `week.py` dice: **per questa settimana vale
+solo quello che è dichiarato a mano**, il piano derivato dal report non conta.
+
+Serve quando la revisione umana ha cambiato l'insieme dei post — tre trend fusi
+in una rassegna, o due idee scartate. L'alternativa sarebbe riscrivere il
+report perché produca l'elenco giusto, che significa falsificarlo.
+
+Non è la modalità normale: di norma resta `False` e vale la regola 2.
+
 ### Come viene scelto il template
 
 `plan.py` legge il campo `format` di ogni idea e ne deriva il tipo di post, **a

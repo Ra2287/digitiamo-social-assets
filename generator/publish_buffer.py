@@ -440,8 +440,13 @@ def _posts():
         if text is None:
             raise SystemExit(
                 "captions.py non definisce %s, richiesto da %s.\n"
-                "Ogni post prioritario del report ha bisogno del suo testo."
-                % (name, item["slug"]))
+                "Convenzione: il testo di un post derivato dal report si chiama "
+                "CAPTION_<numero dell'idea nel report>, quindi qui serve %s.\n"
+                "Un post dichiarato a mano in week.py usa invece il nome che "
+                "scrive nel suo campo `caption`.\n"
+                "Ogni post prioritario ha bisogno del suo testo: `python3 "
+                "plan.py` elenca quali servono."
+                % (name, item["slug"], name))
         return text
 
     carousels, singles = plan.content()

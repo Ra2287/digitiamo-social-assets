@@ -1,61 +1,86 @@
 # -*- coding: utf-8 -*-
+"""I testi dei post per Buffer, settimana 7-13 settembre 2026.
 
-CAPTION_1 = """Questa settimana Salesforce e Anthropic hanno tolto i pulsanti. Non è una metafora.
+Uno per ogni post approvato in revisione. Il nome della costante e' dichiarato
+dal post in `week.py` (campo `caption`): la corrispondenza non e' posizionale.
 
-Con Claudeforce, Slack diventa il posto dove si "parla" al CRM, non dove se ne discutono i risultati: Claude entra come motore di ragionamento dentro Agentforce, mentre Salesforce entra nell'app Claude con competenze di vendita pronte all'uso.
+I fatti citati qui sono gli stessi delle slide, con le stesse fonti. Se una
+caption va corretta dopo la revisione umana, si corregge qui e si alza la
+revisione del post in `week.REDO`: l'immagine non cambia, ma la bozza Buffer va
+rifatta perche' il testo e' parte del post.
+"""
 
-Non è il primo annuncio del genere — Microsoft lo fa con Copilot, Google con Gemini Enterprise — ma è il più esplicito nel dire ad alta voce quello che il mercato sta facendo silenziosamente da un anno: il software smette di essere un'interfaccia da imparare e diventa un collega a cui chiedere.
+CAPTION_NEWSAI = """Tre laboratori hanno annunciato qualcosa questa settimana. E hanno raccontato tre strategie completamente diverse.
 
-Per chi lavora nel software enterprise italiano, la domanda non è più "quando arriva l'AI nel nostro gestionale" — è già arrivata, ovunque. La domanda vera è chi, dentro l'azienda, guida quella transizione: se nessuno lo fa, la sceglie il vendor al posto tuo.
+OpenAI ha presentato GPT-6 Astra il 3 settembre. Greg Brockman lo ha definito «un salto generazionale», ma l'accesso iniziale è rimasto ai soli clienti del programma Daybreak — Forbes ha parlato di «curioso falso avvio».
 
-Nella tua azienda chi sta decidendo come si useranno questi agenti — il fornitore, l'IT, o nessuno ancora? Raccontacelo nei commenti 👇
+Google ha rilasciato Gemini 3.8 Flash: il quarto modello «Flash» in 106 giorni. Il modello di punta 3.5 Pro, promesso per giugno, non si è visto.
 
-#IntelligenzaArtificiale #EnterpriseAI #DigitalTransformation #B2BTech #Digitiamo"""
+Zhipu AI e Alibaba, fra il 26 e il 28 agosto, sono arrivate in modo indipendente alla stessa scelta architetturale, con un pricing open-weight molto aggressivo.
 
-CAPTION_2 = """🔥 Il mito: "Con l'AI chiunque scrive codice, gli sviluppatori senior servono sempre meno."
+Il filo comune non è tecnico, è di metodo: chi deve scegliere una stack si trova davanti annunci che parlano di svolte, cadenze che cambiano ogni tre settimane e prezzi che ribaltano i conti. Il modello giusto quasi mai è l'ultimo uscito — è quello che si può cambiare senza riscrivere il prodotto.
 
-Questa settimana Cursor ha lanciato Origin, una piattaforma di hosting pensata apposta per team che lavorano con agenti AI. Il motivo per cui l'hanno costruita è il dato che smentisce il mito: il 35% delle pull request aperte sui repository Cursor arriva da agenti autonomi, non da persone.
+Nella tua azienda la scelta del modello è una decisione di architettura, o si decide annuncio per annuncio? Raccontacelo nei commenti 👇
 
-Non significa che il codice si scriva da solo e basta. Significa che si è spostato il collo di bottiglia.
+#IntelligenzaArtificiale #EnterpriseAI #AIStrategy #B2BTech #Digitiamo"""
 
-🔹 Scrivere codice è diventato veloce, quasi gratis. Rivederlo, capirne l'architettura, decidere se è sicuro da mandare in produzione — no.
-🔹 Più PR arrivano da agenti, più serve qualcuno che sappia leggerle in fretta e giudicarle bene: competenza che non si genera con un prompt.
-🔹 Le aziende che stanno avendo problemi non sono quelle che usano poco l'AI. Sono quelle che l'hanno lasciata scrivere senza nessuno che governasse cosa succede dopo.
 
-È esattamente lo spazio in cui lavoriamo con il Team Augmentation: il vibe coding abbassa la barriera per prototipare, ma architettura, sicurezza, debito tecnico e passaggio in produzione restano un mestiere per figure senior.
+CAPTION_FATIGUE = """Nel 2023 usciva un modello AI importante ogni 37 giorni e mezzo. Oggi ogni 11.
 
-La tua azienda ha già qualcuno che fa da filtro tra "agente che propone" e "codice che va in produzione"? 👇"""
+Il ciclo di valutazione di un'azienda, però, non si è accorciato allo stesso modo. E si vede.
 
-CAPTION_3 = """Il 2 agosto l'AI Act è passato dalla teoria alla pratica. Ecco cosa è successo davvero (e cosa deve ancora arrivare) — in 5 slide.
+Suresh Vasudevan, CEO di Clockwork Systems, citato da CNBC, lo dice senza giri di parole: «Se una startup vuole valutare dieci modelli AI per un certo compito, magari ne prende cinque». Metà delle opzioni non viene guardata — e la scelta finisce per premiare la notorietà del fornitore, non il caso d'uso.
 
-Dal 2 agosto 2026 sono già attivi 3 obblighi: trasparenza sui contenuti generati da AI, notifica agli utenti, watermarking dei contenuti. Le regole più severe per i sistemi "ad alto rischio" arrivano invece in due tappe successive, a dicembre 2027 e agosto 2028 — non tutto è già in vigore.
+Il costo di questa rincorsa non è il progresso: è la migrazione. Chi ha costruito un'astrazione fra il proprio prodotto e il fornitore di modelli aggiorna un endpoint. Chi non l'ha fatta riscrive — e lo rifà undici giorni dopo.
 
-Il punto che in pochi notano: l'EU AI Office ha già il potere di richiedere informazioni e accesso ai modelli usati in azienda, anche prima che le sanzioni specifiche siano pienamente codificate. Tradotto: se non sai ancora dove e come la tua azienda usa l'AI, è il momento di scoprirlo — prima che te lo chiedano loro.
+Non serve il modello più nuovo. Serve poterlo cambiare.
 
-La tua azienda ha già mappato dove e come usa l'AI, o aspetta la prossima scadenza per pensarci? Scrivicelo nei commenti 👇
+Quanto tempo passa, nella tua azienda, fra «questo modello è interessante» e «è in produzione»? 👇
 
-#AIAct #Compliance #IntelligenzaArtificiale #B2BTech #Digitiamo"""
+#AIEngineering #IntelligenzaArtificiale #TeamAugmentation #B2BTech #Digitiamo"""
 
-CAPTION_4 = """Questa settimana abbiamo messo alla prova quello di cui parliamo spesso: cosa succede davvero quando un agente AI apre una pull request nel nostro flusso di lavoro.
 
-[DA PERSONALIZZARE] Il task: abbiamo assegnato a un agente AI un intervento reale nel nostro codice — es. un refactoring, la generazione di test, una piccola feature — e abbiamo osservato cosa succedeva prima che finisse in produzione.
+CAPTION_AGENTI = """Gli agenti AI non si schiantano. Derivano.
 
-[DA PERSONALIZZARE] Cosa ha funzionato bene senza intervento umano, e cosa invece ha richiesto la revisione di una persona senior: architettura, sicurezza, casi limite che il modello non vede da solo.
+Il motivo per cui un agente smette di funzionare in azienda non è quasi mai «non ha capito». È molto più banale, e molto più prevedibile: funziona per due mesi, poi scade una chiave.
 
-[DA PERSONALIZZARE] La lezione imparata: confermate (o smentite), con la vostra esperienza reale, l'idea che il tempo risparmiato in scrittura si sposti quasi integralmente in revisione.
+Un invalid_grant di Google o un INVALID_SESSION_ID di Salesforce, generati da un refresh token scaduto, non si recuperano riprovando. Nessuna logica di retry aiuta.
 
-Chi nel tuo team fa da "ultimo controllo" prima che il codice generato da un agente vada in produzione? Raccontaci come vi siete organizzati 👇
+Il problema è che questi fallimenti sono silenziosi:
 
-#AIEngineering #TeamAugmentation #SoftwareDevelopment #CodeReview #Digitiamo"""
+🔹 il tool restituisce un risultato vuoto e il modello lo legge come «nessun dato», non come errore;
+🔹 scritture parziali corrompono lo stato dei passaggi successivi, senza alcun messaggio;
+🔹 il modello inventa percorsi di recupero che somigliano a progresso e non lo sono.
 
-CAPTION_5 = """Questa settimana Google ha lanciato un'AI per gli studi legali che analizza contratti e verifica le citazioni. Dietro c'è una tecnica che sentirai nominare ovunque nel 2026: il RAG. Proviamo a spiegarla senza slide da conferenza.
+Poi c'è l'inventario: gli agenti orfani — attivi, con credenziali valide, e nessuno che ne possieda il ciclo di vita — sono la norma, non l'eccezione. Non è una vulnerabilità esotica: è la conseguenza di non aver mai deciso chi ne risponde.
 
-RAG sta per "Retrieval-Augmented Generation": prima di rispondere, il sistema cerca i documenti giusti — leggi, contratti, giurisprudenza — in una base dati verificata, e SOLO DOPO li usa per costruire la risposta.
+E quando il contesto diventa ostile, le catene di strumenti sono la superficie d'attacco. Casi documentati nel 2025-2026: una RCE nel protocollo MCP (CVE-2025-6514, CVSS 9,6) e un'iniezione via hooks in un agente di coding (CVE-2025-59536).
 
-Perché serve: un modello linguistico da solo "inventa" quando non sa — con il RAG cita invece la fonte reale, verificabile, invece di un ricordo approssimativo di training. Per un contratto o una citazione legale, è la differenza tra uno strumento utile e uno rischioso.
+Il prototipo lo fa l'AI. La produzione è un mestiere: rotazione delle credenziali, allarmi sui fallimenti silenziosi, inventario degli agenti.
 
-Non è solo per gli avvocati: fatture, cataloghi prodotto, manuali tecnici, policy interne — qualunque azienda con una base di conoscenza specifica (non generica da internet) può costruirci sopra un assistente affidabile.
+Nella tua azienda, chi si accorge se un agente ha smesso di funzionare davvero? 👇
 
-Nella tua azienda esiste già una base di conoscenza abbastanza pulita da poter "nutrire" un sistema RAG, o è ancora sparsa tra PDF e cartelle condivise? 👇
+#AIAgents #AIEngineering #Cybersecurity #TeamAugmentation #Digitiamo"""
 
-#RAG #IntelligenzaArtificiale #AIExplained #TechForBusiness #Digitiamo"""
+
+CAPTION_AIACT = """Il pacchetto Omnibus ha rinviato le scadenze dell'AI Act. Nello stesso testo, però, ha allargato il perimetro — e questa parte è passata quasi inosservata.
+
+In vigore dal 27 luglio 2026. Cosa si applica già adesso, senza rinvii:
+
+🔹 Trasparenza (art. 50): dichiarare quando una persona sta interagendo con un sistema AI — dal 2 agosto 2026.
+🔹 Watermarking dei contenuti generati: dal 2 agosto 2026, con tolleranza per i sistemi preesistenti fino al 2 dicembre 2026.
+🔹 Divieti sui casi inaccettabili e obblighi sui modelli generalisti: già in vigore da febbraio e agosto 2025.
+
+Cosa è stato rinviato: l'Allegato III al 2 dicembre 2027 (selezione del personale, credito, istruzione, infrastrutture critiche), l'Allegato I al 2 agosto 2028 (AI incorporata in prodotti già regolati), le sandbox al 2 agosto 2027.
+
+Il dettaglio che ribalta la lettura corrente: la rilevazione dei bias è stata estesa, non ridotta. In cambio l'obbligo di alfabetizzazione AI è stato ammorbidito — da «garantire» un livello di competenza a «sostenerne lo sviluppo».
+
+C'è anche un cambio di perimetro da valutare subito: la definizione di «componente di sicurezza» è stata restretta, quindi alcune AI incorporate nei prodotti cambiano classificazione.
+
+La proroga serve a costruire, non ad aspettare. La compliance progressiva costa meno di una rincorsa.
+
+La tua azienda ha già mappato dove usa l'AI, o aspetta la prossima scadenza per pensarci? 👇
+
+Fonte: Regolamento (UE) 2026/1744
+
+#AIAct #Compliance #IntelligenzaArtificiale #AIGovernance #Digitiamo"""

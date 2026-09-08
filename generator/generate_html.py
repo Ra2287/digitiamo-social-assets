@@ -19,6 +19,12 @@ CSS = f"""
 body {{ margin:0; font-family:{tokens.FONTS['body_stack']}; color:{C['navy']}; font-size:14.5px; line-height:1.55; }}
 .page {{ width:794px; min-height:1123px; padding:64px 60px; position:relative; page-break-after:always; }}
 .page:last-child {{ page-break-after:auto; }}
+/* Sezioni a schede: scorrono e l'interruzione la decide il motore di stampa,
+   che sa quanto e' alta ogni scheda. Impaginare a costante (5 per pagina)
+   spezzava le schede a meta', perche' ce ne stanno circa 3. */
+.flow {{ width:794px; padding:64px 60px 40px; position:relative; break-before:page; page-break-before:always; }}
+.flow .section-head {{ break-after:avoid; page-break-after:avoid; }}
+.trend-card {{ break-inside:avoid; page-break-inside:avoid; }}
 
 /* COVER */
 .cover {{ background:{C['navy']}; color:{C['white']}; display:flex; flex-direction:column; justify-content:space-between; }}
@@ -93,7 +99,6 @@ table.pubtable tr:nth-child(even) td {{ background:{C['tint']}; }}
 .freq-stat .num {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:26px; color:{C['green']}; }}
 .freq-stat .lbl {{ font-size:11px; color:#c7c9f2; margin-top:4px; }}
 
-.pagefoot {{ position:absolute; bottom:28px; left:60px; right:60px; display:flex; justify-content:space-between; font-size:10.5px; color:#9498c4; border-top:1px solid {C['tint']}; padding-top:10px; }}
 """
 
 def cover_page():
@@ -150,36 +155,17 @@ def trends_page():
       <div class="trend-text">{esc(t['why'])}</div>
       <div class="trend-source">Fonte: {src}</div>
     </div>"""
-    # split into two pages roughly
-    half = (len(trends) + 1) // 2
-    cards_list = []
-    running = ""
-    count = 0
-    pages = []
-    per_page = 5
-    for i in range(0, len(trends), per_page):
-        chunk = trends[i:i+per_page]
-        chunk_html = ""
-        for j, t in enumerate(chunk, start=i+1):
-            src = f'<a href="{t["url"]}">{esc(t["source"])} →</a>' if t.get("url") else esc(t["source"])
-            chunk_html += f"""
-    <div class="trend-card">
-      <div><span class="trend-num">{j}</span><span class="trend-title">{esc(t['title'])}</span></div>
-      <div class="trend-label">Cosa è successo</div>
-      <div class="trend-text">{esc(t['what'])}</div>
-      <div class="trend-label">Perché è rilevante</div>
-      <div class="trend-text">{esc(t['why'])}</div>
-      <div class="trend-source">Fonte: {src}</div>
-    </div>"""
-        header = f"""<h2 class="section-title"><span class="section-num">01.</span> Trend del settore</h2>
-  <div class="section-sub">Gli sviluppi più rilevanti degli ultimi 7 giorni nel mondo AI/software tech</div>
-  <div class="divider"></div>""" if i == 0 else f"""<h2 class="section-title" style="font-size:18px;">Trend del settore (continua)</h2><div class="divider"></div>"""
-        pages.append(f"""
-<div class="page">
-  {header}
-  {chunk_html}
-</div>""")
-    return "".join(pages)
+    return f"""
+<div class="flow">
+  <div class="section-head">
+    <h2 class="section-title"><span class="section-num">01.</span> Trend del settore</h2>
+    <div class="section-sub">Gli sviluppi più rilevanti degli ultimi 7 giorni nel mondo AI/software tech</div>
+    <div class="divider"></div>
+  </div>
+  {cards}
+</div>
+"""
+
 
 def competitors_page():
     cards = ""
@@ -192,10 +178,12 @@ def competitors_page():
       <div class="comp-angle"><b style="color:{C['navy']};">Spunto per Digitiamo:</b> {esc(c['angle'])}</div>
     </div>"""
     return f"""
-<div class="page">
-  <h2 class="section-title"><span class="section-num">02.</span> Analisi competitor</h2>
-  <div class="section-sub">Chi si è mosso in modo significativo questa settimana, e come differenziarsi</div>
-  <div class="divider"></div>
+<div class="flow">
+  <div class="section-head">
+    <h2 class="section-title"><span class="section-num">02.</span> Analisi competitor</h2>
+    <div class="section-sub">Chi si è mosso in modo significativo questa settimana, e come differenziarsi</div>
+    <div class="divider"></div>
+  </div>
   {cards}
 </div>
 """
@@ -239,42 +227,33 @@ def idea_card_html(idea, index):
     </div>"""
 
 def ideas_pages():
+    """Le 7 idee in una sezione che scorre. Le schede hanno break-inside:avoid,
+    quindi il motore di stampa ne mette quante ne stanno senza mai spezzarne una."""
     priority = [i for i in ideas if i["badge"] == "Prioritario"]
     reserve = [i for i in ideas if i["badge"] == "Riserva"]
-    pages = []
 
-    intro = f"""<h2 class="section-title"><span class="section-num">03.</span> Idee di post (PED)</h2>
-  <div class="section-sub">7 idee — 5 Prioritario (nucleo settimanale) + 2 Riserva (banca contenuti) — organizzate come vero arco narrativo</div>
-  <div class="divider"></div>
-  <div style="background:{C['tint']}; border-radius:10px; padding:16px 20px; margin-bottom:24px; font-size:12.5px;">
-    <b>Arco narrativo della settimana:</b> apertura di autorevolezza (nessuna vendita) → mito da sfatare sul vibe coding → carosello dati su compliance AI Act → esperienza diretta di code review con agenti → mini-lezione divulgativa su RAG. I due contenuti di riserva restano pronti come banca contenuti.
-  </div>"""
-
-    idx = 1
     cards_html = ""
-    for i in priority:
-        cards_html += idea_card_html(i, idx)
-        idx += 1
+    for idx, idea in enumerate(priority + reserve, start=1):
+        cards_html += idea_card_html(idea, idx)
 
-    pages.append(f'<div class="page">{intro}{cards_html[:0]}</div>')  # placeholder, will restructure below
+    return f"""
+<div class="flow">
+  <div class="section-head">
+    <h2 class="section-title"><span class="section-num">03.</span> Idee di post (PED)</h2>
+    <div class="section-sub">7 idee — 5 Prioritario (nucleo settimanale) + 2 Riserva (banca contenuti) — organizzate come vero arco narrativo</div>
+    <div class="divider"></div>
+    <div style="background:{C['tint']}; border-radius:10px; padding:16px 20px; margin-bottom:24px; font-size:12.5px;">
+      <b>Arco narrativo della settimana:</b> la governance vista da cinque angoli — chi
+      costruisce i modelli sposta ingegneri sulla sicurezza, i default dei fornitori non
+      sono i tuoi, i numeri italiani dicono che il divario è nel passaggio dalla prova al
+      processo, la nostra pratica concreta, e infine la spiegazione del meccanismo.
+      Nessun post vende direttamente prima di giovedì.
+    </div>
+  </div>
+  {cards_html}
+</div>
+"""
 
-    # Rebuild properly: one idea per chunk, packing 2 per page roughly based on length; simplify: 1-2 per page
-    pages = []
-    idx = 1
-    buf = intro
-    count_on_page = 0
-    for i in priority + reserve:
-        card = idea_card_html(i, idx)
-        buf += card
-        idx += 1
-        count_on_page += 1
-        if count_on_page >= 1:
-            pages.append(f'<div class="page">{buf}</div>')
-            buf = ""
-            count_on_page = 0
-    if buf:
-        pages.append(f'<div class="page">{buf}</div>')
-    return "".join(pages)
 
 def publishing_page():
     rows = "".join(f"""
@@ -285,7 +264,7 @@ def publishing_page():
         <td>{esc(p['reason'])}</td>
       </tr>""" for p in publishing)
     return f"""
-<div class="page">
+<div class="flow">
   <h2 class="section-title"><span class="section-num">04.</span> Suggerimenti di pubblicazione</h2>
   <div class="section-sub">Calendario consigliato per la settimana, basato su best practice B2B tech LinkedIn</div>
   <div class="divider"></div>

@@ -153,6 +153,10 @@ Fonts che fallisce produce PNG in un font di fallback — sbagliati e senza erro
 1200×1500 e' la dimensione dei template Canva reali. E' il formato canonico:
 1080×1350 ha lo stesso rapporto ma risoluzione minore, senza motivo.
 
+Dall'8 settembre 2026 non e' piu' solo una convenzione: `render.py::_check_size`
+misura ogni PNG prodotto e rifiuta qualunque scostamento, cancellando il file.
+Gli asset fino al 31 agosto restano 1080×1350 e non vanno presi a riferimento.
+
 ## 6. Limiti di caratteri (tarati sui box reali)
 
 Da `social-ped/config/template-registry.json` — misurati sui box dei template a

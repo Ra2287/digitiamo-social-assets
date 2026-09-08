@@ -5,14 +5,19 @@ Crea le bozze settimanali del PED sul canale LinkedIn "digitiamo" via Buffer Gra
 Le credenziali NON sono incluse in questo file (la repo e' pubblica): vanno passate
 come variabili d'ambiente prima di eseguire lo script.
 
-Variabili d'ambiente richieste:
-  BUFFER_API_KEY     token Bearer per api.buffer.com
-  BUFFER_CHANNEL_ID  id del canale LinkedIn "digitiamo" (tipo ChannelId, non String)
+Variabili d'ambiente:
+  BUFFER_API_KEY     token Bearer per api.buffer.com (obbligatoria)
+  BUFFER_CHANNEL_ID  opzionale: di norma il canale LinkedIn viene ricavato
+                     dall'API. Serve solo se all'account sono collegati piu'
+                     canali LinkedIn, perche' in quel caso lo script non sceglie
+                     per conto suo (tipo GraphQL ChannelId, non String)
 
-Uso tipico (da adattare ogni settimana con le nuove caption/URL immagine):
+Uso:
   export BUFFER_API_KEY="..."
-  export BUFFER_CHANNEL_ID="..."
   python3 publish_buffer.py
+
+Caption e URL non si scrivono piu' a mano: vengono da `plan.content()` e
+`names.py`, le stesse fonti del renderer.
 """
 import json
 import os
@@ -67,8 +72,36 @@ def _graphql(api_key, query, variables):
             "Authorization": f"Bearer {api_key}",
         },
     )
-    with urllib.request.urlopen(req) as resp:
-        return json.loads(resp.read().decode("utf-8"))
+    # Il contesto TLS esplicito serve anche qui, non solo nel preflight: senza,
+    # su un Python che non trova la CA di sistema ogni chiamata a Buffer
+    # fallirebbe con CERTIFICATE_VERIFY_FAILED.
+    try:
+        with urllib.request.urlopen(req, timeout=30, context=_ssl_context()) as resp:
+            return json.loads(resp.read().decode("utf-8"))
+    except urllib.error.HTTPError as e:
+        # Un traceback di quindici righe non dice a nessuno cosa fare. Gli errori
+        # di autenticazione sono di gran lunga i piu' frequenti, e la causa e'
+        # quasi sempre la chiave: vale la pena dirlo.
+        body = ""
+        try:
+            body = e.read().decode("utf-8", "replace")[:300]
+        except Exception:
+            pass
+        if e.code in (401, 403):
+            raise SystemExit(
+                "Buffer ha risposto %d %s: la chiave non e' valida.\n"
+                "  - BUFFER_API_KEY deve essere un **access token personale** di "
+                "Buffer (una stringa lunga), non un codice licenza o un id.\n"
+                "  - Si genera dalle impostazioni sviluppatore dell'account "
+                "Buffer, e va rigenerato se e' stato condiviso.\n"
+                "  - Controlla che la variabile sia esportata in QUESTA shell: "
+                "`echo ${BUFFER_API_KEY:+impostata}`.\n"
+                "%s" % (e.code, e.reason, ("  Risposta: %s" % body) if body else "")
+            )
+        raise SystemExit("Buffer ha risposto %d %s.%s"
+                         % (e.code, e.reason, ("\n  Risposta: %s" % body) if body else ""))
+    except urllib.error.URLError as e:
+        raise SystemExit("Buffer non raggiungibile: %s" % e.reason)
 
 
 def create_image_post(api_key, channel_id, text, image_url):
@@ -108,6 +141,71 @@ def create_document_post(api_key, channel_id, text, doc_url, doc_title, thumb_ur
 def delete_post(api_key, post_id):
     result = _graphql(api_key, DELETE_POST_QUERY, {"input": {"id": post_id}})
     return result
+
+
+CHANNELS_QUERY = """
+query Channels($organizationId: OrganizationId!) {
+  channels(input: { organizationId: $organizationId }) {
+    id
+    name
+    displayName
+    service
+  }
+}
+"""
+
+ORGS_QUERY = "query { account { organizations { id name } } }"
+
+
+def channels(api_key):
+    """Tutti i canali collegati, su tutte le organizzazioni dell'account."""
+    res = _graphql(api_key, ORGS_QUERY, {})
+    if res.get("errors"):
+        raise SystemExit("Buffer ha rifiutato la richiesta: %s"
+                         % json.dumps(res["errors"], ensure_ascii=False)[:300])
+    orgs = (((res.get("data") or {}).get("account") or {}).get("organizations")) or []
+    if not orgs:
+        raise SystemExit("Nessuna organizzazione per questo token: la chiave e' valida?")
+
+    out = []
+    for org in orgs:
+        got = _graphql(api_key, CHANNELS_QUERY, {"organizationId": org["id"]})
+        for ch in ((got.get("data") or {}).get("channels")) or []:
+            out.append(dict(ch, organization=org.get("name")))
+    return out
+
+
+def resolve_channel(api_key, service="linkedin"):
+    """Il canale su cui pubblicare, ricavato dall'API invece che configurato.
+
+    `social-ped` fa cosi' e ha ragione: un id copiato a mano in una variabile
+    d'ambiente e' un passaggio in piu' per chiunque installi il progetto, e un
+    id sbagliato pubblica sul canale di qualcun altro.
+
+    Differenza voluta rispetto a social-ped: se i canali che corrispondono sono
+    piu' di uno **non ne sceglie uno**. Scegliere il primo significherebbe
+    poter pubblicare sulla pagina sbagliata senza che nessuno lo noti; meglio
+    fermarsi e farsi dire quale, con BUFFER_CHANNEL_ID.
+    """
+    found = channels(api_key)
+    match = [c for c in found if service in (c.get("service") or "").lower()]
+    if not match:
+        raise SystemExit(
+            "Nessun canale '%s' collegato a Buffer.\nCanali disponibili: %s"
+            % (service, ", ".join("%s:%s" % (c.get("service"),
+                                             c.get("displayName") or c.get("name"))
+                                  for c in found) or "nessuno"))
+    if len(match) > 1:
+        raise SystemExit(
+            "Ci sono %d canali '%s' collegati, non scelgo io su quale pubblicare.\n"
+            "Imposta BUFFER_CHANNEL_ID con quello giusto:\n%s"
+            % (len(match), service,
+               "\n".join("  %s  %s (%s)" % (c["id"], c.get("displayName") or c.get("name"),
+                                            c.get("organization")) for c in match)))
+    ch = match[0]
+    print("Canale: %s (%s, %s)" % (ch.get("displayName") or ch.get("name"),
+                                   ch.get("service"), ch.get("organization")))
+    return ch["id"]
 
 
 def _ssl_context():
@@ -215,41 +313,187 @@ def _check_result(res, label):
     return post
 
 
-def main():
-    api_key = os.environ.get("BUFFER_API_KEY")
-    channel_id = os.environ.get("BUFFER_CHANNEL_ID")
-    if not api_key or not channel_id:
-        raise SystemExit(
-            "Imposta BUFFER_API_KEY e BUFFER_CHANNEL_ID come variabili d'ambiente prima di eseguire lo script."
-        )
+LEDGER = os.path.join(os.path.dirname(os.path.abspath(__file__)), "buffer-drafts.json")
 
-    # Le caption stanno in captions.py, la data e gli slug in week.py: gli URL
-    # si derivano da li' invece di essere riscritti a mano ogni settimana.
+
+def _load_ledger():
+    try:
+        with open(LEDGER, encoding="utf-8") as f:
+            return json.load(f)
+    except (IOError, ValueError):
+        return []
+
+
+def _record(entries):
+    """Registra le bozze create: (settimana, revisione, slug, id, url).
+
+    Serve al ciclo di rifacimento. Quando un post viene rifatto, la revisione
+    sale e l'asset prende un URL nuovo: la bozza vecchia resta su Buffer,
+    puntata all'immagine vecchia. Senza questo registro nessuno sa piu' quale
+    bozza sia — e a fine settimana ne vengono pubblicate due.
+    """
+    ledger = _load_ledger()
+    ledger.extend(entries)
+    with open(LEDGER, "w", encoding="utf-8") as f:
+        json.dump(ledger, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+    print("Registrate in %s." % os.path.basename(LEDGER))
+
+
+def _entries_for(slugs):
+    """Le bozze registrate per questa settimana, sui post indicati."""
+    import week
+    return [e for e in _load_ledger()
+            if e.get("date") == week.DATE and e.get("slug") in slugs]
+
+
+def _split(posts):
+    """Divide i post in: bozza da creare, bozza gia' creata, bozza obsoleta.
+
+    La revisione e' per post (`week.REDO`), quindi il confronto va fatto post
+    per post: rifare l'idea 2 non rende obsolete le bozze delle altre.
+    """
+    import names
+    known = _entries_for({p["slug"] for p in posts})
+    todo, done, stale = [], [], []
+    for p in posts:
+        rev = names.revision(p["slug"])
+        mine = [e for e in known if e.get("slug") == p["slug"]]
+        if any((e.get("revision") or 0) == rev for e in mine):
+            done.append(p["slug"])
+        else:
+            todo.append(p)
+        stale += [e for e in mine if (e.get("revision") or 0) < rev]
+    return todo, done, stale
+
+
+def _posts():
+    """Le bozze da creare, derivate dal report (immagini singole + caroselli)."""
     import captions
+    import names
+    import plan
     import week
 
+    def text_for(item):
+        name = item.get("caption")
+        text = getattr(captions, name, None) if name else None
+        if text is None:
+            raise SystemExit(
+                "captions.py non definisce %s, richiesto da %s.\n"
+                "Ogni post prioritario del report ha bisogno del suo testo."
+                % (name, item["slug"]))
+        return text
+
+    carousels, singles = plan.content()
     posts = []
-    for single in week.SINGLES:
-        # week.py dice quale caption va con quale immagine: la corrispondenza
-        # non e' posizionale (CAPTION_3 e' il carosello, non un'immagine singola).
-        name = single["caption"]
-        caption = getattr(captions, name, None)
-        if caption is None:
-            raise SystemExit("captions.py non definisce %s (richiesto da %s)"
-                             % (name, single["slug"]))
-        posts.append((
-            single["slug"],
-            caption,
-            RAW_BASE + "brandstyle_%s_%s.png" % (single["slug"], week.DATE),
-        ))
 
-    preflight([url for _, _, url in posts])
+    for item in carousels:
+        # Il carosello e' un post con documento allegato, e Buffer vuole la
+        # prima slide come anteprima.
+        pdf = RAW_BASE + names.carousel_pdf(item["slug"])
+        thumb = RAW_BASE + names.carousel_slide(item["slug"], 1)
+        posts.append(dict(kind="document", slug=item["slug"], text=text_for(item),
+                          doc_url=pdf, thumb_url=thumb,
+                          title=item.get("title") or item["slug"],
+                          urls=[pdf, thumb]))
 
-    for label, text, img_url in posts:
-        _check_result(create_image_post(api_key, channel_id, text, img_url), label)
+    for item in singles:
+        img = RAW_BASE + names.single(item["slug"])
+        posts.append(dict(kind="image", slug=item["slug"], text=text_for(item),
+                          image_url=img, urls=[img]))
+    return posts
 
-    print("\nFatto: %d bozze create su Buffer (da approvare a mano)." % len(posts))
+
+def main():
+    api_key = os.environ.get("BUFFER_API_KEY")
+    if not api_key:
+        raise SystemExit(
+            "Imposta BUFFER_API_KEY come variabile d'ambiente. Mai nel codice: "
+            "la repo e' pubblica."
+        )
+    # Il canale si ricava dall'API; la variabile serve solo per forzarlo.
+    channel_id = os.environ.get("BUFFER_CHANNEL_ID") or resolve_channel(api_key)
+
+    import names
+    import week
+    posts = _posts()
+    if not posts:
+        raise SystemExit(
+            "Nessun post da pubblicare: il report non ha idee 'Prioritario'.\n"
+            "Controlla build_report.py, oppure `python3 plan.py` per vedere il piano."
+        )
+    print("Settimana %s: %d post nel piano.\n" % (week.DATE, len(posts)))
+
+    todo, done, stale = _split(posts)
+    for slug in done:
+        print("  bozza gia' creata, salto: %s" % slug)
+    if stale:
+        # Non le cancello da solo: sono contenuti che una persona ha gia' visto,
+        # e cancellare su un servizio esterno non si annulla.
+        print("\nATTENZIONE: %d bozze puntano ad asset di una revisione\n"
+              "precedente. Vanno cancellate, altrimenti il post esce due volte:"
+              % len(stale))
+        for e in stale:
+            print("  r%s  %s  (id %s)" % (e.get("revision"), e.get("slug"), e.get("id")))
+        print("  Per cancellarle:  python3 publish_buffer.py --elimina-obsolete")
+    if not todo:
+        print("\nNiente da creare.")
+        return
+    print()
+
+    preflight([u for p in todo for u in p["urls"]])
+
+    created = []
+    for p in todo:
+        if p["kind"] == "document":
+            res = create_document_post(api_key, channel_id, p["text"],
+                                       p["doc_url"], p["title"], p["thumb_url"])
+        else:
+            res = create_image_post(api_key, channel_id, p["text"], p["image_url"])
+        post = _check_result(res, p["slug"])
+        created.append(dict(date=week.DATE, revision=names.revision(p["slug"]),
+                            slug=p["slug"], id=post["id"], url=p["urls"][0]))
+
+    _record(created)
+    print("\nFatto: %d bozze create su Buffer (da approvare a mano)." % len(created))
+
+
+def delete_stale():
+    """Cancella le bozze di questa settimana rimaste da revisioni precedenti."""
+    api_key = os.environ.get("BUFFER_API_KEY")
+    if not api_key:
+        raise SystemExit("Imposta BUFFER_API_KEY.")
+    import week
+    _, _, stale = _split(_posts())
+    if not stale:
+        print("Nessuna bozza obsoleta per la settimana %s." % week.DATE)
+        return
+    for e in stale:
+        print("cancello r%s %s (id %s):" % (e.get("revision"), e.get("slug"), e.get("id")),
+              json.dumps(delete_post(api_key, e["id"]), ensure_ascii=False)[:200])
+    ledger = [e for e in _load_ledger() if e not in stale]
+    with open(LEDGER, "w", encoding="utf-8") as f:
+        json.dump(ledger, f, ensure_ascii=False, indent=2)
+        f.write("\n")
+
+
+def list_channels():
+    """Stampa i canali collegati. Utile per capire cosa vede la chiave."""
+    api_key = os.environ.get("BUFFER_API_KEY")
+    if not api_key:
+        raise SystemExit("Imposta BUFFER_API_KEY.")
+    found = channels(api_key)
+    print("%d canali collegati:" % len(found))
+    for c in found:
+        print("  %-11s %-28s %s" % (c.get("service"),
+                                    c.get("displayName") or c.get("name"), c["id"]))
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    if "--canali" in sys.argv:
+        list_channels()
+    elif "--elimina-obsolete" in sys.argv:
+        delete_stale()
+    else:
+        main()

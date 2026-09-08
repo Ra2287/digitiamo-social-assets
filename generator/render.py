@@ -22,6 +22,9 @@ import sys
 
 from playwright.async_api import async_playwright
 
+import build_report
+import names
+import plan
 import templates
 import week
 from brand import tokens
@@ -163,6 +166,31 @@ async def _open(browser, html, viewport):
     return page
 
 
+def _check_size(path, w, h):
+    """Ogni PNG deve avere ESATTAMENTE il formato dichiarato in tokens.FORMATS.
+
+    Il formato canonico e' 1200x1500 (i template Canva reali, vedi
+    brand-spec.md). Gli asset del bot fino al 31 agosto sono 1080x1350: stesso
+    rapporto 4:5, risoluzione minore senza motivo.
+
+    Il controllo esiste perche' quei file vecchi restano visibili nella repo, e
+    la deriva tipica e' "mi adeguo a quello che c'e' gia'". Una dimensione
+    diversa non produce alcun errore: LinkedIn riscala e il post esce solo un
+    po' piu' sgranato, cioe' il tipo di difetto che nessuno attribuisce mai al
+    codice. Meglio fermarsi.
+    """
+    from PIL import Image
+    got = Image.open(path).size
+    if got != (w, h):
+        os.remove(path)
+        raise SystemExit(
+            "%s e' %dx%d, ma il formato dichiarato e' %dx%d.\n"
+            "Il file e' stato rimosso: un asset fuori formato non va pubblicato.\n"
+            "La dimensione viene da brand/tokens.py (FORMATS): non adeguarti agli "
+            "asset piu' vecchi nella repo, che sono 1080x1350."
+            % (os.path.basename(path), got[0], got[1], w, h))
+
+
 async def _shoot_slides(browser, html, name_for, viewport):
     """Screenshot di ogni .slide, con nome derivato dal suo data-slug."""
     page = await _open(browser, html, viewport)
@@ -175,15 +203,23 @@ async def _shoot_slides(browser, html, name_for, viewport):
         if not slug:
             raise SystemExit("Una slide non ha data-slug: impossibile nominare il file.")
         path = os.path.join(OUT_DIR, name_for(slug))
+        os.makedirs(os.path.dirname(path), exist_ok=True)
         if os.path.exists(path):
             # I nomi file pubblicati non vanno mai riusati: Buffer scarica
             # l'asset dall'URL al momento della pubblicazione effettiva, che
             # puo' avvenire giorni dopo. Vedi brand-spec.md §7.7.
             raise SystemExit(
-                "%s esiste gia'. Non sovrascrivere un file pubblicato: cambia "
-                "DATE o slug in week.py." % os.path.basename(path)
+                "%s esiste gia'.\n"
+                "I post gia' generati vengono saltati prima di arrivare qui, "
+                "quindi questo e' uno stato incoerente: probabilmente il post "
+                "ha solo una parte dei suoi asset. Controlla la cartella, "
+                "cancella gli asset NON ancora pubblicati e rigenera.\n"
+                "Non sovrascrivere: la bozza Buffer punta a quell'URL e Buffer "
+                "scarica l'asset alla pubblicazione, non ora."
+                % os.path.basename(path)
             )
         await el.screenshot(path=path)
+        _check_size(path, viewport["width"], viewport["height"])
         print("  scritto", os.path.basename(path))
         paths.append(path)
     await page.close()
@@ -192,32 +228,107 @@ async def _shoot_slides(browser, html, name_for, viewport):
 
 def _to_pdf(png_paths, out_path):
     import img2pdf
+    os.makedirs(os.path.dirname(out_path), exist_ok=True)
     with open(out_path, "wb") as f:
         f.write(img2pdf.convert(png_paths))
     print("  scritto", os.path.basename(out_path))
     return out_path
 
 
+def content():
+    """Delega a `plan.content()`: unica fonte, condivisa con publish_buffer."""
+    return plan.content()
+
+
+def _check_overrides_current():
+    """Le correzioni a mano in `week.py` devono essere della settimana corrente.
+
+    I contenuti derivati dal report sono sempre allineati per costruzione, quindi
+    il rischio di obsolescenza resta solo sulle correzioni: un aggiustamento
+    scritto per la settimana scorsa passerebbe inosservato, perche' i nomi dei
+    file sarebbero comunque nuovi.
+    """
+    if not (getattr(week, "CAROUSELS", []) or getattr(week, "SINGLES", [])):
+        return
+    stale = getattr(week, "OVERRIDES_FOR", week.DATE)
+    if stale != week.DATE:
+        raise SystemExit(
+            "week.py: DATE e' %s ma le correzioni a mano sono della settimana "
+            "%s (OVERRIDES_FOR).\n"
+            "Aggiornale o svuota CAROUSELS/SINGLES, poi porta OVERRIDES_FOR a %s."
+            % (week.DATE, stale, week.DATE)
+        )
+
+
+def _state(paths):
+    """Stato degli asset di un post: 'da fare', 'fatto' o 'a meta''."""
+    done = [p for p in paths if os.path.exists(p)]
+    if not done:
+        return "da fare"
+    return "fatto" if len(done) == len(paths) else "a meta'"
+
+
+def _todo(items, paths_for):
+    """Tiene solo i post da generare, e spiega cosa succede agli altri.
+
+    Rigenerare tutto ogni volta non e' possibile — un asset pubblicato non si
+    sovrascrive — ma nemmeno abortire va bene: nel ciclo human-in-the-loop si
+    rifa' **un** post e gli altri sono gia' a posto. Quindi qui si salta il
+    lavoro gia' fatto, e `render.py` diventa ripetibile.
+
+    Il caso 'a meta'' resta un errore: un post con solo alcune slide sul disco
+    non e' ne' fatto ne' da fare, ed e' quasi sempre un'esecuzione interrotta.
+    """
+    todo, skipped = [], []
+    for item in items:
+        state = _state([os.path.join(OUT_DIR, n) for n in paths_for(item)])
+        if state == "fatto":
+            skipped.append(item["slug"])
+        elif state == "da fare":
+            todo.append(item)
+        else:
+            raise SystemExit(
+                "Il post %s ha solo una parte dei suoi asset sul disco.\n"
+                "E' quasi sempre un'esecuzione interrotta: cancella quelli non "
+                "ancora pubblicati e rigenera." % item["slug"]
+            )
+    for slug in skipped:
+        print("  gia' fatto, salto: %s (rev %d)" % (slug, names.revision(slug)))
+    if skipped and not todo:
+        print("  Per rifarne uno: mettilo in week.REDO con revisione %d."
+              % (max(names.revision(s_) for s_ in skipped) + 1))
+    return todo
+
+
 async def do_carousel(browser):
     """Genera TUTTI i caroselli della settimana: il PED puo' proporne piu' di uno
     (questa settimana l'idea 3 AI Act e l'idea 6 Nvidia)."""
-    for carousel in week.CAROUSELS:
+    _check_overrides_current()
+    carousels, _ = content()
+    print("caroselli (%s):" % week.DATE)
+    carousels = _todo(carousels, lambda c: (
+        [names.carousel_slide(c["slug"], i + 1) for i in range(len(c["slides"]))]
+        + [names.carousel_pdf(c["slug"])]))
+    for carousel in carousels:
         slug, date = carousel["slug"], week.DATE
-        print("carosello (%s, %s):" % (slug, date))
+        print("  %s:" % slug)
         pngs = await _shoot_slides(
             browser, templates.carousel_html(carousel),
-            lambda s, _slug=slug, _d=date: "carosello_%s_%s_%s.png" % (_slug, _d, s),
+            names.carousel_slide_name(slug),
             {"width": templates.W, "height": templates.H},
         )
-        _to_pdf(pngs, os.path.join(OUT_DIR, "carosello_%s_%s.pdf" % (slug, date)))
+        _to_pdf(pngs, os.path.join(OUT_DIR, names.carousel_pdf(slug)))
 
 
 async def do_singles(browser):
+    _check_overrides_current()
     print("immagini singole (%s):" % week.DATE)
-    html = templates.singles_html(week.SINGLES)
+    singles = _todo(content()[1], lambda x: [names.single(x["slug"])])
+    if not singles:
+        return
     await _shoot_slides(
-        browser, html,
-        lambda s: "brandstyle_%s_%s.png" % (s, week.DATE),
+        browser, templates.singles_html(singles),
+        names.single,
         {"width": templates.W, "height": templates.H},
     )
 
@@ -230,7 +341,8 @@ async def do_report(browser):
     page = await browser.new_page()
     await page.set_content(html, wait_until="load")
     await page.evaluate("document.fonts.ready")
-    out = os.path.join(OUT_DIR, "PED_Digitiamo_%s.pdf" % week.DATE)
+    out = os.path.join(OUT_DIR, names.report_pdf())
+    os.makedirs(os.path.dirname(out), exist_ok=True)
     await page.pdf(path=out, width="%dpx" % w, height="%dpx" % h,
                    print_background=True,
                    margin={"top": "0", "bottom": "0", "left": "0", "right": "0"})
@@ -257,7 +369,7 @@ async def main():
                 await TASKS[t](browser)
         finally:
             await browser.close()
-    print("Fatto. Output in", OUT_DIR)
+    print("Fatto. Output in %s" % os.path.join(OUT_DIR, names.week_dir()))
 
 
 if __name__ == "__main__":

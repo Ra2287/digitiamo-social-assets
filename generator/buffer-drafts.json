@@ -37,13 +37,6 @@
   {
     "date": "2026-09-14",
     "revision": 0,
-    "slug": "idea2-il-vibe-coding-ti",
-    "id": "6aa9082ee67c52e837d76693",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-09-14/brandstyle_idea2-il-vibe-coding-ti_2026-09-14.png"
-  },
-  {
-    "date": "2026-09-14",
-    "revision": 0,
     "slug": "idea3-abbiamo-provato-a-far",
     "id": "6aa9082f23da08363cca3470",
     "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-09-14/brandstyle_idea3-abbiamo-provato-a-far_2026-09-14.png"
@@ -61,5 +54,12 @@
     "slug": "idea5-come-fa-un-ai",
     "id": "6aa9083123da08363cca34b3",
     "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-09-14/brandstyle_idea5-come-fa-un-ai_2026-09-14.png"
+  },
+  {
+    "date": "2026-09-14",
+    "revision": 0,
+    "slug": "idea2-il-vibe-coding-ci",
+    "id": "6aa90b9ce67c52e837d7e78e",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-09-14/brandstyle_idea2-il-vibe-coding-ci_2026-09-14.png"
   }
 ]

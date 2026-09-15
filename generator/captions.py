@@ -21,15 +21,20 @@ Nella tua azienda l'AI è già un progetto con un piano, o è ancora una serie d
 #IntelligenzaArtificiale #DigitalTransformation #PMI #B2B #Tech"""
 
 
-CAPTION_2 = """🔥 Il mito: con gli AI coding assistant chiunque può scrivere software pronto per la produzione, senza bisogno di sviluppatori senior.
+CAPTION_2 = """🔥 Il mito: con l'AI ci sono solo due strade — correre e prendersi ogni rischio, o aspettare che passi la moda.
 
-🔹 Il 45% del codice generato da AI introduce almeno una vulnerabilità della OWASP Top 10 (Veracode)
-🔹 Tra il 5% e il 22% dei pacchetti suggeriti dagli assistenti AI semplicemente non esiste, aprendo la porta al «slopsquatting»: pacchetti malevoli pubblicati apposta con quei nomi (studio USENIX, 576.000 campioni analizzati)
+I dati di questa settimana raccontano una terza via: quella con un metodo.
+
+🔹 45% del codice generato da AI introduce almeno una vulnerabilità della OWASP Top 10 (Veracode)
+🔹 76% delle PMI italiane non investe ancora in AI (Osservatori Polimi)
+🔹 83,6% delle PMI italiane è ancora del tutto priva di AI (Osservatorio IIA)
+🔹 8% delle PMI italiane ha un progetto AI strutturato: il resto sono sperimentazioni isolate (MAT Digital Solutions)
+🔹 Tra il 5% e il 22% dei pacchetti suggeriti dagli assistenti AI non esiste, aprendo la porta al «slopsquatting»: pacchetti malevoli pubblicati apposta con quei nomi (studio USENIX, 576.000 campioni analizzati)
 🔹 Quando c'è di mezzo shadow AI non governata, il costo medio di una data breach sale di 670.000 dollari (IBM Cost of Data Breach Report)
 
-Il vibe coding abbassa davvero la barriera per prototipare. Ma tra un prototipo e un sistema in produzione c'è un passaggio che nessun modello, da solo, sa gestire: architettura, sicurezza, debito tecnico.
+In entrambi i casi la variabile che decide l'esito non è la tecnologia: è il metodo con cui viene introdotta.
 
-Chi lo sta governando, in questo momento, nel tuo team? 👇"""
+Nella tua azienda l'AI si adotta con un metodo, o si sceglie tra «a tutta velocità» e «aspettiamo»? 👇"""
 
 
 CAPTION_3 = """Questa settimana abbiamo messo alla prova qualcosa di nuovo: non un singolo assistente AI, ma un piccolo team di agenti che si dividono i compiti su [personalizza con il progetto reale del team].

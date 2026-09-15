@@ -81,17 +81,10 @@ trends = [
         url="https://aiagentstore.ai/ai-agent-news/this-week",
     ),
     dict(
-        title="I dati sul vibe coding: il 45% del codice AI introduce vulnerabilità OWASP Top 10",
-        what="Secondo il report Veracode 2025, il 45% del codice generato da assistenti AI introduce almeno una vulnerabilità della OWASP Top 10. Uno studio USENIX su 576.000 campioni mostra che tra il 5% e il 22% dei pacchetti suggeriti dagli assistenti AI non esiste, aprendo la porta al «slopsquatting». IBM stima in 670.000 dollari il sovraccosto medio di una data breach quando è coinvolta shadow AI non governata.",
-        why="Sono numeri che ogni azienda che ha adottato coding assistant AI senza un processo di code review strutturato dovrebbe guardare con attenzione, indipendentemente da quanto sia impressionante la velocità di prototipazione.",
-        source="Superblocks (analisi aggregata di dati Veracode, USENIX, IBM)",
-        url="https://www.superblocks.com/blog/vibe-coding-enterprise-adoption",
-    ),
-    dict(
-        title="In Italia solo l'8% delle PMI ha un progetto AI strutturato",
-        what="Gli Osservatori del Politecnico di Milano stimano che il 76% delle PMI italiane non stia ancora investendo in AI, e l'Osservatorio IIA parla dell'83,6% delle PMI ancora del tutto priva di AI. Solo l'8% delle PMI italiane, secondo un'altra rilevazione, ha un progetto AI davvero strutturato piuttosto che sperimentazioni isolate.",
-        why="È il contesto di mercato in cui si muove ogni azienda B2B tech italiana nel 2026: il gap tra hype globale e adozione reale nel tessuto produttivo italiano resta enorme, ed è anche l'opportunità commerciale più concreta del settore.",
-        source="AI4Business / Osservatorio IIA",
+        title="Il doppio divario dell'adozione AI: veloce (e rischioso) nel codice, lento nel business italiano",
+        what="Due rilevazioni della settimana, lette insieme, raccontano la stessa storia da angoli opposti. Su scala globale: secondo Veracode il 45% del codice generato da assistenti AI introduce almeno una vulnerabilità della OWASP Top 10, e uno studio USENIX su 576.000 campioni mostra che il 5-22% dei pacchetti suggeriti dagli assistenti AI non esiste, aprendo la porta al «slopsquatting» (IBM stima in 670.000 dollari il sovraccosto di una data breach quando è coinvolta shadow AI non governata). In Italia: gli Osservatori Polimi stimano che il 76% delle PMI non stia ancora investendo in AI, l'Osservatorio IIA parla dell'83,6% delle PMI ancora del tutto priva di AI, e solo l'8% ha un progetto strutturato.",
+        why="Dove l'adozione corre senza un metodo (il codice generato da AI), il rischio esplode. Dove l'adozione non è nemmeno partita (le PMI italiane), l'opportunità resta sul tavolo. In entrambi i casi la variabile che decide l'esito non è la tecnologia, è il metodo con cui viene introdotta. La domanda per chi legge questo report non è più «adottare o non adottare l'AI»: è chi, nella propria azienda, ha oggi il mandato di introdurla con un metodo.",
+        source="Superblocks (Veracode, USENIX, IBM) / AI4Business — Osservatorio IIA",
         url="https://www.ai4business.it/intelligenza-artificiale/pmi-piu-spesa-digitale-ma-poca-visione-sullai-il-nodo-resta-competitivo/",
     ),
 ]

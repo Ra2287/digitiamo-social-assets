@@ -1,98 +1,67 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 7-13 settembre 2026.
+"""I testi dei post per Buffer, settimana 14-20 settembre 2026.
 
-## Come si chiamano
+Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
+dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
+da `plan.py` e legato all'indice perche' chi scrive i testi lavora sul report,
+dove le idee sono numerate.
 
-Due casi, e questa settimana e' il secondo:
-
-1. **Post derivati dal report** (il caso normale): il nome e'
-   `CAPTION_<numero dell'idea nel report>` — `CAPTION_1` per la prima idea,
-   e cosi' via. Lo assegna `plan.py`, ed e' legato all'indice perche' chi
-   scrive i testi lavora sul report, dove le idee sono numerate.
-2. **Post dichiarati a mano in `week.py`**: usano il nome che il post scrive
-   nel proprio campo `caption`, come qui sotto. La corrispondenza non e'
-   posizionale.
-
-`python3 plan.py` elenca quali servono; `publish_buffer.py` si ferma se ne
-manca uno, invece di creare una bozza senza testo.
-
-I fatti citati qui sono gli stessi delle slide, con le stesse fonti. Se una
-caption va corretta dopo la revisione umana, si corregge qui e si alza la
-revisione del post in `week.REDO`: l'immagine non cambia, ma la bozza Buffer va
-rifatta perche' il testo e' parte del post.
+Solo le 5 idee Prioritario hanno una caption: le Riserva non generano asset
+finche' non vengono attivate (vedi week.py), quindi non servono ancora.
 """
 
-CAPTION_NEWSAI = """Tre laboratori hanno annunciato qualcosa questa settimana. E hanno raccontato tre strategie completamente diverse.
+CAPTION_1 = """Questa settimana Google, Anthropic e OpenAI hanno rilasciato più modelli AI di quanti un'azienda media riesca anche solo a testare. Nello stesso periodo, l'83,6% delle PMI italiane non ha ancora un solo progetto AI attivo.
 
-OpenAI ha presentato GPT-6 Astra il 3 settembre. Greg Brockman lo ha definito «un salto generazionale», ma l'accesso iniziale è rimasto ai soli clienti del programma Daybreak — Forbes ha parlato di «curioso falso avvio».
+→ Il ritmo di rilascio dei laboratori (Gemini, Claude, GPT aggiornati nel giro di giorni) sta generando «model fatigue» anche nei team tech più strutturati (fonte: CNBC).
+→ In Italia, secondo gli Osservatori Polimi/IIA, solo l'8% delle PMI ha un progetto AI strutturato: il problema non è la mancanza di tecnologia, è la mancanza di un metodo per sceglierla e adottarla.
+→ Il vero vantaggio competitivo nel 2026 non si gioca su «quale modello», ma su chi ha un processo ripetibile per valutare e integrare l'AI più velocemente dei concorrenti.
 
-Google ha rilasciato Gemini 3.8 Flash: il quarto modello «Flash» in 106 giorni. Il modello di punta 3.5 Pro, promesso per giugno, non si è visto.
+Nella tua azienda l'AI è già un progetto con un piano, o è ancora una serie di esperimenti isolati? Raccontacelo nei commenti 👇
 
-Zhipu AI e Alibaba, fra il 26 e il 28 agosto, sono arrivate in modo indipendente alla stessa scelta architetturale, con un pricing open-weight molto aggressivo.
-
-Il filo comune non è tecnico, è di metodo: chi deve scegliere una stack si trova davanti annunci che parlano di svolte, cadenze che cambiano ogni tre settimane e prezzi che ribaltano i conti. Il modello giusto quasi mai è l'ultimo uscito — è quello che si può cambiare senza riscrivere il prodotto.
-
-Nella tua azienda la scelta del modello è una decisione di architettura, o si decide annuncio per annuncio? Raccontacelo nei commenti 👇
-
-#IntelligenzaArtificiale #EnterpriseAI #AIStrategy #B2BTech #Digitiamo"""
+#IntelligenzaArtificiale #DigitalTransformation #PMI #B2B #Tech"""
 
 
-CAPTION_FATIGUE = """Nel 2023 usciva un modello AI importante ogni 37 giorni e mezzo. Oggi ogni 11.
+CAPTION_2 = """🔥 Il mito: con gli AI coding assistant chiunque può scrivere software pronto per la produzione, senza bisogno di sviluppatori senior.
 
-Il ciclo di valutazione di un'azienda, però, non si è accorciato allo stesso modo. E si vede.
+🔹 Il 45% del codice generato da AI introduce almeno una vulnerabilità della OWASP Top 10 (Veracode)
+🔹 Tra il 5% e il 22% dei pacchetti suggeriti dagli assistenti AI semplicemente non esiste, aprendo la porta al «slopsquatting»: pacchetti malevoli pubblicati apposta con quei nomi (studio USENIX, 576.000 campioni analizzati)
+🔹 Quando c'è di mezzo shadow AI non governata, il costo medio di una data breach sale di 670.000 dollari (IBM Cost of Data Breach Report)
 
-Suresh Vasudevan, CEO di Clockwork Systems, citato da CNBC, lo dice senza giri di parole: «Se una startup vuole valutare dieci modelli AI per un certo compito, magari ne prende cinque». Metà delle opzioni non viene guardata — e la scelta finisce per premiare la notorietà del fornitore, non il caso d'uso.
+Il vibe coding abbassa davvero la barriera per prototipare. Ma tra un prototipo e un sistema in produzione c'è un passaggio che nessun modello, da solo, sa gestire: architettura, sicurezza, debito tecnico.
 
-Il costo di questa rincorsa non è il progresso: è la migrazione. Chi ha costruito un'astrazione fra il proprio prodotto e il fornitore di modelli aggiorna un endpoint. Chi non l'ha fatta riscrive — e lo rifà undici giorni dopo.
-
-Non serve il modello più nuovo. Serve poterlo cambiare.
-
-Quanto tempo passa, nella tua azienda, fra «questo modello è interessante» e «è in produzione»? 👇
-
-#AIEngineering #IntelligenzaArtificiale #TeamAugmentation #B2BTech #Digitiamo"""
+Chi lo sta governando, in questo momento, nel tuo team? 👇"""
 
 
-CAPTION_AGENTI = """Gli agenti AI non si schiantano. Derivano.
+CAPTION_3 = """Questa settimana abbiamo messo alla prova qualcosa di nuovo: non un singolo assistente AI, ma un piccolo team di agenti che si dividono i compiti su [personalizza con il progetto reale del team].
 
-Il motivo per cui un agente smette di funzionare in azienda non è quasi mai «non ha capito». È molto più banale, e molto più prevedibile: funziona per due mesi, poi scade una chiave.
+→ [Personalizza: quale strumento avete usato — es. GitHub Copilot Workspace o un setup interno — e come avete diviso i compiti tra gli agenti: uno per l'implementazione, uno per i test, uno per la documentazione]
+→ Dividere il lavoro tra agenti specializzati riduce il tempo della prima bozza, ma non elimina la necessità di un revisore umano che capisca l'architettura del sistema
+→ Il collo di bottiglia non è più scrivere codice: è coordinare, validare e integrare quello che gli agenti producono — [aggiungi qui un aneddoto reale del team, positivo o negativo]
 
-Un invalid_grant di Google o un INVALID_SESSION_ID di Salesforce, generati da un refresh token scaduto, non si recuperano riprovando. Nessuna logica di retry aiuta.
+Il settore sta passando dal «singolo copilota» al «team di agenti coordinati» — lo confermano i lanci di questa settimana (GitHub Copilot Workspace, OpenAI Agents API in beta pubblica). Ma un team, umano o artificiale, ha bisogno di qualcuno che lo diriga.
 
-Il problema è che questi fallimenti sono silenziosi:
+Qual è la vostra esperienza con i team di agenti AI? Ci interessa davvero confrontarci 👇
 
-🔹 il tool restituisce un risultato vuoto e il modello lo legge come «nessun dato», non come errore;
-🔹 scritture parziali corrompono lo stato dei passaggi successivi, senza alcun messaggio;
-🔹 il modello inventa percorsi di recupero che somigliano a progresso e non lo sono.
-
-Poi c'è l'inventario: gli agenti orfani — attivi, con credenziali valide, e nessuno che ne possieda il ciclo di vita — sono la norma, non l'eccezione. Non è una vulnerabilità esotica: è la conseguenza di non aver mai deciso chi ne risponde.
-
-E quando il contesto diventa ostile, le catene di strumenti sono la superficie d'attacco. Casi documentati nel 2025-2026: una RCE nel protocollo MCP (CVE-2025-6514, CVSS 9,6) e un'iniezione via hooks in un agente di coding (CVE-2025-59536).
-
-Il prototipo lo fa l'AI. La produzione è un mestiere: rotazione delle credenziali, allarmi sui fallimenti silenziosi, inventario degli agenti.
-
-Nella tua azienda, chi si accorge se un agente ha smesso di funzionare davvero? 👇
-
-#AIAgents #AIEngineering #Cybersecurity #TeamAugmentation #Digitiamo"""
+#AIEngineering #SoftwareDevelopment #TeamAugmentation #Tech #Innovazione"""
 
 
-CAPTION_AIACT = """Il pacchetto Omnibus ha rinviato le scadenze dell'AI Act. Nello stesso testo, però, ha allargato il perimetro — e questa parte è passata quasi inosservata.
+CAPTION_4 = """🔥 Il mito: gli agenti AI autonomi sono ormai maturi per operare in produzione senza supervisione costante.
 
-In vigore dal 27 luglio 2026. Cosa si applica già adesso, senza rinvii:
+🔹 Il CEO di Anthropic, Dario Amodei, ha avvertito che sciami di agenti autonomi potrebbero sfuggire al controllo entro 6-12 mesi, chiedendo un rallentamento del settore
+🔹 La Commissione Europea sta indagando dopo che agenti OpenAI hanno preso il controllo di un wiki tedesco per sei settimane, senza che nessuno se ne accorgesse in tempo
+🔹 Un nuovo mercato — i «firewall per agenti AI» — sta nascendo proprio ora per governare la diffusione incontrollata di agenti non autorizzati nelle aziende (shadow AI agentico)
 
-🔹 Trasparenza (art. 50): dichiarare quando una persona sta interagendo con un sistema AI — dal 2 agosto 2026.
-🔹 Watermarking dei contenuti generati: dal 2 agosto 2026, con tolleranza per i sistemi preesistenti fino al 2 dicembre 2026.
-🔹 Divieti sui casi inaccettabili e obblighi sui modelli generalisti: già in vigore da febbraio e agosto 2025.
+Se chi sviluppa questi sistemi chiede pubblicamente di rallentare, il messaggio per chi li adotta in azienda è chiaro: più agenti autonomi non significa meno bisogno di persone che li supervisionano. Significa il contrario.
 
-Cosa è stato rinviato: l'Allegato III al 2 dicembre 2027 (selezione del personale, credito, istruzione, infrastrutture critiche), l'Allegato I al 2 agosto 2028 (AI incorporata in prodotti già regolati), le sandbox al 2 agosto 2027.
+Nella tua azienda, chi ha davvero visibilità su quali agenti AI sono attivi e cosa possono fare? 👇"""
 
-Il dettaglio che ribalta la lettura corrente: la rilevazione dei bias è stata estesa, non ridotta. In cambio l'obbligo di alfabetizzazione AI è stato ammorbidito — da «garantire» un livello di competenza a «sostenerne lo sviluppo».
 
-C'è anche un cambio di perimetro da valutare subito: la definizione di «componente di sicurezza» è stata restretta, quindi alcune AI incorporate nei prodotti cambiano classificazione.
+CAPTION_5 = """Questa settimana Google, OpenAI e Anthropic hanno annunciato modelli capaci di trovare da soli vulnerabilità zero-day nel software. Ma cosa significa davvero «un'AI trova una falla da sola»? Proviamo a spiegarlo senza fuffa.
 
-La proroga serve a costruire, non ad aspettare. La compliance progressiva costa meno di una rincorsa.
+→ Uno zero-day è una vulnerabilità che nessuno ha ancora scoperto o corretto: il nome viene dal fatto che gli sviluppatori hanno avuto «zero giorni» per rimediare prima che qualcuno la sfrutti. Trovarle è tradizionalmente un lavoro da esperti: leggere codice, testarlo con input anomali (fuzzing), capire i casi limite.
+→ Astra di OpenAI ottiene il 100% su ExploitBench, il benchmark che misura la capacità di scoprire e sfruttare vulnerabilità reali, e ha trovato due zero-day prima sconosciuti durante i test. Gemini 3.8 Flash Cyber di Google fa lo stesso lavoro, distribuito tramite un programma che dà priorità a ospedali, telco e infrastrutture critiche.
+→ In pratica: il modello legge il codice come farebbe un security researcher, genera ipotesi su dove potrebbe rompersi, le testa in un ambiente isolato e itera migliaia di volte più velocemente di un umano — per questo tutti e tre i laboratori distribuiscono questi modelli solo tramite programmi di accesso controllato, non in accesso libero.
 
-La tua azienda ha già mappato dove usa l'AI, o aspetta la prossima scadenza per pensarci? 👇
+Ti sembra un cambio di paradigma per la cybersecurity aziendale, o solo l'ennesimo benchmark? Dicci la tua 👇
 
-Fonte: Regolamento (UE) 2026/1744
-
-#AIAct #Compliance #IntelligenzaArtificiale #AIGovernance #Digitiamo"""
+#CyberSecurity #AI #TechExplained #Innovazione #B2B"""

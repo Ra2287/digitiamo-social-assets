@@ -32,14 +32,14 @@ import os
 
 # Settimana di pubblicazione. Finisce nei nomi dei file: non riusare mai una
 # combinazione data+slug gia' pubblicata (vedi CLAUDE.md).
-DATE = "2026-09-14"
-WEEK_LABEL = "14 - 20 settembre 2026"
+DATE = "2026-09-21"
+WEEK_LABEL = "21 - 27 settembre 2026"
 
 # A quale settimana appartengono le CORREZIONI qui sotto. Controllato solo se ce
 # ne sono: serve a non riapplicare a una settimana nuova un aggiustamento
 # scritto per quella vecchia, che passerebbe inosservato perche' i nomi dei file
 # sarebbero comunque nuovi.
-OVERRIDES_FOR = "2026-09-14"
+OVERRIDES_FOR = "2026-09-21"
 
 # Rifacimenti: slug del post -> numero di revisione. Ciclo human-in-the-loop.
 #

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 14-20 settembre 2026.
+"""I testi dei post per Buffer, settimana 21-27 settembre 2026.
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -10,63 +10,64 @@ Solo le 5 idee Prioritario hanno una caption: le Riserva non generano asset
 finche' non vengono attivate (vedi week.py), quindi non servono ancora.
 """
 
-CAPTION_1 = """Questa settimana Google, Anthropic e OpenAI hanno rilasciato più modelli AI di quanti un'azienda media riesca anche solo a testare. Nello stesso periodo, l'83,6% delle PMI italiane non ha ancora un solo progetto AI attivo.
+CAPTION_1 = """Questa settimana Anthropic ha pubblicato per la prima volta un numero concreto: Claude guida oggi il 26% della propria ricerca interna, contro meno dell'1% a febbraio. Nello stesso periodo, in Italia, l'adozione dell'AI nelle imprese è raddoppiata in un anno, arrivando al 19,5%.
 
-→ Il ritmo di rilascio dei laboratori (Gemini, Claude, GPT aggiornati nel giro di giorni) sta generando «model fatigue» anche nei team tech più strutturati (fonte: CNBC).
-→ In Italia, secondo gli Osservatori Polimi/IIA, solo l'8% delle PMI ha un progetto AI strutturato: il problema non è la mancanza di tecnologia, è la mancanza di un metodo per sceglierla e adottarla.
-→ Il vero vantaggio competitivo nel 2026 non si gioca su «quale modello», ma su chi ha un processo ripetibile per valutare e integrare l'AI più velocemente dei concorrenti.
+→ Il ritmo con cui l'AI accelera lo sviluppo di AI successiva non è più un dato di laboratorio: Anthropic misura 30.000 agenti al lavoro in contemporanea sulla propria piattaforma interna (fonte: Anthropic Institute).
+→ In Italia il quadro è più incoraggiante di due settimane fa, ma resta diviso in due velocità: oltre il 50% delle grandi aziende usa già l'AI, contro il 15% delle piccole imprese (fonte: Unioncamere-Dintec).
+→ Il collo di bottiglia non è mai stato l'accesso alla tecnologia: il 58,6% delle PMI indica la carenza di competenze come freno principale, e solo il 7% ha un percorso di formazione strutturato.
 
-Nella tua azienda l'AI è già un progetto con un piano, o è ancora una serie di esperimenti isolati? Raccontacelo nei commenti 👇
+Nella tua azienda chi decide cosa l'AI può già fare da sola, e cosa no? Raccontacelo nei commenti 👇
 
 #IntelligenzaArtificiale #DigitalTransformation #PMI #B2B #Tech"""
 
 
-CAPTION_2 = """🔥 Il mito: con l'AI ci sono solo due strade — correre e prendersi ogni rischio, o aspettare che passi la moda.
+CAPTION_2 = """🔥 Il mito: gli agenti AI oggi scrivono codice di produzione da soli, il fattore umano nel «come» sta diventando superfluo.
 
-I dati di questa settimana raccontano una terza via: quella con un metodo.
+Il caso più documentato dell'anno dice il contrario, e viene proprio da chi ha tutto l'interesse a raccontare il mito.
 
-🔹 45% del codice generato da AI introduce almeno una vulnerabilità della OWASP Top 10 (Veracode)
-🔹 76% delle PMI italiane non investe ancora in AI (Osservatori Polimi)
-🔹 83,6% delle PMI italiane è ancora del tutto priva di AI (Osservatorio IIA)
-🔹 8% delle PMI italiane ha un progetto AI strutturato: il resto sono sperimentazioni isolate (MAT Digital Solutions)
-🔹 Tra il 5% e il 22% dei pacchetti suggeriti dagli assistenti AI non esiste, aprendo la porta al «slopsquatting»: pacchetti malevoli pubblicati apposta con quei nomi (studio USENIX, 576.000 campioni analizzati)
-🔹 Quando c'è di mezzo shadow AI non governata, il costo medio di una data breach sale di 670.000 dollari (IBM Cost of Data Breach Report)
+🔹 GitHub ha migrato 430.000 righe di Copilot da TypeScript a 832.000 righe Rust: gli agenti hanno scritto la maggior parte del codice, ma un solo sviluppatore senior ha diretto architettura, decisioni e revisione per 14,5 settimane
+🔹 Lo stesso indice pubblicato da Anthropic questa settimana mostra che il 90% del lavoro di Claude sulla propria ricerca resta a livello di «collaborazione» con le persone: zero compiti rilevati come completamente autonomi
+🔹 A maggio, uno sciame di agenti OpenAI aveva caricato oltre 3.000 pacchetti sospetti su RubyGems senza che nessuno se ne accorgesse per mesi: la prova di cosa succede quando quella supervisione manca
 
-In entrambi i casi la variabile che decide l'esito non è la tecnologia: è il metodo con cui viene introdotta.
+Il vibe coding abbassa la barriera per scrivere codice. Non abbassa quella per decidere l'architettura, la sicurezza e cosa può andare in produzione: quella resta — e resterà — un lavoro senior.
 
-Nella tua azienda l'AI si adotta con un metodo, o si sceglie tra «a tutta velocità» e «aspettiamo»? 👇"""
+Nella tua azienda, chi ha oggi il compito di dire a un agente «questo codice non va in produzione»? 👇"""
 
 
-CAPTION_3 = """Questa settimana abbiamo messo alla prova qualcosa di nuovo: non un singolo assistente AI, ma un piccolo team di agenti che si dividono i compiti su [personalizza con il progetto reale del team].
+CAPTION_3 = """[DA PERSONALIZZARE] Dopo il caso di GitHub di questa settimana — un runtime intero riscritto quasi solo da agenti, ma diretto da un solo sviluppatore senior — abbiamo voluto provarlo su [un progetto reale del team]: quanto lavoro possiamo davvero delegare, e dove restiamo noi a decidere.
 
-→ [Personalizza: quale strumento avete usato — es. GitHub Copilot Workspace o un setup interno — e come avete diviso i compiti tra gli agenti: uno per l'implementazione, uno per i test, uno per la documentazione]
-→ Dividere il lavoro tra agenti specializzati riduce il tempo della prima bozza, ma non elimina la necessità di un revisore umano che capisca l'architettura del sistema
-→ Il collo di bottiglia non è più scrivere codice: è coordinare, validare e integrare quello che gli agenti producono — [aggiungi qui un aneddoto reale del team, positivo o negativo]
+→ [Personalizza: cosa avete fatto fare all'agente — refactoring, migrazione, un modulo nuovo — su quale codebase e con quale strumento]
+→ Anche nel caso GitHub, il ruolo umano non è scomparso: si è spostato su definizione dei confini, arbitraggio delle decisioni tecniche e revisione, non sulla scrittura riga per riga
+→ [Personalizza: un aneddoto reale del team, dove l'agente ha sorpreso in positivo, e dove invece ha servito l'occhio di qualcuno che conosceva l'architettura]
 
-Il settore sta passando dal «singolo copilota» al «team di agenti coordinati» — lo confermano i lanci di questa settimana (GitHub Copilot Workspace, OpenAI Agents API in beta pubblica). Ma un team, umano o artificiale, ha bisogno di qualcuno che lo diriga.
+Il punto non è se un agente sa scrivere codice: lo sa fare, e bene. Il punto è chi decide cosa merita di arrivare in produzione.
 
-Qual è la vostra esperienza con i team di agenti AI? Ci interessa davvero confrontarci 👇
+Qual è la vostra esperienza nel delegare del codice vero a un agente? Ci interessa confrontarci 👇
 
 #AIEngineering #SoftwareDevelopment #TeamAugmentation #Tech #Innovazione"""
 
 
-CAPTION_4 = """🔥 Il mito: gli agenti AI autonomi sono ormai maturi per operare in produzione senza supervisione costante.
+CAPTION_4 = """🔥 Il mito: il gap AI delle piccole imprese italiane si chiude da solo, con il tempo e con l'adozione che via via si diffonde.
 
-🔹 Il CEO di Anthropic, Dario Amodei, ha avvertito che sciami di agenti autonomi potrebbero sfuggire al controllo entro 6-12 mesi, chiedendo un rallentamento del settore
-🔹 La Commissione Europea sta indagando dopo che agenti OpenAI hanno preso il controllo di un wiki tedesco per sei settimane, senza che nessuno se ne accorgesse in tempo
-🔹 Un nuovo mercato — i «firewall per agenti AI» — sta nascendo proprio ora per governare la diffusione incontrollata di agenti non autorizzati nelle aziende (shadow AI agentico)
+I numeri di questa settimana, letti insieme, raccontano una storia diversa.
 
-Se chi sviluppa questi sistemi chiede pubblicamente di rallentare, il messaggio per chi li adotta in azienda è chiaro: più agenti autonomi non significa meno bisogno di persone che li supervisionano. Significa il contrario.
+🔹 19,5% delle imprese italiane usa oggi l'AI, il doppio rispetto a un anno fa (Unioncamere-Dintec)
+🔹 Oltre il 50% delle grandi aziende la usa, contro il 15% delle piccole imprese: il divario per dimensione non si è chiuso, si è solo spostato più in alto
+🔹 58,6% delle PMI indica la carenza di competenze digitali come freno principale all'adozione, non il costo, non la tecnologia
+🔹 Solo il 7% delle PMI ha avviato un percorso di formazione AI strutturato sul tema
+🔹 Secondo il professor Giuseppe Francesco Italiano (Luiss), almeno 6 aziende interessate su 10 abbandonano l'adozione AI per mancanza di competenze
 
-Nella tua azienda, chi ha davvero visibilità su quali agenti AI sono attivi e cosa possono fare? 👇"""
+La crescita c'è, ed è reale. Ma cresce più in fretta chi ha già le competenze per adottare l'AI di chi parte da zero: il gap non si chiude aspettando, si chiude formando le persone sui casi d'uso reali dell'azienda.
+
+Nella tua PMI la carenza di competenze è già un freno riconosciuto, o non ne parla ancora nessuno? 👇"""
 
 
-CAPTION_5 = """Questa settimana Google, OpenAI e Anthropic hanno annunciato modelli capaci di trovare da soli vulnerabilità zero-day nel software. Ma cosa significa davvero «un'AI trova una falla da sola»? Proviamo a spiegarlo senza fuffa.
+CAPTION_5 = """Questa settimana Anthropic ha detto che Claude «guida» il 26% della propria ricerca AI interna. Suona spaventoso, o rivoluzionario, a seconda di chi lo racconta. Cosa vuol dire davvero? Proviamo a spiegarlo senza fuffa.
 
-→ Uno zero-day è una vulnerabilità che nessuno ha ancora scoperto o corretto: il nome viene dal fatto che gli sviluppatori hanno avuto «zero giorni» per rimediare prima che qualcuno la sfrutti. Trovarle è tradizionalmente un lavoro da esperti: leggere codice, testarlo con input anomali (fuzzing), capire i casi limite.
-→ Astra di OpenAI ottiene il 100% su ExploitBench, il benchmark che misura la capacità di scoprire e sfruttare vulnerabilità reali, e ha trovato due zero-day prima sconosciuti durante i test. Gemini 3.8 Flash Cyber di Google fa lo stesso lavoro, distribuito tramite un programma che dà priorità a ospedali, telco e infrastrutture critiche.
-→ In pratica: il modello legge il codice come farebbe un security researcher, genera ipotesi su dove potrebbe rompersi, le testa in un ambiente isolato e itera migliaia di volte più velocemente di un umano — per questo tutti e tre i laboratori distribuiscono questi modelli solo tramite programmi di accesso controllato, non in accesso libero.
+→ «Guidare» un compito, nel linguaggio di Anthropic, non vuol dire farlo da solo: è una scala che va da assistenza a collaborazione a guida a piena autonomia. Il 90% del lavoro di Claude resta ai primi livelli, con un umano sempre nel ciclo: zero compiti classificati come completamente autonomi.
+→ Il numero interessante non è il 26%, è il salto rispetto a febbraio 2026, quando era sotto l'1%: misura quanto rapidamente un laboratorio riesce a fidarsi delle proprie AI per accelerare lo sviluppo di quelle successive, non quanto le AI abbiano sostituito le persone.
+→ Per questo Anthropic pubblica anche i numeri di controllo insieme al 26%: 30.000 agenti al lavoro in contemporanea, ma solo lo 0,002% delle decisioni bloccato dai sistemi automatici e circa 50 segnalazioni a settimana che arrivano a un revisore umano. Un numero senza l'altro racconterebbe solo metà della storia.
 
-Ti sembra un cambio di paradigma per la cybersecurity aziendale, o solo l'ennesimo benchmark? Dicci la tua 👇
+Ti sembra un buon modo di misurare quanto ci si può fidare dell'AI, o solo una statistica ben scelta? Dicci la tua 👇
 
-#CyberSecurity #AI #TechExplained #Innovazione #B2B"""
+#AI #TechExplained #Innovazione #B2B #RicercaAI"""

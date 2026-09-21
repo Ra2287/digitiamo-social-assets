@@ -87,6 +87,13 @@ trends = [
         source="NBC News",
         url="https://www.nbcnews.com/politics/congress/godfather-ai-warns-congress-maybe-year-left-regulate-ai-rcna598330",
     ),
+    dict(
+        title="TypeSafe AI lancia Jev: il primo modello che non genera testo, ma decide",
+        what="TypeSafe AI, il laboratorio fondato da Diogo Almeida (ex OpenAI), ha lanciato Jev, il primo «System One model» in accesso anticipato: invece di generare testo, restituisce decisioni strutturate e tipizzate con probabilità calibrate — per esempio un instradamento cliente che risponde {\"billing\": 0.08, \"technical\": 0.85, \"sales\": 0.07} con un punteggio di confidenza. L'azienda rivendica una velocità 40-200 volte superiore agli LLM frontier (70-500 millisecondi contro i minuti dei modelli generalisti) e un costo di 0,042 $ per milione di token in input, output gratuito. TypeSafe parla di «0% di hallucination», ma The Register nota che il confronto non è alla pari: un output strutturato non può essere malformato, ma può comunque essere sbagliato nel merito.",
+        why="È un tentativo concreto di rispondere al costo e alla latenza dei LLM generalisti per compiti di automazione decisionale — routing, classificazione, verifica di altri output AI — un caso d'uso più vicino ai processi operativi di un'azienda cliente che alla generazione di testo, e un promemoria utile che un claim «zero errori» va sempre letto con la qualifica che lo accompagna.",
+        source="TypeSafe AI (annuncio) / The Register (analisi indipendente)",
+        url="https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711",
+    ),
 ]
 
 # ---------------------------------------------------------------------------

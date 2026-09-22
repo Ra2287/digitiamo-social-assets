@@ -6,8 +6,9 @@ dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
 da `plan.py` e legato all'indice perche' chi scrive i testi lavora sul report,
 dove le idee sono numerate.
 
-Solo le 5 idee Prioritario hanno una caption: le Riserva non generano asset
-finche' non vengono attivate (vedi week.py), quindi non servono ancora.
+Le idee Prioritario hanno una caption: le Riserva (idee 6 e 7) non generano
+asset finche' non vengono attivate (vedi week.py), quindi non servono ancora.
+CAPTION_8 e' l'idea extra su Jev/TypeSafe AI, aggiunta dopo la revisione.
 """
 
 CAPTION_1 = """Questa settimana Anthropic ha pubblicato per la prima volta un numero concreto: Claude guida oggi il 26% della propria ricerca interna, contro meno dell'1% a febbraio. Nello stesso periodo, in Italia, l'adozione dell'AI nelle imprese è raddoppiata in un anno, arrivando al 19,5%.
@@ -71,3 +72,14 @@ CAPTION_5 = """Questa settimana Anthropic ha detto che Claude «guida» il 26% d
 Ti sembra un buon modo di misurare quanto ci si può fidare dell'AI, o solo una statistica ben scelta? Dicci la tua 👇
 
 #AI #TechExplained #Innovazione #B2B #RicercaAI"""
+
+
+CAPTION_8 = """Questa settimana un laboratorio fondato da un ex OpenAI ha lanciato un modello che si rifiuta di scrivere testo. Si chiama Jev, risponde in meno di mezzo secondo e costa centinaia di volte meno di un modello generalista. Cosa fa, davvero?
+
+→ Jev non genera linguaggio: restituisce decisioni strutturate con una probabilità già calcolata per ogni opzione — per esempio, smistare una richiesta cliente tra fatturazione, tecnico e vendite con un punteggio di confidenza per ciascuna. TypeSafe lo chiama «System One model»: veloce e strutturato, non conversazionale.
+→ I numeri che rivendica sono netti: risposte in 70-500 millisecondi contro i minuti di un modello generalista, e un costo di 0,042 $ per milione di token in input, con output gratuito — 40 a 200 volte più veloce sui compiti per cui è stato costruito.
+→ TypeSafe parla di «0% di hallucination», ma va letto con la qualifica giusta: un output strutturato non può essere malformato, ma può comunque essere sbagliato nel merito. Utile da ricordare ogni volta che un fornitore promette «zero errori»: la domanda giusta è sempre «zero errori di cosa».
+
+Ti sembra un'evoluzione utile per automatizzare decisioni ripetitive in azienda, o resta un modello di nicchia? Dicci la tua 👇
+
+#AI #TechExplained #Innovazione #B2B #MachineLearning"""

@@ -272,6 +272,27 @@ ideas = [
         hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
+    # Idea 8, extra: aggiunta su richiesta esplicita di Ramona dopo la
+    # revisione del report, per coprire il lancio di Jev/TypeSafe AI (segnalato
+    # in revisione e integrato tra i trend). Sesto post Prioritario della
+    # settimana, oltre ai 5 dello schema standard: eccezione dichiarata, non
+    # un cambio della cadenza di default a 5/settimana.
+    dict(
+        badge="Prioritario",
+        day="Sabato 26/9 (extra della settimana, su richiesta)",
+        format="Divulgativo stile Datapizza",
+        title="Jev non scrive una parola. Risponde in 100 millisecondi: cos'è un modello *System One*?",
+        news="Lancio di Jev, TypeSafe AI",
+        news_url="https://www.theregister.com/ai-and-ml/2026/09/16/typesafe-ai-debuts-model-for-machines-that-plays-doom/5296711",
+        hook="Questa settimana un laboratorio fondato da un ex OpenAI ha lanciato un modello che si rifiuta di scrivere testo. Si chiama Jev, risponde in meno di mezzo secondo e costa centinaia di volte meno di un modello generalista. Cosa fa, davvero?",
+        points=[
+            "Jev non genera linguaggio: restituisce decisioni strutturate con una probabilità già calcolata per ogni opzione — per esempio, smistare una richiesta cliente tra fatturazione, tecnico e vendite con un punteggio di confidenza per ciascuna. TypeSafe lo chiama «System One model»: veloce e strutturato, non conversazionale.",
+            "I numeri che rivendica sono netti: risposte in 70-500 millisecondi contro i minuti di un modello generalista, e un costo di 0,042 $ per milione di token in input, con output gratuito — 40 a 200 volte più veloce sui compiti per cui è stato costruito.",
+            "TypeSafe parla di «0% di hallucination», ma va letto con la qualifica giusta: un output strutturato non può essere malformato, ma può comunque essere sbagliato nel merito. Utile da ricordare ogni volta che un fornitore promette «zero errori»: la domanda giusta è sempre «zero errori di cosa».",
+        ],
+        cta="Ti sembra un'evoluzione utile per automatizzare decisioni ripetitive in azienda, o resta un modello di nicchia? Dicci la tua 👇",
+        hashtags="#AI #TechExplained #Innovazione #B2B #MachineLearning",
+    ),
 ]
 
 # ---------------------------------------------------------------------------
@@ -319,5 +340,11 @@ publishing = [
         time="—",
         format="Riserva 2 — Riflessione di chiusura",
         reason="Chiude l'arco della settimana. Utile nel weekend se il traffico lo giustifica, o come richiamo la settimana successiva.",
+    ),
+    dict(
+        day="Sabato 26/9",
+        time="10:00",
+        format="Divulgativo — Jev / TypeSafe AI (extra)",
+        reason="Sesto post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Il sabato mattina ha traffico B2B più basso ma un pubblico più curioso e meno frettoloso: coerente con un contenuto divulgativo senza CTA commerciale. Da valutare se spostarlo a un giorno feriale della settimana successiva se si preferisce non superare la cadenza standard.",
     ),
 ]

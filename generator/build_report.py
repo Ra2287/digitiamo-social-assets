@@ -293,6 +293,31 @@ ideas = [
         cta="Ti sembra un'evoluzione utile per automatizzare decisioni ripetitive in azienda, o resta un modello di nicchia? Dicci la tua 👇",
         hashtags="#AI #TechExplained #Innovazione #B2B #MachineLearning",
     ),
+    # Idea 9, extra: aggiunta su richiesta esplicita di Ramona, fonde i trend
+    # 8 (colloqui OpenAI/Anthropic/Google DeepMind su un organismo di
+    # autoregolamentazione, senza accordo) e 9 (Geoffrey Hinton avverte il
+    # Congresso: "forse un anno" per regolamentare l'AI) — stesso schema usato
+    # la settimana scorsa per fondere due trend correlati in un solo post.
+    dict(
+        badge="Prioritario",
+        day="Domenica 27/9 (extra della settimana, su richiesta)",
+        format="Mito da sfatare (fonde i trend 8 e 9)",
+        title="Il settore si autoregolamenterà da solo, prima o poi? Anche chi lo dice non ci crede fino in *fondo*",
+        news="Colloqui OpenAI/Anthropic/Google DeepMind su un organismo stile FINRA + warning di Geoffrey Hinton al Congresso USA",
+        news_url="https://www.nbcnews.com/politics/congress/godfather-ai-warns-congress-maybe-year-left-regulate-ai-rcna598330",
+        hook="🔥 Il mito: il settore AI riuscirà a darsi delle regole da solo, senza bisogno di una spinta esterna — basta dargli tempo.",
+        no_hashtags=True,
+        is_myth=True,
+        myth_body="Due notizie della stessa settimana raccontano il contrario.",
+        points=[
+            "OpenAI, Anthropic e Google DeepMind discutono da mesi la creazione di un organismo di autoregolamentazione in stile FINRA per testare i modelli prima del rilascio pubblico, un'idea proposta da Demis Hassabis a luglio. I colloqui, per ora, non hanno prodotto un accordo operativo.",
+            "Nello stesso periodo, Geoffrey Hinton — uno dei padri fondatori del deep learning — ha detto al Congresso USA che restano «forse un anno» di tempo per introdurre una regolamentazione efficace, prima che il ritmo di sviluppo renda il controllo politico troppo tardivo.",
+            "Se nemmeno i laboratori concorrenti riescono a mettersi d'accordo tra loro su regole condivise, aspettare che il settore si autoregoli non è una strategia: è una scommessa.",
+        ],
+        myth_closing="Per un'azienda che adotta l'AI, il messaggio resta lo stesso qualunque cosa succeda a Washington o a Bruxelles: la governance interna — chi decide cosa un sistema AI può fare da solo, e chi lo controlla — non può aspettare che arrivi una legge a deciderlo al posto suo.",
+        cta="Nella tua azienda esiste già una policy interna su cosa un sistema AI può o non può fare da solo, o si aspetta che arrivi una norma a deciderlo? 👇",
+        hashtags="",
+    ),
 ]
 
 # ---------------------------------------------------------------------------
@@ -346,5 +371,11 @@ publishing = [
         time="10:00",
         format="Divulgativo — Jev / TypeSafe AI (extra)",
         reason="Sesto post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Il sabato mattina ha traffico B2B più basso ma un pubblico più curioso e meno frettoloso: coerente con un contenuto divulgativo senza CTA commerciale. Da valutare se spostarlo a un giorno feriale della settimana successiva se si preferisce non superare la cadenza standard.",
+    ),
+    dict(
+        day="Domenica 27/9",
+        time="10:00",
+        format="Mito da sfatare — governance AI, trend 8+9 (extra)",
+        reason="Settimo post della settimana, aggiunto su richiesta. Il traffico B2B della domenica è il più basso della settimana: da valutare uno spostamento a lunedì della settimana successiva come apertura, oppure a un giorno feriale con margine, se si preferisce non pubblicare nel weekend. Tenuto separato dagli altri due 'mito da sfatare' della settimana (martedì e giovedì) per non far leggere tre miti consecutivi nello stesso arco.",
     ),
 ]

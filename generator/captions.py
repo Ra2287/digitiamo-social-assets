@@ -83,3 +83,16 @@ CAPTION_8 = """Questa settimana un laboratorio fondato da un ex OpenAI ha lancia
 Ti sembra un'evoluzione utile per automatizzare decisioni ripetitive in azienda, o resta un modello di nicchia? Dicci la tua 👇
 
 #AI #TechExplained #Innovazione #B2B #MachineLearning"""
+
+
+CAPTION_9 = """🔥 Il mito: il settore AI riuscirà a darsi delle regole da solo, senza bisogno di una spinta esterna — basta dargli tempo.
+
+Due notizie della stessa settimana raccontano il contrario.
+
+🔹 OpenAI, Anthropic e Google DeepMind discutono da mesi la creazione di un organismo di autoregolamentazione in stile FINRA per testare i modelli prima del rilascio pubblico, un'idea proposta da Demis Hassabis a luglio. I colloqui, per ora, non hanno prodotto un accordo operativo
+🔹 Nello stesso periodo, Geoffrey Hinton — uno dei padri fondatori del deep learning — ha detto al Congresso USA che restano «forse un anno» di tempo per introdurre una regolamentazione efficace, prima che il ritmo di sviluppo renda il controllo politico troppo tardivo
+🔹 Se nemmeno i laboratori concorrenti riescono a mettersi d'accordo tra loro su regole condivise, aspettare che il settore si autoregoli non è una strategia: è una scommessa
+
+Per un'azienda che adotta l'AI, il messaggio resta lo stesso qualunque cosa succeda a Washington o a Bruxelles: la governance interna — chi decide cosa un sistema AI può fare da solo, e chi lo controlla — non può aspettare che arrivi una legge a deciderlo al posto suo.
+
+Nella tua azienda esiste già una policy interna su cosa un sistema AI può o non può fare da solo, o si aspetta che arrivi una norma a deciderlo? 👇"""

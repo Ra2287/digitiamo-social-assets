@@ -2,6 +2,7 @@
 import html as htmlmod
 from brand import tokens
 from build_report import trends, competitors, ideas, publishing, WEEK_LABEL, GENERATED_ON, C
+import performance
 
 def esc(s):
     return htmlmod.escape(s, quote=False)
@@ -99,6 +100,21 @@ table.pubtable tr:nth-child(even) td {{ background:{C['tint']}; }}
 .freq-stat .num {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:26px; color:{C['green']}; }}
 .freq-stat .lbl {{ font-size:11px; color:#c7c9f2; margin-top:4px; }}
 
+/* PERFORMANCE (settimana precedente) */
+.perf-stats {{ display:flex; gap:14px; margin:18px 0 26px 0; flex-wrap:wrap; }}
+.perf-stat {{ background:{C['tint']}; border-radius:10px; padding:14px 16px; flex:1; min-width:110px; }}
+.perf-stat .num {{ font-family:'Montserrat',sans-serif; font-weight:800; font-size:22px; color:{C['brand']}; }}
+.perf-stat .lbl {{ font-size:10.5px; color:#5b5f8f; margin-top:2px; text-transform:uppercase; letter-spacing:0.3px; }}
+table.perftable {{ width:100%; border-collapse:collapse; margin-bottom:22px; }}
+table.perftable th {{ background:{C['navy']}; color:#fff; font-size:11px; text-transform:uppercase; letter-spacing:0.3px; padding:10px 12px; text-align:left; }}
+table.perftable td {{ padding:10px 12px; font-size:12px; border-bottom:1px solid {C['tint']}; vertical-align:top; }}
+table.perftable tr:nth-child(even) td {{ background:{C['tint']}; }}
+.perf-highlight {{ background:{C['tint']}; border-left:5px solid {C['green']}; border-radius:8px; padding:16px 20px; margin-bottom:22px; font-size:13px; }}
+.perf-highlight b {{ color:{C['navy']}; }}
+.perf-pending {{ background:#fff3d6; border-radius:8px; padding:14px 18px; font-size:12.5px; color:#5c4300; margin-bottom:10px; }}
+.perf-empty, .perf-error {{ background:{C['tint']}; border-radius:10px; padding:20px 24px; font-size:13px; color:#3a3d6b; }}
+.perf-error {{ border-left:5px solid #c0392b; }}
+
 """
 
 def cover_page():
@@ -119,10 +135,11 @@ def cover_page():
 
 def toc_page():
     items = [
-        ("01", "Trend del settore", "8-10 sviluppi chiave della settimana, con fonti"),
-        ("02", "Analisi competitor", "5 player che si sono mossi in modo significativo"),
-        ("03", "Idee di post (PED)", "7 idee: 5 Prioritario + 2 Riserva, arco narrativo settimanale"),
-        ("04", "Suggerimenti di pubblicazione", "Calendario, orari e ragionamento sulla frequenza"),
+        ("01", "Come sono andati i post", "Bilancio della settimana precedente: pubblicati, in sospeso, metriche"),
+        ("02", "Trend del settore", "8-10 sviluppi chiave della settimana, con fonti"),
+        ("03", "Analisi competitor", "5 player che si sono mossi in modo significativo"),
+        ("04", "Idee di post (PED)", "7 idee: 5 Prioritario + 2 Riserva, arco narrativo settimanale"),
+        ("05", "Suggerimenti di pubblicazione", "Calendario, orari e ragionamento sulla frequenza"),
     ]
     rows = "".join(f"""
     <div class="toc-item">
@@ -142,6 +159,88 @@ def toc_page():
 </div>
 """
 
+def performance_page():
+    """01. Come sono andati i post della settimana precedente, da Buffer.
+
+    Sezione calcolata da dati live (performance.gather()), non da contenuto
+    scritto a mano: vedi performance.py per il perche'.
+    """
+    data = performance.gather()
+    week_label = data.get("label", "")
+
+    if not data.get("ok"):
+        body = f"""
+    <div class="perf-error">
+      <b>Dati non disponibili questa settimana.</b><br>
+      {esc(data.get('error') or 'Motivo non specificato.')}<br>
+      Il resto del report non dipende da questo dato: non blocca nulla, ma il bilancio
+      della settimana {esc(week_label)} andrà controllato a mano su Buffer.
+    </div>"""
+    elif data.get("empty"):
+        body = f'<div class="perf-empty">{esc(data.get("note") or "")}</div>'
+    else:
+        published = data.get("published") or []
+        pending = data.get("pending") or []
+        totals = data.get("totals") or {}
+        best = data.get("best")
+
+        stats = "".join(f"""
+      <div class="perf-stat">
+        <div class="num">{esc(performance.fmt_metric(k, v))}</div>
+        <div class="lbl">{esc(performance.METRIC_LABELS.get(k, k))}</div>
+      </div>""" for k, v in totals.items())
+
+        rows = "".join(f"""
+      <tr>
+        <td><b>{esc(p['title'])}</b></td>
+        <td>{esc(p['format'])}</td>
+        <td>{esc(performance.fmt_metric('impressions', p['metrics'].get('impressions', 0)))}</td>
+        <td>{esc(performance.fmt_metric('reactions', p['metrics'].get('reactions', 0)))}</td>
+        <td>{esc(performance.fmt_metric('comments', p['metrics'].get('comments', 0)))}</td>
+        <td>{esc(performance.fmt_metric('shares', p['metrics'].get('shares', 0)))}</td>
+        <td>{esc(performance.fmt_metric('engagementRate', p['metrics'].get('engagementRate', 0)) if 'engagementRate' in p['metrics'] else '—')}</td>
+      </tr>""" for p in published) or '<tr><td colspan="7">Nessun post di questa settimana risulta pubblicato su Buffer.</td></tr>'
+
+        highlight = ""
+        if best:
+            highlight = f"""
+    <div class="perf-highlight">
+      <b>Il post che ha performato meglio:</b> «{esc(best['title'])}» ({esc(best['format'])}) —
+      {esc(performance.fmt_metric('engagementRate', best['metrics']['engagementRate']))} di engagement rate,
+      {esc(performance.fmt_metric('impressions', best['metrics'].get('impressions', 0)))} impression.
+    </div>"""
+
+        pending_html = ""
+        if pending:
+            items = ", ".join(f"«{esc(p['title'])}»" for p in pending)
+            pending_html = f"""
+    <div class="perf-pending">
+      <b>{len(pending)} bozze proposte per quella settimana non risultano pubblicate su Buffer</b>
+      (mai approvate, o approvate ma non ancora uscite): {items}.
+    </div>"""
+
+        body = f"""
+    <div class="perf-stats">{stats}</div>
+    {highlight}
+    <table class="perftable">
+      <tr><th>Post</th><th>Formato</th><th>Impression</th><th>Reazioni</th><th>Commenti</th><th>Condivisioni</th><th>Eng. rate</th></tr>
+      {rows}
+    </table>
+    {pending_html}
+"""
+
+    return f"""
+<div class="flow">
+  <div class="section-head">
+    <h2 class="section-title"><span class="section-num">01.</span> Come sono andati i post</h2>
+    <div class="section-sub">Bilancio della settimana {esc(week_label)} — canale {esc(data.get('channel') or 'LinkedIn Digitiamo')}, dati da Buffer</div>
+    <div class="divider"></div>
+  </div>
+  {body}
+</div>
+"""
+
+
 def trends_page():
     cards = ""
     for i, t in enumerate(trends, start=1):
@@ -158,7 +257,7 @@ def trends_page():
     return f"""
 <div class="flow">
   <div class="section-head">
-    <h2 class="section-title"><span class="section-num">01.</span> Trend del settore</h2>
+    <h2 class="section-title"><span class="section-num">02.</span> Trend del settore</h2>
     <div class="section-sub">Gli sviluppi più rilevanti degli ultimi 7 giorni nel mondo AI/software tech</div>
     <div class="divider"></div>
   </div>
@@ -180,7 +279,7 @@ def competitors_page():
     return f"""
 <div class="flow">
   <div class="section-head">
-    <h2 class="section-title"><span class="section-num">02.</span> Analisi competitor</h2>
+    <h2 class="section-title"><span class="section-num">03.</span> Analisi competitor</h2>
     <div class="section-sub">Chi si è mosso in modo significativo questa settimana, e come differenziarsi</div>
     <div class="divider"></div>
   </div>
@@ -239,7 +338,7 @@ def ideas_pages():
     return f"""
 <div class="flow">
   <div class="section-head">
-    <h2 class="section-title"><span class="section-num">03.</span> Idee di post (PED)</h2>
+    <h2 class="section-title"><span class="section-num">04.</span> Idee di post (PED)</h2>
     <div class="section-sub">7 idee — 5 Prioritario (nucleo settimanale) + 2 Riserva (banca contenuti) — organizzate come vero arco narrativo</div>
     <div class="divider"></div>
     <div style="background:{C['tint']}; border-radius:10px; padding:16px 20px; margin-bottom:24px; font-size:12.5px;">
@@ -265,7 +364,7 @@ def publishing_page():
       </tr>""" for p in publishing)
     return f"""
 <div class="flow">
-  <h2 class="section-title"><span class="section-num">04.</span> Suggerimenti di pubblicazione</h2>
+  <h2 class="section-title"><span class="section-num">05.</span> Suggerimenti di pubblicazione</h2>
   <div class="section-sub">Calendario consigliato per la settimana, basato su best practice B2B tech LinkedIn</div>
   <div class="divider"></div>
   <table class="pubtable">
@@ -291,7 +390,8 @@ def publishing_page():
 """
 
 def build_full_html():
-    pages = cover_page() + toc_page() + trends_page() + competitors_page() + ideas_pages() + publishing_page()
+    pages = (cover_page() + toc_page() + performance_page() + trends_page()
+             + competitors_page() + ideas_pages() + publishing_page())
     return f"""<!DOCTYPE html>
 <html lang="it">
 <head>

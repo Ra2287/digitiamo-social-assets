@@ -548,12 +548,16 @@ def _posts():
         posts.append(dict(kind="document", slug=item["slug"], text=text_for(item),
                           doc_url=pdf, thumb_url=thumb,
                           title=item.get("title") or item["slug"],
+                          post_type=item.get("post_type"),
                           urls=[pdf, thumb]))
 
     for item in singles:
         img = RAW_BASE + names.single(item["slug"])
         posts.append(dict(kind="image", slug=item["slug"], text=text_for(item),
-                          image_url=img, urls=[img]))
+                          image_url=img,
+                          title=item.get("title") or item["slug"],
+                          post_type=item.get("post_type"),
+                          urls=[img]))
     return posts
 
 
@@ -600,7 +604,13 @@ def main():
             res = create_image_post(key, channel_id, p["text"], p["image_url"])
         post = _check_result(res, p["slug"])
         created.append(dict(date=week.DATE, revision=names.revision(p["slug"]),
-                            slug=p["slug"], id=post["id"], url=p["urls"][0]))
+                            slug=p["slug"], id=post["id"], url=p["urls"][0],
+                            # Titolo e formato dell'idea: servono a performance.py
+                            # per etichettare i post nell'analisi della settimana
+                            # successiva senza dover ricostruirli da git. Le voci
+                            # del registro scritte prima di questo campo restano
+                            # senza (performance.py ha un fallback via git).
+                            title=p.get("title"), format=p.get("post_type")))
 
     _record(created)
     print("\nFatto: %d bozze create su Buffer (da approvare a mano)." % len(created))

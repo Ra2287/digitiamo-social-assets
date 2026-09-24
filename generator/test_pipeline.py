@@ -200,6 +200,61 @@ def _rifacimento():
 
 
 # ---------------------------------------------------------------------------
+@prova("performance.py: settimana precedente, formattazione e confronto registro/Buffer")
+def _performance():
+    import performance as perf
+
+    # La settimana precedente a un lunedi' e' il lunedi'-domenica di 7 giorni prima.
+    start, end, label = perf.previous_week("2026-09-21")
+    assert (start, end) == ("2026-09-14", "2026-09-21"), (start, end)
+    assert "14/09" in label and "20/09/2026" in label, label
+
+    # Formattazione: percentuale con un decimale, interi con separatore delle
+    # migliaia, mai un valore inventato se manca la chiave.
+    assert perf.fmt_metric("engagementRate", 4.5016) == "4.5%"
+    assert perf.fmt_metric("impressions", 1234) == "1.234"
+    assert perf.fmt_metric("reach", 160) == "160"
+
+    # Il confronto registro/Buffer: un post 'sent' diventa una riga pubblicata
+    # con le sue metriche, uno senza corrispondenza in Buffer resta "pending" -
+    # mai inventato, mai scartato in silenzio. Una revisione superata (r0 dopo
+    # un r1) non genera una riga fantasma.
+    registry = [
+        dict(slug="idea1-apertura", id="p1", revision=0, title="Apertura", format="Thought leadership"),
+        dict(slug="idea2-mito", id="p2", revision=0, title="Mito vecchio", format="Mito da sfatare"),
+        dict(slug="idea2-mito", id="p2b", revision=1, title="Mito corretto", format="Mito da sfatare"),
+        dict(slug="idea3-mai-approvata", id="p3", revision=0, title="Mai approvata", format="Esperienza diretta"),
+    ]
+    sent = [
+        dict(id="p1", metrics=[
+            dict(type="impressions", value=300), dict(type="reactions", value=10),
+            dict(type="comments", value=2), dict(type="shares", value=1),
+            dict(type="engagementRate", value=5.0),
+        ]),
+        dict(id="p2b", metrics=[
+            dict(type="impressions", value=100), dict(type="reactions", value=1),
+            dict(type="comments", value=0), dict(type="shares", value=0),
+            dict(type="engagementRate", value=1.0),
+        ]),
+        # p2 (revisione superata) e' 'sent' ma non deve comparire: e' stata
+        # sostituita da p2b, la bozza vecchia va ignorata come un rifacimento.
+        dict(id="p2", metrics=[dict(type="impressions", value=9999)]),
+    ]
+    summary = perf.build_summary(registry, sent)
+    slugs_pubblicati = sorted(p["slug"] for p in summary["published"])
+    assert slugs_pubblicati == ["idea1-apertura", "idea2-mito"], slugs_pubblicati
+    titolo_idea2 = next(p["title"] for p in summary["published"] if p["slug"] == "idea2-mito")
+    assert titolo_idea2 == "Mito corretto", titolo_idea2  # la revisione r1 vince, non r0
+    assert [p["slug"] for p in summary["pending"]] == ["idea3-mai-approvata"]
+    assert summary["totals"]["impressions"] == 400  # 300 + 100, MAI il 9999 della revisione superata
+    assert round(summary["totals"]["engagementRate"], 2) == 3.0  # media (5.0+1.0)/2, non somma
+    assert summary["best"]["slug"] == "idea1-apertura"  # eng. rate piu' alto
+
+    return "settimana prec. calcolata, %d pubblicati/%d in sospeso, nessuna revisione fantasma" % (
+        len(summary["published"]), len(summary["pending"]))
+
+
+# ---------------------------------------------------------------------------
 if __name__ == "__main__":
     falliti = 0
     for nome, f in ok:

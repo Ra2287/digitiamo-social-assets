@@ -76,6 +76,12 @@ Ogni settimana si modificano **solo i file di contenuto**:
 | `generator/week.py` | `DATE`, i rifacimenti (`REDO`) e le eventuali correzioni a mano |
 | `generator/captions.py` | i testi dei post per Buffer |
 
+`generator/performance.py` **non** è tra questi: è codice, non contenuto
+settimanale. Calcola da sé, a ogni generazione del report, il bilancio della
+settimana precedente da Buffer — vedi «Il report si apre con "Come sono
+andati i post"» più sotto. Non va mai toccato per scrivere il report di una
+singola settimana.
+
 **L'allineamento è automatico.** Un hook `SessionStart`
 (`.claude/sync-main.sh`) allinea la copia locale a `origin/main` all'avvio,
 perché una sessione su codice vecchio non ha `plan.py` né `names.py` e
@@ -243,6 +249,48 @@ non riapplicare a una settimana nuova un aggiustamento scritto per la vecchia.
 Il report **non** è soggetto a quel controllo: `python3 render.py report`
 funziona sempre.
 
+## Il report si apre con «Come sono andati i post» (dal 24/9/2026)
+
+Richiesto da Ramona: ogni report apre con un bilancio della settimana
+**precedente**, non solo con le idee nuove. È la sezione **01** (le altre sono
+scalate di uno: trend → 02, competitor → 03, idee → 04, pubblicazione → 05).
+
+Calcolata da `generator/performance.py`, **a runtime, da dati live** — non è
+contenuto che si scrive nel report come trend/competitor/idee. Fa tre cose:
+
+1. Legge `generator/buffer-drafts.json` per sapere quali bozze erano state
+   create per la settimana precedente a `week.DATE`.
+2. Interroga l'API GraphQL di Buffer (`posts`, filtrato per canale, stato
+   `sent` e intervallo di date) per le metriche reali di quei post —
+   impression, reach, reazioni, commenti, condivisioni, tasso di engagement.
+3. Confronta le due liste: quali bozze sono uscite (con le metriche) e quali
+   sono rimaste **in sospeso** — mai approvate, o approvate ma non ancora
+   pubblicate. Questo secondo dato conta quanto il primo: se la maggior parte
+   delle bozze di una settimana non è mai stata approvata, il report lo dice.
+
+**Implicazioni pratiche per chi genera il report:**
+
+- **Serve `BUFFER_API_KEY` anche per generare il report**, non solo per
+  pubblicare le bozze — vedi sotto per dove lo cerca. Se manca o Buffer non
+  risponde, la sezione lo dice chiaramente nel PDF (mai un numero vecchio o
+  indovinato) e il resto del report si genera comunque: non è un errore
+  bloccante.
+- **Serve una clone non superficiale** (`fetch-depth: 0` in CI, già impostato
+  in `ped.yml`): per le settimane registrate prima del 24/9/2026 — quando
+  `buffer-drafts.json` non aveva ancora titolo e formato per ogni bozza — il
+  modulo li recupera da `git show <sha>:generator/build_report.py`, cercando
+  l'ultimo commit "PED <data>" di quella settimana. Dal 24/9/2026 in poi
+  `publish_buffer.py` scrive titolo e formato direttamente nel registro alla
+  creazione della bozza, quindi il fallback via git serve sempre meno.
+- **Non richiede nessuna azione manuale settimanale**: si rigenera da sé a
+  ogni `render.py report`. Non va scritta a mano, non va "aggiustata" se i
+  numeri di una settimana sono deludenti — quella è esattamente l'informazione
+  che la sezione deve dare.
+
+Le prove pure (calcolo della settimana precedente, formattazione, confronto
+registro/Buffer con revisioni) sono in `test_pipeline.py`, senza rete — vedi
+`## Le prove` più sotto.
+
 ## Pubblicazione su Buffer
 
 ```bash
@@ -304,7 +352,7 @@ l'approvazione umana resta obbligatoria.
 
 ## Le prove
 
-`python3 generator/test_pipeline.py` — quattro prove, nessuna rete, nessun
+`python3 generator/test_pipeline.py` — cinque prove, nessuna rete, nessun
 asset pubblicato toccato. Girano anche in CI **prima** del render:
 
 1. **La scelta del template** su nove diciture reali, più il rifiuto di un
@@ -318,6 +366,10 @@ asset pubblicato toccato. Girano anche in CI **prima** del render:
 4. **Il ciclo con l'umano**: che un rilancio non tocchi niente, e che un
    rifacimento rigeneri **solo** quel post lasciando intatti gli asset a cui
    puntano le bozze già viste.
+5. **Il bilancio della settimana precedente** (`performance.py`): il calcolo
+   della settimana Lun-Dom, la formattazione delle metriche, e che il
+   confronto registro/Buffer non inventi righe — una revisione superata da un
+   rifacimento non deve comparire come post pubblicato a sé.
 
 I bersagli si ricavano dal piano corrente, non sono scritti a mano: due prove
 precedenti erano già diventate stantie perché riferivano gli slug di una

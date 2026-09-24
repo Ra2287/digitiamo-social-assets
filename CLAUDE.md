@@ -98,6 +98,51 @@ git rebase origin/main
 
 Leggi sempre la riga `[sync]` all'avvio: dice su che base stai lavorando.
 
+## Modifiche al codice del generatore: branch + PR, non push diretto su main
+
+Richiesto da Ramona il 24/9/2026. Vale per **il codice** in `generator/*.py`,
+`brand/`, `templates.py`, `.github/workflows/`, ecc. — non per i tre file di
+contenuto settimanale (`build_report.py`, `week.py`, `captions.py`), che
+restano un push diretto su `main` come descritto sopra: quel flusso esiste
+apposta perché il marcatore `[pubblica]` sull'ultimo commit su `main` avvii il
+workflow, e passare da un branch/PR lo romperebbe (il push che conta è quello
+su `main`, non quello sul branch).
+
+Per una modifica di codice:
+
+```bash
+git checkout -b <nome-branch-descrittivo>
+# ... modifiche, commit ...
+git push "https://<TOKEN>@github.com/Ra2287/digitiamo-social-assets.git" <nome-branch-descrittivo>
+```
+
+**Il token fine-grained di questa repo, al 24/9/2026, ha solo il permesso
+"Contents: Read and write".** Basta per creare il branch e pusharlo, ma
+**non per aprire la PR**: la chiamata a `POST /repos/.../pulls` risponde `403
+Resource not accessible by personal access token` (verificato lo stesso
+giorno). Finché non arriva un token con anche "Pull requests: Read and
+write" (idealmente insieme a "Workflows: Read and write", stesso problema
+già noto per `.github/workflows/ped.yml`), il flusso pratico è:
+
+1. Pusha il branch con le modifiche.
+2. Dai a Ramona l'URL diretto per aprirla in un clic:
+   `https://github.com/Ra2287/digitiamo-social-assets/compare/main...<nome-branch>?expand=1`
+3. Segnalalo chiaramente nel messaggio di consegna — non fingere che la PR
+   sia aperta se non lo è.
+
+Se in futuro il token ha il permesso giusto, la PR si apre da codice con:
+
+```bash
+curl -s -X POST -H "Authorization: token <TOKEN>" -H "Accept: application/vnd.github+json" \
+  https://api.github.com/repos/Ra2287/digitiamo-social-assets/pulls \
+  -d '{"title":"...", "head":"<nome-branch>", "base":"main", "body":"..."}'
+```
+
+(bypassando il proxy di rete di sessione allo stesso modo di `git push`, vedi
+sopra — le chiamate dirette a `api.github.com` senza quel bypass vengono
+rifiutate dal proxy con un errore diverso, che non è un problema di permessi
+GitHub).
+
 Poi, in locale, per vedere cosa esce:
 
 ```bash

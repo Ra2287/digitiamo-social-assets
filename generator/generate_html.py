@@ -342,11 +342,11 @@ def ideas_pages():
     <div class="section-sub">7 idee — 5 Prioritario (nucleo settimanale) + 2 Riserva (banca contenuti) — organizzate come vero arco narrativo</div>
     <div class="divider"></div>
     <div style="background:{C['tint']}; border-radius:10px; padding:16px 20px; margin-bottom:24px; font-size:12.5px;">
-      <b>Arco narrativo della settimana:</b> la governance vista da cinque angoli — chi
-      costruisce i modelli sposta ingegneri sulla sicurezza, i default dei fornitori non
-      sono i tuoi, i numeri italiani dicono che il divario è nel passaggio dalla prova al
-      processo, la nostra pratica concreta, e infine la spiegazione del meccanismo.
-      Nessun post vende direttamente prima di giovedì.
+      <b>Arco narrativo della settimana:</b> apertura con il quadro di settore (nessuna
+      vendita), due momenti di rottura in formato "mito da sfatare" a metà settimana, una
+      voce diretta del team che continua il filo del mito più vicino, e una spiegazione
+      tecnica accessibile a chiusura. Le due idee di Riserva restano banca contenuti.
+      I dettagli di questa settimana sono nelle singole schede qui sotto, non in questa nota.
     </div>
   </div>
   {cards_html}

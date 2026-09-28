@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 21-27 settembre 2026.
+"""I testi dei post per Buffer, settimana 28 settembre - 4 ottobre 2026.
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -8,91 +8,66 @@ dove le idee sono numerate.
 
 Le idee Prioritario hanno una caption: le Riserva (idee 6 e 7) non generano
 asset finche' non vengono attivate (vedi week.py), quindi non servono ancora.
-CAPTION_8 e' l'idea extra su Jev/TypeSafe AI, aggiunta dopo la revisione.
 """
 
-CAPTION_1 = """Questa settimana Anthropic ha pubblicato per la prima volta un numero concreto: Claude guida oggi il 26% della propria ricerca interna, contro meno dell'1% a febbraio. Nello stesso periodo, in Italia, l'adozione dell'AI nelle imprese è raddoppiata in un anno, arrivando al 19,5%.
+CAPTION_1 = """Questa settimana due notizie, senza alcun collegamento apparente, dicono la stessa cosa. Microsoft ha rifatto Copilot da capo e ha messo per iscritto che ogni agente autonomo (Autopilot) richiede permessi espliciti, audit log completi e tracciamento. E da mercoledì 30 settembre, in Italia, non sorvegliare un sistema AI ad alto rischio diventa reato: fino a 8 anni di reclusione per le persone, fino a 1.000 quote di sanzione per le aziende.
 
-→ Il ritmo con cui l'AI accelera lo sviluppo di AI successiva non è più un dato di laboratorio: Anthropic misura 30.000 agenti al lavoro in contemporanea sulla propria piattaforma interna (fonte: Anthropic Institute).
-→ In Italia il quadro è più incoraggiante di due settimane fa, ma resta diviso in due velocità: oltre il 50% delle grandi aziende usa già l'AI, contro il 15% delle piccole imprese (fonte: Unioncamere-Dintec).
-→ Il collo di bottiglia non è mai stato l'accesso alla tecnologia: il 58,6% delle PMI indica la carenza di competenze come freno principale, e solo il 7% ha un percorso di formazione strutturato.
+→ Non è un caso che arrivino nella stessa settimana: il mercato è passato dalla domanda «quanto può fare un agente da solo» alla domanda «chi risponde di quello che fa». Anche il vendor che vuole vendere autonomia costruisce prima i freni (fonte: Microsoft).
+→ Il D.Lgs. 160/2026 introduce l'articolo 437-bis del Codice penale: si applica a provider, deployer e utilizzatori professionali di sistemi AI ad alto rischio, e prevede sanzioni per le organizzazioni fino a 1.000 quote tramite il D.Lgs. 231/2001 (fonte: BibLus).
+→ Nello stesso periodo, in Italia il mercato AI cresce del 50% e sfiora i 2 miliardi di euro — ma il gap di competenze tra grandi aziende e PMI resta di 37 punti percentuali (fonte: Politecnico di Milano, Istat). La crescita del mercato non chiude da sola quel divario.
 
-Nella tua azienda chi decide cosa l'AI può già fare da sola, e cosa no? Raccontacelo nei commenti 👇
+Nella tua azienda chi è oggi, per iscritto, il responsabile della sorveglianza umana su un sistema AI? Raccontacelo nei commenti 👇
 
-#IntelligenzaArtificiale #DigitalTransformation #PMI #B2B #Tech"""
-
-
-CAPTION_2 = """🔥 Il mito: gli agenti AI oggi scrivono codice di produzione da soli, il fattore umano nel «come» sta diventando superfluo.
-
-Il caso più documentato dell'anno dice il contrario, e viene proprio da chi ha tutto l'interesse a raccontare il mito.
-
-🔹 GitHub ha migrato 430.000 righe di Copilot da TypeScript a 832.000 righe Rust: gli agenti hanno scritto la maggior parte del codice, ma un solo sviluppatore senior ha diretto architettura, decisioni e revisione per 14,5 settimane
-🔹 Lo stesso indice pubblicato da Anthropic questa settimana mostra che il 90% del lavoro di Claude sulla propria ricerca resta a livello di «collaborazione» con le persone: zero compiti rilevati come completamente autonomi
-🔹 A maggio, uno sciame di agenti OpenAI aveva caricato oltre 3.000 pacchetti sospetti su RubyGems senza che nessuno se ne accorgesse per mesi: la prova di cosa succede quando quella supervisione manca
-
-Il vibe coding abbassa la barriera per scrivere codice. Non abbassa quella per decidere l'architettura, la sicurezza e cosa può andare in produzione: quella resta — e resterà — un lavoro senior.
-
-Nella tua azienda, chi ha oggi il compito di dire a un agente «questo codice non va in produzione»? 👇"""
+#IntelligenzaArtificiale #AIGovernance #DigitalTransformation #B2B #Tech"""
 
 
-CAPTION_3 = """[DA PERSONALIZZARE] Dopo il caso di GitHub di questa settimana — un runtime intero riscritto quasi solo da agenti, ma diretto da un solo sviluppatore senior — abbiamo voluto provarlo su [un progetto reale del team]: quanto lavoro possiamo davvero delegare, e dove restiamo noi a decidere.
+CAPTION_2 = """🔥 Il mito: gli agenti AI sono ormai pronti a sostituire un team di consulenza o un fornitore di servizi IT, senza bisogno di persone che li supervisionino.
 
-→ [Personalizza: cosa avete fatto fare all'agente — refactoring, migrazione, un modulo nuovo — su quale codebase e con quale strumento]
-→ Anche nel caso GitHub, il ruolo umano non è scomparso: si è spostato su definizione dei confini, arbitraggio delle decisioni tecniche e revisione, non sulla scrittura riga per riga
-→ [Personalizza: un aneddoto reale del team, dove l'agente ha sorpreso in positivo, e dove invece ha servito l'occhio di qualcuno che conosceva l'architettura]
+Il prodotto lanciato proprio questa settimana per vendere quell'autonomia dice il contrario.
 
-Il punto non è se un agente sa scrivere codice: lo sa fare, e bene. Il punto è chi decide cosa merita di arrivare in produzione.
+🔹 Questa settimana Ema, che vende «AI employees» capaci di orchestrare processi HR, IT e finanza, ha raccolto 77 milioni di dollari dichiarando di voler prendere il budget dei servizi IT tradizionali, non solo quello del software
+🔹 La stessa settimana, Microsoft ha rifatto Copilot e ha messo per iscritto che Autopilot — il modulo pensato apposta per gli agenti autonomi — richiede permessi espliciti, audit log completi e tracciamento prima di poter agire, e resta in una fase di test più ristretta del resto della suite
+🔹 Da mercoledì 30 settembre, in Italia omettere la sorveglianza umana su un sistema AI ad alto rischio non è più solo un rischio operativo: è un reato specifico, con sanzioni fino a 8 anni di reclusione per le persone e fino a 1.000 quote per le organizzazioni (D.Lgs. 160/2026)
 
-Qual è la vostra esperienza nel delegare del codice vero a un agente? Ci interessa confrontarci 👇
+Il vibe coding — e ora il vibe delegation — abbassano la barriera per far agire un agente. Non abbassano quella per decidere chi lo sorveglia: quella, da questa settimana, è anche un obbligo legale, non solo una buona pratica. Il lavoro non scompare: si sposta da chi implementa a chi governa l'implementazione.
 
-#AIEngineering #SoftwareDevelopment #TeamAugmentation #Tech #Innovazione"""
-
-
-CAPTION_4 = """🔥 Il mito: il gap AI delle piccole imprese italiane si chiude da solo, con il tempo e con l'adozione che via via si diffonde.
-
-I numeri di questa settimana, letti insieme, raccontano una storia diversa.
-
-🔹 19,5% delle imprese italiane usa oggi l'AI, il doppio rispetto a un anno fa (Unioncamere-Dintec)
-🔹 Oltre il 50% delle grandi aziende la usa, contro il 15% delle piccole imprese: il divario per dimensione non si è chiuso, si è solo spostato più in alto
-🔹 58,6% delle PMI indica la carenza di competenze digitali come freno principale all'adozione, non il costo, non la tecnologia
-🔹 Solo il 7% delle PMI ha avviato un percorso di formazione AI strutturato sul tema
-🔹 Secondo il professor Giuseppe Francesco Italiano (Luiss), almeno 6 aziende interessate su 10 abbandonano l'adozione AI per mancanza di competenze
-
-La crescita c'è, ed è reale. Ma cresce più in fretta chi ha già le competenze per adottare l'AI di chi parte da zero: il gap non si chiude aspettando, si chiude formando le persone sui casi d'uso reali dell'azienda.
-
-Nella tua PMI la carenza di competenze è già un freno riconosciuto, o non ne parla ancora nessuno? 👇"""
+Nella tua azienda, chi ha oggi il compito di dire a un agente «questa azione non la fai da solo»? 👇"""
 
 
-CAPTION_5 = """Questa settimana Anthropic ha detto che Claude «guida» il 26% della propria ricerca AI interna. Suona spaventoso, o rivoluzionario, a seconda di chi lo racconta. Cosa vuol dire davvero? Proviamo a spiegarlo senza fuffa.
+CAPTION_3 = """[DA PERSONALIZZARE] Proprio oggi, 30 settembre, entra in vigore in Italia la norma che rende la sorveglianza umana sui sistemi AI ad alto rischio un obbligo di legge, non solo una buona pratica. Questa settimana abbiamo voluto testare su [un processo reale del team] quanto possiamo davvero delegare a un agente, e dove restiamo noi a decidere.
 
-→ «Guidare» un compito, nel linguaggio di Anthropic, non vuol dire farlo da solo: è una scala che va da assistenza a collaborazione a guida a piena autonomia. Il 90% del lavoro di Claude resta ai primi livelli, con un umano sempre nel ciclo: zero compiti classificati come completamente autonomi.
-→ Il numero interessante non è il 26%, è il salto rispetto a febbraio 2026, quando era sotto l'1%: misura quanto rapidamente un laboratorio riesce a fidarsi delle proprie AI per accelerare lo sviluppo di quelle successive, non quanto le AI abbiano sostituito le persone.
-→ Per questo Anthropic pubblica anche i numeri di controllo insieme al 26%: 30.000 agenti al lavoro in contemporanea, ma solo lo 0,002% delle decisioni bloccato dai sistemi automatici e circa 50 segnalazioni a settimana che arrivano a un revisore umano. Un numero senza l'altro racconterebbe solo metà della storia.
+→ [Personalizza: cosa avete fatto fare all'agente — quale processo, quale strumento, con quali permessi concessi e quali no]
+→ Come Microsoft con Autopilot questa settimana, anche noi abbiamo trattato i permessi come una scelta esplicita, non come un default: cosa l'agente poteva fare da solo, cosa doveva passare da una persona, e chi era quella persona
+→ [Personalizza: un aneddoto reale del team, dove l'agente ha sorpreso in positivo, e dove invece la supervisione umana ha evitato un errore che sarebbe passato inosservato]
 
-Ti sembra un buon modo di misurare quanto ci si può fidare dell'AI, o solo una statistica ben scelta? Dicci la tua 👇
+Il punto non è se un agente sa lavorare da solo su un pezzo di processo: spesso sa farlo. Il punto è chi ha deciso, per iscritto, dove finisce la sua autonomia — perché da oggi, in Italia, è anche una responsabilità legale.
 
-#AI #TechExplained #Innovazione #B2B #RicercaAI"""
+Qual è la vostra esperienza nel delegare un processo vero a un agente? Ci interessa confrontarci 👇
+
+#AIEngineering #TeamAugmentation #SoftwareDevelopment #Tech #Innovazione"""
 
 
-CAPTION_8 = """Questa settimana un laboratorio fondato da un ex OpenAI ha lanciato un modello che si rifiuta di scrivere testo. Si chiama Jev, risponde in meno di mezzo secondo e costa centinaia di volte meno di un modello generalista. Cosa fa, davvero?
+CAPTION_4 = """🔥 Il mito: se il mercato AI italiano cresce così in fretta, il divario tra grandi aziende e PMI si sta chiudendo da solo.
 
-→ Jev non genera linguaggio: restituisce decisioni strutturate con una probabilità già calcolata per ogni opzione — per esempio, smistare una richiesta cliente tra fatturazione, tecnico e vendite con un punteggio di confidenza per ciascuna. TypeSafe lo chiama «System One model»: veloce e strutturato, non conversazionale.
-→ I numeri che rivendica sono netti: risposte in 70-500 millisecondi contro i minuti di un modello generalista, e un costo di 0,042 $ per milione di token in input, con output gratuito — 40 a 200 volte più veloce sui compiti per cui è stato costruito.
-→ TypeSafe parla di «0% di hallucination», ma va letto con la qualifica giusta: un output strutturato non può essere malformato, ma può comunque essere sbagliato nel merito. Utile da ricordare ogni volta che un fornitore promette «zero errori»: la domanda giusta è sempre «zero errori di cosa».
+I numeri presentati questa settimana alla Camera dei Deputati raccontano una storia diversa.
 
-Ti sembra un'evoluzione utile per automatizzare decisioni ripetitive in azienda, o resta un modello di nicchia? Dicci la tua 👇
+🔹 1,8 miliardi di euro: il valore del mercato AI in Italia nel 2025, +50% sul 2024 (Osservatorio Artificial Intelligence, Politecnico di Milano)
+🔹 16,4% delle imprese italiane con almeno 10 addetti usa oggi tecnologie AI, il doppio rispetto all'8,2% del 2024 (Istat)
+🔹 37 punti percentuali: il divario di adozione tra grandi aziende (oltre il 50%) e PMI, ampio quasi quanto è veloce la crescita del mercato
+🔹 +93% gli annunci di lavoro che richiedono competenze AI nel 2025 (Osservatorio Politecnico di Milano): la domanda di competenze cresce più in fretta dell'offerta
+🔹 Al convegno alla Camera, più di un relatore ha detto la stessa cosa con parole diverse: la formazione deve precedere l'investimento tecnologico, non seguirlo
+
+Il mercato può crescere del 50% all'anno senza che il divario si chiuda di un solo punto: cresce chi ha già le competenze per adottare l'AI, non chi aspetta che il mercato lo faccia per lui. Il gap si chiude formando le persone sui casi d'uso reali dell'azienda, non aspettando che la tecnologia diventi più semplice da sola.
+
+Nella tua PMI la carenza di competenze AI è già un freno riconosciuto, o non ne parla ancora nessuno? 👇"""
+
+
+CAPTION_5 = """Questa settimana Google ha detto che Gemini 4 è «entrato in post-training». Suona come gergo interno da laboratorio. Cosa vuol dire davvero, e perché dovrebbe interessare a un'azienda che adotta l'AI?
+
+→ Il pre-training è la fase in cui un modello impara a prevedere il testo leggendo enormi quantità di dati: è potente ma grezzo, e da solo produce un modello che sa «continuare» un testo, non che sa essere utile o sicuro. Gemini 4 ha iniziato questa fase il 21 luglio 2026.
+→ Il post-training è tutto quello che viene dopo: si insegna al modello a seguire istruzioni, a essere utile su compiti specifici e a rifiutare richieste dannose — di solito con tecniche come l'apprendimento per rinforzo dal feedback umano. È la fase che trasforma un modello grezzo in un prodotto usabile davvero in azienda.
+→ Per questo la notizia non è «Gemini 4 sta arrivando»: è che Google ha ammesso pubblicamente il proprio ritardo (34 punti contro 57,6 di Claude Opus 5.5 sull'Intelligence Index) proprio mentre entra nella fase decisiva. Il post-training è spesso dove si vede la differenza reale tra un modello che sembra potente sulla carta e uno che funziona bene sui casi d'uso concreti — la stessa differenza che conta quando un'azienda valuta quale modello adottare, non solo quale ha il punteggio più alto.
+
+Quando scegli un modello AI per la tua azienda, guardi più ai benchmark o ai test sui tuoi casi d'uso reali? Dicci la tua 👇
 
 #AI #TechExplained #Innovazione #B2B #MachineLearning"""
-
-
-CAPTION_9 = """🔥 Il mito: il settore AI riuscirà a darsi delle regole da solo, senza bisogno di una spinta esterna — basta dargli tempo.
-
-Due notizie della stessa settimana raccontano il contrario.
-
-🔹 OpenAI, Anthropic e Google DeepMind discutono da mesi la creazione di un organismo di autoregolamentazione in stile FINRA per testare i modelli prima del rilascio pubblico, un'idea proposta da Demis Hassabis a luglio. I colloqui, per ora, non hanno prodotto un accordo operativo
-🔹 Nello stesso periodo, Geoffrey Hinton — uno dei padri fondatori del deep learning — ha detto al Congresso USA che restano «forse un anno» di tempo per introdurre una regolamentazione efficace, prima che il ritmo di sviluppo renda il controllo politico troppo tardivo
-🔹 Se nemmeno i laboratori concorrenti riescono a mettersi d'accordo tra loro su regole condivise, aspettare che il settore si autoregoli non è una strategia: è una scommessa
-
-Per un'azienda che adotta l'AI, il messaggio resta lo stesso qualunque cosa succeda a Washington o a Bruxelles: la governance interna — chi decide cosa un sistema AI può fare da solo, e chi lo controlla — non può aspettare che arrivi una legge a deciderlo al posto suo.
-
-Nella tua azienda esiste già una policy interna su cosa un sistema AI può o non può fare da solo, o si aspetta che arrivi una norma a deciderlo? 👇"""

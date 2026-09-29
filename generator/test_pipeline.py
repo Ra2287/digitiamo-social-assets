@@ -141,6 +141,17 @@ def _rifacimento():
     tmp = tempfile.mkdtemp(prefix="ped-test-")
     vecchio_out, vecchio_redo = render.OUT_DIR, dict(getattr(week, "REDO", {}) or {})
     render.OUT_DIR = tmp
+    # La prova simula il SUO proprio ciclo di rifacimento (REDO = {bersaglio: 1}
+    # solo per la seconda genera()). Se in settimana e' gia' in corso un
+    # rifacimento vero (week.REDO non vuoto, es. dopo una revisione di Ramona),
+    # lasciarlo attivo durante la prima genera() qui sotto renderebbe SUBITO
+    # quel post con suffisso -r1 dentro 'prima', e la seconda genera() (con
+    # REDO sostituito dal solo bersaglio di prova) lo tratterebbe come "mai
+    # fatto" alla revisione 0, generando un secondo file senza -r1: la prova
+    # fallirebbe per un'interferenza tra lo stato reale e quello simulato, non
+    # per un problema del renderer. Si azzera qui, si ripristina comunque nel
+    # finally.
+    week.REDO = {}
 
     async def _genera():
         async with async_playwright() as p:

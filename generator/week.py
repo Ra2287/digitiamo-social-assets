@@ -50,7 +50,7 @@ OVERRIDES_FOR = "2026-09-28"
 #
 # Gli slug sono quelli stampati da `python3 plan.py`. Esempio:
 #   REDO = {"idea2-la-sicurezza-dell-ai": 1}
-REDO = {"idea3-abbiamo-lasciato-un-agente": 1}
+REDO = {}
 
 # I post approvati NON corrispondono alle idee del report solo in casi
 # eccezionali (fusione di trend, idee scartate in revisione). Questa settimana

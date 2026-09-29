@@ -39,17 +39,17 @@ Un video ben montato o una demo perfetta non dicono nulla su come un sistema AI 
 Nella tua azienda, un agente AI che si comporta in modo imprevisto lo scoprireste prima o dopo che il cliente se ne accorga? 👇"""
 
 
-CAPTION_3 = """[DA PERSONALIZZARE] Domani, 30 settembre, entra in vigore in Italia la norma che rende la sorveglianza umana sui sistemi AI ad alto rischio un obbligo di legge. Dopo il malfunzionamento in diretta di Tilly Norwood questa settimana — la prova che anche un prodotto AI curatissimo può sorprendere nel momento peggiore — abbiamo voluto testare su [un processo reale del team] quanto possiamo davvero delegare a un agente, e dove restiamo noi a decidere.
+CAPTION_3 = """Da domani, 30 settembre, l'Italia ha una norma penale specifica per l'intelligenza artificiale: il D.Lgs. 160/2026 introduce nel Codice penale l'articolo 437-bis, e la sorveglianza umana su un sistema AI ad alto rischio non è più solo una buona pratica.
 
-→ [Personalizza: cosa avete fatto fare all'agente — quale processo, quale strumento, con quali permessi concessi e quali no]
-→ Come Ghost Shark e Copilot Autopilot questa settimana, anche noi abbiamo trattato i permessi come una scelta esplicita, non come un default: cosa l'agente poteva fare da solo, cosa doveva passare da una persona, e chi era quella persona
-→ [Personalizza: un aneddoto reale del team, dove l'agente ha sorpreso in positivo, e dove invece la supervisione umana ha evitato un errore che sarebbe passato inosservato]
+→ Chi omette le misure di sicurezza o la sorveglianza umana su un sistema AI ad alto rischio, generando un pericolo concreto per persone o per la sicurezza dello Stato, rischia da 1 a 8 anni di reclusione. Si applica a provider, deployer e utilizzatori professionali (fonte: BibLus).
+→ L'articolo 15 introduce anche il nuovo articolo 25-vicies nel D.Lgs. 231/2001: le organizzazioni rischiano sanzioni pecuniarie da 600 a 1.000 quote, oltre a eventuali sanzioni interdittive.
+→ Non è più solo l'AI Act europeo, con le sue scadenze lontane (2027-2028): da domani l'Italia ha una norma penale che si applica da subito, se gli obblighi sono già dovuti.
 
-Il punto non è se un agente sa lavorare da solo su un pezzo di processo: spesso sa farlo, e bene. Il punto è chi ha deciso, per iscritto, dove finisce la sua autonomia — perché da domani, in Italia, sarà anche una responsabilità legale.
+La sorveglianza umana su un sistema AI ad alto rischio non è più solo una buona pratica: da domani, in Italia, è anche una responsabilità legale.
 
-Qual è la vostra esperienza nel delegare un processo vero a un agente? Ci interessa confrontarci 👇
+Nella tua azienda chi è oggi, per iscritto, il responsabile della sorveglianza umana su un sistema AI? Raccontacelo nei commenti 👇
 
-#AIEngineering #TeamAugmentation #SoftwareDevelopment #Tech #Innovazione"""
+#IntelligenzaArtificiale #Normativa #AIAct #Compliance #B2B"""
 
 
 CAPTION_4 = """🔥 Il mito: i sistemi AI più avanzati del mondo, come quelli militari, ormai decidono da soli cosa fare.

@@ -13,6 +13,9 @@ CAPTION_4 (esperienza diretta) contiene un segnaposto tra parentesi quadre da
 sostituire con l'esito reale del test del team prima della pubblicazione: per
 istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
+
+CAPTION_8: idea 8, extra aggiunta su richiesta di Ramona (8/10) sul risparmio
+di tempo con l'AI nelle PMI italiane (studio OpenAI/Opinium, 15/5/2026).
 """
 
 CAPTION_1 = """In sette giorni: OpenAI presenta al DevDay un salto nelle capacità dei propri agenti, AMD paga 8,2 miliardi di dollari per comprare la startup di modelli di mondo di Fei-Fei Li, e Anthropic deposita un prospetto IPO che la valuta fino a 2.000 miliardi di dollari con un finanziamento di Broadcom da 42 miliardi legato ai chip. Tre notizie diverse, un solo movimento di fondo.
@@ -73,3 +76,19 @@ CAPTION_5 = """Il 29 settembre AMD ha comprato World Labs, la startup di Fei-Fei
 Ti sembra un investimento che pagherà presto, o una scommessa sul lungo periodo? Dicci la tua 👇
 
 #AI #TechExplained #Innovazione #B2B #Robotica"""
+
+
+CAPTION_8 = """Quanto fa risparmiare davvero l'AI a un'azienda? Uno studio OpenAI, condotto da Opinium su 1.000 decisori di PMI italiane e presentato a Milano il 15 maggio 2026, prova a rispondere con numeri concreti, non con promesse.
+
+→ 5,2 ore a settimana — il tempo risparmiato in media da chi usa l'AI nel lavoro: oltre 270 ore all'anno a persona, secondo i dati (autodichiarati) raccolti da Opinium tra fine febbraio e inizio marzo 2026.
+→ 79% — la quota di decisori di PMI italiane che già usa strumenti di AI nel proprio lavoro, dal 68% dei lavoratori autonomi al 91% delle medie imprese.
+→ 96% — la quota di chi usa l'AI che dichiara di risparmiare tempo grazie ad essa; il 61% afferma che la rende più efficace nel proprio ruolo.
+→ 37% — la quota di PMI che ha già una policy formale sull'uso dell'AI: la maggioranza la usa ancora senza regole scritte.
+→ Il tempo recuperato non resta vuoto: il 38% lo investe per migliorare prodotti e servizi, il 26% in attività creative, il 25% in pianificazione strategica — non meno lavoro, lavoro diverso.
+→ Il primo ostacolo citato non è la tecnologia: il 27% indica un divario di competenze e formazione, un altro 27% preoccupazioni su privacy e sicurezza. Il collo di bottiglia è sapere usarla bene, non avere accesso allo strumento.
+
+Il risparmio di tempo è il dato che si vede subito. Quello che decide se diventa un vantaggio competitivo vero è cosa succede dopo: se le ore recuperate finiscono in attività a più valore con un metodo, o si disperdono senza una policy e una formazione che le indirizzi — il 63% delle PMI, va ricordato, non ne ha ancora una scritta.
+
+Nella tua azienda, le ore recuperate grazie all'AI finiscono in attività a più valore, o si perdono senza che nessuno le misuri? 👇
+
+#IntelligenzaArtificiale #PMI #Produttività #B2B #AIBusiness"""

@@ -267,6 +267,30 @@ ideas = [
         hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
+    # Idea 8, extra: aggiunta su richiesta esplicita di Ramona (8/10) sul tema
+    # del risparmio di tempo/denaro con l'adozione dell'AI in azienda. Sesto
+    # post Prioritario della settimana, oltre ai 5 dello schema standard:
+    # eccezione dichiarata, non un cambio della cadenza di default a 5/settimana.
+    dict(
+        badge="Prioritario",
+        day="Venerdì 9/10 (extra della settimana, su richiesta)",
+        format="Carosello dati",
+        title="Le PMI italiane che usano l'AI risparmiano 270 ore all'anno. Ecco dove vanno a *finire*",
+        news="Studio OpenAI/Opinium su 1.000 decisori di PMI italiane, presentato il 15/5/2026",
+        news_url="https://www.ai4business.it/intelligenza-artificiale/nelle-pmi-lai-fa-risparmiare-5-ore-a-settimana/",
+        hook="Quanto fa risparmiare davvero l'AI a un'azienda? Uno studio OpenAI, condotto da Opinium su 1.000 decisori di PMI italiane e presentato a Milano il 15 maggio 2026, prova a rispondere con numeri concreti, non con promesse.",
+        points=[
+            "5,2 ore a settimana — il tempo risparmiato in media da chi usa l'AI nel lavoro: oltre 270 ore all'anno a persona, secondo i dati (autodichiarati) raccolti da Opinium tra fine febbraio e inizio marzo 2026.",
+            "79% — la quota di decisori di PMI italiane che già usa strumenti di AI nel proprio lavoro, dal 68% dei lavoratori autonomi al 91% delle medie imprese.",
+            "96% — la quota di chi usa l'AI che dichiara di risparmiare tempo grazie ad essa; il 61% afferma che la rende più efficace nel proprio ruolo.",
+            "37% — la quota di PMI che ha già una policy formale sull'uso dell'AI: la maggioranza la usa ancora senza regole scritte.",
+            "Il tempo recuperato non resta vuoto: il 38% lo investe per migliorare prodotti e servizi, il 26% in attività creative, il 25% in pianificazione strategica — non meno lavoro, lavoro diverso.",
+            "Il primo ostacolo citato non è la tecnologia: il 27% indica un divario di competenze e formazione, un altro 27% preoccupazioni su privacy e sicurezza. Il collo di bottiglia è sapere usarla bene, non avere accesso allo strumento.",
+        ],
+        closing="Il risparmio di tempo è il dato che si vede subito. Quello che decide se diventa un vantaggio competitivo vero è cosa succede dopo: se le ore recuperate finiscono in attività a più valore con un metodo, o si disperdono senza una policy e una formazione che le indirizzi — il 63% delle PMI, va ricordato, non ne ha ancora una scritta.",
+        cta="Nella tua azienda, le ore recuperate grazie all'AI finiscono in attività a più valore, o si perdono senza che nessuno le misuri? 👇",
+        hashtags="#IntelligenzaArtificiale #PMI #Produttività #B2B #AIBusiness",
+    ),
 ]
 
 # ---------------------------------------------------------------------------
@@ -314,5 +338,11 @@ publishing = [
         time="—",
         format="Riserva 2 — Riflessione di chiusura",
         reason="Chiude l'arco della settimana. Utile nel weekend se il traffico lo giustifica, o come richiamo della settimana successiva.",
+    ),
+    dict(
+        day="Venerdì 9/10",
+        time="08:30",
+        format="Carosello dati — risparmio di tempo con l'AI (extra, su richiesta)",
+        reason="Sesto post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Finestra mattutina 7:30-9:30, formato documento/carosello per un contenuto denso di dati reali; CTA naturale verso l'AI Business Academy data la lacuna di formazione/policy che lo studio stesso evidenzia.",
     ),
 ]

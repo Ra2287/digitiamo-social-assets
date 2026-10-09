@@ -16,6 +16,11 @@ contenere cifre o fatti aziendali inventati spacciati per reali.
 
 PED anticipato su richiesta di Ramona: generato il 9/10 per la settimana del
 12-18 ottobre, invece che il lunedì mattina.
+
+CAPTION_8: idea 8, extra aggiunta su richiesta di Ramona (9/10) sul risparmio
+economico delle aziende grazie all'AI (dati PwC Global CEO Survey 2026, ISG,
+Gartner) — angolo diverso dal risparmio di tempo già trattato la settimana
+del 5/10.
 """
 
 CAPTION_1 = """In sette giorni: Google lancia Gemini 4 Argon dopo mesi di ritardo, Anthropic apre l'accesso ridotto ai suoi modelli a team di sicurezza verificati e rende noto che il progetto Glasswing ha trovato 129.000 vulnerabilità software, e OpenAI pubblica la sua filigrana testuale per conformarsi all'AI Act europeo. Tre mosse diverse, un solo filo conduttore: i laboratori stanno rispondendo, con prodotti concreti, ai problemi di sicurezza e fiducia emersi nelle settimane scorse.
@@ -76,3 +81,17 @@ CAPTION_5 = """Il 5 ottobre OpenAI ha pubblicato textGrain, il sistema che user�
 Ti sembra una soluzione tecnica solida per sapere cosa è stato scritto da un'AI, o un primo passo ancora facile da aggirare? Dicci la tua 👇
 
 #AI #TechExplained #AIAct #B2B #Compliance"""
+
+
+CAPTION_8 = """🔥 Il mito: adottare l'AI in azienda si traduce quasi automaticamente in un risparmio sui costi, prima o poi.
+
+I dati del PwC Global CEO Survey 2026 e di altre due ricerche indipendenti raccontano una storia più lenta e più selettiva.
+
+🔹 12% — la quota di CEO che dichiara sia ricavi più alti sia costi più bassi grazie all'AI, secondo il PwC Global CEO Survey 2026 (4.454 CEO intervistati in 95 paesi): la combinazione che ci si aspetta, oggi raggiunta solo da una minoranza
+🔹 56% — la quota di CEO che non ha ancora visto benefici finanziari significativi dall'AI, nello stesso sondaggio
+🔹 31% — la quota dei 1.200 casi d'uso AI analizzati da ISG (Information Services Group) arrivata in piena produzione; di questi, solo uno su quattro ha raggiunto il ritorno economico atteso
+🔹 La spesa globale in AI prevista da Gartner per il 2026 sale comunque a 2.520 miliardi di dollari (+44% sull'anno precedente), oltre la metà destinata a infrastruttura — chip, server, data center — non a progetti che generano risparmio diretto
+
+Il prezzo per usare l'AI continua a scendere, ma la spesa delle aziende sale lo stesso: più richieste, documenti più lunghi, agenti che fanno più chiamate in sequenza. Il risparmio non arriva da solo con l'adozione — arriva da un progetto misurato, su un caso d'uso specifico, con un metodo per sapere se sta funzionando. È la differenza tra sperare in un risparmio e costruirlo.
+
+Nella tua azienda, il risparmio ottenuto grazie all'AI viene misurato con un metodo, o si dà per scontato che ci sia? 👇"""

@@ -248,6 +248,35 @@ ideas = [
         hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
+    # Idea 8, extra: aggiunta su richiesta esplicita di Ramona (9/10) sul tema
+    # del risparmio economico delle aziende grazie all'AI. Sesto post
+    # Prioritario della settimana, oltre ai 5 dello schema standard: eccezione
+    # dichiarata, non un cambio della cadenza di default a 5/settimana. Angolo
+    # diverso dall'idea 8 della settimana scorsa (risparmio di TEMPO per le
+    # PMI italiane, studio OpenAI/Opinium): qui il tema e' il risparmio
+    # economico a livello enterprise, con dati PwC/ISG/Gartner che mostrano
+    # quanto sia raro, oggi, vederlo misurato davvero.
+    dict(
+        badge="Prioritario",
+        day="Venerdì 16/10 (extra della settimana, su richiesta)",
+        format="Carosello dati (mito da sfatare — l'AI fa risparmiare automaticamente)",
+        title="L'AI fa risparmiare in automatico sui costi aziendali? Solo per il 12% delle *aziende*",
+        news="PwC Global CEO Survey 2026 + dati ISG e Gartner sulla spesa AI",
+        news_url="https://italia-informa.com/ai-piu-economica-imprese-costi-in-aumento.aspx",
+        hook="🔥 Il mito: adottare l'AI in azienda si traduce quasi automaticamente in un risparmio sui costi, prima o poi.",
+        no_hashtags=True,
+        is_myth=True,
+        myth_body="I dati del PwC Global CEO Survey 2026 e di altre due ricerche indipendenti raccontano una storia più lenta e più selettiva.",
+        points=[
+            "12% — la quota di CEO che dichiara sia ricavi più alti sia costi più bassi grazie all'AI, secondo il PwC Global CEO Survey 2026 (4.454 CEO intervistati in 95 paesi): la combinazione che ci si aspetta, oggi raggiunta solo da una minoranza.",
+            "56% — la quota di CEO che non ha ancora visto benefici finanziari significativi dall'AI, nello stesso sondaggio.",
+            "31% — la quota dei 1.200 casi d'uso AI analizzati da ISG (Information Services Group) arrivata in piena produzione; di questi, solo uno su quattro ha raggiunto il ritorno economico atteso.",
+            "La spesa globale in AI prevista da Gartner per il 2026 sale comunque a 2.520 miliardi di dollari (+44% sull'anno precedente), oltre la metà destinata a infrastruttura — chip, server, data center — non a progetti che generano risparmio diretto.",
+        ],
+        myth_closing="Il prezzo per usare l'AI continua a scendere, ma la spesa delle aziende sale lo stesso: più richieste, documenti più lunghi, agenti che fanno più chiamate in sequenza. Il risparmio non arriva da solo con l'adozione — arriva da un progetto misurato, su un caso d'uso specifico, con un metodo per sapere se sta funzionando. È la differenza tra sperare in un risparmio e costruirlo.",
+        cta="Nella tua azienda, il risparmio ottenuto grazie all'AI viene misurato con un metodo, o si dà per scontato che ci sia? 👇",
+        hashtags="",
+    ),
 ]
 
 # ---------------------------------------------------------------------------
@@ -295,5 +324,11 @@ publishing = [
         time="—",
         format="Riserva 2 — Riflessione di chiusura",
         reason="Chiude l'arco della settimana. Utile nel weekend se il traffico lo giustifica, o come richiamo della settimana successiva.",
+    ),
+    dict(
+        day="Venerdì 16/10",
+        time="12:15",
+        format="Carosello dati — l'AI fa risparmiare in automatico? (extra, su richiesta)",
+        reason="Settimo post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Finestra pausa pranzo B2B, nello stesso giorno del divulgativo mattutino ma distanziata di oltre 4 ore; formato documento/carosello per dati densi (PwC, ISG, Gartner) e un angolo diverso dal risparmio di tempo già trattato nella settimana del 5/10 (qui: risparmio economico misurato, non percepito).",
     ),
 ]

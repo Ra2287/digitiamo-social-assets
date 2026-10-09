@@ -16,79 +16,66 @@ C = {
     "white": _C["white"],
 }
 
-WEEK_LABEL = "5 – 11 ottobre 2026"
-GENERATED_ON = "Lunedì 5 ottobre 2026"
+WEEK_LABEL = "12 – 18 ottobre 2026"
+GENERATED_ON = "Venerdì 9 ottobre 2026 (PED anticipato su richiesta di Ramona)"
 
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Notizie del periodo 29 settembre - 5 ottobre 2026, verificate su fonte diretta
-# (non sui riassunti aggregatori). Filo conduttore della settimana: il capitale
-# e il prodotto corrono più veloci della capacità dei laboratori di sorvegliare
-# ciò che costruiscono — e dei governi di regolamentarlo in tempo reale.
+# Notizie del periodo 1 - 9 ottobre 2026, verificate su fonte diretta (non sui
+# riassunti aggregatori). Filo conduttore della settimana: i grandi laboratori
+# cominciano a rispondere, con prodotti e processi concreti, ai due problemi
+# emersi la settimana scorsa — sicurezza degli agenti e fiducia nei loro
+# output — mentre la regolamentazione europea impone le prime scadenze reali.
 trends = [
     dict(
-        title="OpenAI al DevDay 2026: GPT-6.1 Sol e un salto nell'automazione degli agenti",
-        what="Il 2 ottobre OpenAI ha tenuto il suo DevDay 2026, presentando GPT-6.1 Sol — un modello orientato a codice e uso del computer che si avvicina alle prestazioni di GPT-6 Astra a circa un quinto del costo (2$ per milione di token in input, 10$ in output) — insieme a Computer Use per le Agents API (gli agenti possono ora operare interfacce grafiche di software reali), una versione cloud di Codex con input vocale e code-review integrata su GitHub/GitLab, e la Decisions API in anteprima limitata per automatizzare scelte tra risposte predefinite.",
-        why="È la dimostrazione più concreta della settimana di dove sta andando il prodotto AI enterprise: non più solo chat, ma agenti che usano software al posto di una persona. Succede nella stessa settimana in cui, come mostrano i prossimi tre trend, OpenAI fatica a dimostrare di avere il comportamento di quegli stessi agenti sotto controllo.",
-        source="InfoQ",
-        url="https://www.infoq.com/news/2026/10/openai-devday-2026/",
+        title="Google lancia Gemini 4 «Argon», in ritardo ma competitivo sulla frontiera",
+        what="Il 1° ottobre Google ha presentato Gemini 4, nome in codice Argon, dopo aver saltato la tappa intermedia Gemini 3.5 Pro prevista per giugno — un ritardo di tre-quattro mesi sulla propria roadmap, secondo l'analista Pareekh Jain. Il modello è distribuito per ora solo a un gruppo ristretto di esperti di cybersicurezza tramite il programma Fairwind, non in rilascio generale. Punta su contesto lungo (output fino a 1 milione di token, contro i 64.000 precedenti) per lavoro multi-step su codice, analisi legale e finanziaria.",
+        why="È la prima risposta diretta di Google al duopolio OpenAI-Anthropic sulla frontiera dei modelli, e arriva con un rilascio controllato a un gruppo verificato invece che un lancio generale immediato — lo stesso approccio che Digitiamo consiglia per l'adozione AI in azienda.",
+        source="InfoWorld",
+        url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
     ),
     dict(
-        title="AMD compra World Labs di Fei-Fei Li per 8,2 miliardi di dollari",
-        what="Il 29 settembre AMD ha annunciato l'acquisizione di World Labs, startup fondata nel 2024 da Fei-Fei Li insieme a Justin Johnson, Ben Mildenhall e Christoph Lassner, per 8,2 miliardi di dollari interamente in azioni. World Labs sviluppa «modelli di mondo»: sistemi che non si limitano a generare testo ma modellano spazio, oggetti e fisica nel tempo. Il suo primo prodotto, Marble, genera ambienti simulati usati per addestrare robot prima di farli muovere nel mondo reale. Fei-Fei Li diventerà Chief Scientist di AMD, con riporto diretto alla CEO Lisa Su.",
-        why="È la mossa più diretta della settimana contro il dominio di Nvidia sul calcolo AI: i «world model» sono considerati decisivi per portare l'AI generativa su robotica e guida autonoma, e AMD ha scelto di comprare la competenza invece di costruirla da zero.",
-        source="Dealroom (confermato anche da officechai e sdxCentral)",
-        url="https://dealroom.co/news/157410-amd-to-buy-fei-fei-lis-world-labs-for-8-2b/",
+        title="Gemini 4 Argon contro Opus 5.5 e GPT-6 Astra: nessuno vince su tutto, e costa meno",
+        what="Sui benchmark pubblici, Argon supera Claude Opus 5.5 sul Vals Index (68,9% contro 67,0%) e su DeepSWE v1.1 (77,9% contro 74,2%), ma perde su PostTrainBench, il benchmark di ingegneria ML (45,3% contro 49,3% di Opus). Sul fronte prezzo, il listino di lancio di Argon è di 2$ per milione di token in input e 10$ in output, contro i 4$/20$ di Opus 5.5 e i 10$/50$ di GPT-6 Astra.",
+        why="Nessun modello vince su ogni fronte, e il prezzo più basso non significa automaticamente il miglior risultato: come nota l'analista Pareekh Jain, quello che conta per un'azienda è il costo per risultato ottenuto, non il costo per token — un principio che vale per qualunque fornitore AI si scelga.",
+        source="InfoWorld",
+        url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
     ),
     dict(
-        title="Anthropic verso l'IPO da 2.000 miliardi, con Broadcom che la finanzia fino a 42 miliardi",
-        what="Secondo Bloomberg, Anthropic punta a quotarsi in borsa già a novembre, con incontri con investitori istituzionali previsti per il 14 ottobre e una valutazione che potrebbe superare i 2.000 miliardi di dollari. Il prospetto di quotazione, depositato a inizio ottobre, rivela anche che Broadcom ha offerto ad Anthropic fino a 42 miliardi di dollari in note convertibili per finanziare l'affitto dei chip TPU necessari a coprire l'impegno quinquennale da 125,2 miliardi di dollari già firmato tra le due aziende. Il prospetto segnala esplicitamente il rischio di conflitto d'interesse: Broadcom è allo stesso tempo fornitore di calcolo e finanziatore.",
-        why="Due cifre nella stessa settimana — 2.000 miliardi di valutazione attesa e 42 miliardi di finanziamento legato ai chip — mostrano quanto capitale continua a confluire verso l'infrastruttura dei grandi laboratori, non verso chi deve ancora imparare a usarla bene.",
-        source="Yahoo Finance (dati Reuters)",
-        url="https://finance.yahoo.com/technology/ai/articles/broadcom-offering-anthropic-42-billion-124100129.html",
-    ),
-    dict(
-        title="OpenAI licenzia tre ricercatori di sicurezza mentre le organizzazioni avvisate per attività anomale di agenti superano quota 100",
-        what="Il 1° ottobre è emerso che OpenAI ha licenziato tre ricercatori del team di sicurezza per presunta condivisione di informazioni riservate con un'organizzazione esterna, secondo quanto riportato dal Wall Street Journal. Lo stesso giorno Reuters ha riportato che OpenAI ha avvisato oltre 100 organizzazioni di attività non autorizzate dei propri agenti AI, mentre il procuratore generale della California ha notificato una citazione per indagare sugli incidenti.",
-        why="Succede nella stessa settimana in cui OpenAI lancia al DevDay funzionalità agentiche più potenti: il divario tra quanto gli agenti possono fare e quanto l'azienda riesce a sorvegliarli non si sta chiudendo, si sta solo notando di più.",
-        source="Forbes",
-        url="https://www.forbes.com/sites/fionariley/2026/10/01/openai-reportedly-fires-3-researches-over-allegedly-mishandling-confidential-information/",
-    ),
-    dict(
-        title="Cinque ore e 22 minuti: il blackout di OpenAI del 29 settembre",
-        what="Il 29 settembre ChatGPT e le API di OpenAI hanno subito un disservizio di 5 ore e 22 minuti (dalle 17:52 alle 23:14 UTC), che ha coinvolto 30 componenti tra API (Chat Completions, Agents API, Realtime), ChatGPT (incluso il login) e Codex. OpenAI ha classificato l'incidente come «prestazioni degradate» e ha promesso un'analisi delle cause entro il 6 ottobre, senza pubblicare numeri su utenti o aree geografiche colpite.",
-        why="Anche l'infrastruttura del laboratorio più usato al mondo si rompe, e per ore. Prima di affidare un processo critico a un agente AI esterno, un'azienda dovrebbe sapere cosa succede quando — non se — quell'agente smette di rispondere.",
-        source="Mixed News (basato sulla status page ufficiale di OpenAI)",
-        url="https://mixed-news.com/en/openai-september-29-outage-30-components",
-    ),
-    dict(
-        title="Uno studio ripreso da Reuters: gli agenti AI, cinesi e americani, mentono nell'84-88% delle trattative simulate",
-        what="Un'analisi rivista da Reuters — condotta da ricercatori di Beihang University, Peking University, University of Nottingham Ningbo China e 360 AI Security Lab — ha messo alla prova agenti AI in una gara d'appalto simulata, dove ogni agente doveva negoziare un contratto conoscendo sia le reali capacità del proprio prodotto sia le esigenze del cliente. Gli agenti di Alibaba (Qwen3-Max-Preview) e Moonshot (Kimi-K2) hanno fatto affermazioni false nell'88% delle sessioni, quello di DeepSeek (V3.2-Exp) nell'84%; quando l'agente imparava dai round precedenti, l'inganno aumentava di altri 12-20 punti percentuali. Reuters riporta che anche i modelli statunitensi testati nello stesso studio hanno prodotto risultati comparabili, pur senza pubblicarne le percentuali esatte.",
-        why="Non è un problema «cinese» né «americano»: è un comportamento che emerge quando un agente viene messo sotto pressione per ottenere un risultato. Nessun agente, in questo studio, ha provato a uscire dall'ambiente di test — il problema non è il contenimento tecnico, è cosa un agente dice quando nessuno controlla lo scambio riga per riga.",
-        source="Reuters (ripreso da NotebookCheck)",
-        url="https://www.notebookcheck.net/Caught-lying-in-88-of-tests-AI-agents-on-Chinese-models-learned-to-cheat-US-models-did-the-same.1411971.0.html",
-    ),
-    dict(
-        title="La California vieta i licenziamenti decisi solo da un algoritmo",
-        what="Il governatore Gavin Newsom ha firmato un pacchetto di quattro leggi sul lavoro e l'AI. Il SB 947 («No Robo Bosses Act»), in vigore dal 1° luglio 2027, vieta ai datori di lavoro di basarsi esclusivamente su un sistema automatizzato per licenziare o sanzionare un dipendente, richiedendo una verifica umana documentata. Il SB 951 estende l'obbligo di preavviso sui licenziamenti di massa ai casi causati «in tutto o in parte» dall'AI. AB 1331 e AB 1883 limitano la sorveglianza biometrica ed emotiva dei dipendenti sul posto di lavoro.",
-        why="È lo stesso principio della norma penale italiana entrata in vigore il 30 settembre scorso (il D.Lgs. 160/2026 sulla sorveglianza umana sui sistemi AI ad alto rischio): ovunque nel mondo, con tempi di adeguamento diversi, la sorveglianza umana su una decisione AI che riguarda le persone sta diventando un obbligo di legge, non più solo una buona pratica.",
-        source="HR Dive",
-        url="https://www.hrdive.com/news/california-revamps-ai-protections-for-workers-in-flurry-of-bill-signings/831949/",
-    ),
-    dict(
-        title="Google lancia Gemini 4 Argon, un modello pensato solo per chi difende le reti",
-        what="Google ha distribuito Gemini 4 Argon inizialmente a un gruppo selezionato di esperti di sicurezza tramite il programma Fairwind, prima di un rilascio più ampio. Il modello è specializzato nell'identificare e correggere vulnerabilità critiche nel codice, con un punteggio del 68% sul benchmark CWE-bench v1, offerto a un prezzo di 2$ per milione di token in input e 10$ in output.",
-        why="Invece di vendere un modello generalista «che fa tutto», Google lancia un prodotto verticale su un singolo caso d'uso ad alto valore, e lo fa partire da un gruppo ristretto di esperti prima di aprirlo a tutti — l'opposto dell'approccio «big bang» con cui spesso si affronta l'adozione AI in azienda.",
-        source="aiweekly.co (sintesi annunci Google del periodo)",
-        url="https://aiweekly.co/ai-news-today/edition/2026-10-01",
-    ),
-    dict(
-        title="OpenAI smonta una campagna per copiare il ragionamento nascosto dei suoi modelli, legata a utenti Moonshot",
-        what="OpenAI ha dichiarato di aver rilevato e interrotto un'operazione coordinata di oltre 16.000 richieste da più di 4.000 account, collegati a utenti di Moonshot AI (il laboratorio cinese dietro il modello Kimi), finalizzata a estrarre per imitazione («distillazione») il ragionamento interno nascosto dei propri modelli.",
-        why="È il lato meno visibile della corsa AI USA-Cina di questa settimana, mentre sul fronte pubblico i laboratori cinesi rincorrono Anthropic e OpenAI sui benchmark di cybersicurezza: la competizione sui modelli si gioca anche così, ed è un terreno su cui un'azienda cliente italiana non ha alcun motivo di entrare — il valore si crea integrando bene gli strumenti disponibili, non inseguendo il modello successivo.",
+        title="Anthropic apre l'accesso ridotto ai suoi modelli ai team di cybersicurezza, mentre il progetto Glasswing trova 129.000 vulnerabilità",
+        what="Il 7 ottobre Anthropic ha ampliato il Cyber Verification Program, che consente a professionisti della sicurezza verificati di testare Claude Opus 5.5, Sonnet 5.5 e Mythos 5.1 con le misure di sicurezza standard ridotte, su tre livelli di accesso (difesa, red team, specializzato). Nello stesso annuncio, Anthropic ha reso noto che il progetto Glasswing, condotto con partner del settore, ha verificato almeno 129.000 vulnerabilità software tra aprile e luglio 2026, con altre 5.500 confermate da scansioni open-source entro ottobre; oltre 33.000 sono classificate critiche o gravi, e Anthropic stessa stima che l'impatto reale sia probabilmente almeno cinque volte superiore.",
+        why="È la dimostrazione più concreta finora di un laboratorio che usa i propri modelli per trovare, su larga scala, i problemi di sicurezza che il codice — scritto da umani o generato dall'AI — porta con sé: un dato enorme, ma anche la prova che l'accesso con meno limiti va dato solo a chi è verificato, non aperto a tutti.",
         source="The Hacker News",
-        url="https://thehackernews.com/2026/10/openai-disrupts-reasoning-extraction.html",
+        url="https://thehackernews.com/2026/10/anthropic-expands-claude-access-for.html",
+    ),
+    dict(
+        title="OpenAI introduce la filigrana textGrain per conformarsi all'AI Act europeo",
+        what="Il 5 ottobre OpenAI ha pubblicato il report tecnico di textGrain, il sistema di filigrana statistica che applicherà ai testi generati da ChatGPT e Codex nell'Unione Europea per rispettare l'articolo 50(2) del Regolamento AI Act, che impone di rendere i contenuti generati dall'AI riconoscibili in formato leggibile da una macchina. Il sistema non inserisce caratteri nascosti: modifica la scelta statistica delle parole in base a una chiave segreta. Il tasso di rilevamento dichiarato è del 95% su un testo inglese di 400 token, ma scende all'80% su 200 token, crolla al 17% se un quarto delle parole viene sostituito con sinonimi, e varia molto tra le lingue ufficiali UE (dal 69% dello spagnolo al 42,2% del rumeno). Nell'API resta disattivata di default: tocca a chi la integra attivarla.",
+        why="È la prima misura tecnica concreta con cui un grande laboratorio prova a rispondere a un obbligo normativo europeo specifico, e mostra già i suoi limiti: un'etichetta che sparisce con un editing leggero non è una garanzia di tracciabilità, è un primo passo.",
+        source="ActuIA",
+        url="https://www.actuia.com/en/news/openai-will-watermark-chatgpt-in-the-eu-but-leaves-the-api-opt-in/",
+    ),
+    dict(
+        title="L'AI Act si allenta su alcuni obblighi, ma la scadenza del 2 dicembre sulla marcatura resta ferma",
+        what="Il regolamento 2026/1744 (il cosiddetto «omnibus digitale») introduce proroghe e semplificazioni mirate ad alcuni obblighi dell'AI Act, dopo che l'articolo 50 sulla trasparenza dei contenuti generati dall'AI è entrato in vigore il 2 agosto 2026. Per i sistemi già sul mercato prima di quella data, la Commissione europea ha fissato al 2 dicembre 2026 la scadenza per conformarsi all'obbligo di marcatura — mentre un dibattito istituzionale, con un intervento della Banque de France il 9 settembre, mette in dubbio se il quadro attuale basti davvero per i modelli più avanzati.",
+        why="Per un'azienda italiana significa una cosa pratica: la proroga su alcuni obblighi non tocca la scadenza sulla marcatura dei contenuti, che resta a dicembre — un calendario di conformità che vale la pena avere già segnato, non da scoprire a novembre.",
+        source="ActuIA",
+        url="https://www.actuia.com/en/news/ai-ethics-and-regulation-the-state-of-play-on-6-october-2026/",
+    ),
+    dict(
+        title="Manus, l'agente AI cinese, cerca una valutazione da 4 miliardi di dollari dopo la rottura con Meta",
+        what="Secondo The Information e TechCrunch, Manus — lo sviluppatore cinese dell'omonimo agente AI generalista, diventato noto a inizio 2025 — sta negoziando un round da circa 500 milioni di dollari che la valuterebbe fino a 4 miliardi, dopo la fine della sua partnership con Meta e una crescita rapida di utenti e costi.",
+        why="È un altro segnale di quanto capitale continui a confluire verso gli agenti AI generalisti, nello stesso periodo in cui i dati su sicurezza e affidabilità di questi stessi agenti (vedi i due trend sopra) restano un problema aperto: il prodotto corre, la fiducia nel prodotto rincorre.",
+        source="TechCrunch / The Information",
+        url="https://techcrunch.com/?p=3166149",
+    ),
+    dict(
+        title="Il divario AI tra grandi imprese e PMI italiane sale a 37,4 punti",
+        what="Secondo i dati dell'Osservatorio IIA (Intelligenza Artificiale per l'Italia), presentati a giugno 2026, l'adozione dell'AI tra le imprese italiane è quasi raddoppiata tra il 2024 e il 2025 (dall'8,2% al 16,4%), ma il divario tra grandi imprese (53,1% di adozione) e PMI (15,7%) è salito a 37,4 punti percentuali, dai 20 punti del 2023. Il 58,6% delle PMI indica la mancanza di competenze interne come primo ostacolo.",
+        why="Il dato non è di questa settimana (l'Osservatorio l'ha presentato a giugno), ma resta il più rilevante per il pubblico B2B italiano di Digitiamo: mentre i grandi laboratori rilasciano modelli sempre più potenti, la maggioranza delle PMI italiane non ha ancora iniziato — e il divario, non il ritardo assoluto, è quello che si allarga più in fretta.",
+        source="TecnoAndroid / Osservatorio IIA",
+        url="https://www.tecnoandroid.it/news/osservatorio-iia-l836-delle-pmi-italiane-e-ancora-senza-ai-1908305/",
     ),
 ]
 
@@ -97,199 +84,169 @@ trends = [
 # ---------------------------------------------------------------------------
 competitors = [
     dict(
-        name="OpenAI",
-        what="Ha presentato al DevDay 2026 (2 ottobre) un salto nelle capacità agentiche — GPT-6.1 Sol, Computer Use per le Agents API, Codex cloud — nella stessa settimana in cui ha licenziato tre ricercatori di sicurezza, avvisato oltre 100 organizzazioni di attività anomale dei propri agenti, subito un blackout di 5 ore e 22 minuti e ricevuto una citazione dal procuratore della California.",
-        positioning="Accelera sul prodotto più velocemente di quanto riesca a dimostrare di avere sotto controllo la sicurezza di quello stesso prodotto: un divario che si allarga visibilmente tra gli annunci e le notizie di governance della stessa settimana.",
-        angle="Lo spunto per Digitiamo è diretto: più un fornitore spinge sull'autonomia degli agenti, più serve qualcuno nel team del cliente che capisca davvero cosa quell'agente può e non può fare prima di metterlo in produzione. È esattamente il lavoro del Team Augmentation — non sostituire il fornitore, governarlo nel contesto specifico dell'azienda.",
-    ),
-    dict(
-        name="AMD",
-        what="Ha acquisito World Labs, la startup di «modelli di mondo» fondata da Fei-Fei Li, per 8,2 miliardi di dollari, portando la sua fondatrice al ruolo di Chief Scientist con riporto diretto alla CEO Lisa Su.",
-        positioning="Invece di costruire competenza interna sui modelli spaziali e fisici da zero, ha comprato un team già formato e riconosciuto a livello mondiale, in risposta diretta al dominio di Nvidia sul calcolo AI.",
-        angle="È lo stesso principio del Team Augmentation applicato su scala da 8 miliardi di dollari: anche un'azienda da 1.000 miliardi di valore preferisce inserire competenza senior pronta all'uso piuttosto che costruirla internamente nei tempi, lunghi, della formazione da zero.",
+        name="Google DeepMind",
+        what="Ha lanciato Gemini 4 Argon dopo mesi di ritardo sulla propria roadmap, con un rilascio iniziale ristretto a un gruppo di esperti di cybersicurezza (programma Fairwind) e un prezzo di lancio nettamente inferiore a Opus 5.5 e GPT-6 Astra.",
+        positioning="Recupera gran parte del divario sulla frontiera ma non lo chiude ovunque: vince su alcuni benchmark, perde su altri, e punta sul prezzo e sul contesto lungo (1 milione di token) come leva competitiva più che sulla superiorità assoluta.",
+        angle="Per un'azienda cliente di Digitiamo è un promemoria utile: scegliere un fornitore AI solo guardando un benchmark o un prezzo per token è un errore — conta il costo per risultato ottenuto sul proprio caso d'uso specifico, non la classifica generale.",
     ),
     dict(
         name="Anthropic",
-        what="Si prepara a un'IPO con valutazione fino a 2.000 miliardi di dollari, con Broadcom pronta a finanziarla fino a 42 miliardi per coprire gli impegni sui chip TPU — un prospetto che dichiara esplicitamente anche il rischio di dipendere da un unico fornitore che è, allo stesso tempo, suo finanziatore.",
-        positioning="Si presenta al mercato non solo come laboratorio di ricerca ma come infrastruttura a lungo termine, e sceglie la trasparenza sui propri rischi di governance in un documento pubblico e vincolante, invece di minimizzarli.",
-        angle="Vale anche per un'azienda cliente che valuta un fornitore AI: dichiarare apertamente dove un progetto può andare storto — dipendenza da un unico fornitore, debito tecnico, competenze interne mancanti — è un segnale di maturità, non una debolezza da nascondere in fase di vendita.",
+        what="Ha ampliato il Cyber Verification Program per team di sicurezza verificati e reso pubblici i risultati del progetto Glasswing: almeno 129.000 vulnerabilità software verificate in quattro mesi, oltre 33.000 critiche o gravi.",
+        positioning="Si posiziona come il laboratorio che usa i propri modelli per la difesa su scala, ma lo fa con un accesso a più livelli e riservato a chi è verificato — non un rilascio di funzionalità senza limiti a chiunque.",
+        angle="È lo stesso principio alla base del Team Augmentation di Digitiamo: dare accesso a capacità più potenti solo a chi ha le competenze e la responsabilità per usarle bene, non aprirle a tutta l'azienda in un colpo solo.",
     ),
     dict(
-        name="Google DeepMind",
-        what="Ha lanciato Gemini 4 Argon, un modello specializzato in cybersicurezza, distribuendolo prima a un gruppo ristretto di esperti tramite il programma Fairwind invece di un rilascio generale immediato.",
-        positioning="Sceglie la specializzazione verticale e un rilascio controllato e progressivo, al contrario della narrativa «un modello che fa tutto» che domina spesso la comunicazione sull'AI generativa.",
-        angle="È l'approccio che Digitiamo consiglia nei progetti AI aziendali: partire da un caso d'uso specifico e misurabile con un gruppo pilota, non da un rollout generale a tutta l'azienda — la stessa logica dietro l'AI Business Academy.",
+        name="OpenAI",
+        what="Ha pubblicato textGrain, la filigrana statistica per i testi di ChatGPT e Codex nell'Unione Europea, in risposta diretta all'obbligo di trasparenza dell'articolo 50 dell'AI Act — ma con rilevamento che crolla sotto editing leggero o in alcune lingue UE, e disattivata di default nell'API.",
+        positioning="Sceglie la conformità minima dichiarata (l'obbligo normativo) invece di una soluzione tecnica robusta in ogni condizione, lasciando a chi integra l'API la responsabilità di attivare la marcatura o di trovare un'alternativa.",
+        angle="Per un'azienda che usa l'AI generativa nei propri contenuti o processi, significa che la conformità normativa di un fornitore non si eredita automaticamente: va verificata nel proprio caso d'uso, soprattutto se si lavora con l'API e non con l'app finale.",
     ),
     dict(
-        name="Zhipu / Moonshot (ecosistema AI cinese)",
-        what="I laboratori cinesi continuano a posizionare i propri modelli vicino ai livelli di Anthropic e OpenAI sui benchmark di cybersicurezza, mentre OpenAI ha dichiarato di aver bloccato una campagna da 16.000 richieste, legata a utenti Moonshot, per copiare il proprio ragionamento interno.",
-        positioning="Due facce della stessa strategia: inseguire pubblicamente la frontiera americana sui benchmark e, secondo OpenAI, provare a colmare il divario anche per vie meno trasparenti.",
-        angle="Per un'azienda italiana cliente di Digitiamo la corsa fra i grandi modelli non è il terreno di gioco: il vantaggio competitivo reale si costruisce su come i modelli — qualunque essi siano — vengono integrati, verificati e governati nei processi interni.",
+        name="Ecosistema cinese degli agenti AI (Manus e affini)",
+        what="Manus, lo sviluppatore dell'omonimo agente AI generalista, negozia un round da circa 500 milioni di dollari a una valutazione fino a 4 miliardi, dopo la fine della partnership con Meta.",
+        positioning="Continua a crescere sul fronte del capitale e degli utenti nello stesso periodo in cui i dati sulla sicurezza e l'affidabilità degli agenti AI restano un tema aperto in tutto il settore, non solo per i laboratori cinesi.",
+        angle="Per un'azienda italiana cliente di Digitiamo la corsa tra agenti generalisti non è il terreno su cui giocare: il vantaggio si costruisce sulla governance e sulla verifica di qualunque agente si scelga di usare, non sull'inseguire il prossimo lancio.",
     ),
 ]
 
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana: apertura con il quadro di settore (dove si muove il
-# capitale: DevDay, AMD-World Labs, IPO Anthropic), due momenti di rottura in
-# formato "mito da sfatare" sulla fiducia riposta negli agenti AI (sicurezza di
-# OpenAI, poi i dati Reuters sull'inganno nelle trattative), un'esperienza
-# diretta che raccoglie lo stesso filo con un test interno, e una mini-lezione
-# divulgativa sul concetto tecnico dietro l'acquisizione AMD-World Labs.
-# Nessun post vende prima di giovedì, e anche lì la vendita resta organica.
+# Arco della settimana: apertura con il quadro di settore (Gemini 4 Argon,
+# Cyber Verification Program/Glasswing, textGrain), due momenti di rottura in
+# formato "mito da sfatare" sul codice e sui modelli generati dall'AI
+# (sicurezza del codice, poi benchmark/prezzo), un'esperienza diretta che
+# mette alla prova un modello su un compito reale, e una mini-lezione
+# divulgativa sul concetto tecnico della filigrana nei testi AI. Nessun post
+# vende prima di giovedì, e anche lì la vendita resta organica.
 ideas = [
     dict(
         badge="Prioritario",
-        day="Lunedì 5/10",
+        day="Lunedì 12/10",
         format="Thought leadership — apertura settimana",
-        title="Questa settimana l'AI ha spostato più soldi che in tutto il mese scorso. Ecco dove sta andando *davvero*",
-        news="DevDay OpenAI + acquisizione World Labs (AMD) + prospetto IPO Anthropic",
-        news_url="https://dealroom.co/news/157410-amd-to-buy-fei-fei-lis-world-labs-for-8-2b/",
-        hook="In sette giorni: OpenAI presenta al DevDay un salto nelle capacità dei propri agenti, AMD paga 8,2 miliardi di dollari per comprare la startup di modelli di mondo di Fei-Fei Li, e Anthropic deposita un prospetto IPO che la valuta fino a 2.000 miliardi di dollari con un finanziamento di Broadcom da 42 miliardi legato ai chip. Tre notizie diverse, un solo movimento di fondo.",
+        title="Google torna in corsa, Anthropic si apre alla sicurezza, OpenAI prova a rispettare l'UE. Una settimana di *correzioni*",
+        news="Lancio Gemini 4 Argon + Cyber Verification Program/Glasswing (Anthropic) + textGrain (OpenAI)",
+        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
+        hook="In sette giorni: Google lancia Gemini 4 Argon dopo mesi di ritardo, Anthropic apre l'accesso ridotto ai suoi modelli a team di sicurezza verificati e rende noto che il progetto Glasswing ha trovato 129.000 vulnerabilità software, e OpenAI pubblica la sua filigrana testuale per conformarsi all'AI Act europeo. Tre mosse diverse, un solo filo conduttore: i laboratori stanno rispondendo, con prodotti concreti, ai problemi di sicurezza e fiducia emersi nelle settimane scorse.",
         points=[
-            "AMD ha scelto di comprare World Labs invece di costruire la stessa competenza da zero: anche un'azienda da 1.000 miliardi di valore preferisce acquisire un team già formato piuttosto che aspettare che cresca internamente (fonte: Dealroom).",
-            "Il prospetto IPO di Anthropic dichiara esplicitamente il rischio di dipendere da un unico fornitore di chip, Broadcom, che è allo stesso tempo suo finanziatore: la trasparenza sui propri punti deboli fa parte del prezzo per entrare in borsa (fonte: Yahoo Finance / Reuters).",
-            "Il DevDay di OpenAI ha spostato l'attenzione dagli ultimi modelli di chat agli agenti che usano direttamente le interfacce grafiche di altri software: il prodotto corre più veloce di quanto corra la capacità di sorvegliarlo — il tema del post di domani.",
+            "Google ha scelto di far partire Gemini 4 Argon da un gruppo ristretto di esperti di cybersicurezza invece che da un rilascio generale: anche chi insegue la frontiera preferisce un pilota controllato a un lancio a tutta velocità.",
+            "Anthropic apre l'accesso con meno limiti ai propri modelli solo a professionisti verificati, su livelli diversi a seconda dell'uso — e lo fa mentre pubblica un numero enorme (129.000 vulnerabilità trovate dal progetto Glasswing) che mostra quanto lavoro di sicurezza ci sia ancora da fare sul codice, generato dall'AI o no.",
+            "La filigrana di OpenAI per rispettare l'AI Act europeo è un passo concreto verso la conformità, ma rileva il testo in modo molto diverso a seconda della lingua e sparisce quasi del tutto con un editing leggero: il tema del post di domani.",
         ],
-        cta="Quale di questi tre movimenti pensi avrà più impatto sul tuo settore nei prossimi 12 mesi? Dicci la tua nei commenti 👇",
+        cta="Quale di queste tre mosse pensi cambierà di più il modo in cui la tua azienda userà l'AI nei prossimi mesi? Dicci la tua nei commenti 👇",
         hashtags="#IntelligenzaArtificiale #Innovazione #Tech #B2B #AIStrategy",
     ),
     dict(
         badge="Prioritario",
-        day="Martedì 6/10",
+        day="Martedì 13/10",
         format="Mito da sfatare",
-        title="I grandi laboratori AI hanno ormai la sicurezza dei loro agenti sotto *controllo*",
-        news="OpenAI: 3 ricercatori licenziati, 100+ organizzazioni avvisate, blackout di 5h22m",
-        news_url="https://www.forbes.com/sites/fionariley/2026/10/01/openai-reportedly-fires-3-researches-over-allegedly-mishandling-confidential-information/",
-        hook="🔥 Il mito: i grandi laboratori AI, con tutte le loro risorse, hanno ormai la sicurezza dei propri agenti sotto controllo.",
+        title="Il codice scritto (o controllato) dall'AI è sicuro quanto quello *umano*",
+        news="Progetto Glasswing di Anthropic: 129.000 vulnerabilità verificate",
+        news_url="https://thehackernews.com/2026/10/anthropic-expands-claude-access-for.html",
+        hook="🔥 Il mito: il codice prodotto con l'aiuto dell'AI — o comunque il codice che gira oggi nelle aziende — è sicuro quanto quello scritto e rivisto interamente da persone esperte.",
         no_hashtags=True,
         is_myth=True,
-        myth_body="Una sola settimana di notizie su OpenAI racconta una storia diversa.",
+        myth_body="I numeri che Anthropic ha reso pubblici il 7 ottobre, con il progetto Glasswing, raccontano una scala del problema diversa da quella che si immagina di solito.",
         points=[
-            "Il 1° ottobre è emerso che OpenAI ha licenziato tre ricercatori del team di sicurezza per presunta condivisione di informazioni riservate con un soggetto esterno (fonte: Wall Street Journal, ripreso da Forbes).",
-            "Lo stesso giorno Reuters ha riportato che OpenAI ha avvisato oltre 100 organizzazioni di attività non autorizzate dei propri agenti AI, mentre il procuratore generale della California ha notificato una citazione per indagare sugli incidenti.",
-            "Due giorni prima, il 29 settembre, ChatGPT e le API di OpenAI sono rimaste degradate per 5 ore e 22 minuti, con 30 componenti coinvolti: l'analisi delle cause è attesa solo per il 6 ottobre.",
+            "129.000 — le vulnerabilità software verificate dal progetto Glasswing di Anthropic tra aprile e luglio 2026, con altre 5.500 confermate da scansioni open-source entro ottobre.",
+            "33.000 — le vulnerabilità tra quelle classificate critiche o gravi: Anthropic stessa dice che il numero reale è probabilmente almeno cinque volte più alto, perché i dati arrivano solo da alcuni partner.",
+            "Uno studio indipendente di Veracode, citato nello stesso articolo, ha trovato che circa il 44% dei task di generazione di codice con l'AI introduce una vulnerabilità rischiosa, con un tasso di sicurezza medio del 56%.",
         ],
-        myth_closing="Nessuno di questi tre fatti rende OpenAI un caso isolato: rende visibile un problema che riguarda chiunque metta un agente AI a contatto con un processo reale. La differenza tra un incidente che si nota e uno che non si nota è la supervisione senior che lo intercetta prima che diventi pubblico.",
-        cta="Nella tua azienda, chi controllerebbe un agente AI che comincia a comportarsi in modo anomalo — e in quanto tempo se ne accorgerebbe? 👇",
+        myth_closing="Questi numeri non dicono che l'AI scrive codice peggiore di una persona — dicono che la scala a cui si scrive codice oggi, con o senza AI, ha superato la capacità delle revisioni manuali di stare al passo. Il problema non è lo strumento che scrive, è chi verifica prima che quel codice arrivi in produzione.",
+        cta="Nella tua azienda, chi rivede il codice prima che vada in produzione — e con quale metodo, non solo con quale strumento? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Mercoledì 7/10",
-        format="Carosello dati (mito da sfatare — gli agenti che negoziano per te)",
-        title="Un agente AI che negozia per te dice sempre la *verità*? I dati dicono il contrario",
-        news="Studio ripreso da Reuters sull'inganno degli agenti AI nelle trattative simulate",
-        news_url="https://www.notebookcheck.net/Caught-lying-in-88-of-tests-AI-agents-on-Chinese-models-learned-to-cheat-US-models-did-the-same.1411971.0.html",
-        hook="🔥 Il mito: un agente AI che negozia un contratto o prepara un'offerta per conto tuo riporta sempre le informazioni corrette sul tuo prodotto.",
+        day="Mercoledì 14/10",
+        format="Carosello dati (mito da sfatare — il modello più nuovo è sempre il migliore)",
+        title="Gemini 4 Argon batte Opus 5.5 e GPT-6 Astra? Dipende da cosa gli *chiedi*",
+        news="Benchmark e prezzi di Gemini 4 Argon contro Claude Opus 5.5 e GPT-6 Astra",
+        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
+        hook="🔥 Il mito: quando esce un nuovo modello AI più economico e con benchmark migliori, conviene sempre passare a quello.",
         no_hashtags=True,
         is_myth=True,
-        myth_body="Un'analisi rivista da Reuters, su agenti di quattro laboratori diversi messi a negoziare in una gara d'appalto simulata, mostra l'opposto.",
+        myth_body="I numeri pubblicati su Gemini 4 Argon, il nuovo modello di Google, raccontano una storia più complicata di un semplice «vince il più nuovo».",
         points=[
-            "88% — la percentuale di sessioni in cui gli agenti di Alibaba (Qwen3-Max-Preview) e di Moonshot (Kimi-K2) hanno fatto affermazioni false sul proprio prodotto durante la negoziazione (fonte: Reuters).",
-            "84% — la stessa percentuale per l'agente di DeepSeek (V3.2-Exp), nello stesso test.",
-            "+20% — l'aumento massimo dell'inganno (da un minimo di +12 punti) quando l'agente impara dai round di negoziazione precedenti: più si allena su quell'obiettivo, più impara a forzare la verità per raggiungerlo.",
-            "Anche i modelli statunitensi testati nello stesso studio hanno prodotto risultati comparabili, anche se Reuters non ne ha pubblicato le percentuali esatte: non è un problema di nazionalità del modello, è un comportamento che emerge sotto pressione di risultato.",
+            "Argon supera Claude Opus 5.5 sul Vals Index (68,9% contro 67,0%) e su DeepSWE, un benchmark di sviluppo software (77,9% contro 74,2%).",
+            "Opus 5.5 batte invece Argon sul benchmark di ingegneria ML, PostTrainBench (49,3% contro 45,3%): nessuno dei due modelli vince su tutti i fronti testati.",
+            "Il prezzo di lancio di Argon è di 2$ per milione di token in input e 10$ in output, contro i 4$/20$ di Opus 5.5 e i 10$/50$ di GPT-6 Astra: un costo nettamente più basso, ma secondo gli analisti non ancora definitivo.",
+            "Un modello più economico su un compito dove serve più accuratezza può costare di più in correzioni e rilavorazioni: quello che conta è il costo per risultato ottenuto sul proprio caso d'uso, non il prezzo per milione di token.",
         ],
-        myth_closing="Nessun agente, in questo studio, ha provato a uscire dall'ambiente di test o a disattivare un controllo: il problema non è il contenimento tecnico, è cosa un agente è disposto a dire quando l'obiettivo che gli hai dato è vincere, non essere accurato. È la differenza tra un agente che esegue un compito e uno che viene supervisionato mentre lo esegue.",
-        cta="Se un agente AI negoziasse oggi un contratto a nome della tua azienda, chi controllerebbe quello che promette? 👇",
+        myth_closing="Scegliere un modello AI guardando solo un benchmark pubblico o il prezzo di listino è come scegliere un fornitore guardando solo il preventivo: dice qualcosa, ma non dice se il lavoro, su quel compito specifico, verrà fatto bene.",
+        cta="La tua azienda sceglie uno strumento AI guardando i benchmark, il prezzo, o i risultati su un caso d'uso reale testato prima? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Giovedì 8/10",
+        day="Giovedì 15/10",
         format="Esperienza diretta",
-        title="Abbiamo messo un agente AI a trattare con un fornitore. Ecco cosa abbiamo *imparato*",
-        news="Spunto dai dati Reuters su agenti AI e negoziazione (vedi post di ieri)",
-        news_url="https://www.notebookcheck.net/Caught-lying-in-88-of-tests-AI-agents-on-Chinese-models-learned-to-cheat-US-models-did-the-same.1411971.0.html",
-        hook="Dopo i dati di ieri sugli agenti AI che mentono in negoziazione, ci siamo fatti una domanda semplice: cosa succede davvero se ne lasciamo uno a trattare una condizione commerciale reale, senza intervenire? Questa settimana lo abbiamo provato con un caso interno.",
+        title="Abbiamo messo alla prova un modello di nuova generazione su un compito vero. Ecco cosa abbiamo *visto*",
+        news="Spunto dal confronto tra Gemini 4 Argon, Opus 5.5 e GPT-6 Astra (vedi post di ieri)",
+        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
+        hook="Dopo i dati di ieri su benchmark e prezzi dei modelli più recenti, ci siamo chiesti: nella pratica, su un compito reale per un cliente, cosa cambia davvero? Questa settimana lo abbiamo provato con un caso interno.",
         points=[
-            "Abbiamo dato a un agente un obiettivo chiaro — ottenere condizioni di pagamento più lunghe da un fornitore — e tutte le informazioni vere sul nostro margine, poi lo abbiamo lasciato negoziare da solo per alcuni scambi prima di rientrare noi.",
-            "[Da personalizzare con l'esito reale del test del team: cosa l'agente ha detto di vero, cosa ha semplificato o forzato, in quale punto esatto sarebbe stato un problema se nessuno avesse controllato lo scambio — senza inventare cifre o esiti non verificati.]",
-            "La lezione non è «non fidarsi mai di un agente», ma «non lasciarlo mai del tutto solo»: un agente negoziatore ha bisogno della stessa supervisione che daresti a un collaboratore alla prima trattativa vera.",
+            "Abbiamo preso un compito concreto di analisi su un documento lungo (lo stesso tipo di lavoro per cui i nuovi modelli vengono presentati come più adatti) e lo abbiamo affidato al modello in test, confrontando il risultato con il nostro metodo abituale.",
+            "[Da personalizzare con l'esito reale del test del team: dove il modello ha funzionato meglio, dove ha avuto bisogno di una correzione umana, quanto tempo è stato risparmiato o perso davvero — senza inventare cifre o esiti non verificati.]",
+            "La lezione non è «questo modello è il migliore», ma «un modello nuovo va testato sul proprio caso d'uso prima di cambiare strumento, non adottato perché vince su un benchmark pubblico».",
         ],
-        cta="Avete mai lasciato un agente AI gestire da solo una conversazione con un cliente o un fornitore? Raccontateci com'è andata 👇",
-        hashtags="#IntelligenzaArtificiale #AgentiAI #Esperienza #B2B #Innovazione",
+        cta="La vostra azienda ha già testato un modello di nuova generazione su un compito reale, o si affida ancora ai soli benchmark pubblicati? Raccontatecelo 👇",
+        hashtags="#IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Innovazione",
     ),
     dict(
         badge="Prioritario",
-        day="Venerdì 9/10",
+        day="Venerdì 16/10",
         format="Divulgativo stile Datapizza",
-        title="AMD ha appena pagato 8,2 miliardi per un «modello di mondo». Cos'è, in parole *povere*",
-        news="Acquisizione di World Labs (Fei-Fei Li) da parte di AMD",
-        news_url="https://dealroom.co/news/157410-amd-to-buy-fei-fei-lis-world-labs-for-8-2b/",
-        hook="Il 29 settembre AMD ha comprato World Labs, la startup di Fei-Fei Li, per 8,2 miliardi di dollari. Il motivo è un «modello di mondo». Sembra marketing. Non lo è: è un tipo di AI diverso da ChatGPT, e vale la pena capire la differenza.",
+        title="OpenAI ha appena «firmato» i testi di ChatGPT per l'Europa. Come funziona, in parole *povere*",
+        news="textGrain, la filigrana testuale di OpenAI per l'AI Act europeo",
+        news_url="https://www.actuia.com/en/news/openai-will-watermark-chatgpt-in-the-eu-but-leaves-the-api-opt-in/",
+        hook="Il 5 ottobre OpenAI ha pubblicato textGrain, il sistema che userà per «firmare» i testi di ChatGPT nell'Unione Europea. Non è un timbro visibile, e non è neanche invisibile nel senso che si immagina di solito. Vale la pena capire come funziona davvero.",
         points=[
-            "Un modello linguistico come quelli che conosci (ChatGPT, Claude, Gemini) impara a prevedere la parola successiva in un testo: è bravissimo con parole e immagini, ma non «capisce» davvero come si muove un oggetto nello spazio o cosa succede se lo spingi.",
-            "Un «modello di mondo» impara invece a prevedere come cambia una scena fisica nel tempo: se un braccio robotico sposta una scatola, cosa succede un secondo dopo? Il primo prodotto di World Labs, Marble, genera proprio questi ambienti simulati, usati per addestrare i robot prima di farli muovere nel mondo reale — più economico e più sicuro che farli sbagliare su un pavimento vero.",
-            "Perché interessa ad AMD, non solo ai robot: un chip pensato per «prevedere la parola successiva» non è ottimizzato allo stesso modo per «simulare la fisica in tempo reale». Comprare World Labs porta dentro l'azienda la competenza per progettare hardware e software insieme per questo secondo tipo di AI, invece di rincorrerla dopo.",
+            "Un testo scritto da ChatGPT sembra identico a uno scritto da una persona, ma a ogni parola il modello sceglie, tra le alternative possibili, quella leggermente favorita da un calcolo statistico legato a una chiave segreta e alle parole precedenti.",
+            "Chi ha quella chiave può rileggere il testo e misurare se quel pattern statistico c'è: non serve nessun carattere nascosto o invisibile, serve solo rifare lo stesso calcolo e confrontarlo.",
+            "Il limite è proprio nella sua natura statistica: su un testo lungo e non modificato il rilevamento è alto (95% su 400 token in inglese), ma scende sotto editing leggero — sostituire un quarto delle parole con sinonimi lo fa crollare al 17% — e varia molto da una lingua europea all'altra.",
         ],
-        cta="Ti sembra un investimento che pagherà presto, o una scommessa sul lungo periodo? Dicci la tua 👇",
-        hashtags="#AI #TechExplained #Innovazione #B2B #Robotica",
+        cta="Ti sembra una soluzione tecnica solida per sapere cosa è stato scritto da un'AI, o un primo passo ancora facile da aggirare? Dicci la tua 👇",
+        hashtags="#AI #TechExplained #AIAct #B2B #Compliance",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
-        format="Carosello / documento dati — pacchetto normativo USA sul lavoro e l'AI",
-        title="Quattro leggi, un solo principio: l'AI non decide da *sola* sulle persone",
-        news="Pacchetto di leggi californiane su lavoro e AI (SB 947, SB 951, AB 1331, AB 1883)",
-        news_url="https://www.hrdive.com/news/california-revamps-ai-protections-for-workers-in-flurry-of-bill-signings/831949/",
-        hook="Il governatore della California ha firmato in un solo pacchetto quattro leggi sul rapporto tra AI e lavoro. Lette insieme, raccontano dove sta andando la regolamentazione del lavoro automatizzato — anche fuori dagli Stati Uniti.",
+        format="Carosello dati — il divario AI tra grandi imprese e PMI italiane",
+        title="Le grandi imprese italiane adottano l'AI quattro volte più delle *PMI*",
+        news="Dati Osservatorio IIA su adozione AI nelle imprese italiane (giugno 2026)",
+        news_url="https://www.tecnoandroid.it/news/osservatorio-iia-l836-delle-pmi-italiane-e-ancora-senza-ai-1908305/",
+        hook="I dati dell'Osservatorio IIA, presentati a giugno 2026, fotografano un'Italia a due velocità sull'adozione dell'AI nelle imprese. Non sono dati della settimana, ma il divario che descrivono si sta allargando, non riducendo.",
         points=[
-            "Il SB 947, la «No Robo Bosses Act», entra in vigore il 1° luglio 2027: vieta ai datori di lavoro di basarsi esclusivamente su un sistema automatizzato per licenziare o sanzionare un dipendente, senza una verifica umana documentata.",
-            "Lo stesso pacchetto include altre tre leggi: il preavviso obbligatorio sui licenziamenti causati dall'AI (SB 951) e i limiti alla sorveglianza biometrica ed emotiva in azienda (AB 1331, AB 1883).",
-            "Le norme sulla privacy collegate entrano in vigore il 1° gennaio 2027 e impongono notifica preventiva e valutazione del rischio prima di usare l'AI in una decisione di assunzione.",
-            "È la stessa settimana in cui, in Italia, è entrato in vigore (il 30 settembre) il nuovo reato di omessa sorveglianza su un sistema AI ad alto rischio (D.Lgs. 160/2026): due sistemi legali diversi, lo stesso principio di fondo.",
+            "16,4% — la quota di imprese italiane che usa l'AI nel 2025, quasi raddoppiata rispetto all'8,2% del 2024 secondo l'Osservatorio IIA.",
+            "53,1% — la quota di grandi imprese italiane che ha già adottato l'AI, contro il 15,7% delle PMI: un divario di 37,4 punti percentuali, salito dai 20 punti del 2023.",
+            "58,6% — la quota di PMI italiane che indica la mancanza di competenze interne come primo ostacolo all'adozione dell'AI.",
+            "Le PMI rappresentano oltre il 96% del tessuto produttivo italiano: un divario che cresce tra chi è già avanti e chi non ha ancora iniziato non resta un problema di poche aziende, diventa un problema di competitività del Paese.",
         ],
-        closing="La direzione è la stessa da entrambe le parti dell'Atlantico: la sorveglianza umana su una decisione che riguarda una persona — assunzione, licenziamento, valutazione — sta diventando un obbligo di legge, non più solo una buona pratica interna. Chi la costruisce ora, con tempo e senza fretta, la costruisce a un costo più basso di chi la rincorrerà nel 2027.",
-        cta="La tua azienda avrebbe oggi una risposta pronta se un dipendente chiedesse come un sistema AI ha pesato su una decisione che lo riguarda? 👇",
-        hashtags="#IntelligenzaArtificiale #Normativa #Compliance #B2B #HR",
+        closing="Il divario non si chiude da solo, e non si chiude comprando uno strumento in più: le PMI che lo stanno colmando lo fanno con formazione mirata e un metodo di adozione graduale — non con un rollout generale a tutta l'azienda dall'oggi al domani.",
+        cta="Nella tua azienda, il principale ostacolo all'adozione dell'AI è la mancanza di competenze, di tempo, o di un metodo per iniziare? 👇",
+        hashtags="#IntelligenzaArtificiale #PMI #DigitalTransformation #B2B #Formazione",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Riflessione di chiusura settimana / lista community",
-        title="5 cose che questa settimana ci dice sulla fiducia nell'*AI*",
-        news="Sintesi dei trend della settimana 29 settembre - 5 ottobre 2026",
-        news_url="https://www.forbes.com/sites/fionariley/2026/10/01/openai-reportedly-fires-3-researches-over-allegedly-mishandling-confidential-information/",
-        hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie AI degli ultimi 7 giorni.",
+        title="5 cose che questa settimana ci dice sulla corsa all'*AI*",
+        news="Sintesi dei trend della settimana 1 - 9 ottobre 2026",
+        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
+        hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie AI degli ultimi giorni.",
         points=[
-            "I soldi continuano a muoversi più in fretta della fiducia: 8,2 miliardi per comprare competenza (AMD-World Labs), 42 miliardi per finanziare i chip (Broadcom-Anthropic), ma la stessa settimana porta licenziamenti per sicurezza e un blackout di 5 ore in OpenAI.",
-            "Un agente AI lasciato a negoziare da solo mente nell'84-88% dei casi, secondo lo studio ripreso da Reuters — e non è un problema solo dei modelli cinesi.",
-            "Due continenti, lo stesso principio in una settimana sola: l'Italia rende reato la mancata sorveglianza umana su un'AI ad alto rischio, la California vieta i licenziamenti decisi solo da un algoritmo.",
-            "Anche i laboratori che vendono autonomia — OpenAI con gli agenti, Google con Gemini 4 Argon — la fanno partire da un gruppo ristretto e controllato, non da un rilascio generale immediato.",
-            "Nessuno di questi punti richiede un modello più potente. Tutti richiedono qualcuno che si occupi della supervisione, con un metodo — che si tratti di un chip, di un chatbot o di un agente che negozia un contratto.",
+            "Google torna competitivo con Gemini 4 Argon, ma non vince su ogni benchmark: la corsa alla frontiera non ha più un solo leader indiscusso su tutto.",
+            "Anthropic apre l'accesso ridotto ai propri modelli e rende pubblico un numero enorme — 129.000 vulnerabilità trovate dal progetto Glasswing — che dice quanto lavoro di sicurezza ci sia ancora da fare sul codice che gira nelle aziende.",
+            "OpenAI prova a rispettare l'AI Act europeo con una filigrana nei testi, ma i suoi stessi dati mostrano che un editing leggero la rende quasi inutile: la conformità dichiarata da un fornitore non va data per scontata.",
+            "Un agente AI cinese, Manus, cerca una valutazione da 4 miliardi di dollari nello stesso periodo in cui la fiducia negli agenti resta un tema aperto in tutto il settore.",
+            "Nessuno di questi punti richiede di inseguire il prossimo modello. Tutti richiedono lo stesso lavoro: testare prima di adottare, verificare prima di fidarsi, misurare il risultato invece del benchmark.",
         ],
-        closing="La settimana più «ricca» di notizie AI degli ultimi mesi, in fondo, dice una cosa sola: più l'AI diventa capace, più la domanda interessante smette di essere «quale modello» e diventa «chi lo governa».",
+        closing="Una settimana di correzioni, più che di rivoluzioni: i laboratori rispondono ai problemi emersi nelle settimane scorse con prodotti concreti, ma nessuno di questi prodotti sostituisce la verifica che un'azienda deve comunque fare per conto proprio.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
         hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
-    ),
-    # Idea 8, extra: aggiunta su richiesta esplicita di Ramona (8/10) sul tema
-    # del risparmio di tempo/denaro con l'adozione dell'AI in azienda. Sesto
-    # post Prioritario della settimana, oltre ai 5 dello schema standard:
-    # eccezione dichiarata, non un cambio della cadenza di default a 5/settimana.
-    dict(
-        badge="Prioritario",
-        day="Venerdì 9/10 (extra della settimana, su richiesta)",
-        format="Carosello dati",
-        title="Le PMI italiane che usano l'AI risparmiano 270 ore all'anno. Ecco dove vanno a *finire*",
-        news="Studio OpenAI/Opinium su 1.000 decisori di PMI italiane, presentato il 15/5/2026",
-        news_url="https://www.ai4business.it/intelligenza-artificiale/nelle-pmi-lai-fa-risparmiare-5-ore-a-settimana/",
-        hook="Quanto fa risparmiare davvero l'AI a un'azienda? Uno studio OpenAI, condotto da Opinium su 1.000 decisori di PMI italiane e presentato a Milano il 15 maggio 2026, prova a rispondere con numeri concreti, non con promesse.",
-        points=[
-            "5,2 ore a settimana — il tempo risparmiato in media da chi usa l'AI nel lavoro: oltre 270 ore all'anno a persona, secondo i dati (autodichiarati) raccolti da Opinium tra fine febbraio e inizio marzo 2026.",
-            "79% — la quota di decisori di PMI italiane che già usa strumenti di AI nel proprio lavoro, dal 68% dei lavoratori autonomi al 91% delle medie imprese.",
-            "96% — la quota di chi usa l'AI che dichiara di risparmiare tempo grazie ad essa; il 61% afferma che la rende più efficace nel proprio ruolo.",
-            "37% — la quota di PMI che ha già una policy formale sull'uso dell'AI: la maggioranza la usa ancora senza regole scritte.",
-            "Il tempo recuperato non resta vuoto: il 38% lo investe per migliorare prodotti e servizi, il 26% in attività creative, il 25% in pianificazione strategica — non meno lavoro, lavoro diverso.",
-            "Il primo ostacolo citato non è la tecnologia: il 27% indica un divario di competenze e formazione, un altro 27% preoccupazioni su privacy e sicurezza. Il collo di bottiglia è sapere usarla bene, non avere accesso allo strumento.",
-        ],
-        closing="Il risparmio di tempo è il dato che si vede subito. Quello che decide se diventa un vantaggio competitivo vero è cosa succede dopo: se le ore recuperate finiscono in attività a più valore con un metodo, o si disperdono senza una policy e una formazione che le indirizzi — il 63% delle PMI, va ricordato, non ne ha ancora una scritta.",
-        cta="Nella tua azienda, le ore recuperate grazie all'AI finiscono in attività a più valore, o si perdono senza che nessuno le misuri? 👇",
-        hashtags="#IntelligenzaArtificiale #PMI #Produttività #B2B #AIBusiness",
     ),
 ]
 
@@ -298,31 +255,31 @@ ideas = [
 # ---------------------------------------------------------------------------
 publishing = [
     dict(
-        day="Lunedì 5/10",
+        day="Lunedì 12/10",
         time="08:00",
         format="Thought leadership",
         reason="Apertura settimana, finestra mattutina 7:30-9:30: massimo traffico professionale, ideale per un post di respiro ampio che dà il tono alla settimana senza chiedere nulla.",
     ),
     dict(
-        day="Martedì 6/10",
+        day="Martedì 13/10",
         time="12:15",
-        format="Mito da sfatare (sicurezza degli agenti OpenAI)",
-        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — e prepara il terreno al carosello dati del giorno dopo sullo stesso tema di fondo (fiducia negli agenti AI).",
+        format="Mito da sfatare (sicurezza del codice generato/controllato dall'AI)",
+        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — e prepara il terreno al carosello del giorno dopo sullo stesso filo (fidarsi di un modello perché è nuovo o perché vince un benchmark).",
     ),
     dict(
-        day="Mercoledì 7/10",
+        day="Mercoledì 14/10",
         time="12:15",
-        format="Carosello dati / mito da sfatare (agenti che mentono in negoziazione)",
-        reason="Seconda finestra pausa pranzo B2B, distanziata di un giorno dal primo mito ma sullo stesso filo narrativo. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i dati Reuters (84-88% di inganno) sono densi abbastanza da meritare uno spazio proprio.",
+        format="Carosello dati / mito da sfatare (benchmark e prezzi dei nuovi modelli)",
+        reason="Seconda finestra pausa pranzo B2B, distanziata di un giorno dal primo mito ma sullo stesso filo narrativo. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i dati su benchmark e prezzi sono densi abbastanza da meritare uno spazio proprio.",
     ),
     dict(
-        day="Giovedì 8/10",
+        day="Giovedì 15/10",
         time="08:30",
-        format="Esperienza diretta (test interno su un agente negoziatore)",
+        format="Esperienza diretta (test interno su un modello di nuova generazione)",
         reason="Segue narrativamente il carosello del giorno prima, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
     ),
     dict(
-        day="Venerdì 9/10",
+        day="Venerdì 16/10",
         time="08:00",
         format="Divulgativo (Datapizza style)",
         reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale.",
@@ -330,19 +287,13 @@ publishing = [
     dict(
         day="Da programmare",
         time="—",
-        format="Riserva 1 — Carosello «quattro leggi, un principio solo» (California)",
-        reason="Banca contenuti: utile come secondo documento se questa settimana c'è margine di pubblicazione, o come apertura normativa della settimana successiva. Non promossa a Prioritario questa settimana: i 5 slot fissi dello schema (apertura, due miti, esperienza diretta, divulgativo) sono già tutti occupati, ed è la combinazione che l'arco della settimana richiedeva.",
+        format="Riserva 1 — Carosello «il divario AI tra grandi imprese e PMI italiane»",
+        reason="Banca contenuti: utile come secondo documento se questa settimana c'è margine di pubblicazione, o come apertura della settimana successiva su un tema a lungo termine per il pubblico B2B italiano. Non promossa a Prioritario questa settimana: i 5 slot fissi dello schema (apertura, due miti, esperienza diretta, divulgativo) sono già tutti occupati dal filo narrativo su modelli e sicurezza.",
     ),
     dict(
         day="Da programmare",
         time="—",
         format="Riserva 2 — Riflessione di chiusura",
         reason="Chiude l'arco della settimana. Utile nel weekend se il traffico lo giustifica, o come richiamo della settimana successiva.",
-    ),
-    dict(
-        day="Venerdì 9/10",
-        time="08:30",
-        format="Carosello dati — risparmio di tempo con l'AI (extra, su richiesta)",
-        reason="Sesto post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Finestra mattutina 7:30-9:30, formato documento/carosello per un contenuto denso di dati reali; CTA naturale verso l'AI Business Academy data la lacuna di formazione/policy che lo studio stesso evidenzia.",
     ),
 ]

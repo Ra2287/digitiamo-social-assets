@@ -277,6 +277,35 @@ ideas = [
         cta="Nella tua azienda, il risparmio ottenuto grazie all'AI viene misurato con un metodo, o si dà per scontato che ci sia? 👇",
         hashtags="",
     ),
+    # Idea 9, extra: debutto, su richiesta esplicita di Ramona (9/10), di una
+    # rubrica settimanale su F-hack AI (fhack.ai), la piattaforma/evento di
+    # hackathon AI di Digitiamo stessa. A differenza di tutte le altre idee
+    # della settimana, qui la fonte e' Digitiamo in prima persona (fhack.ai),
+    # non una notizia di settore esterna, ed e' l'unico post della settimana
+    # con un messaggio apertamente promozionale: coerente con la natura della
+    # rubrica, non con la regola "nessun post vende prima di giovedi'" pensata
+    # per i contenuti di curation editoriale. Finche' Ramona non conferma se
+    # questo sostituisce uno dei 5 slot standard o resta un'aggiunta fissa,
+    # resta un'eccezione dichiarata come le altre idee extra di questa
+    # settimana.
+    dict(
+        badge="Prioritario",
+        day="Martedì 13/10, ore 17:00 (extra della settimana, su richiesta — rubrica F-hack AI)",
+        format="Carosello / documento LinkedIn — F-hack AI (rubrica settimanale)",
+        title="Niente slide, solo un prototipo che funziona entro sera: dentro F-hack AI *01*",
+        news="F-hack AI 01 (18/9/2026, Talent Garden Milano) + F-hack AI 02, challenge aperte",
+        news_url="https://www.fhack.ai",
+        hook="Il 18 settembre abbiamo portato F-hack AI 01 a Talent Garden Milano: il nostro format di hackathon dove un'azienda porta un problema vero, e più team AI-first lo risolvono in parallelo, nello stesso giorno, con un prototipo che funziona davvero — non uno slide deck.",
+        points=[
+            "4 aziende, 4 challenge reali in altrettanti ambiti diversi — dalla sicurezza dei modelli linguistici ai media generativi, passando per impatto urbano e gestione dei dati — e 5 team AI-first al lavoro in parallelo sullo stesso tipo di problema.",
+            "Ogni team aveva le stesse KPI, definite prima dell'evento, e sono state le aziende stesse a valutare i prototipi finali: non una giuria esterna, non una presentazione, un confronto diretto sul risultato.",
+            "Il principio alla base è lo stesso di sempre: l'AI non si impara, si costruisce. Per questo l'evento si chiude con una demo dal vivo, non con delle slide.",
+            "Le challenge per F-hack AI 02 sono aperte da ora: la data dell'evento dal vivo è ancora da annunciare, ma c'è anche il F-hack Lab, sempre attivo, per chi ha un problema reale da mettere alla prova senza aspettare la prossima edizione.",
+        ],
+        closing="Se la tua azienda ha un caso d'uso AI che vuole vedere costruito — non solo raccontato in una proposta — le challenge per F-hack AI 02 sono aperte, e il F-hack Lab non ha scadenze.",
+        cta="Hai un problema in azienda che vorresti vedere risolto da un prototipo AI reale, costruito in un giorno? Raccontacelo nei commenti o scrivi a info@fhack.ai 👇",
+        hashtags="#FhackAI #IntelligenzaArtificiale #Innovazione #B2B #Hackathon",
+    ),
 ]
 
 # ---------------------------------------------------------------------------
@@ -330,5 +359,11 @@ publishing = [
         time="12:15",
         format="Carosello dati — l'AI fa risparmiare in automatico? (extra, su richiesta)",
         reason="Settimo post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Finestra pausa pranzo B2B, nello stesso giorno del divulgativo mattutino ma distanziata di oltre 4 ore; formato documento/carosello per dati densi (PwC, ISG, Gartner) e un angolo diverso dal risparmio di tempo già trattato nella settimana del 5/10 (qui: risparmio economico misurato, non percepito).",
+    ),
+    dict(
+        day="Martedì 13/10",
+        time="17:00",
+        format="Carosello / documento — rubrica F-hack AI (extra, su richiesta, debutto)",
+        reason="Ottavo post della settimana: debutto della rubrica settimanale su F-hack AI richiesta da Ramona. Orario di fine giornata lavorativa come secondo post del martedì, distanziato di oltre 4 ore dal mito della pausa pranzo per non competere sullo stesso pubblico nello stesso momento. È l'unico post della settimana con fonte interna (fhack.ai) e messaggio apertamente promozionale — coerente con la natura della rubrica, non con la regola di non vendere nei primi giorni pensata per la curation editoriale. Il giorno fisso della rubrica (e se sostituire uno dei 5 slot standard o restare un'aggiunta) va confermato da Ramona per le settimane successive.",
     ),
 ]

@@ -21,6 +21,12 @@ CAPTION_8: idea 8, extra aggiunta su richiesta di Ramona (9/10) sul risparmio
 economico delle aziende grazie all'AI (dati PwC Global CEO Survey 2026, ISG,
 Gartner) — angolo diverso dal risparmio di tempo già trattato la settimana
 del 5/10.
+
+CAPTION_9: idea 9, debutto della rubrica settimanale su F-hack AI
+(fhack.ai), richiesta da Ramona (9/10). Unica caption della settimana con
+fonte interna Digitiamo invece di una notizia di settore, e con un messaggio
+apertamente promozionale sull'iniziativa — coerente con la natura della
+rubrica.
 """
 
 CAPTION_1 = """In sette giorni: Google lancia Gemini 4 Argon dopo mesi di ritardo, Anthropic apre l'accesso ridotto ai suoi modelli a team di sicurezza verificati e rende noto che il progetto Glasswing ha trovato 129.000 vulnerabilità software, e OpenAI pubblica la sua filigrana testuale per conformarsi all'AI Act europeo. Tre mosse diverse, un solo filo conduttore: i laboratori stanno rispondendo, con prodotti concreti, ai problemi di sicurezza e fiducia emersi nelle settimane scorse.
@@ -95,3 +101,17 @@ I dati del PwC Global CEO Survey 2026 e di altre due ricerche indipendenti racco
 Il prezzo per usare l'AI continua a scendere, ma la spesa delle aziende sale lo stesso: più richieste, documenti più lunghi, agenti che fanno più chiamate in sequenza. Il risparmio non arriva da solo con l'adozione — arriva da un progetto misurato, su un caso d'uso specifico, con un metodo per sapere se sta funzionando. È la differenza tra sperare in un risparmio e costruirlo.
 
 Nella tua azienda, il risparmio ottenuto grazie all'AI viene misurato con un metodo, o si dà per scontato che ci sia? 👇"""
+
+
+CAPTION_9 = """Il 18 settembre abbiamo portato F-hack AI 01 a Talent Garden Milano: il nostro format di hackathon dove un'azienda porta un problema vero, e più team AI-first lo risolvono in parallelo, nello stesso giorno, con un prototipo che funziona davvero — non uno slide deck.
+
+→ 4 aziende, 4 challenge reali in altrettanti ambiti diversi — dalla sicurezza dei modelli linguistici ai media generativi, passando per impatto urbano e gestione dei dati — e 5 team AI-first al lavoro in parallelo sullo stesso tipo di problema.
+→ Ogni team aveva le stesse KPI, definite prima dell'evento, e sono state le aziende stesse a valutare i prototipi finali: non una giuria esterna, non una presentazione, un confronto diretto sul risultato.
+→ Il principio alla base è lo stesso di sempre: l'AI non si impara, si costruisce. Per questo l'evento si chiude con una demo dal vivo, non con delle slide.
+→ Le challenge per F-hack AI 02 sono aperte da ora: la data dell'evento dal vivo è ancora da annunciare, ma c'è anche il F-hack Lab, sempre attivo, per chi ha un problema reale da mettere alla prova senza aspettare la prossima edizione.
+
+Se la tua azienda ha un caso d'uso AI che vuole vedere costruito — non solo raccontato in una proposta — le challenge per F-hack AI 02 sono aperte, e il F-hack Lab non ha scadenze.
+
+Hai un problema in azienda che vorresti vedere risolto da un prototipo AI reale, costruito in un giorno? Raccontacelo nei commenti o scrivi a info@fhack.ai 👇
+
+#FhackAI #IntelligenzaArtificiale #Innovazione #B2B #Hackathon"""

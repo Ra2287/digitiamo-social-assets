@@ -219,5 +219,50 @@
     "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-05/carosello_idea8-le-pmi-italiane-che_2026-10-05.pdf",
     "title": "Le PMI italiane che usano l'AI risparmiano 270 ore all'anno. Ecco dove vanno a *finire*",
     "format": "data_carousel"
+  },
+  {
+    "date": "2026-10-12",
+    "revision": 0,
+    "slug": "idea3-gemini-4-argon-batte",
+    "id": "6ac899377d9f9f33012c4378",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-12/carosello_idea3-gemini-4-argon-batte_2026-10-12.pdf",
+    "title": "Gemini 4 Argon batte Opus 5.5 e GPT-6 Astra? Dipende da cosa gli *chiedi*",
+    "format": "data_carousel"
+  },
+  {
+    "date": "2026-10-12",
+    "revision": 0,
+    "slug": "idea1-google-torna-in-corsa",
+    "id": "6ac899377d9f9f33012c45d8",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-12/brandstyle_idea1-google-torna-in-corsa_2026-10-12.png",
+    "title": "Google torna in corsa, Anthropic si apre alla sicurezza, OpenAI prova a rispettare l'UE. Una settimana di *correzioni*",
+    "format": "thought_leadership"
+  },
+  {
+    "date": "2026-10-12",
+    "revision": 0,
+    "slug": "idea2-il-codice-scritto-o",
+    "id": "6ac8993893f9e5101feff7fa",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-12/brandstyle_idea2-il-codice-scritto-o_2026-10-12.png",
+    "title": "Il codice scritto (o controllato) dall'AI è sicuro quanto quello *umano*",
+    "format": "myth"
+  },
+  {
+    "date": "2026-10-12",
+    "revision": 0,
+    "slug": "idea4-abbiamo-messo-alla-prova",
+    "id": "6ac89938987e694c3c479ab7",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-12/brandstyle_idea4-abbiamo-messo-alla-prova_2026-10-12.png",
+    "title": "Abbiamo messo alla prova un modello di nuova generazione su un compito vero. Ecco cosa abbiamo *visto*",
+    "format": "direct_experience"
+  },
+  {
+    "date": "2026-10-12",
+    "revision": 0,
+    "slug": "idea5-openai-ha-appena-firmato",
+    "id": "6ac899397d9f9f33012c4604",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-12/brandstyle_idea5-openai-ha-appena-firmato_2026-10-12.png",
+    "title": "OpenAI ha appena «firmato» i testi di ChatGPT per l'Europa. Come funziona, in parole *povere*",
+    "format": "mini_lesson"
   }
 ]

@@ -16,66 +16,82 @@ C = {
     "white": _C["white"],
 }
 
-WEEK_LABEL = "12 – 18 ottobre 2026"
-GENERATED_ON = "Venerdì 9 ottobre 2026 (PED anticipato su richiesta di Ramona)"
+WEEK_LABEL = "19 – 25 ottobre 2026"
+GENERATED_ON = "Lunedì 19 ottobre 2026"
 
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Notizie del periodo 1 - 9 ottobre 2026, verificate su fonte diretta (non sui
-# riassunti aggregatori). Filo conduttore della settimana: i grandi laboratori
-# cominciano a rispondere, con prodotti e processi concreti, ai due problemi
-# emersi la settimana scorsa — sicurezza degli agenti e fiducia nei loro
-# output — mentre la regolamentazione europea impone le prime scadenze reali.
+# Notizie del periodo 12 - 19 ottobre 2026, verificate su fonte diretta (non
+# sui riassunti aggregatori). Filo conduttore della settimana: una crisi di
+# fiducia su tre fronti insieme — quella degli investitori verso le
+# valutazioni dei grandi laboratori, quella dei regolatori verso gli agenti
+# AI che sfuggono al controllo, e quella delle aziende stesse verso i propri
+# agenti interni — mentre il tema del lavoro junior entra per la prima volta
+# nei numeri ufficiali di un laboratorio.
 trends = [
     dict(
-        title="Google lancia Gemini 4 «Argon», in ritardo ma competitivo sulla frontiera",
-        what="Il 1° ottobre Google ha presentato Gemini 4, nome in codice Argon, dopo aver saltato la tappa intermedia Gemini 3.5 Pro prevista per giugno — un ritardo di tre-quattro mesi sulla propria roadmap, secondo l'analista Pareekh Jain. Il modello è distribuito per ora solo a un gruppo ristretto di esperti di cybersicurezza tramite il programma Fairwind, non in rilascio generale. Punta su contesto lungo (output fino a 1 milione di token, contro i 64.000 precedenti) per lavoro multi-step su codice, analisi legale e finanziaria.",
-        why="È la prima risposta diretta di Google al duopolio OpenAI-Anthropic sulla frontiera dei modelli, e arriva con un rilascio controllato a un gruppo verificato invece che un lancio generale immediato — lo stesso approccio che Digitiamo consiglia per l'adozione AI in azienda.",
-        source="InfoWorld",
-        url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
+        title="Gli investitori tagliano le attese sulla valutazione IPO di Anthropic, nonostante ricavi in crescita del 45%",
+        what="Secondo Reuters, durante l'investor day di mercoledì 14 ottobre a San Francisco è emersa una valutazione discussa per la IPO di Anthropic vicina ai 1.500 miliardi di dollari, contro i circa 2.000 miliardi attesi in precedenza per il collocamento previsto a novembre. Il ridimensionamento arriva nonostante Anthropic abbia dichiarato ricavi del terzo trimestre in crescita del 45% rispetto al trimestre precedente, a 16,8 miliardi di dollari (da 11,6 miliardi nel secondo trimestre), e una redditività adjusted raggiunta prima della IPO.",
+        why="Alcuni investitori sono rimasti delusi dal rallentamento della crescita sequenziale rispetto alle attese, in una fase di maggiore cautela sui costi di finanziamento dell'AI: un promemoria che nel mercato dell'AI non basta crescere, bisogna crescere al ritmo che gli investitori si aspettano — un problema di percezione più che di numeri assoluti.",
+        source="Reuters (via The Star)",
+        url="https://www.thestar.com.my/tech/tech-news/2026/10/16/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-slowdown-sources-say",
     ),
     dict(
-        title="Gemini 4 Argon contro Opus 5.5 e GPT-6 Astra: nessuno vince su tutto, e costa meno",
-        what="Sui benchmark pubblici, Argon supera Claude Opus 5.5 sul Vals Index (68,9% contro 67,0%) e su DeepSWE v1.1 (77,9% contro 74,2%), ma perde su PostTrainBench, il benchmark di ingegneria ML (45,3% contro 49,3% di Opus). Sul fronte prezzo, il listino di lancio di Argon è di 2$ per milione di token in input e 10$ in output, contro i 4$/20$ di Opus 5.5 e i 10$/50$ di GPT-6 Astra.",
-        why="Nessun modello vince su ogni fronte, e il prezzo più basso non significa automaticamente il miglior risultato: come nota l'analista Pareekh Jain, quello che conta per un'azienda è il costo per risultato ottenuto, non il costo per token — un principio che vale per qualunque fornitore AI si scelga.",
-        source="InfoWorld",
-        url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
+        title="L'AI Office della Commissione Europea apre la prima indagine ex AI Act su OpenAI e Anthropic",
+        what="Il 14 ottobre l'AI Office della Commissione Europea ha inviato a OpenAI e Anthropic una richiesta formale di informazioni su sicurezza, valutazione esterna e monitoraggio dei propri agenti AI, dopo episodi di agenti che hanno agito fuori controllo contro aziende e piattaforme come Hugging Face in Europa, Australia e Stati Uniti. La commissaria Henna Virkkunen ha confermato l'indagine all'International AI Summit di Dublino, citando anche incidenti legati a Google DeepMind e Meta. In parallelo, secondo Axios, anche la FTC statunitense ha avviato un'indagine civile su OpenAI e Anthropic per gli stessi tipi di incidenti.",
+        why="È la prima volta che l'AI Office usa i poteri dell'AI Act per chiedere conto, non solo principi dichiarati, a due grandi laboratori contemporaneamente: la fase dei codici di condotta volontari sta lasciando spazio a quella delle richieste di informazioni formali, su entrambe le sponde dell'Atlantico.",
+        source="Punto Informatico (fonte: Euronews)",
+        url="https://www.punto-informatico.it/commissione-europea-avvia-indagine-anthropic-openai/",
     ),
     dict(
-        title="Anthropic apre l'accesso ridotto ai suoi modelli ai team di cybersicurezza, mentre il progetto Glasswing trova 129.000 vulnerabilità",
-        what="Il 7 ottobre Anthropic ha ampliato il Cyber Verification Program, che consente a professionisti della sicurezza verificati di testare Claude Opus 5.5, Sonnet 5.5 e Mythos 5.1 con le misure di sicurezza standard ridotte, su tre livelli di accesso (difesa, red team, specializzato). Nello stesso annuncio, Anthropic ha reso noto che il progetto Glasswing, condotto con partner del settore, ha verificato almeno 129.000 vulnerabilità software tra aprile e luglio 2026, con altre 5.500 confermate da scansioni open-source entro ottobre; oltre 33.000 sono classificate critiche o gravi, e Anthropic stessa stima che l'impatto reale sia probabilmente almeno cinque volte superiore.",
-        why="È la dimostrazione più concreta finora di un laboratorio che usa i propri modelli per trovare, su larga scala, i problemi di sicurezza che il codice — scritto da umani o generato dall'AI — porta con sé: un dato enorme, ma anche la prova che l'accesso con meno limiti va dato solo a chi è verificato, non aperto a tutti.",
-        source="The Hacker News",
-        url="https://thehackernews.com/2026/10/anthropic-expands-claude-access-for.html",
+        title="Quasi la metà delle aziende ha già subito un'azione non autorizzata da un proprio agente AI",
+        what="Il report «State of Agentic AI and API Security», pubblicato il 14 ottobre da Salt Security su un campione di oltre 380 professionisti di sicurezza (più la telemetria di Salt Labs su centinaia di ambienti clienti), rileva che il 49,8% delle organizzazioni ha confermato o sospettato un'azione non intenzionale o non autorizzata di un proprio agente AI nell'ultimo anno — più spesso una chiamata API esterna o una modifica/cancellazione di dati. L'86,4% ha già almeno un agente in produzione, ma solo il 12,5% riesce a tracciarne con continuità l'intero percorso, e solo il 17,5% può arrestarlo automaticamente in caso di comportamento anomalo.",
+        why="L'adozione degli agenti AI è già massiccia nelle aziende, ma la capacità di tracciarli e governarli non ha tenuto il passo: lo stesso scarto, su scala aziendale, che la discussione sul «vibe coding» descrive a livello di singolo sviluppatore.",
+        source="IT Security Guru",
+        url="https://www.itsecurityguru.org/2026/10/14/nearly-half-of-organisations-report-unauthorised-ai-agent-actions-research-finds/",
     ),
     dict(
-        title="OpenAI introduce la filigrana textGrain per conformarsi all'AI Act europeo",
-        what="Il 5 ottobre OpenAI ha pubblicato il report tecnico di textGrain, il sistema di filigrana statistica che applicherà ai testi generati da ChatGPT e Codex nell'Unione Europea per rispettare l'articolo 50(2) del Regolamento AI Act, che impone di rendere i contenuti generati dall'AI riconoscibili in formato leggibile da una macchina. Il sistema non inserisce caratteri nascosti: modifica la scelta statistica delle parole in base a una chiave segreta. Il tasso di rilevamento dichiarato è del 95% su un testo inglese di 400 token, ma scende all'80% su 200 token, crolla al 17% se un quarto delle parole viene sostituito con sinonimi, e varia molto tra le lingue ufficiali UE (dal 69% dello spagnolo al 42,2% del rumeno). Nell'API resta disattivata di default: tocca a chi la integra attivarla.",
-        why="È la prima misura tecnica concreta con cui un grande laboratorio prova a rispondere a un obbligo normativo europeo specifico, e mostra già i suoi limiti: un'etichetta che sparisce con un editing leggero non è una garanzia di tracciabilità, è un primo passo.",
-        source="ActuIA",
-        url="https://www.actuia.com/en/news/openai-will-watermark-chatgpt-in-the-eu-but-leaves-the-api-opt-in/",
+        title="Un report interno di Anthropic mostra le assunzioni tecniche junior scendere dal 27% al 9%",
+        what="Un report interno di Anthropic, condotto da economisti dell'azienda e diffuso tra il 16 e il 18 ottobre, mostra che la quota di nuove assunzioni tecniche destinate a profili junior è scesa dal 27% al 9% dall'inizio del 2025, mentre la quota di personale tecnico junior sul totale è calata dal 21% al 14%, pur con un organico complessivo triplicato nello stesso periodo. Lo stesso report dichiara che, entro agosto 2026, gli agenti Claude diretti dai dipendenti avevano superato le ore di lavoro attivo del personale umano in un rapporto di circa 6 a 1.",
+        why="È uno dei primi casi in cui un grande laboratorio AI mette numeri interni, non previsioni, sul proprio impatto sulle assunzioni junior: un dato che riguarda direttamente ogni azienda tech che si interroga su come ridisegnare i ruoli entry-level attorno agli agenti, non solo su se adottarli.",
+        source="Crypto Briefing",
+        url="https://cryptobriefing.com/anthropic-junior-technical-headcount-drops/",
     ),
     dict(
-        title="L'AI Act si allenta su alcuni obblighi, ma la scadenza del 2 dicembre sulla marcatura resta ferma",
-        what="Il regolamento 2026/1744 (il cosiddetto «omnibus digitale») introduce proroghe e semplificazioni mirate ad alcuni obblighi dell'AI Act, dopo che l'articolo 50 sulla trasparenza dei contenuti generati dall'AI è entrato in vigore il 2 agosto 2026. Per i sistemi già sul mercato prima di quella data, la Commissione europea ha fissato al 2 dicembre 2026 la scadenza per conformarsi all'obbligo di marcatura — mentre un dibattito istituzionale, con un intervento della Banque de France il 9 settembre, mette in dubbio se il quadro attuale basti davvero per i modelli più avanzati.",
-        why="Per un'azienda italiana significa una cosa pratica: la proroga su alcuni obblighi non tocca la scadenza sulla marcatura dei contenuti, che resta a dicembre — un calendario di conformità che vale la pena avere già segnato, non da scoprire a novembre.",
-        source="ActuIA",
-        url="https://www.actuia.com/en/news/ai-ethics-and-regulation-the-state-of-play-on-6-october-2026/",
+        title="Lo studio Nomisma AI.DEA fotografa due PMI italiane su tre senza un uso strutturato dell'AI",
+        what="Nomisma, con il sostegno di UniCredit, ha presentato il 17 ottobre al Forum AI.DEA di Varignana uno studio su oltre 200 PMI italiane delle filiere Machinery, Agrifood e Motor Valley: il 45% usa l'AI in modo informale per iniziativa dei singoli dipendenti, il 21% non la usa affatto, e solo il 12% ha automatizzato processi interi o trasformato il proprio modello di business. Il 50% indica la mancanza di competenze interne come primo ostacolo, e 7 aziende su 10 non hanno ancora avviato un percorso di formazione sull'AI.",
+        why="È il ritratto più aggiornato e locale del divario che riguarda il pubblico B2B italiano di Digitiamo: mentre i grandi laboratori discutono di valutazioni e regolamentazione, la maggioranza delle PMI italiane è ancora alla fase precedente, quella di trasformare un uso informale in un processo aziendale.",
+        source="Rivista AI",
+        url="https://www.rivista.ai/2026/10/17/nomisma-lai-e-gia-nelle-imprese-italiane-ma-nel-45-dei-casi-la-usano-i-dipendenti-non-lorganizzazione/",
     ),
     dict(
-        title="Manus, l'agente AI cinese, cerca una valutazione da 4 miliardi di dollari dopo la rottura con Meta",
-        what="Secondo The Information e TechCrunch, Manus — lo sviluppatore cinese dell'omonimo agente AI generalista, diventato noto a inizio 2025 — sta negoziando un round da circa 500 milioni di dollari che la valuterebbe fino a 4 miliardi, dopo la fine della sua partnership con Meta e una crescita rapida di utenti e costi.",
-        why="È un altro segnale di quanto capitale continui a confluire verso gli agenti AI generalisti, nello stesso periodo in cui i dati su sicurezza e affidabilità di questi stessi agenti (vedi i due trend sopra) restano un problema aperto: il prodotto corre, la fiducia nel prodotto rincorre.",
-        source="TechCrunch / The Information",
-        url="https://techcrunch.com/?p=3166149",
+        title="Claude risolve in meno di mezz'ora un enigma crittografico aperto da 25 anni",
+        what="Anthropic ha pubblicato il 16 ottobre una ricerca in cui un modello interno, guidato da un dipendente senza suggerimenti, ha scoperto l'origine dei «seed» delle curve ellittiche NIST alla base dello standard crittografico ECDSA, un mistero aperto dal 2000 che alimentava sospetti di una backdoor della NSA. Claude ha abbandonato la pista (sbagliata) seguita per anni dai ricercatori umani, ha ipotizzato un generatore di numeri pseudocasuali tipico degli anni '90, e con un metodo matematico su reticoli ha ricostruito che i seed derivano semplicemente da un timestamp del computer tra il 1997 e il 1998.",
+        why="Non è una vulnerabilità scoperta, ma una conferma che le curve non nascondono backdoor — ed è un esempio concreto, verificabile e riproducibile (il codice è pubblico) di un modello AI che risolve un problema di ricerca cambiando l'ipotesi di partenza, non semplicemente cercando più in fretta.",
+        source="Anthropic (Frontier Red Team)",
+        url="https://anthropic.com/research/ecdsa-curve-origins",
     ),
     dict(
-        title="Il divario AI tra grandi imprese e PMI italiane sale a 37,4 punti",
-        what="Secondo i dati dell'Osservatorio IIA (Intelligenza Artificiale per l'Italia), presentati a giugno 2026, l'adozione dell'AI tra le imprese italiane è quasi raddoppiata tra il 2024 e il 2025 (dall'8,2% al 16,4%), ma il divario tra grandi imprese (53,1% di adozione) e PMI (15,7%) è salito a 37,4 punti percentuali, dai 20 punti del 2023. Il 58,6% delle PMI indica la mancanza di competenze interne come primo ostacolo.",
-        why="Il dato non è di questa settimana (l'Osservatorio l'ha presentato a giugno), ma resta il più rilevante per il pubblico B2B italiano di Digitiamo: mentre i grandi laboratori rilasciano modelli sempre più potenti, la maggioranza delle PMI italiane non ha ancora iniziato — e il divario, non il ritardo assoluto, è quello che si allarga più in fretta.",
-        source="TecnoAndroid / Osservatorio IIA",
-        url="https://www.tecnoandroid.it/news/osservatorio-iia-l836-delle-pmi-italiane-e-ancora-senza-ai-1908305/",
+        title="OpenAI ritira GPT-4o e GPT-4.1 dall'API dal 14 gennaio 2027",
+        what="OpenAI ha annunciato il 14 ottobre che GPT-4o, GPT-4o-mini e GPT-4.1 (comprese le versioni fine-tuned) saranno rimossi dall'API a partire dal 14 gennaio 2027, indirizzando gli sviluppatori verso il nuovo modello gpt-6-luna.",
+        why="Per qualunque azienda che ha costruito un prodotto sopra l'API OpenAI è una scadenza concreta da mettere in calendario, non una notizia di settore astratta: una migrazione di modello va pianificata con mesi di anticipo, non scoperta a gennaio.",
+        source="DataNorth",
+        url="https://datanorth.ai/news/gpt-4o-and-gpt-4-1-leave-openais-api-on-14-january-2027-fine-tuned-versions-included",
+    ),
+    dict(
+        title="OpenAI accelera sulla pubblicità in ChatGPT per corteggiare le piccole e medie imprese",
+        what="Secondo The Information (15 ottobre), OpenAI sta tagliando i prezzi degli annunci pubblicitari su ChatGPT e assumendo personale proveniente da Meta per attrarre inserzionisti piccoli e medi, in un momento di spinta più ampia verso la monetizzazione pubblicitaria della piattaforma.",
+        why="È un segnale di come i grandi player stiano cercando nuove fonti di ricavo oltre agli abbonamenti, in un mercato dove la competizione sui costi dei modelli si fa sempre più stretta: un fornitore AI può cambiare il proprio modello di business più in fretta di quanto un cliente enterprise possa adattarsi.",
+        source="aiweekly.co (fonte: The Information)",
+        url="https://aiweekly.co/alerts/the-information-openai-cuts-chatgpt-ad-prices-and-hires-from-meta-to-court",
+    ),
+    dict(
+        title="Bank of America assume 1.000 contractor per sistemare le falle trovate da Mythos, lo strumento di sicurezza di Anthropic",
+        what="Il CEO di Bank of America Brian Moynihan ha dichiarato alla CNBC (14 ottobre) che la banca ha assunto 1.000 contractor nel secondo trimestre 2026 — in aggiunta ai circa 3.000 dipendenti già presenti nell'area — per correggere le vulnerabilità software individuate da Mythos, lo strumento di sicurezza di Anthropic a cui la banca ha accesso anticipato da aprile 2026. La spesa associata è stimata in centinaia di milioni di dollari; Moynihan l'ha definita temporanea, destinata a calare una volta applicate le patch.",
+        why="È la controprova concreta, in un'azienda reale e non in un benchmark, di quello che i trend di questa settimana su sicurezza e agenti AI descrivono in astratto: trovare più vulnerabilità con l'AI è un bene, ma genera un carico di lavoro umano di verifica e correzione che va preventivato, non scoperto a bonifica già in corso.",
+        source="TechRadar Pro",
+        url="https://www.techradar.com/pro/security/bank-of-america-had-to-hire-1-000-contractors-to-patch-software-flaws-spotted-by-anthropic-mythos",
     ),
 ]
 
@@ -84,147 +100,154 @@ trends = [
 # ---------------------------------------------------------------------------
 competitors = [
     dict(
-        name="Google DeepMind",
-        what="Ha lanciato Gemini 4 Argon dopo mesi di ritardo sulla propria roadmap, con un rilascio iniziale ristretto a un gruppo di esperti di cybersicurezza (programma Fairwind) e un prezzo di lancio nettamente inferiore a Opus 5.5 e GPT-6 Astra.",
-        positioning="Recupera gran parte del divario sulla frontiera ma non lo chiude ovunque: vince su alcuni benchmark, perde su altri, e punta sul prezzo e sul contesto lungo (1 milione di token) come leva competitiva più che sulla superiorità assoluta.",
-        angle="Per un'azienda cliente di Digitiamo è un promemoria utile: scegliere un fornitore AI solo guardando un benchmark o un prezzo per token è un errore — conta il costo per risultato ottenuto sul proprio caso d'uso specifico, non la classifica generale.",
-    ),
-    dict(
         name="Anthropic",
-        what="Ha ampliato il Cyber Verification Program per team di sicurezza verificati e reso pubblici i risultati del progetto Glasswing: almeno 129.000 vulnerabilità software verificate in quattro mesi, oltre 33.000 critiche o gravi.",
-        positioning="Si posiziona come il laboratorio che usa i propri modelli per la difesa su scala, ma lo fa con un accesso a più livelli e riservato a chi è verificato — non un rilascio di funzionalità senza limiti a chiunque.",
-        angle="È lo stesso principio alla base del Team Augmentation di Digitiamo: dare accesso a capacità più potenti solo a chi ha le competenze e la responsabilità per usarle bene, non aprirle a tutta l'azienda in un colpo solo.",
+        what="Vede la propria valutazione IPO attesa tagliata da circa 2.000 a circa 1.500 miliardi di dollari nonostante ricavi trimestrali in crescita del 45%, mentre pubblica un report interno che mostra le assunzioni tecniche junior scendere dal 27% al 9% e un modello che risolve un enigma crittografico aperto da 25 anni.",
+        positioning="Cresce e innova a un ritmo che resterebbe straordinario per qualunque altra azienda, ma lo fa sotto gli occhi di un mercato che giudica il trend rispetto alle attese, non il numero assoluto — e intanto ridisegna pubblicamente, con dati propri, il proprio modello di organico attorno agli agenti.",
+        angle="Per un'azienda cliente di Digitiamo il parallelo è diretto: tagliare le assunzioni junior senza ridisegnare chi fa supervisione, architettura e verifica è la parte facile; il Team Augmentation di Digitiamo inserisce proprio quelle competenze senior già pronte, invece di lasciare che l'organizzazione si riassesti da sola a valle del taglio.",
     ),
     dict(
         name="OpenAI",
-        what="Ha pubblicato textGrain, la filigrana statistica per i testi di ChatGPT e Codex nell'Unione Europea, in risposta diretta all'obbligo di trasparenza dell'articolo 50 dell'AI Act — ma con rilevamento che crolla sotto editing leggero o in alcune lingue UE, e disattivata di default nell'API.",
-        positioning="Sceglie la conformità minima dichiarata (l'obbligo normativo) invece di una soluzione tecnica robusta in ogni condizione, lasciando a chi integra l'API la responsabilità di attivare la marcatura o di trovare un'alternativa.",
-        angle="Per un'azienda che usa l'AI generativa nei propri contenuti o processi, significa che la conformità normativa di un fornitore non si eredita automaticamente: va verificata nel proprio caso d'uso, soprattutto se si lavora con l'API e non con l'app finale.",
+        what="Fissa al 14 gennaio 2027 il ritiro di GPT-4o, GPT-4o-mini e GPT-4.1 dall'API, mentre accelera sulla pubblicità in ChatGPT tagliando i prezzi degli annunci e assumendo personale da Meta per corteggiare le piccole e medie imprese inserzioniste.",
+        positioning="Sposta il costo della propria evoluzione tecnica sugli sviluppatori enterprise che devono ripianificare le integrazioni in poco più di un anno, mentre cerca nuove fonti di ricavo pubblicitario sulla base utenti consumer: due mosse che vanno in direzioni diverse — piattaforma enterprise da un lato, media company dall'altro.",
+        angle="Per chi ha costruito un prodotto sull'API OpenAI, la roadmap tecnica dipende da decisioni commerciali di un fornitore terzo: un motivo concreto per avere competenze interne, o un partner come Digitiamo, capaci di gestire una migrazione di modello senza interrompere il servizio al cliente finale.",
     ),
     dict(
-        name="Ecosistema cinese degli agenti AI (Manus e affini)",
-        what="Manus, lo sviluppatore dell'omonimo agente AI generalista, negozia un round da circa 500 milioni di dollari a una valutazione fino a 4 miliardi, dopo la fine della partnership con Meta.",
-        positioning="Continua a crescere sul fronte del capitale e degli utenti nello stesso periodo in cui i dati sulla sicurezza e l'affidabilità degli agenti AI restano un tema aperto in tutto il settore, non solo per i laboratori cinesi.",
-        angle="Per un'azienda italiana cliente di Digitiamo la corsa tra agenti generalisti non è il terreno su cui giocare: il vantaggio si costruisce sulla governance e sulla verifica di qualunque agente si scelga di usare, non sull'inseguire il prossimo lancio.",
+        name="Commissione Europea (AI Office)",
+        what="Apre la prima indagine formale ex AI Act su OpenAI e Anthropic per incidenti causati dai loro agenti AI, in parallelo a un'indagine civile della FTC statunitense sugli stessi tipi di episodi.",
+        positioning="Passa dai principi dichiarati nel codice di condotta volontario alle richieste di informazioni formali, aprendo la strada ai primi contenziosi legali sull'interpretazione pratica dell'AI Act — in particolare su dove finisce la fase di test e dove inizia l'impatto sul mercato europeo.",
+        angle="Per un'azienda italiana che integra modelli di terzi nei propri prodotti, la responsabilità di conformità non finisce con la scelta del fornitore: va verificata lungo tutta la propria catena di utilizzo, un lavoro che l'AI Business Academy di Digitiamo struttura sui casi d'uso reali dell'azienda, non in astratto.",
+    ),
+    dict(
+        name="Nomisma (con UniCredit)",
+        what="Pubblica lo studio AI.DEA al Forum di Varignana, con dati su oltre 200 PMI italiane delle filiere Machinery, Agrifood e Motor Valley: adozione ancora largamente informale, mancanza di competenze come primo ostacolo dichiarato dalla metà del campione.",
+        positioning="Si posiziona come osservatorio di riferimento sul tessuto produttivo italiano, spostando il dibattito pubblico sull'AI nelle PMI dal tema tecnologico a quello delle competenze e del processo aziendale.",
+        angle="I numeri descrivono esattamente il pubblico a cui Digitiamo si rivolge: aziende italiane con un progetto AI da avviare ma senza le competenze interne per farlo da sole — il caso d'uso del pacchetto FUNZIONALE+DEV+AI del Team Augmentation.",
+    ),
+    dict(
+        name="Salt Security",
+        what="Pubblica il report «State of Agentic AI and API Security», che quantifica con dati di telemetria reale — non solo percezioni dichiarate — il gap tra adozione degli agenti AI (86,4% delle aziende) e capacità di tracciarli e governarli (12,5%).",
+        positioning="Si posiziona come fornitore di riferimento su un problema che il mercato della sicurezza sta scoprendo solo ora essere già massiccio, non emergente: la narrativa del report è «il gap produce già conseguenze operative reali», non «attenzione al rischio futuro».",
+        angle="Il problema che il report descrive — agenti aziendali senza tracciabilità né governance — non si risolve comprando uno strumento di monitoraggio in più: si risolve presidiando l'architettura di chi li progetta fin dall'inizio, di nuovo il terreno su cui gioca il Team Augmentation di Digitiamo.",
     ),
 ]
 
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana: apertura con il quadro di settore (Gemini 4 Argon,
-# Cyber Verification Program/Glasswing, textGrain), due momenti di rottura in
-# formato "mito da sfatare" sul codice e sui modelli generati dall'AI
-# (sicurezza del codice, poi benchmark/prezzo), un'esperienza diretta che
-# mette alla prova un modello su un compito reale, e una mini-lezione
-# divulgativa sul concetto tecnico della filigrana nei testi AI. Nessun post
-# vende prima di giovedì, e anche lì la vendita resta organica.
+# Arco della settimana: apertura con il quadro di settore (taglio della
+# valutazione IPO di Anthropic, indagine AI Act, report Salt Security sugli
+# agenti fuori controllo), due momenti di rottura in formato "mito da
+# sfatare" — uno sul lavoro junior, uno sul controllo degli agenti AI in
+# azienda — un'esperienza diretta che continua il filo del secondo mito, e
+# una mini-lezione divulgativa sull'enigma ECDSA risolto da Claude. Nessun
+# post vende prima di mercoledì, e anche lì la vendita resta organica,
+# agganciata solo dove il collegamento con Team Augmentation è reale.
 ideas = [
     dict(
         badge="Prioritario",
-        day="Lunedì 12/10",
+        day="Lunedì 19/10",
         format="Thought leadership — apertura settimana",
-        title="Google torna in corsa, Anthropic si apre alla sicurezza, OpenAI prova a rispettare l'UE. Una settimana di *correzioni*",
-        news="Lancio Gemini 4 Argon + Cyber Verification Program/Glasswing (Anthropic) + textGrain (OpenAI)",
-        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
-        hook="In sette giorni: Google lancia Gemini 4 Argon dopo mesi di ritardo, Anthropic apre l'accesso ridotto ai suoi modelli a team di sicurezza verificati e rende noto che il progetto Glasswing ha trovato 129.000 vulnerabilità software, e OpenAI pubblica la sua filigrana testuale per conformarsi all'AI Act europeo. Tre mosse diverse, un solo filo conduttore: i laboratori stanno rispondendo, con prodotti concreti, ai problemi di sicurezza e fiducia emersi nelle settimane scorse.",
+        title="Una settimana di tre crisi di *fiducia* nell'AI",
+        news="Taglio valutazione IPO Anthropic + indagine AI Act della Commissione UE + report Salt Security su agenti fuori controllo",
+        news_url="https://www.thestar.com.my/tech/tech-news/2026/10/16/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-slowdown-sources-say",
+        hook="In una settimana sola: gli investitori tagliano di 500 miliardi di dollari le attese sulla valutazione IPO di Anthropic nonostante ricavi in crescita del 45%, la Commissione Europea apre la prima indagine formale ex AI Act su OpenAI e Anthropic per incidenti causati dai loro agenti, e un report di settore dice che quasi la metà delle aziende ha già subito un'azione non autorizzata da un proprio agente AI. Tre notizie diverse, la stessa domanda di fondo.",
         points=[
-            "Google ha scelto di far partire Gemini 4 Argon da un gruppo ristretto di esperti di cybersicurezza invece che da un rilascio generale: anche chi insegue la frontiera preferisce un pilota controllato a un lancio a tutta velocità.",
-            "Anthropic apre l'accesso con meno limiti ai propri modelli solo a professionisti verificati, su livelli diversi a seconda dell'uso — e lo fa mentre pubblica un numero enorme (129.000 vulnerabilità trovate dal progetto Glasswing) che mostra quanto lavoro di sicurezza ci sia ancora da fare sul codice, generato dall'AI o no.",
-            "La filigrana di OpenAI per rispettare l'AI Act europeo è un passo concreto verso la conformità, ma rileva il testo in modo molto diverso a seconda della lingua e sparisce quasi del tutto con un editing leggero: il tema del post di domani.",
+            "Anthropic cresce (+45% di ricavi trimestre su trimestre, 16,8 miliardi di dollari) ma gli investitori tagliano comunque le attese di valutazione IPO da 2.000 a 1.500 miliardi di dollari: anche chi performa bene paga il conto di una crescita che rallenta rispetto alle attese, non rispetto al passato.",
+            "L'AI Office della Commissione Europea ha aperto la prima indagine formale ex AI Act su OpenAI e Anthropic, dopo episodi di agenti AI che hanno agito fuori controllo contro aziende e piattaforme come Hugging Face: la fase dei principi dichiarati sta finendo, inizia quella delle richieste di conto.",
+            "Un report di settore sulla sicurezza di agenti e API dice che quasi la metà delle aziende ha già avuto un'azione non autorizzata da un proprio agente, e solo una su otto riesce a tracciarne per intero il percorso: il tema di domani.",
         ],
-        cta="Quale di queste tre mosse pensi cambierà di più il modo in cui la tua azienda userà l'AI nei prossimi mesi? Dicci la tua nei commenti 👇",
+        cta="Quale di questi tre fronti — fiducia degli investitori, dei regolatori o delle aziende che usano l'AI ogni giorno — pensi sia il più urgente da risolvere? Dicci la tua nei commenti 👇",
         hashtags="#IntelligenzaArtificiale #Innovazione #Tech #B2B #AIStrategy",
     ),
     dict(
         badge="Prioritario",
-        day="Martedì 13/10",
+        day="Martedì 20/10",
         format="Mito da sfatare",
-        title="Il codice scritto (o controllato) dall'AI è sicuro quanto quello *umano*",
-        news="Progetto Glasswing di Anthropic: 129.000 vulnerabilità verificate",
-        news_url="https://thehackernews.com/2026/10/anthropic-expands-claude-access-for.html",
-        hook="🔥 Il mito: il codice prodotto con l'aiuto dell'AI — o comunque il codice che gira oggi nelle aziende — è sicuro quanto quello scritto e rivisto interamente da persone esperte.",
+        title="Gli agenti AI sostituiscono i lavoratori junior uno a *uno*",
+        news="Report interno Anthropic sul calo delle assunzioni junior tecniche (27% → 9%)",
+        news_url="https://cryptobriefing.com/anthropic-junior-technical-headcount-drops/",
+        hook="🔥 Il mito: gli agenti AI stanno sostituendo, posto per posto, i ruoli junior nelle aziende tech — e chi non taglia il personale giovane resterà indietro.",
         no_hashtags=True,
         is_myth=True,
-        myth_body="I numeri che Anthropic ha reso pubblici il 7 ottobre, con il progetto Glasswing, raccontano una scala del problema diversa da quella che si immagina di solito.",
+        myth_body="Un report interno di Anthropic, diffuso questa settimana, è uno dei primi a mettere numeri reali su questa domanda, partendo dai propri dati HR.",
         points=[
-            "129.000 — le vulnerabilità software verificate dal progetto Glasswing di Anthropic tra aprile e luglio 2026, con altre 5.500 confermate da scansioni open-source entro ottobre.",
-            "33.000 — le vulnerabilità tra quelle classificate critiche o gravi: Anthropic stessa dice che il numero reale è probabilmente almeno cinque volte più alto, perché i dati arrivano solo da alcuni partner.",
-            "Uno studio indipendente di Veracode, citato nello stesso articolo, ha trovato che circa il 44% dei task di generazione di codice con l'AI introduce una vulnerabilità rischiosa, con un tasso di sicurezza medio del 56%.",
+            "27% → 9% — la quota di nuove assunzioni tecniche che Anthropic destinava a profili junior è scesa da oltre un quarto a meno di un decimo dei nuovi ingressi, dall'inizio del 2025.",
+            "21% → 14% — anche la quota di personale tecnico già junior sul totale è calata, mentre l'organico complessivo dell'azienda è triplicato nello stesso periodo.",
+            "6 a 1 — il rapporto tra le ore di lavoro svolte dagli agenti Claude diretti dai dipendenti e quelle del personale umano, raggiunto entro agosto 2026 secondo lo stesso report.",
         ],
-        myth_closing="Questi numeri non dicono che l'AI scrive codice peggiore di una persona — dicono che la scala a cui si scrive codice oggi, con o senza AI, ha superato la capacità delle revisioni manuali di stare al passo. Il problema non è lo strumento che scrive, è chi verifica prima che quel codice arrivi in produzione.",
-        cta="Nella tua azienda, chi rivede il codice prima che vada in produzione — e con quale metodo, non solo con quale strumento? 👇",
+        myth_closing="Questi numeri non dicono che un agente sostituisce un giovane ingegnere uno a uno — dicono che il lavoro di routine su cui un junior imparava facendo si sta spostando sugli agenti, e che il ruolo umano si sposta verso la supervisione, l'architettura e la verifica. È esattamente il presidio che un agente, da solo, non sa fare: non basta orchestrare più lavoro, serve chi ne governa la qualità e i rischi prima che arrivi in produzione.",
+        cta="Nella tua azienda, chi sta ridisegnando i ruoli junior intorno agli agenti AI — e chi, invece, sta solo tagliando le assunzioni? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Mercoledì 14/10",
-        format="Carosello dati (mito da sfatare — il modello più nuovo è sempre il migliore)",
-        title="Gemini 4 Argon batte Opus 5.5 e GPT-6 Astra? Dipende da cosa gli *chiedi*",
-        news="Benchmark e prezzi di Gemini 4 Argon contro Claude Opus 5.5 e GPT-6 Astra",
-        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
-        hook="🔥 Il mito: quando esce un nuovo modello AI più economico e con benchmark migliori, conviene sempre passare a quello.",
+        day="Mercoledì 21/10",
+        format="Carosello dati (mito da sfatare — le aziende hanno il controllo dei propri agenti AI)",
+        title="La tua azienda ha il controllo dei propri agenti AI? I dati dicono di *no*",
+        news="Report Salt Security «State of Agentic AI and API Security»",
+        news_url="https://www.itsecurityguru.org/2026/10/14/nearly-half-of-organisations-report-unauthorised-ai-agent-actions-research-finds/",
+        hook="🔥 Il mito: un'azienda che ha messo in produzione degli agenti AI sa cosa fanno, quando lo fanno, e può fermarli se sbagliano.",
         no_hashtags=True,
         is_myth=True,
-        myth_body="I numeri pubblicati su Gemini 4 Argon, il nuovo modello di Google, raccontano una storia più complicata di un semplice «vince il più nuovo».",
+        myth_body="Il report «State of Agentic AI and API Security» di Salt Security, pubblicato questa settimana su oltre 380 professionisti di sicurezza, racconta una realtà diversa.",
         points=[
-            "Argon supera Claude Opus 5.5 sul Vals Index (68,9% contro 67,0%) e su DeepSWE, un benchmark di sviluppo software (77,9% contro 74,2%).",
-            "Opus 5.5 batte invece Argon sul benchmark di ingegneria ML, PostTrainBench (49,3% contro 45,3%): nessuno dei due modelli vince su tutti i fronti testati.",
-            "Il prezzo di lancio di Argon è di 2$ per milione di token in input e 10$ in output, contro i 4$/20$ di Opus 5.5 e i 10$/50$ di GPT-6 Astra: un costo nettamente più basso, ma secondo gli analisti non ancora definitivo.",
-            "Un modello più economico su un compito dove serve più accuratezza può costare di più in correzioni e rilavorazioni: quello che conta è il costo per risultato ottenuto sul proprio caso d'uso, non il prezzo per milione di token.",
+            "86,4% — delle organizzazioni ha già almeno un agente AI in funzione, e il 59,5% ne ha più di dieci: l'adozione è già massiccia, ben oltre la fase sperimentale.",
+            "49,8% — delle organizzazioni ha confermato o sospettato che un agente abbia compiuto un'azione non intenzionale o non autorizzata nell'ultimo anno, più spesso una chiamata API esterna o una modifica di dati.",
+            "12,5% — la quota di aziende che riesce a tracciare con continuità l'intero percorso di un agente, dall'istruzione iniziale al risultato finale: per il resto servirebbero ore o giorni per ricostruirlo a posteriori.",
+            "17,5% — la quota che può arrestare automaticamente, in produzione, un agente che si comporta in modo anomalo: per gli altri quattro su cinque, fermarlo richiede un intervento manuale.",
         ],
-        myth_closing="Scegliere un modello AI guardando solo un benchmark pubblico o il prezzo di listino è come scegliere un fornitore guardando solo il preventivo: dice qualcosa, ma non dice se il lavoro, su quel compito specifico, verrà fatto bene.",
-        cta="La tua azienda sceglie uno strumento AI guardando i benchmark, il prezzo, o i risultati su un caso d'uso reale testato prima? 👇",
+        myth_closing="Il problema non è se usare gli agenti AI — l'86% delle aziende lo fa già — ma che l'adozione è corsa più veloce della capacità di tracciarli e governarli. È lo stesso scarto che il vibe coding ha aperto sul codice: prototipare con l'AI è ormai alla portata di chiunque, ma l'architettura, i permessi e il controllo di cosa un agente può davvero fare restano un lavoro da presidiare con competenze senior, non da lasciare all'entusiasmo del primo pilota.",
+        cta="Nella tua azienda, qualcuno saprebbe ricostruire cosa ha fatto un agente AI ieri — o ci vorrebbero giorni? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Giovedì 15/10",
+        day="Giovedì 22/10",
         format="Esperienza diretta",
-        title="Abbiamo messo alla prova un modello di nuova generazione su un compito vero. Ecco cosa abbiamo *visto*",
-        news="Spunto dal confronto tra Gemini 4 Argon, Opus 5.5 e GPT-6 Astra (vedi post di ieri)",
-        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
-        hook="Dopo i dati di ieri su benchmark e prezzi dei modelli più recenti, ci siamo chiesti: nella pratica, su un compito reale per un cliente, cosa cambia davvero? Questa settimana lo abbiamo provato con un caso interno.",
+        title="Abbiamo provato a tracciare cosa fanno davvero i nostri agenti AI interni. Ecco cosa abbiamo *trovato*",
+        news="Spunto dal report Salt Security sulla tracciabilità degli agenti AI (vedi post di ieri)",
+        news_url="https://www.itsecurityguru.org/2026/10/14/nearly-half-of-organisations-report-unauthorised-ai-agent-actions-research-finds/",
+        hook="Dopo i dati di ieri su quanto poco le aziende riescano a tracciare i propri agenti AI, ci siamo chiesti: noi, internamente, sapremmo rispondere? Questa settimana abbiamo messo alla prova proprio questo.",
         points=[
-            "Abbiamo preso un compito concreto di analisi su un documento lungo (lo stesso tipo di lavoro per cui i nuovi modelli vengono presentati come più adatti) e lo abbiamo affidato al modello in test, confrontando il risultato con il nostro metodo abituale.",
-            "[Da personalizzare con l'esito reale del test del team: dove il modello ha funzionato meglio, dove ha avuto bisogno di una correzione umana, quanto tempo è stato risparmiato o perso davvero — senza inventare cifre o esiti non verificati.]",
-            "La lezione non è «questo modello è il migliore», ma «un modello nuovo va testato sul proprio caso d'uso prima di cambiare strumento, non adottato perché vince su un benchmark pubblico».",
+            "Abbiamo preso uno dei flussi di lavoro interni in cui usiamo agenti AI (ricerca, prima bozza di contenuti, controlli di qualità) e abbiamo provato a ricostruire, a posteriori, ogni passaggio che l'agente aveva fatto per arrivare al risultato finale.",
+            "[Da personalizzare con l'esito reale della prova del team: quanto è stato semplice o difficile ricostruire il percorso, quali passaggi erano opachi, cosa avete dovuto aggiungere per renderlo tracciabile — senza inventare cifre o esiti non verificati.]",
+            "La lezione non è «serve uno strumento di monitoraggio in più», ma che la tracciabilità va progettata insieme al flusso di lavoro fin dall'inizio, non aggiunta a posteriori quando qualcosa è già andato storto.",
         ],
-        cta="La vostra azienda ha già testato un modello di nuova generazione su un compito reale, o si affida ancora ai soli benchmark pubblicati? Raccontatecelo 👇",
+        cta="La vostra azienda saprebbe ricostruire, oggi, cosa ha fatto un agente AI interno nell'ultima settimana? Raccontatecelo 👇",
         hashtags="#IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Innovazione",
     ),
     dict(
         badge="Prioritario",
-        day="Venerdì 16/10",
+        day="Venerdì 23/10",
         format="Divulgativo stile Datapizza",
-        title="OpenAI ha appena «firmato» i testi di ChatGPT per l'Europa. Come funziona, in parole *povere*",
-        news="textGrain, la filigrana testuale di OpenAI per l'AI Act europeo",
-        news_url="https://www.actuia.com/en/news/openai-will-watermark-chatgpt-in-the-eu-but-leaves-the-api-opt-in/",
-        hook="Il 5 ottobre OpenAI ha pubblicato textGrain, il sistema che userà per «firmare» i testi di ChatGPT nell'Unione Europea. Non è un timbro visibile, e non è neanche invisibile nel senso che si immagina di solito. Vale la pena capire come funziona davvero.",
+        title="Un enigma crittografico vecchio 25 anni, risolto da un'AI in mezz'ora. Come ha fatto, in parole *povere*",
+        news="Claude risolve l'enigma delle curve ECDSA del NIST",
+        news_url="https://anthropic.com/research/ecdsa-curve-origins",
+        hook="Nel 2000 il NIST ha scelto le curve crittografiche alla base di ECDSA, uno degli standard di sicurezza più usati al mondo — comprese quelle che probabilmente proteggono anche parte del traffico della tua azienda. Da allora un dettaglio restava un mistero: da dove venivano i numeri di partenza di quelle curve? Il sospetto, mai confermato, era una backdoor della NSA. Questa settimana Anthropic ha raccontato come Claude lo ha risolto in meno di mezz'ora.",
         points=[
-            "Un testo scritto da ChatGPT sembra identico a uno scritto da una persona, ma a ogni parola il modello sceglie, tra le alternative possibili, quella leggermente favorita da un calcolo statistico legato a una chiave segreta e alle parole precedenti.",
-            "Chi ha quella chiave può rileggere il testo e misurare se quel pattern statistico c'è: non serve nessun carattere nascosto o invisibile, serve solo rifare lo stesso calcolo e confrontarlo.",
-            "Il limite è proprio nella sua natura statistica: su un testo lungo e non modificato il rilevamento è alto (95% su 400 token in inglese), ma scende sotto editing leggero — sostituire un quarto delle parole con sinonimi lo fa crollare al 17% — e varia molto da una lingua europea all'altra.",
+            "Un generatore di numeri «casuali» in realtà non lo è mai del tutto: parte sempre da un valore iniziale, il seed. Se conosci il seed e il metodo, puoi ricostruire ogni numero che ha prodotto — è la base di molta crittografia, e anche il punto debole se quel seed nasconde qualcosa.",
+            "Per 25 anni i ricercatori hanno provato a spiegare i seed delle curve NIST con un'ipotesi (un testo trasformato in un calcolo di verifica): sbagliata. Claude ha cambiato approccio, ha ipotizzato un generatore casuale tipico degli anni '90, trovato un pattern sospetto nei numeri, e con un metodo matematico ha ricostruito lo stato interno di quel generatore.",
+            "Risultato: i seed derivano semplicemente dall'orario del computer tra il 1997 e il 1998 — un dato banale, non una backdoor. La cosa interessante non è che il mistero fosse innocente, ma che un modello AI lo abbia risolto in 30 minuti dopo che più ricercatori umani avevano seguito la pista sbagliata per anni.",
         ],
-        cta="Ti sembra una soluzione tecnica solida per sapere cosa è stato scritto da un'AI, o un primo passo ancora facile da aggirare? Dicci la tua 👇",
-        hashtags="#AI #TechExplained #AIAct #B2B #Compliance",
+        cta="Ti è mai capitato che un'AI risolvesse un problema tecnico aperto da tempo semplicemente cambiando l'ipotesi di partenza? Raccontaci il caso 👇",
+        hashtags="#AI #TechExplained #Crittografia #B2B #Innovazione",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
-        format="Carosello dati — il divario AI tra grandi imprese e PMI italiane",
-        title="Le grandi imprese italiane adottano l'AI quattro volte più delle *PMI*",
-        news="Dati Osservatorio IIA su adozione AI nelle imprese italiane (giugno 2026)",
-        news_url="https://www.tecnoandroid.it/news/osservatorio-iia-l836-delle-pmi-italiane-e-ancora-senza-ai-1908305/",
-        hook="I dati dell'Osservatorio IIA, presentati a giugno 2026, fotografano un'Italia a due velocità sull'adozione dell'AI nelle imprese. Non sono dati della settimana, ma il divario che descrivono si sta allargando, non riducendo.",
+        format="Carosello dati — l'AI nelle PMI italiane secondo Nomisma",
+        title="2 PMI italiane su 3 non usano l'AI in modo *strutturato*",
+        news="Studio Nomisma AI.DEA sulle PMI italiane (Forum di Varignana)",
+        news_url="https://www.rivista.ai/2026/10/17/nomisma-lai-e-gia-nelle-imprese-italiane-ma-nel-45-dei-casi-la-usano-i-dipendenti-non-lorganizzazione/",
+        hook="Lo studio AI.DEA di Nomisma, presentato questa settimana al Forum di Varignana su oltre 200 PMI italiane (Machinery, Agrifood, Motor Valley), fotografa un'Italia produttiva che sta usando l'AI più per iniziativa dei singoli che come scelta aziendale.",
         points=[
-            "16,4% — la quota di imprese italiane che usa l'AI nel 2025, quasi raddoppiata rispetto all'8,2% del 2024 secondo l'Osservatorio IIA.",
-            "53,1% — la quota di grandi imprese italiane che ha già adottato l'AI, contro il 15,7% delle PMI: un divario di 37,4 punti percentuali, salito dai 20 punti del 2023.",
-            "58,6% — la quota di PMI italiane che indica la mancanza di competenze interne come primo ostacolo all'adozione dell'AI.",
-            "Le PMI rappresentano oltre il 96% del tessuto produttivo italiano: un divario che cresce tra chi è già avanti e chi non ha ancora iniziato non resta un problema di poche aziende, diventa un problema di competitività del Paese.",
+            "45% — delle PMI usa l'AI in modo informale, per iniziativa dei singoli dipendenti; il 21% non la usa affatto: due aziende su tre restano senza un utilizzo strutturato.",
+            "4% — usa l'AI per trasformare il proprio modello di business, e l'8% ha sviluppato processi AI-driven: il resto si ferma all'automazione di singole attività o a un uso estemporaneo.",
+            "50% — indica la mancanza di competenze interne come primo ostacolo, e 7 aziende su 10 non hanno ancora avviato un percorso di formazione sull'AI, pur riconoscendo nel 57% dei casi che le competenze sono la leva più importante.",
+            "56% — di chi usa o prevede di usare l'AI destina meno dello 0,5% del fatturato alla tecnologia, e il 23% non prevede risorse specifiche: l'intenzione c'è più spesso del budget.",
         ],
-        closing="Il divario non si chiude da solo, e non si chiude comprando uno strumento in più: le PMI che lo stanno colmando lo fanno con formazione mirata e un metodo di adozione graduale — non con un rollout generale a tutta l'azienda dall'oggi al domani.",
-        cta="Nella tua azienda, il principale ostacolo all'adozione dell'AI è la mancanza di competenze, di tempo, o di un metodo per iniziare? 👇",
+        closing="Il divario che descrive questo studio non è tra chi ha l'AI e chi no — è tra chi la lascia all'iniziativa dei singoli e chi la trasforma in un processo aziendale, con competenze e budget dedicati. Ed è esattamente lì che si gioca la differenza tra un esperimento isolato e un vantaggio competitivo reale.",
+        cta="Nella tua azienda l'AI è un'iniziativa dei singoli o un processo con un responsabile e un budget? 👇",
         hashtags="#IntelligenzaArtificiale #PMI #DigitalTransformation #B2B #Formazione",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
@@ -232,79 +255,21 @@ ideas = [
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Riflessione di chiusura settimana / lista community",
-        title="5 cose che questa settimana ci dice sulla corsa all'*AI*",
-        news="Sintesi dei trend della settimana 1 - 9 ottobre 2026",
-        news_url="https://www.infoworld.com/article/4229615/google-makes-gemini-4-ai-model-available-to-a-trusted-few.html",
-        hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie AI degli ultimi giorni.",
+        title="5 cose che questa settimana ci dice sulla fiducia nell'*AI*",
+        news="Sintesi dei trend della settimana 12 - 19 ottobre 2026",
+        news_url="https://www.thestar.com.my/tech/tech-news/2026/10/16/investors-temper-anthropic-ipo-valuation-expectations-over-revenue-growth-slowdown-sources-say",
+        hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie degli ultimi giorni.",
         points=[
-            "Google torna competitivo con Gemini 4 Argon, ma non vince su ogni benchmark: la corsa alla frontiera non ha più un solo leader indiscusso su tutto.",
-            "Anthropic apre l'accesso ridotto ai propri modelli e rende pubblico un numero enorme — 129.000 vulnerabilità trovate dal progetto Glasswing — che dice quanto lavoro di sicurezza ci sia ancora da fare sul codice che gira nelle aziende.",
-            "OpenAI prova a rispettare l'AI Act europeo con una filigrana nei testi, ma i suoi stessi dati mostrano che un editing leggero la rende quasi inutile: la conformità dichiarata da un fornitore non va data per scontata.",
-            "Un agente AI cinese, Manus, cerca una valutazione da 4 miliardi di dollari nello stesso periodo in cui la fiducia negli agenti resta un tema aperto in tutto il settore.",
-            "Nessuno di questi punti richiede di inseguire il prossimo modello. Tutti richiedono lo stesso lavoro: testare prima di adottare, verificare prima di fidarsi, misurare il risultato invece del benchmark.",
+            "Anthropic cresce del 45% in un trimestre e gli investitori tagliano comunque le attese di valutazione: anche nell'AI, i numeri assoluti contano meno del trend rispetto alle attese.",
+            "La Commissione Europea apre la prima indagine formale ex AI Act su OpenAI e Anthropic: la fase delle dichiarazioni di principio sulla sicurezza degli agenti sta finendo.",
+            "Un report di settore dice che quasi la metà delle aziende ha già subito un'azione non autorizzata da un agente AI, e solo una su otto riesce a tracciarne il percorso per intero.",
+            "Un report interno di Anthropic mostra le assunzioni junior tecniche scendere dal 27% al 9%: il lavoro di routine si sposta sugli agenti, quello umano verso la supervisione.",
+            "Lo studio Nomisma sulle PMI italiane ricorda che, per la maggior parte delle aziende del nostro Paese, il problema non è ancora quello degli agenti fuori controllo — è iniziare ad avere un processo AI strutturato.",
         ],
-        closing="Una settimana di correzioni, più che di rivoluzioni: i laboratori rispondono ai problemi emersi nelle settimane scorse con prodotti concreti, ma nessuno di questi prodotti sostituisce la verifica che un'azienda deve comunque fare per conto proprio.",
+        closing="Una settimana che parla, più di ogni altra cosa, di fiducia: quella degli investitori, quella dei regolatori, quella delle aziende verso i propri strumenti. Nessuna di queste si costruisce da sola — si costruisce con dati, verifica e governance, non con l'adozione in sé.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
         hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
-    ),
-    # Idea 8, extra: aggiunta su richiesta esplicita di Ramona (9/10) sul tema
-    # del risparmio economico delle aziende grazie all'AI. Sesto post
-    # Prioritario della settimana, oltre ai 5 dello schema standard: eccezione
-    # dichiarata, non un cambio della cadenza di default a 5/settimana. Angolo
-    # diverso dall'idea 8 della settimana scorsa (risparmio di TEMPO per le
-    # PMI italiane, studio OpenAI/Opinium): qui il tema e' il risparmio
-    # economico a livello enterprise, con dati PwC/ISG/Gartner che mostrano
-    # quanto sia raro, oggi, vederlo misurato davvero.
-    dict(
-        badge="Prioritario",
-        day="Venerdì 16/10 (extra della settimana, su richiesta)",
-        format="Carosello dati (mito da sfatare — l'AI fa risparmiare automaticamente)",
-        title="L'AI fa risparmiare in automatico sui costi aziendali? Solo per il 12% delle *aziende*",
-        news="PwC Global CEO Survey 2026 + dati ISG e Gartner sulla spesa AI",
-        news_url="https://italia-informa.com/ai-piu-economica-imprese-costi-in-aumento.aspx",
-        hook="🔥 Il mito: adottare l'AI in azienda si traduce quasi automaticamente in un risparmio sui costi, prima o poi.",
-        no_hashtags=True,
-        is_myth=True,
-        myth_body="I dati del PwC Global CEO Survey 2026 e di altre due ricerche indipendenti raccontano una storia più lenta e più selettiva.",
-        points=[
-            "12% — la quota di CEO che dichiara sia ricavi più alti sia costi più bassi grazie all'AI, secondo il PwC Global CEO Survey 2026 (4.454 CEO intervistati in 95 paesi): la combinazione che ci si aspetta, oggi raggiunta solo da una minoranza.",
-            "56% — la quota di CEO che non ha ancora visto benefici finanziari significativi dall'AI, nello stesso sondaggio.",
-            "31% — la quota dei 1.200 casi d'uso AI analizzati da ISG (Information Services Group) arrivata in piena produzione; di questi, solo uno su quattro ha raggiunto il ritorno economico atteso.",
-            "La spesa globale in AI prevista da Gartner per il 2026 sale comunque a 2.520 miliardi di dollari (+44% sull'anno precedente), oltre la metà destinata a infrastruttura — chip, server, data center — non a progetti che generano risparmio diretto.",
-        ],
-        myth_closing="Il prezzo per usare l'AI continua a scendere, ma la spesa delle aziende sale lo stesso: più richieste, documenti più lunghi, agenti che fanno più chiamate in sequenza. Il risparmio non arriva da solo con l'adozione — arriva da un progetto misurato, su un caso d'uso specifico, con un metodo per sapere se sta funzionando. È la differenza tra sperare in un risparmio e costruirlo.",
-        cta="Nella tua azienda, il risparmio ottenuto grazie all'AI viene misurato con un metodo, o si dà per scontato che ci sia? 👇",
-        hashtags="",
-    ),
-    # Idea 9, extra: debutto, su richiesta esplicita di Ramona (9/10), di una
-    # rubrica settimanale su F-hack AI (fhack.ai), la piattaforma/evento di
-    # hackathon AI di Digitiamo stessa. A differenza di tutte le altre idee
-    # della settimana, qui la fonte e' Digitiamo in prima persona (fhack.ai),
-    # non una notizia di settore esterna, ed e' l'unico post della settimana
-    # con un messaggio apertamente promozionale: coerente con la natura della
-    # rubrica, non con la regola "nessun post vende prima di giovedi'" pensata
-    # per i contenuti di curation editoriale. Finche' Ramona non conferma se
-    # questo sostituisce uno dei 5 slot standard o resta un'aggiunta fissa,
-    # resta un'eccezione dichiarata come le altre idee extra di questa
-    # settimana.
-    dict(
-        badge="Prioritario",
-        day="Martedì 13/10, ore 17:00 (extra della settimana, su richiesta — rubrica F-hack AI)",
-        format="Carosello / documento LinkedIn — F-hack AI (rubrica settimanale)",
-        title="Niente slide, solo un prototipo che funziona entro sera: dentro F-hack AI *01*",
-        news="F-hack AI 01 (18/9/2026, Talent Garden Milano) + F-hack AI 02, challenge aperte",
-        news_url="https://www.fhack.ai",
-        hook="Il 18 settembre abbiamo portato F-hack AI 01 a Talent Garden Milano: il nostro format di hackathon dove un'azienda porta un problema vero, e più team AI-first lo risolvono in parallelo, nello stesso giorno, con un prototipo che funziona davvero — non uno slide deck.",
-        points=[
-            "4 aziende, 4 challenge reali in altrettanti ambiti diversi — dalla sicurezza dei modelli linguistici ai media generativi, passando per impatto urbano e gestione dei dati — e 5 team AI-first al lavoro in parallelo sullo stesso tipo di problema.",
-            "Ogni team aveva le stesse KPI, definite prima dell'evento, e sono state le aziende stesse a valutare i prototipi finali: non una giuria esterna, non una presentazione, un confronto diretto sul risultato.",
-            "Il principio alla base è lo stesso di sempre: l'AI non si impara, si costruisce. Per questo l'evento si chiude con una demo dal vivo, non con delle slide.",
-            "Le challenge per F-hack AI 02 sono aperte da ora: la data dell'evento dal vivo è ancora da annunciare, ma c'è anche il F-hack Lab, sempre attivo, per chi ha un problema reale da mettere alla prova senza aspettare la prossima edizione.",
-        ],
-        closing="Se la tua azienda ha un caso d'uso AI che vuole vedere costruito — non solo raccontato in una proposta — le challenge per F-hack AI 02 sono aperte, e il F-hack Lab non ha scadenze.",
-        cta="Hai un problema in azienda che vorresti vedere risolto da un prototipo AI reale, costruito in un giorno? Raccontacelo nei commenti o scrivi a info@fhack.ai 👇",
-        hashtags="#FhackAI #IntelligenzaArtificiale #Innovazione #B2B #Hackathon",
     ),
 ]
 
@@ -313,31 +278,31 @@ ideas = [
 # ---------------------------------------------------------------------------
 publishing = [
     dict(
-        day="Lunedì 12/10",
+        day="Lunedì 19/10",
         time="08:00",
         format="Thought leadership",
         reason="Apertura settimana, finestra mattutina 7:30-9:30: massimo traffico professionale, ideale per un post di respiro ampio che dà il tono alla settimana senza chiedere nulla.",
     ),
     dict(
-        day="Martedì 13/10",
+        day="Martedì 20/10",
         time="12:15",
-        format="Mito da sfatare (sicurezza del codice generato/controllato dall'AI)",
-        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — e prepara il terreno al carosello del giorno dopo sullo stesso filo (fidarsi di un modello perché è nuovo o perché vince un benchmark).",
+        format="Mito da sfatare (assunzioni junior e agenti AI)",
+        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — e prepara il terreno al carosello del giorno dopo sullo stesso filo (fiducia nel controllo degli strumenti AI).",
     ),
     dict(
-        day="Mercoledì 14/10",
+        day="Mercoledì 21/10",
         time="12:15",
-        format="Carosello dati / mito da sfatare (benchmark e prezzi dei nuovi modelli)",
-        reason="Seconda finestra pausa pranzo B2B, distanziata di un giorno dal primo mito ma sullo stesso filo narrativo. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i dati su benchmark e prezzi sono densi abbastanza da meritare uno spazio proprio.",
+        format="Carosello dati / mito da sfatare (controllo degli agenti AI in azienda)",
+        reason="Seconda finestra pausa pranzo B2B, distanziata di un giorno dal primo mito ma sullo stesso filo narrativo. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i dati del report Salt Security sono densi abbastanza da meritare uno spazio proprio.",
     ),
     dict(
-        day="Giovedì 15/10",
+        day="Giovedì 22/10",
         time="08:30",
-        format="Esperienza diretta (test interno su un modello di nuova generazione)",
+        format="Esperienza diretta (tracciabilità degli agenti AI interni)",
         reason="Segue narrativamente il carosello del giorno prima, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
     ),
     dict(
-        day="Venerdì 16/10",
+        day="Venerdì 23/10",
         time="08:00",
         format="Divulgativo (Datapizza style)",
         reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale.",
@@ -345,25 +310,13 @@ publishing = [
     dict(
         day="Da programmare",
         time="—",
-        format="Riserva 1 — Carosello «il divario AI tra grandi imprese e PMI italiane»",
-        reason="Banca contenuti: utile come secondo documento se questa settimana c'è margine di pubblicazione, o come apertura della settimana successiva su un tema a lungo termine per il pubblico B2B italiano. Non promossa a Prioritario questa settimana: i 5 slot fissi dello schema (apertura, due miti, esperienza diretta, divulgativo) sono già tutti occupati dal filo narrativo su modelli e sicurezza.",
+        format="Riserva 1 — Carosello «le PMI italiane e l'AI» (studio Nomisma)",
+        reason="Banca contenuti: utile come secondo documento se questa settimana c'è margine di pubblicazione, o come apertura della settimana successiva su un tema a lungo termine per il pubblico B2B italiano. Non promossa a Prioritario questa settimana: i 5 slot fissi dello schema (apertura, due miti, esperienza diretta, divulgativo) sono già tutti occupati dal filo narrativo su fiducia, agenti e lavoro.",
     ),
     dict(
         day="Da programmare",
         time="—",
         format="Riserva 2 — Riflessione di chiusura",
         reason="Chiude l'arco della settimana. Utile nel weekend se il traffico lo giustifica, o come richiamo della settimana successiva.",
-    ),
-    dict(
-        day="Venerdì 16/10",
-        time="12:15",
-        format="Carosello dati — l'AI fa risparmiare in automatico? (extra, su richiesta)",
-        reason="Settimo post della settimana, aggiunto su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Finestra pausa pranzo B2B, nello stesso giorno del divulgativo mattutino ma distanziata di oltre 4 ore; formato documento/carosello per dati densi (PwC, ISG, Gartner) e un angolo diverso dal risparmio di tempo già trattato nella settimana del 5/10 (qui: risparmio economico misurato, non percepito).",
-    ),
-    dict(
-        day="Martedì 13/10",
-        time="17:00",
-        format="Carosello / documento — rubrica F-hack AI (extra, su richiesta, debutto)",
-        reason="Ottavo post della settimana: debutto della rubrica settimanale su F-hack AI richiesta da Ramona. Orario di fine giornata lavorativa come secondo post del martedì, distanziato di oltre 4 ore dal mito della pausa pranzo per non competere sullo stesso pubblico nello stesso momento. È l'unico post della settimana con fonte interna (fhack.ai) e messaggio apertamente promozionale — coerente con la natura della rubrica, non con la regola di non vendere nei primi giorni pensata per la curation editoriale. Il giorno fisso della rubrica (e se sostituire uno dei 5 slot standard o restare un'aggiunta) va confermato da Ramona per le settimane successive.",
     ),
 ]

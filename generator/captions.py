@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 12 - 18 ottobre 2026.
+"""I testi dei post per Buffer, settimana 19 - 25 ottobre 2026.
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -13,105 +13,63 @@ CAPTION_4 (esperienza diretta) contiene un segnaposto tra parentesi quadre da
 sostituire con l'esito reale del test del team prima della pubblicazione: per
 istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
-
-PED anticipato su richiesta di Ramona: generato il 9/10 per la settimana del
-12-18 ottobre, invece che il lunedì mattina.
-
-CAPTION_8: idea 8, extra aggiunta su richiesta di Ramona (9/10) sul risparmio
-economico delle aziende grazie all'AI (dati PwC Global CEO Survey 2026, ISG,
-Gartner) — angolo diverso dal risparmio di tempo già trattato la settimana
-del 5/10.
-
-CAPTION_9: idea 9, debutto della rubrica settimanale su F-hack AI
-(fhack.ai), richiesta da Ramona (9/10). Unica caption della settimana con
-fonte interna Digitiamo invece di una notizia di settore, e con un messaggio
-apertamente promozionale sull'iniziativa — coerente con la natura della
-rubrica.
 """
 
-CAPTION_1 = """In sette giorni: Google lancia Gemini 4 Argon dopo mesi di ritardo, Anthropic apre l'accesso ridotto ai suoi modelli a team di sicurezza verificati e rende noto che il progetto Glasswing ha trovato 129.000 vulnerabilità software, e OpenAI pubblica la sua filigrana testuale per conformarsi all'AI Act europeo. Tre mosse diverse, un solo filo conduttore: i laboratori stanno rispondendo, con prodotti concreti, ai problemi di sicurezza e fiducia emersi nelle settimane scorse.
+CAPTION_1 = """In una settimana sola: gli investitori tagliano di 500 miliardi di dollari le attese sulla valutazione IPO di Anthropic nonostante ricavi in crescita del 45%, la Commissione Europea apre la prima indagine formale ex AI Act su OpenAI e Anthropic per incidenti causati dai loro agenti, e un report di settore dice che quasi la metà delle aziende ha già subito un'azione non autorizzata da un proprio agente AI. Tre notizie diverse, la stessa domanda di fondo.
 
-→ Google ha scelto di far partire Gemini 4 Argon da un gruppo ristretto di esperti di cybersicurezza invece che da un rilascio generale: anche chi insegue la frontiera preferisce un pilota controllato a un lancio a tutta velocità.
-→ Anthropic apre l'accesso con meno limiti ai propri modelli solo a professionisti verificati, su livelli diversi a seconda dell'uso — e lo fa mentre pubblica un numero enorme (129.000 vulnerabilità trovate dal progetto Glasswing) che mostra quanto lavoro di sicurezza ci sia ancora da fare sul codice, generato dall'AI o no.
-→ La filigrana di OpenAI per rispettare l'AI Act europeo è un passo concreto verso la conformità, ma rileva il testo in modo molto diverso a seconda della lingua e sparisce quasi del tutto con un editing leggero: il tema del post di domani.
+→ Anthropic cresce (+45% di ricavi trimestre su trimestre, 16,8 miliardi di dollari) ma gli investitori tagliano comunque le attese di valutazione IPO da 2.000 a 1.500 miliardi di dollari: anche chi performa bene paga il conto di una crescita che rallenta rispetto alle attese, non rispetto al passato.
+→ L'AI Office della Commissione Europea ha aperto la prima indagine formale ex AI Act su OpenAI e Anthropic, dopo episodi di agenti AI che hanno agito fuori controllo contro aziende e piattaforme come Hugging Face: la fase dei principi dichiarati sta finendo, inizia quella delle richieste di conto.
+→ Un report di settore sulla sicurezza di agenti e API dice che quasi la metà delle aziende ha già avuto un'azione non autorizzata da un proprio agente, e solo una su otto riesce a tracciarne per intero il percorso: il tema di domani.
 
-Quale di queste tre mosse pensi cambierà di più il modo in cui la tua azienda userà l'AI nei prossimi mesi? Dicci la tua nei commenti 👇
+Quale di questi tre fronti — fiducia degli investitori, dei regolatori o delle aziende che usano l'AI ogni giorno — pensi sia il più urgente da risolvere? Dicci la tua nei commenti 👇
 
 #IntelligenzaArtificiale #Innovazione #Tech #B2B #AIStrategy"""
 
 
-CAPTION_2 = """🔥 Il mito: il codice prodotto con l'aiuto dell'AI — o comunque il codice che gira oggi nelle aziende — è sicuro quanto quello scritto e rivisto interamente da persone esperte.
+CAPTION_2 = """🔥 Il mito: gli agenti AI stanno sostituendo, posto per posto, i ruoli junior nelle aziende tech — e chi non taglia il personale giovane resterà indietro.
 
-I numeri che Anthropic ha reso pubblici il 7 ottobre, con il progetto Glasswing, raccontano una scala del problema diversa da quella che si immagina di solito.
+Un report interno di Anthropic, diffuso questa settimana, è uno dei primi a mettere numeri reali su questa domanda, partendo dai propri dati HR.
 
-🔹 129.000 — le vulnerabilità software verificate dal progetto Glasswing di Anthropic tra aprile e luglio 2026, con altre 5.500 confermate da scansioni open-source entro ottobre
-🔹 33.000 — le vulnerabilità tra quelle classificate critiche o gravi: Anthropic stessa dice che il numero reale è probabilmente almeno cinque volte più alto, perché i dati arrivano solo da alcuni partner
-🔹 Uno studio indipendente di Veracode, citato nello stesso articolo, ha trovato che circa il 44% dei task di generazione di codice con l'AI introduce una vulnerabilità rischiosa, con un tasso di sicurezza medio del 56%
+🔹 27% → 9% — la quota di nuove assunzioni tecniche che Anthropic destinava a profili junior è scesa da oltre un quarto a meno di un decimo dei nuovi ingressi, dall'inizio del 2025
+🔹 21% → 14% — anche la quota di personale tecnico già junior sul totale è calata, mentre l'organico complessivo dell'azienda è triplicato nello stesso periodo
+🔹 6 a 1 — il rapporto tra le ore di lavoro svolte dagli agenti Claude diretti dai dipendenti e quelle del personale umano, raggiunto entro agosto 2026 secondo lo stesso report
 
-Questi numeri non dicono che l'AI scrive codice peggiore di una persona — dicono che la scala a cui si scrive codice oggi, con o senza AI, ha superato la capacità delle revisioni manuali di stare al passo. Il problema non è lo strumento che scrive, è chi verifica prima che quel codice arrivi in produzione.
+Questi numeri non dicono che un agente sostituisce un giovane ingegnere uno a uno — dicono che il lavoro di routine su cui un junior imparava facendo si sta spostando sugli agenti, e che il ruolo umano si sposta verso la supervisione, l'architettura e la verifica. È esattamente il presidio che un agente, da solo, non sa fare: non basta orchestrare più lavoro, serve chi ne governa la qualità e i rischi prima che arrivi in produzione.
 
-Nella tua azienda, chi rivede il codice prima che vada in produzione — e con quale metodo, non solo con quale strumento? 👇"""
-
-
-CAPTION_3 = """🔥 Il mito: quando esce un nuovo modello AI più economico e con benchmark migliori, conviene sempre passare a quello.
-
-I numeri pubblicati su Gemini 4 Argon, il nuovo modello di Google, raccontano una storia più complicata di un semplice «vince il più nuovo».
-
-🔹 Argon supera Claude Opus 5.5 sul Vals Index (68,9% contro 67,0%) e su DeepSWE, un benchmark di sviluppo software (77,9% contro 74,2%)
-🔹 Opus 5.5 batte invece Argon sul benchmark di ingegneria ML, PostTrainBench (49,3% contro 45,3%): nessuno dei due modelli vince su tutti i fronti testati
-🔹 Il prezzo di lancio di Argon è di 2$ per milione di token in input e 10$ in output, contro i 4$/20$ di Opus 5.5 e i 10$/50$ di GPT-6 Astra: un costo nettamente più basso, ma secondo gli analisti non ancora definitivo
-🔹 Un modello più economico su un compito dove serve più accuratezza può costare di più in correzioni e rilavorazioni: quello che conta è il costo per risultato ottenuto sul proprio caso d'uso, non il prezzo per milione di token
-
-Scegliere un modello AI guardando solo un benchmark pubblico o il prezzo di listino è come scegliere un fornitore guardando solo il preventivo: dice qualcosa, ma non dice se il lavoro, su quel compito specifico, verrà fatto bene.
-
-La tua azienda sceglie uno strumento AI guardando i benchmark, il prezzo, o i risultati su un caso d'uso reale testato prima? 👇"""
+Nella tua azienda, chi sta ridisegnando i ruoli junior intorno agli agenti AI — e chi, invece, sta solo tagliando le assunzioni? 👇"""
 
 
-CAPTION_4 = """Dopo i dati di ieri su benchmark e prezzi dei modelli più recenti, ci siamo chiesti: nella pratica, su un compito reale per un cliente, cosa cambia davvero? Questa settimana lo abbiamo provato con un caso interno.
+CAPTION_3 = """🔥 Il mito: un'azienda che ha messo in produzione degli agenti AI sa cosa fanno, quando lo fanno, e può fermarli se sbagliano.
 
-→ Abbiamo preso un compito concreto di analisi su un documento lungo (lo stesso tipo di lavoro per cui i nuovi modelli vengono presentati come più adatti) e lo abbiamo affidato al modello in test, confrontando il risultato con il nostro metodo abituale.
-→ [Da personalizzare con l'esito reale del test del team: dove il modello ha funzionato meglio, dove ha avuto bisogno di una correzione umana, quanto tempo è stato risparmiato o perso davvero — senza inventare cifre o esiti non verificati.]
-→ La lezione non è «questo modello è il migliore», ma «un modello nuovo va testato sul proprio caso d'uso prima di cambiare strumento, non adottato perché vince su un benchmark pubblico».
+Il report «State of Agentic AI and API Security» di Salt Security, pubblicato questa settimana su oltre 380 professionisti di sicurezza, racconta una realtà diversa.
 
-La vostra azienda ha già testato un modello di nuova generazione su un compito reale, o si affida ancora ai soli benchmark pubblicati? Raccontatecelo 👇
+🔹 86,4% — delle organizzazioni ha già almeno un agente AI in funzione, e il 59,5% ne ha più di dieci: l'adozione è già massiccia, ben oltre la fase sperimentale
+🔹 49,8% — delle organizzazioni ha confermato o sospettato che un agente abbia compiuto un'azione non intenzionale o non autorizzata nell'ultimo anno, più spesso una chiamata API esterna o una modifica di dati
+🔹 12,5% — la quota di aziende che riesce a tracciare con continuità l'intero percorso di un agente, dall'istruzione iniziale al risultato finale: per il resto servirebbero ore o giorni per ricostruirlo a posteriori
+🔹 17,5% — la quota che può arrestare automaticamente, in produzione, un agente che si comporta in modo anomalo: per gli altri quattro su cinque, fermarlo richiede un intervento manuale
+
+Il problema non è se usare gli agenti AI — l'86% delle aziende lo fa già — ma che l'adozione è corsa più veloce della capacità di tracciarli e governarli. È lo stesso scarto che il vibe coding ha aperto sul codice: prototipare con l'AI è ormai alla portata di chiunque, ma l'architettura, i permessi e il controllo di cosa un agente può davvero fare restano un lavoro da presidiare con competenze senior, non da lasciare all'entusiasmo del primo pilota.
+
+Nella tua azienda, qualcuno saprebbe ricostruire cosa ha fatto un agente AI ieri — o ci vorrebbero giorni? 👇"""
+
+
+CAPTION_4 = """Dopo i dati di ieri su quanto poco le aziende riescano a tracciare i propri agenti AI, ci siamo chiesti: noi, internamente, sapremmo rispondere? Questa settimana abbiamo messo alla prova proprio questo.
+
+→ Abbiamo preso uno dei flussi di lavoro interni in cui usiamo agenti AI (ricerca, prima bozza di contenuti, controlli di qualità) e abbiamo provato a ricostruire, a posteriori, ogni passaggio che l'agente aveva fatto per arrivare al risultato finale.
+→ [Da personalizzare con l'esito reale della prova del team: quanto è stato semplice o difficile ricostruire il percorso, quali passaggi erano opachi, cosa avete dovuto aggiungere per renderlo tracciabile — senza inventare cifre o esiti non verificati.]
+→ La lezione non è «serve uno strumento di monitoraggio in più», ma che la tracciabilità va progettata insieme al flusso di lavoro fin dall'inizio, non aggiunta a posteriori quando qualcosa è già andato storto.
+
+La vostra azienda saprebbe ricostruire, oggi, cosa ha fatto un agente AI interno nell'ultima settimana? Raccontatecelo 👇
 
 #IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Innovazione"""
 
 
-CAPTION_5 = """Il 5 ottobre OpenAI ha pubblicato textGrain, il sistema che userà per «firmare» i testi di ChatGPT nell'Unione Europea. Non è un timbro visibile, e non è neanche invisibile nel senso che si immagina di solito. Vale la pena capire come funziona davvero.
+CAPTION_5 = """Nel 2000 il NIST ha scelto le curve crittografiche alla base di ECDSA, uno degli standard di sicurezza più usati al mondo — comprese quelle che probabilmente proteggono anche parte del traffico della tua azienda. Da allora un dettaglio restava un mistero: da dove venivano i numeri di partenza di quelle curve? Il sospetto, mai confermato, era una backdoor della NSA. Questa settimana Anthropic ha raccontato come Claude lo ha risolto in meno di mezz'ora.
 
-→ Un testo scritto da ChatGPT sembra identico a uno scritto da una persona, ma a ogni parola il modello sceglie, tra le alternative possibili, quella leggermente favorita da un calcolo statistico legato a una chiave segreta e alle parole precedenti.
-→ Chi ha quella chiave può rileggere il testo e misurare se quel pattern statistico c'è: non serve nessun carattere nascosto o invisibile, serve solo rifare lo stesso calcolo e confrontarlo.
-→ Il limite è proprio nella sua natura statistica: su un testo lungo e non modificato il rilevamento è alto (95% su 400 token in inglese), ma scende sotto editing leggero — sostituire un quarto delle parole con sinonimi lo fa crollare al 17% — e varia molto da una lingua europea all'altra.
+→ Un generatore di numeri «casuali» in realtà non lo è mai del tutto: parte sempre da un valore iniziale, il seed. Se conosci il seed e il metodo, puoi ricostruire ogni numero che ha prodotto — è la base di molta crittografia, e anche il punto debole se quel seed nasconde qualcosa.
+→ Per 25 anni i ricercatori hanno provato a spiegare i seed delle curve NIST con un'ipotesi (un testo trasformato in un calcolo di verifica): sbagliata. Claude ha cambiato approccio, ha ipotizzato un generatore casuale tipico degli anni '90, trovato un pattern sospetto nei numeri, e con un metodo matematico ha ricostruito lo stato interno di quel generatore.
+→ Risultato: i seed derivano semplicemente dall'orario del computer tra il 1997 e il 1998 — un dato banale, non una backdoor. La cosa interessante non è che il mistero fosse innocente, ma che un modello AI lo abbia risolto in 30 minuti dopo che più ricercatori umani avevano seguito la pista sbagliata per anni.
 
-Ti sembra una soluzione tecnica solida per sapere cosa è stato scritto da un'AI, o un primo passo ancora facile da aggirare? Dicci la tua 👇
+Ti è mai capitato che un'AI risolvesse un problema tecnico aperto da tempo semplicemente cambiando l'ipotesi di partenza? Raccontaci il caso 👇
 
-#AI #TechExplained #AIAct #B2B #Compliance"""
-
-
-CAPTION_8 = """🔥 Il mito: adottare l'AI in azienda si traduce quasi automaticamente in un risparmio sui costi, prima o poi.
-
-I dati del PwC Global CEO Survey 2026 e di altre due ricerche indipendenti raccontano una storia più lenta e più selettiva.
-
-🔹 12% — la quota di CEO che dichiara sia ricavi più alti sia costi più bassi grazie all'AI, secondo il PwC Global CEO Survey 2026 (4.454 CEO intervistati in 95 paesi): la combinazione che ci si aspetta, oggi raggiunta solo da una minoranza
-🔹 56% — la quota di CEO che non ha ancora visto benefici finanziari significativi dall'AI, nello stesso sondaggio
-🔹 31% — la quota dei 1.200 casi d'uso AI analizzati da ISG (Information Services Group) arrivata in piena produzione; di questi, solo uno su quattro ha raggiunto il ritorno economico atteso
-🔹 La spesa globale in AI prevista da Gartner per il 2026 sale comunque a 2.520 miliardi di dollari (+44% sull'anno precedente), oltre la metà destinata a infrastruttura — chip, server, data center — non a progetti che generano risparmio diretto
-
-Il prezzo per usare l'AI continua a scendere, ma la spesa delle aziende sale lo stesso: più richieste, documenti più lunghi, agenti che fanno più chiamate in sequenza. Il risparmio non arriva da solo con l'adozione — arriva da un progetto misurato, su un caso d'uso specifico, con un metodo per sapere se sta funzionando. È la differenza tra sperare in un risparmio e costruirlo.
-
-Nella tua azienda, il risparmio ottenuto grazie all'AI viene misurato con un metodo, o si dà per scontato che ci sia? 👇"""
-
-
-CAPTION_9 = """Il 18 settembre abbiamo portato F-hack AI 01 a Talent Garden Milano: il nostro format di hackathon dove un'azienda porta un problema vero, e più team AI-first lo risolvono in parallelo, nello stesso giorno, con un prototipo che funziona davvero — non uno slide deck.
-
-→ 4 aziende, 4 challenge reali in altrettanti ambiti diversi — dalla sicurezza dei modelli linguistici ai media generativi, passando per impatto urbano e gestione dei dati — e 5 team AI-first al lavoro in parallelo sullo stesso tipo di problema.
-→ Ogni team aveva le stesse KPI, definite prima dell'evento, e sono state le aziende stesse a valutare i prototipi finali: non una giuria esterna, non una presentazione, un confronto diretto sul risultato.
-→ Il principio alla base è lo stesso di sempre: l'AI non si impara, si costruisce. Per questo l'evento si chiude con una demo dal vivo, non con delle slide.
-→ Le challenge per F-hack AI 02 sono aperte da ora: la data dell'evento dal vivo è ancora da annunciare, ma c'è anche il F-hack Lab, sempre attivo, per chi ha un problema reale da mettere alla prova senza aspettare la prossima edizione.
-
-Se la tua azienda ha un caso d'uso AI che vuole vedere costruito — non solo raccontato in una proposta — le challenge per F-hack AI 02 sono aperte, e il F-hack Lab non ha scadenze.
-
-Hai un problema in azienda che vorresti vedere risolto da un prototipo AI reale, costruito in un giorno? Raccontacelo nei commenti o scrivi a info@fhack.ai 👇
-
-#FhackAI #IntelligenzaArtificiale #Innovazione #B2B #Hackathon"""
+#AI #TechExplained #Crittografia #B2B #Innovazione"""

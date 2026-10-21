@@ -13,6 +13,10 @@ CAPTION_4 (esperienza diretta) contiene un segnaposto tra parentesi quadre da
 sostituire con l'esito reale del test del team prima della pubblicazione: per
 istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
+
+CAPTION_6: idea 6, promossa da Riserva a Prioritario su richiesta (21/10) —
+sesto post della settimana, carosello sui dati Nomisma AI.DEA sulle PMI
+italiane. Non rientra nello schema standard 5 Prioritario + 2 Riserva.
 """
 
 CAPTION_1 = """In una settimana sola: gli investitori tagliano di 500 miliardi di dollari le attese sulla valutazione IPO di Anthropic nonostante ricavi in crescita del 45%, la Commissione Europea apre la prima indagine formale ex AI Act su OpenAI e Anthropic per incidenti causati dai loro agenti, e un report di settore dice che quasi la metà delle aziende ha già subito un'azione non autorizzata da un proprio agente AI. Tre notizie diverse, la stessa domanda di fondo.
@@ -73,3 +77,17 @@ CAPTION_5 = """Nel 2000 il NIST ha scelto le curve crittografiche alla base di E
 Ti è mai capitato che un'AI risolvesse un problema tecnico aperto da tempo semplicemente cambiando l'ipotesi di partenza? Raccontaci il caso 👇
 
 #AI #TechExplained #Crittografia #B2B #Innovazione"""
+
+
+CAPTION_6 = """Lo studio AI.DEA di Nomisma, presentato questa settimana al Forum di Varignana su oltre 200 PMI italiane (Machinery, Agrifood, Motor Valley), fotografa un'Italia produttiva che sta usando l'AI più per iniziativa dei singoli che come scelta aziendale.
+
+🔹 45% — delle PMI usa l'AI in modo informale, per iniziativa dei singoli dipendenti; il 21% non la usa affatto: due aziende su tre restano senza un utilizzo strutturato
+🔹 4% — usa l'AI per trasformare il proprio modello di business, e l'8% ha sviluppato processi AI-driven: il resto si ferma all'automazione di singole attività o a un uso estemporaneo
+🔹 50% — indica la mancanza di competenze interne come primo ostacolo, e 7 aziende su 10 non hanno ancora avviato un percorso di formazione sull'AI, pur riconoscendo nel 57% dei casi che le competenze sono la leva più importante
+🔹 56% — di chi usa o prevede di usare l'AI destina meno dello 0,5% del fatturato alla tecnologia, e il 23% non prevede risorse specifiche: l'intenzione c'è più spesso del budget
+
+Il divario che descrive questo studio non è tra chi ha l'AI e chi no — è tra chi la lascia all'iniziativa dei singoli e chi la trasforma in un processo aziendale, con competenze e budget dedicati. Ed è esattamente lì che si gioca la differenza tra un esperimento isolato e un vantaggio competitivo reale.
+
+Nella tua azienda l'AI è un'iniziativa dei singoli o un processo con un responsabile e un budget? 👇
+
+#IntelligenzaArtificiale #PMI #DigitalTransformation #B2B #Formazione"""

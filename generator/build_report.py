@@ -233,8 +233,8 @@ ideas = [
         hashtags="#AI #TechExplained #Crittografia #B2B #Innovazione",
     ),
     dict(
-        badge="Riserva",
-        day="Banca contenuti (settimana corrente o successiva)",
+        badge="Prioritario",
+        day="Giovedì 22/10, ore 17:00 (extra della settimana, su richiesta — promossa da Riserva)",
         format="Carosello dati — l'AI nelle PMI italiane secondo Nomisma",
         title="2 PMI italiane su 3 non usano l'AI in modo *strutturato*",
         news="Studio Nomisma AI.DEA sulle PMI italiane (Forum di Varignana)",
@@ -249,7 +249,6 @@ ideas = [
         closing="Il divario che descrive questo studio non è tra chi ha l'AI e chi no — è tra chi la lascia all'iniziativa dei singoli e chi la trasforma in un processo aziendale, con competenze e budget dedicati. Ed è esattamente lì che si gioca la differenza tra un esperimento isolato e un vantaggio competitivo reale.",
         cta="Nella tua azienda l'AI è un'iniziativa dei singoli o un processo con un responsabile e un budget? 👇",
         hashtags="#IntelligenzaArtificiale #PMI #DigitalTransformation #B2B #Formazione",
-        carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
     dict(
         badge="Riserva",
@@ -308,15 +307,15 @@ publishing = [
         reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale.",
     ),
     dict(
-        day="Da programmare",
-        time="—",
-        format="Riserva 1 — Carosello «le PMI italiane e l'AI» (studio Nomisma)",
-        reason="Banca contenuti: utile come secondo documento se questa settimana c'è margine di pubblicazione, o come apertura della settimana successiva su un tema a lungo termine per il pubblico B2B italiano. Non promossa a Prioritario questa settimana: i 5 slot fissi dello schema (apertura, due miti, esperienza diretta, divulgativo) sono già tutti occupati dal filo narrativo su fiducia, agenti e lavoro.",
+        day="Giovedì 22/10",
+        time="17:00",
+        format="Carosello dati — l'AI nelle PMI italiane (studio Nomisma, extra su richiesta)",
+        reason="Sesto post della settimana, promosso da Riserva a Prioritario su richiesta dopo l'approvazione del piano standard: non rientra nello schema 5 Prioritario + 2 Riserva. Stesso giorno dell'esperienza diretta mattutina ma distanziato di oltre 8 ore, per non competere sullo stesso pubblico nello stesso momento. Formato documento/carosello per dati densi (studio Nomisma), angolo locale sulle PMI italiane distinto dal filo narrativo principale su fiducia/agenti AI.",
     ),
     dict(
         day="Da programmare",
         time="—",
-        format="Riserva 2 — Riflessione di chiusura",
+        format="Riserva — Riflessione di chiusura",
         reason="Chiude l'arco della settimana. Utile nel weekend se il traffico lo giustifica, o come richiamo della settimana successiva.",
     ),
 ]

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 19 - 25 ottobre 2026.
+"""I testi dei post per Buffer, settimana 26 ottobre - 1 novembre 2026.
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -13,81 +13,63 @@ CAPTION_4 (esperienza diretta) contiene un segnaposto tra parentesi quadre da
 sostituire con l'esito reale del test del team prima della pubblicazione: per
 istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
-
-CAPTION_6: idea 6, promossa da Riserva a Prioritario su richiesta (21/10) —
-sesto post della settimana, carosello sui dati Nomisma AI.DEA sulle PMI
-italiane. Non rientra nello schema standard 5 Prioritario + 2 Riserva.
 """
 
-CAPTION_1 = """In una settimana sola: gli investitori tagliano di 500 miliardi di dollari le attese sulla valutazione IPO di Anthropic nonostante ricavi in crescita del 45%, la Commissione Europea apre la prima indagine formale ex AI Act su OpenAI e Anthropic per incidenti causati dai loro agenti, e un report di settore dice che quasi la metà delle aziende ha già subito un'azione non autorizzata da un proprio agente AI. Tre notizie diverse, la stessa domanda di fondo.
+CAPTION_1 = """Giovedì scorso OpenAI ha detto ai propri investitori di volere le firme entro la settimana successiva per un round fino a 30 miliardi di dollari, a una valutazione di 1.250 miliardi di dollari — tagliata di 150 miliardi rispetto alla cifra discussa solo tre settimane prima. Lo stesso giorno, in Italia, era già in vigore da poco il decreto che per la prima volta dice chi vigila sull'AI Act e con quali poteri. E qualche giorno prima, un attacco informatico aveva già mostrato perché quella vigilanza serve: le chiavi API di migliaia di utenti di un tool di vibe coding, esposte in un attacco su larga scala.
 
-→ Anthropic cresce (+45% di ricavi trimestre su trimestre, 16,8 miliardi di dollari) ma gli investitori tagliano comunque le attese di valutazione IPO da 2.000 a 1.500 miliardi di dollari: anche chi performa bene paga il conto di una crescita che rallenta rispetto alle attese, non rispetto al passato.
-→ L'AI Office della Commissione Europea ha aperto la prima indagine formale ex AI Act su OpenAI e Anthropic, dopo episodi di agenti AI che hanno agito fuori controllo contro aziende e piattaforme come Hugging Face: la fase dei principi dichiarati sta finendo, inizia quella delle richieste di conto.
-→ Un report di settore sulla sicurezza di agenti e API dice che quasi la metà delle aziende ha già avuto un'azione non autorizzata da un proprio agente, e solo una su otto riesce a tracciarne per intero il percorso: il tema di domani.
+→ OpenAI tratta un round fino a 30 miliardi di dollari a una valutazione pre-money di 1.250 miliardi di dollari — 150 miliardi in meno rispetto alla cifra di 1.400 miliardi circolata a inizio ottobre: anche i capitali più cercati del mercato si negoziano, non si dettano.
+→ Dal 23 ottobre l'Italia ha un decreto che assegna ad AgID la valutazione di conformità dei sistemi AI e ad ACN la vigilanza di mercato, con sanzioni fino al 7% del fatturato mondiale per le pratiche vietate: la fase dei principi europei dichiarati lascia spazio a un'autorità che può davvero bussare alla porta.
+→ Una settimana prima, una violazione di OpenCode — uno strumento open-source di vibe coding — aveva esposto le chiavi API collegate di circa l'1,4% dei suoi utenti, con addebiti non autorizzati fino a 1.700 dollari in una notte: il promemoria pratico di cosa succede quando l'adozione corre più veloce del controllo.
 
-Quale di questi tre fronti — fiducia degli investitori, dei regolatori o delle aziende che usano l'AI ogni giorno — pensi sia il più urgente da risolvere? Dicci la tua nei commenti 👇
+Nella tua azienda, chi tiene insieme la velocità con cui si adotta l'AI e la capacità di controllarla? Raccontacelo nei commenti 👇
 
 #IntelligenzaArtificiale #Innovazione #Tech #B2B #AIStrategy"""
 
 
-CAPTION_2 = """🔥 Il mito: gli agenti AI stanno sostituendo, posto per posto, i ruoli junior nelle aziende tech — e chi non taglia il personale giovane resterà indietro.
+CAPTION_2 = """🔥 Il mito: se un tool di AI coding produce codice che funziona, va bene così — la sicurezza è un dettaglio da sistemare dopo, se mai servirà.
 
-Un report interno di Anthropic, diffuso questa settimana, è uno dei primi a mettere numeri reali su questa domanda, partendo dai propri dati HR.
+Una violazione di OpenCode, uno dei progetti open-source di vibe coding più usati, racconta una storia diversa, con numeri reali e non ipotetici.
 
-🔹 27% → 9% — la quota di nuove assunzioni tecniche che Anthropic destinava a profili junior è scesa da oltre un quarto a meno di un decimo dei nuovi ingressi, dall'inizio del 2025
-🔹 21% → 14% — anche la quota di personale tecnico già junior sul totale è calata, mentre l'organico complessivo dell'azienda è triplicato nello stesso periodo
-🔹 6 a 1 — il rapporto tra le ore di lavoro svolte dagli agenti Claude diretti dai dipendenti e quelle del personale umano, raggiunto entro agosto 2026 secondo lo stesso report
+🔹 1,4% — la quota di utenti di OpenCode Console coinvolti nella violazione del 17 ottobre: solo quelli che avevano collegato le proprie chiavi API di provider esterni (OpenAI, Anthropic, Google) — ma per loro l'esposizione è stata totale
+🔹 1.700 dollari — l'addebito non autorizzato più alto segnalato da un singolo utente in una sola notte, dopo che le sue chiavi erano state usate in un «attacco di distillazione» su larga scala contro i modelli collegati
+🔹 48 ore — il tempo per cui, secondo il co-fondatore del progetto, gli aggressori avevano già preso di mira i sistemi prima che la violazione venisse rilevata e comunicata agli utenti
 
-Questi numeri non dicono che un agente sostituisce un giovane ingegnere uno a uno — dicono che il lavoro di routine su cui un junior imparava facendo si sta spostando sugli agenti, e che il ruolo umano si sposta verso la supervisione, l'architettura e la verifica. È esattamente il presidio che un agente, da solo, non sa fare: non basta orchestrare più lavoro, serve chi ne governa la qualità e i rischi prima che arrivi in produzione.
+Il problema non è che OpenCode sia uno strumento cattivo — è che collegare le proprie chiavi API a un tool di terze parti è una scelta architetturale, non un dettaglio di configurazione. Il vibe coding abbassa davvero la barriera per prototipare: ma dove finiscono le credenziali, chi può vederle, e cosa succede se il tool viene compromesso restano domande da porsi prima di collegare la prima chiave, non dopo aver letto la notizia della violazione successiva.
 
-Nella tua azienda, chi sta ridisegnando i ruoli junior intorno agli agenti AI — e chi, invece, sta solo tagliando le assunzioni? 👇"""
-
-
-CAPTION_3 = """🔥 Il mito: un'azienda che ha messo in produzione degli agenti AI sa cosa fanno, quando lo fanno, e può fermarli se sbagliano.
-
-Il report «State of Agentic AI and API Security» di Salt Security, pubblicato questa settimana su oltre 380 professionisti di sicurezza, racconta una realtà diversa.
-
-🔹 86,4% — delle organizzazioni ha già almeno un agente AI in funzione, e il 59,5% ne ha più di dieci: l'adozione è già massiccia, ben oltre la fase sperimentale
-🔹 49,8% — delle organizzazioni ha confermato o sospettato che un agente abbia compiuto un'azione non intenzionale o non autorizzata nell'ultimo anno, più spesso una chiamata API esterna o una modifica di dati
-🔹 12,5% — la quota di aziende che riesce a tracciare con continuità l'intero percorso di un agente, dall'istruzione iniziale al risultato finale: per il resto servirebbero ore o giorni per ricostruirlo a posteriori
-🔹 17,5% — la quota che può arrestare automaticamente, in produzione, un agente che si comporta in modo anomalo: per gli altri quattro su cinque, fermarlo richiede un intervento manuale
-
-Il problema non è se usare gli agenti AI — l'86% delle aziende lo fa già — ma che l'adozione è corsa più veloce della capacità di tracciarli e governarli. È lo stesso scarto che il vibe coding ha aperto sul codice: prototipare con l'AI è ormai alla portata di chiunque, ma l'architettura, i permessi e il controllo di cosa un agente può davvero fare restano un lavoro da presidiare con competenze senior, non da lasciare all'entusiasmo del primo pilota.
-
-Nella tua azienda, qualcuno saprebbe ricostruire cosa ha fatto un agente AI ieri — o ci vorrebbero giorni? 👇"""
+Nella tua azienda, qualcuno saprebbe dire oggi quali chiavi API sono collegate a quali strumenti di terze parti? 👇"""
 
 
-CAPTION_4 = """Dopo i dati di ieri su quanto poco le aziende riescano a tracciare i propri agenti AI, ci siamo chiesti: noi, internamente, sapremmo rispondere? Questa settimana abbiamo messo alla prova proprio questo.
+CAPTION_3 = """🔥 Il mito: l'AI Act è una questione europea che riguarda i grandi laboratori americani — per una PMI italiana che usa ChatGPT o Copilot in ufficio, è ancora presto per preoccuparsene.
 
-→ Abbiamo preso uno dei flussi di lavoro interni in cui usiamo agenti AI (ricerca, prima bozza di contenuti, controlli di qualità) e abbiamo provato a ricostruire, a posteriori, ogni passaggio che l'agente aveva fatto per arrivare al risultato finale.
-→ [Da personalizzare con l'esito reale della prova del team: quanto è stato semplice o difficile ricostruire il percorso, quali passaggi erano opachi, cosa avete dovuto aggiungere per renderlo tracciabile — senza inventare cifre o esiti non verificati.]
-→ La lezione non è «serve uno strumento di monitoraggio in più», ma che la tracciabilità va progettata insieme al flusso di lavoro fin dall'inizio, non aggiunta a posteriori quando qualcosa è già andato storto.
+Il decreto legislativo 179/2026, in vigore dal 23 ottobre, dice qualcosa di diverso: assegna poteri di vigilanza concreti e fissa obblighi che riguardano anche le aziende più piccole.
 
-La vostra azienda saprebbe ricostruire, oggi, cosa ha fatto un agente AI interno nell'ultima settimana? Raccontatecelo 👇
+🔹 35 milioni di euro o il 7% del fatturato mondiale — la sanzione massima per le pratiche AI vietate, qualunque sia maggiore: riguarda non solo chi sviluppa modelli, ma anche chi li usa in modo scorretto
+🔹 15 milioni di euro o il 3% del fatturato — la sanzione per le altre violazioni degli obblighi, con criteri di proporzionalità: non sono multe automatiche, ma presuppongono che l'azienda possa dimostrare cosa ha fatto
+🔹 23 aprile 2027 — la scadenza entro cui gli ordini professionali dovranno integrare le competenze sull'AI nella formazione dei propri iscritti: una data concreta da segnare, non un principio generico
+🔹 2 autorità, non una — AgID valuta la conformità dei sistemi AI, ACN fa vigilanza di mercato con poteri di controllo e ispezione: restano attive anche Banca d'Italia, CONSOB, IVASS e il Garante privacy per i rispettivi ambiti
 
-#IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Innovazione"""
+Il decreto non obbliga tutte le aziende a dimostrare la conformità domani mattina — ma dice chi può chiedere di vederla, con quali poteri, e a quali condizioni. Le decisioni su assunzione, modifica o cessazione di un rapporto di lavoro non possono più basarsi solo su un processo automatizzato, e serve una persona con reale potere decisionale; se l'AI incide su turni e carichi di lavoro, il rischio va documentato nel DVR aziendale. Aspettare un controllo per scoprire di non essere pronti costa più che organizzarsi ora.
 
-
-CAPTION_5 = """Nel 2000 il NIST ha scelto le curve crittografiche alla base di ECDSA, uno degli standard di sicurezza più usati al mondo — comprese quelle che probabilmente proteggono anche parte del traffico della tua azienda. Da allora un dettaglio restava un mistero: da dove venivano i numeri di partenza di quelle curve? Il sospetto, mai confermato, era una backdoor della NSA. Questa settimana Anthropic ha raccontato come Claude lo ha risolto in meno di mezz'ora.
-
-→ Un generatore di numeri «casuali» in realtà non lo è mai del tutto: parte sempre da un valore iniziale, il seed. Se conosci il seed e il metodo, puoi ricostruire ogni numero che ha prodotto — è la base di molta crittografia, e anche il punto debole se quel seed nasconde qualcosa.
-→ Per 25 anni i ricercatori hanno provato a spiegare i seed delle curve NIST con un'ipotesi (un testo trasformato in un calcolo di verifica): sbagliata. Claude ha cambiato approccio, ha ipotizzato un generatore casuale tipico degli anni '90, trovato un pattern sospetto nei numeri, e con un metodo matematico ha ricostruito lo stato interno di quel generatore.
-→ Risultato: i seed derivano semplicemente dall'orario del computer tra il 1997 e il 1998 — un dato banale, non una backdoor. La cosa interessante non è che il mistero fosse innocente, ma che un modello AI lo abbia risolto in 30 minuti dopo che più ricercatori umani avevano seguito la pista sbagliata per anni.
-
-Ti è mai capitato che un'AI risolvesse un problema tecnico aperto da tempo semplicemente cambiando l'ipotesi di partenza? Raccontaci il caso 👇
-
-#AI #TechExplained #Crittografia #B2B #Innovazione"""
+La tua azienda saprebbe già oggi elencare quali strumenti AI usa, per cosa, e con quali responsabilità? 👇"""
 
 
-CAPTION_6 = """Lo studio AI.DEA di Nomisma, presentato questa settimana al Forum di Varignana su oltre 200 PMI italiane (Machinery, Agrifood, Motor Valley), fotografa un'Italia produttiva che sta usando l'AI più per iniziativa dei singoli che come scelta aziendale.
+CAPTION_4 = """Dopo la violazione di OpenCode di questa settimana, ci siamo fatti la domanda più scomoda: noi, internamente, sapremmo rispondere a «quali chiavi API sono collegate a quali strumenti, e chi le gestisce»? Questa settimana lo abbiamo verificato davvero.
 
-🔹 45% — delle PMI usa l'AI in modo informale, per iniziativa dei singoli dipendenti; il 21% non la usa affatto: due aziende su tre restano senza un utilizzo strutturato
-🔹 4% — usa l'AI per trasformare il proprio modello di business, e l'8% ha sviluppato processi AI-driven: il resto si ferma all'automazione di singole attività o a un uso estemporaneo
-🔹 50% — indica la mancanza di competenze interne come primo ostacolo, e 7 aziende su 10 non hanno ancora avviato un percorso di formazione sull'AI, pur riconoscendo nel 57% dei casi che le competenze sono la leva più importante
-🔹 56% — di chi usa o prevede di usare l'AI destina meno dello 0,5% del fatturato alla tecnologia, e il 23% non prevede risorse specifiche: l'intenzione c'è più spesso del budget
+→ Abbiamo fatto l'inventario degli strumenti AI di terze parti che il team usa ogni giorno — editor con AI integrata, tool di automazione, assistenti vari — ed elencato quali hanno accesso a chiavi API di provider come OpenAI o Anthropic.
+→ [Da personalizzare con l'esito reale della verifica del team: quante chiavi sono risultate collegate più di quanto ci si aspettasse, quali strumenti erano stati aggiunti senza un processo di approvazione, cosa avete deciso di cambiare — senza inventare cifre o esiti non verificati.]
+→ La lezione non è smettere di usare tool di AI coding o di produttività — è che l'inventario di chi ha accesso a cosa va fatto prima che serva, non dopo la prima notizia di violazione che riguarda uno strumento usato anche in casa.
 
-Il divario che descrive questo studio non è tra chi ha l'AI e chi no — è tra chi la lascia all'iniziativa dei singoli e chi la trasforma in un processo aziendale, con competenze e budget dedicati. Ed è esattamente lì che si gioca la differenza tra un esperimento isolato e un vantaggio competitivo reale.
+La tua azienda ha un inventario aggiornato di quali tool AI hanno accesso a quali credenziali? Raccontacelo 👇
 
-Nella tua azienda l'AI è un'iniziativa dei singoli o un processo con un responsabile e un budget? 👇
+#IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Cybersecurity"""
 
-#IntelligenzaArtificiale #PMI #DigitalTransformation #B2B #Formazione"""
+
+CAPTION_5 = """Nella violazione di OpenCode di questa settimana, gli aggressori hanno usato quello che è stato definito un «large-scale distillation attack». Ma cos'è la distillazione, prima ancora di diventare un attacco? È una delle tecniche più comuni per rendere l'AI più economica — ed è per questo che vale la pena capirla.
+
+→ La distillazione, nel machine learning, è una tecnica legittima: si usa un modello grande e costoso come «insegnante» per addestrarne uno più piccolo ed economico, l'«allievo», facendogli imitare le risposte del primo. È uno dei motivi per cui oggi esistono modelli piccoli sorprendentemente capaci.
+→ Diventa un problema quando la stessa tecnica viene usata senza autorizzazione: inviando un numero enorme di richieste a un modello altrui — con chiavi API rubate, come nel caso OpenCode — per raccogliere abbastanza risposte da addestrare un modello concorrente, a spese e sul traffico di qualcun altro.
+→ È lo stesso motivo per cui le aziende dietro i grandi modelli limitano quante richieste si possono fare e monitorano pattern di utilizzo anomali: un volume di query «troppo sistematico» è spesso il primo segnale che qualcuno sta provando a copiare il modello, non solo a usarlo.
+
+Avevi già sentito parlare di «distillazione» prima di questa notizia? Dicci se vuoi che continuiamo a spiegare i concetti tecnici dietro le notizie della settimana 👇
+
+#AI #TechExplained #MachineLearning #B2B #Innovazione"""

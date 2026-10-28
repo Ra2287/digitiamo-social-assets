@@ -218,10 +218,10 @@ def slides_for(idea, post_type):
 
     if spec["format"] == "single":
         # Un'immagine sola: titolo grande piu' il fatto che lo sostiene.
-        box = idea.get("hook") or (idea.get("points") or [""])[0]
+        box = idea.get("visual_hook") or idea.get("hook") or (idea.get("points") or [""])[0]
         return [dict(kind="single", eyebrow=label, box=box,
                      title=_accent(idea.get("title", "")),
-                     logos=idea.get("logos"))]
+                     logos=idea.get("logos"), diagram=idea.get("diagram"))]
 
     points = list(idea.get("points") or [])
     out = [dict(kind="hook", eyebrow=label,

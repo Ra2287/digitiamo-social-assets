@@ -407,10 +407,48 @@ def _logo_row(names, sf):
     return '<div style="display:flex;gap:.14em;margin-top:.04em;">%s</div>' % chips
 
 
+def _sandbox_box(label, sf):
+    return f"""
+    <div style="flex:1;border:.035em dashed {sf['neutral']};border-radius:.16em;
+         padding:.30em .10em;text-align:center;">
+      <div style="width:.30em;height:.30em;border-radius:50%;background:{sf['data']};margin:0 auto;"></div>
+      <div class="eyebrow" style="margin-top:.16em;font-size:.16em;color:{sf['body']};letter-spacing:1px;">{esc(label)}</div>
+    </div>"""
+
+
+def _sandbox_diagram(sf):
+    """Diagramma astratto: due ambienti isolati che comunicano con un canale
+    nascosto. Illustra il MECCANISMO concreto della notizia (due microVM senza
+    rete ne' file in comune, side-channel sulla cache della CPU) con forme
+    geometriche — lo stesso principio di onesta' delle fotografie (brand/photo/
+    PROVENANCE.md): niente illustrazioni di fantasia di "robot" o "AI", solo
+    cio' che il fatto descrive davvero. Nessun elemento di brand duplicato: il
+    pallino usa la tinta dati della superficie, come negli altri layout a dati.
+    """
+    return f"""
+    <div style="display:flex;align-items:stretch;gap:0;margin-top:.30em;">
+      {_sandbox_box("AGENTE A — VM ISOLATA", sf)}
+      <div style="flex:0 0 .78em;display:flex;flex-direction:column;
+           align-items:center;justify-content:center;gap:.05em;padding:0 .06em;">
+        <div style="width:100%;border-top:.025em dashed {sf['accent']};"></div>
+        <div class="eyebrow" style="font-size:.135em;color:{sf['accent']};
+             text-align:center;letter-spacing:.5px;line-height:1.3;">CANALE NASCOSTO<br>(CACHE CPU)</div>
+        <div style="width:100%;border-top:.025em dashed {sf['accent']};"></div>
+      </div>
+      {_sandbox_box("AGENTE B — VM ISOLATA", sf)}
+    </div>
+    <div style="display:flex;justify-content:center;gap:.36em;margin-top:.16em;">
+      <div class="eyebrow" style="font-size:.155em;color:{sf['body']};letter-spacing:.5px;">0 CONNESSIONI DI RETE</div>
+      <div class="eyebrow" style="font-size:.155em;color:{sf['body']};letter-spacing:.5px;">0 FILE CONDIVISI</div>
+    </div>"""
+
+
 def _single(s, sf):
+    diagram = _sandbox_diagram(sf) if s.get('diagram') == 'sandbox' else ""
     return f"""{_eyebrow(s, sf)}
     <div class="display" style="margin-top:.30em;font-size:.78em;color:{sf['ink']};">{accent(s['title'], sf['accent'])}</div>
     {_logo_row(s.get('logos'), sf)}
+    {diagram}
     {_box(sf, s.get('box'))}"""
 
 

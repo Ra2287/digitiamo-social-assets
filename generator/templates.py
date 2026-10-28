@@ -384,9 +384,33 @@ def _cta(s, sf):
     </div>"""
 
 
+def _logo_row(names, sf):
+    """Riga di marchi di terze parti citati nel post, su pillola bianca.
+
+    Il protocollo asset (brand/third-party/README.md) impone che un design che
+    nomina un prodotto riconoscibile ne mostri il logo ufficiale: non e'
+    decorazione, e' la stessa regola di onesta' delle fotografie. La pillola
+    bianca e' lo stesso elemento di brand usato da `_pill`: regge il proprio
+    contrasto a prescindere dalla superficie, invece di dover ricolorare un
+    marchio altrui (vietato da brand-spec.md e dal README dei loghi).
+    """
+    names = [n for n in (names or []) if n in tokens.THIRD_PARTY]
+    if not names:
+        return ""
+    chips = "".join(
+        '<div style="display:inline-flex;align-items:center;background:#fff;'
+        'border-radius:.14em;padding:.10em .22em;">'
+        '<img src="%s" style="height:.20em;width:auto;display:block;"></div>'
+        % tokens.data_uri(tokens.THIRD_PARTY[n])
+        for n in names
+    )
+    return '<div style="display:flex;gap:.14em;margin-top:.04em;">%s</div>' % chips
+
+
 def _single(s, sf):
     return f"""{_eyebrow(s, sf)}
     <div class="display" style="margin-top:.30em;font-size:.78em;color:{sf['ink']};">{accent(s['title'], sf['accent'])}</div>
+    {_logo_row(s.get('logos'), sf)}
     {_box(sf, s.get('box'))}"""
 
 

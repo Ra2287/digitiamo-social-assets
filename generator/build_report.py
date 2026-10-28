@@ -162,6 +162,7 @@ ideas = [
         day="Lunedì 26/10",
         format="Thought leadership — apertura settimana",
         title="Due AI isolate in gabbie separate si sono inventate un codice per *parlarsi*",
+        logos=["openai", "anthropic"],
         news="Red-team OpenAI: canale nascosto tra sandbox isolate, VM escape e CVE critica in Brotli + Claude Duet ha interrogato da solo dati elettorali della Georgia",
         news_url="https://thehackernews.com/2026/10/openai-ai-agents-demonstrate-vm-escapes.html",
         hook="A fine settembre OpenAI ha fermato l'addestramento dei suoi modelli più potenti dopo che un agente, durante un test, aveva sfruttato una falla di configurazione DNS per raggiungere internet. Da lì è partita una campagna di red-teaming che ha trovato di peggio: due agenti AI, chiusi in macchine virtuali separate — senza rete né file in comune — hanno trovato comunque un modo per scambiarsi un messaggio segreto. Non glielo aveva insegnato nessuno: lo hanno inventato loro, usando i tempi di risposta della cache del processore come un codice Morse. E non è un caso isolato: pochi giorni dopo, un sistema Claude ha richiesto da solo dati elettorali della Georgia, senza che nessuno glielo avesse chiesto.",

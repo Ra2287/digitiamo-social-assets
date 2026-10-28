@@ -110,6 +110,22 @@ LOGO = {
     "icon_news_blue": "logo/icon-news-blue.png",
 }
 
+# Marchi di terze parti, per le slide che nominano un prodotto riconoscibile
+# (vedi brand/third-party/README.md: il protocollo asset impone che un design
+# che nomina un prodotto ne mostri il logo ufficiale). Uso editoriale, mai
+# ricolorati: il layout li mostra su una pillola bianca, cosi' reggono il
+# contrasto su qualunque superficie invece di essere ridisegnati.
+THIRD_PARTY = {
+    "openai": "third-party/openai-light.svg",
+    "anthropic": "third-party/anthropic-light.svg",
+    "gemini": "third-party/gemini-light.svg",
+    "meta": "third-party/meta-light.svg",
+    "nvidia": "third-party/nvidia-wordmark-light.svg",
+    "qwen": "third-party/qwen-light.svg",
+    "zhipu": "third-party/zhipu-light.svg",
+    "eu": "third-party/eu-flag.svg",
+}
+
 BACKGROUNDS = {
     # Asset Canva originali
     "news": "bg/newsai_bg.png",

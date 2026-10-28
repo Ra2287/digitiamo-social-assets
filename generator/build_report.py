@@ -128,28 +128,32 @@ competitors = [
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana: apertura con il contrasto tra capitali record (round
-# OpenAI, IPO Anthropic) e controllo che arriva solo dopo (decreto italiano,
-# violazione OpenCode, linee guida NIST/NSA/CISA) — due momenti di rottura in
-# formato "mito da sfatare", uno sulla sicurezza del vibe coding e uno sulla
-# prontezza delle aziende italiane di fronte al nuovo decreto AI — un'esperienza
-# diretta che continua il filo del primo mito, e una mini-lezione divulgativa
-# sul concetto di "distillazione" dietro la violazione OpenCode. Nessun post
-# vende prima di mercoledì, e anche lì la vendita resta organica, agganciata
-# solo dove il collegamento con Team Augmentation o AI Business Academy è reale.
+# Arco della settimana: apertura con tre mosse di controllo sull'AI nella
+# stessa settimana (decreto italiano, violazione OpenCode, linee guida
+# NIST/NSA/CISA) — per scelta editoriale del 28/10/2026 la notizia del round
+# OpenAI e dell'IPO Anthropic non apre più il post: le notizie sui round restano
+# nei trend/competitor come contesto, ma non guidano più l'hook, su richiesta
+# esplicita di Ramona (il pubblico le trova poco interessanti). Segue con due
+# momenti di rottura in formato "mito da sfatare", uno sulla sicurezza del vibe
+# coding e uno sulla prontezza delle aziende italiane di fronte al nuovo decreto
+# AI — un'esperienza diretta che continua il filo del primo mito, e una
+# mini-lezione divulgativa sul concetto di "distillazione" dietro la violazione
+# OpenCode. Nessun post vende prima di mercoledì, e anche lì la vendita resta
+# organica, agganciata solo dove il collegamento con Team Augmentation o AI
+# Business Academy è reale.
 ideas = [
     dict(
         badge="Prioritario",
         day="Lunedì 26/10",
         format="Thought leadership — apertura settimana",
-        title="Una settimana di capitali record e controlli che arrivano *dopo*",
-        news="Round OpenAI da 30 miliardi di dollari + decreto AI italiano in vigore dal 23/10 + violazione OpenCode",
-        news_url="https://www.cnbc.com/2026/10/22/openai-funding-round-uae-investors.html",
-        hook="Giovedì scorso OpenAI ha detto ai propri investitori di volere le firme entro la settimana successiva per un round fino a 30 miliardi di dollari, a una valutazione di 1.250 miliardi di dollari — tagliata di 150 miliardi rispetto alla cifra discussa solo tre settimane prima. Lo stesso giorno, in Italia, era già in vigore da poco il decreto che per la prima volta dice chi vigila sull'AI Act e con quali poteri. E qualche giorno prima, un attacco informatico aveva già mostrato perché quella vigilanza serve: le chiavi API di migliaia di utenti di un tool di vibe coding, esposte in un attacco su larga scala.",
+        title="Una settimana di tre mosse di *controllo* sull'AI",
+        news="Decreto AI italiano in vigore dal 23/10 + violazione OpenCode + linee guida NIST/NSA/CISA sugli agenti fuori controllo",
+        news_url="https://www.ilsoftware.it/focus/ai-act-italia-obblighi-aziende-2026/",
+        hook="Questa settimana tre notizie diverse hanno detto la stessa cosa in tre modi diversi: controllare l'AI non è più un principio da dichiarare, è un lavoro da fare. Dal 23 ottobre l'Italia ha un decreto che dice per la prima volta chi vigila sull'AI Act e con quali poteri. Pochi giorni prima, una violazione aveva già mostrato perché quella vigilanza serve: le chiavi API di migliaia di utenti di un tool di vibe coding, esposte in un attacco su larga scala. E il 16 ottobre tre agenzie americane hanno pubblicato le prime linee guida su come fermare un agente AI che esce dai propri confini — anche senza che nessuno lo attacchi dall'esterno.",
         points=[
-            "OpenAI tratta un round fino a 30 miliardi di dollari a una valutazione pre-money di 1.250 miliardi di dollari — 150 miliardi in meno rispetto alla cifra di 1.400 miliardi circolata a inizio ottobre: anche i capitali più cercati del mercato si negoziano, non si dettano.",
             "Dal 23 ottobre l'Italia ha un decreto che assegna ad AgID la valutazione di conformità dei sistemi AI e ad ACN la vigilanza di mercato, con sanzioni fino al 7% del fatturato mondiale per le pratiche vietate: la fase dei principi europei dichiarati lascia spazio a un'autorità che può davvero bussare alla porta.",
-            "Una settimana prima, una violazione di OpenCode — uno strumento open-source di vibe coding — aveva esposto le chiavi API collegate di circa l'1,4% dei suoi utenti, con addebiti non autorizzati fino a 1.700 dollari in una notte: il promemoria pratico di cosa succede quando l'adozione corre più veloce del controllo.",
+            "Una violazione di OpenCode — uno strumento open-source di vibe coding — ha esposto le chiavi API collegate di circa l'1,4% dei suoi utenti, con addebiti non autorizzati fino a 1.700 dollari in una notte: il promemoria pratico di cosa succede quando l'adozione corre più veloce del controllo.",
+            "NIST, NSA e CISA hanno pubblicato le prime linee guida strutturate su come fermare un agente AI che esce dai propri confini, anche quando nessun attacco esterno lo ha causato: la stessa logica della risposta agli incidenti informatici tradizionali, estesa per la prima volta ai sistemi autonomi.",
         ],
         cta="Nella tua azienda, chi tiene insieme la velocità con cui si adotta l'AI e la capacità di controllarla? Raccontacelo nei commenti 👇",
         hashtags="#IntelligenzaArtificiale #Innovazione #Tech #B2B #AIStrategy",

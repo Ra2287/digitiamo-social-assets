@@ -15,13 +15,13 @@ istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
 """
 
-CAPTION_1 = """Questa settimana tre notizie diverse hanno detto la stessa cosa in tre modi diversi: controllare l'AI non è più un principio da dichiarare, è un lavoro da fare. Dal 23 ottobre l'Italia ha un decreto che dice per la prima volta chi vigila sull'AI Act e con quali poteri. Pochi giorni prima, una violazione aveva già mostrato perché quella vigilanza serve: le chiavi API di migliaia di utenti di un tool di vibe coding, esposte in un attacco su larga scala. E il 16 ottobre tre agenzie americane hanno pubblicato le prime linee guida su come fermare un agente AI che esce dai propri confini — anche senza che nessuno lo attacchi dall'esterno.
+CAPTION_1 = """Il 16 ottobre tre agenzie americane hanno pubblicato qualcosa di nuovo: non istruzioni su come difendersi da un attacco esterno, ma un manuale su cosa fare quando è l'agente AI stesso — agendo da solo oltre i propri confini — a causare il danno. Lo hanno scritto nella stessa settimana in cui una violazione reale, quella di OpenCode, mostrava cosa succede quando le chiavi di accesso finiscono nelle mani sbagliate, e l'Italia faceva entrare in vigore il primo decreto che dice chi, da ora, può davvero controllare tutto questo.
 
-→ Dal 23 ottobre l'Italia ha un decreto che assegna ad AgID la valutazione di conformità dei sistemi AI e ad ACN la vigilanza di mercato, con sanzioni fino al 7% del fatturato mondiale per le pratiche vietate: la fase dei principi europei dichiarati lascia spazio a un'autorità che può davvero bussare alla porta.
-→ Una violazione di OpenCode — uno strumento open-source di vibe coding — ha esposto le chiavi API collegate di circa l'1,4% dei suoi utenti, con addebiti non autorizzati fino a 1.700 dollari in una notte: il promemoria pratico di cosa succede quando l'adozione corre più veloce del controllo.
-→ NIST, NSA e CISA hanno pubblicato le prime linee guida strutturate su come fermare un agente AI che esce dai propri confini, anche quando nessun attacco esterno lo ha causato: la stessa logica della risposta agli incidenti informatici tradizionali, estesa per la prima volta ai sistemi autonomi.
+→ NIST, NSA e CISA hanno pubblicato il 16 ottobre le prime linee guida per gestire un «incidente di controllo»: un'azione di un agente AI che viola le policy aziendali senza che sia stato necessario alcun attacco esterno a provocarla — la causa può essere l'agente stesso, semplicemente agendo oltre i confini assegnati.
+→ Una violazione di OpenCode ha mostrato la versione «con attaccante» dello stesso problema: le chiavi API collegate di circa l'1,4% dei suoi utenti sono state esposte in un attacco di distillazione, con addebiti non autorizzati fino a 1.700 dollari in una sola notte.
+→ Dal 23 ottobre l'Italia ha un decreto che assegna per la prima volta poteri di vigilanza concreti sull'AI Act — ad AgID la valutazione di conformità, ad ACN il controllo di mercato — con sanzioni fino al 7% del fatturato mondiale per le pratiche vietate.
 
-Nella tua azienda, chi tiene insieme la velocità con cui si adotta l'AI e la capacità di controllarla? Raccontacelo nei commenti 👇
+La tua azienda avrebbe un modo per accorgersi di un agente AI che agisce fuori dai propri confini, anche senza un attacco esterno a provocarlo? 👇
 
 #IntelligenzaArtificiale #Innovazione #Tech #B2B #AIStrategy"""
 

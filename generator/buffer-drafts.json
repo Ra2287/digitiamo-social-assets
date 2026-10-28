@@ -349,15 +349,6 @@
   {
     "date": "2026-10-26",
     "revision": 0,
-    "slug": "idea1-una-settimana-di-capitali",
-    "id": "6adf55b58f8d1eab42cfaea2",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-26/brandstyle_idea1-una-settimana-di-capitali_2026-10-26.png",
-    "title": "Una settimana di capitali record e controlli che arrivano *dopo*",
-    "format": "thought_leadership"
-  },
-  {
-    "date": "2026-10-26",
-    "revision": 0,
     "slug": "idea2-un-tool-di-vibe",
     "id": "6adf55b5db969f17543fddaa",
     "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-26/brandstyle_idea2-un-tool-di-vibe_2026-10-26.png",
@@ -381,5 +372,14 @@
     "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-26/brandstyle_idea5-cos-un-attacco-di_2026-10-26.png",
     "title": "Cos'è un «attacco di distillazione» — quello dietro la violazione della settimana — in parole *semplici*",
     "format": "mini_lesson"
+  },
+  {
+    "date": "2026-10-26",
+    "revision": 0,
+    "slug": "idea1-una-settimana-di-tre",
+    "id": "6ae1e9b8dee6d1a87ac3d029",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-10-26/brandstyle_idea1-una-settimana-di-tre_2026-10-26.png",
+    "title": "Una settimana di tre mosse di *controllo* sull'AI",
+    "format": "thought_leadership"
   }
 ]

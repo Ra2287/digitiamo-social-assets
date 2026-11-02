@@ -64,6 +64,7 @@ h2{font:800 21px/1.2 'Montserrat',sans-serif;letter-spacing:-.01em;}
 .rhythm{display:flex;gap:4px;align-items:center;margin-top:14px;}
 .sw{width:34px;height:22px;border-radius:4px;border:1px solid rgba(0,0,0,.15);}
 .sw-navy{background:var(--navy);} .sw-blue{background:var(--brand);}
+.sw-dark{background:linear-gradient(#3E00EA,#070011);} .sw-light{background:#F4F5FA;border:1px solid #ccc;} .sw-photo{background:#1C073A;}
 .sw-sky{background:var(--sky);} .sw-news{background:linear-gradient(#c5ebff 45%,var(--brand) 45%);}
 .rl{font:700 11px/1 'Montserrat',sans-serif;color:var(--ink2);
     letter-spacing:.06em;text-transform:uppercase;margin-left:8px;}
@@ -175,8 +176,7 @@ def build():
 
     for c in week.CAROUSELS:
         pt = templates.POST_TYPES[c["post_type"]]
-        surfaces = [templates.rhythm_for(c["post_type"], i, len(c["slides"]))
-                    if not s.get("surface") else s["surface"]
+        surfaces = [templates.surface_for(s, i, len(c["slides"]))
                     for i, s in enumerate(c["slides"])]
         items = []
         for i, (s, surf) in enumerate(zip(c["slides"], surfaces), start=1):
@@ -201,7 +201,7 @@ def build():
     items = []
     for s in week.SINGLES:
         pt = templates.POST_TYPES[s["post_type"]]
-        items.append((pt["label"], pt["rhythm"][0],
+        items.append((pt["label"], s.get("surface", "dark"),
                       find("brandstyle_%s_%s.png" % (s["slug"], week.DATE))))
     blocks.append("""
 <section>
@@ -211,8 +211,7 @@ def build():
   %s
   %s
 </section>""" % (len(week.SINGLES),
-                 rhythm_bar([templates.POST_TYPES[s["post_type"]]["rhythm"][0]
-                             for s in week.SINGLES]),
+                 rhythm_bar([s.get("surface", "dark") for s in week.SINGLES]),
                  strip(items, singles=True)))
 
     blocks.append(explore_section())

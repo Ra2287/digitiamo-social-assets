@@ -69,6 +69,75 @@ def _template():
 
 
 # ---------------------------------------------------------------------------
+@prova("il layout segue il contenuto: barratura, cifre, citazione, foto, alternanza")
+def _selezione():
+    import plan, templates
+
+    def errore(f):
+        try:
+            f()
+        except plan.PlanError:
+            return True
+        return False
+
+    # Barratura: derivata solo dai miti e solo quando e' univoca.
+    mito = dict(format="Mito da sfatare", badge="Prioritario",
+                title="Il tuo editor gira in una sandbox, quindi è *sicuro*")
+    assert plan.strike_word(mito, "myth") == "sicuro"
+    assert plan.strike_word(dict(mito, title="Se non la uso non mi *riguarda*"), "myth") == "riguarda"
+    assert plan.strike_word(dict(mito, title="L'AI è *veloce* e *sicura*"), "myth") is None
+    assert plan.strike_word(dict(mito, title="Quindi non serve, quindi è inutile"), "myth") is None
+    assert plan.strike_word(dict(mito, title="Gira in sandbox, quindi è *sicuro*"),
+                            "thought_leadership") is None          # non e' un mito
+    tl = dict(format="Thought leadership", title="OpenAI dice di aver risolto 3 problemi")
+    assert plan.strike_word(dict(tl, barrato="risolto"), "thought_leadership") == "risolto"
+    assert errore(lambda: plan.strike_word(dict(tl, barrato="assente"), "thought_leadership"))
+    assert errore(lambda: plan.strike_word(dict(tl, barrato="3"), "thought_leadership"))
+    assert errore(lambda: plan.strike_word(dict(tl, title="Il caso Irca", barrato="Irca"),
+                                           "thought_leadership"))   # nome proprio
+
+    # Cifre e segnale positivo: il segno da solo non basta.
+    assert plan.is_gain("−12 ore", "a settimana di inserimento manuale")
+    assert plan.is_gain("+18%", "di ricavi nel trimestre")
+    assert not plan.is_gain("+117%", "di attacchi anno su anno")
+    assert not plan.is_gain("800.000", "chiamate con una chiave rubata")
+    dati = dict(format="Carosello / documento dati", badge="Prioritario", title="I conti",
+                points=["16,3 miliardi di dollari — i ricavi.", "637 miliardi — gli impegni.",
+                        "80,7 miliardi — la perdita.", "Una frase senza cifre."])
+    kinds = [s["kind"] for s in plan.slides_for(dati, "data_carousel")]
+    assert kinds[:3] == ["data_cover", "figure", "figure"], kinds
+    kinds = [s["kind"] for s in plan.slides_for(dict(dati, points=dati["points"] + ["9 — altro."]),
+                                                "data_carousel")]
+    assert kinds[:2] == ["data_cover", "scorecard"], kinds
+    kinds = [s["kind"] for s in plan.slides_for(dict(dati, is_myth=True), "data_carousel")]
+    assert kinds[0] == "hook", "un mito apre col titolo barrato, non con la cifra"
+
+    # Citazione: mai senza autore. Foto: solo un file locale dentro la repo.
+    q = dict(format="Thought leadership", title="x", citazione="Una frase vera.")
+    assert errore(lambda: plan.slides_for(q, "thought_leadership"))
+    assert plan.slides_for(dict(q, autore="Nome"), "thought_leadership")[0]["kind"] == "quote"
+    foto = dict(format="Esperienza diretta", title="x",
+                immagine="generator/brand/photo/nasa-columbia-supercomputer.jpg")
+    assert plan.slides_for(foto, "direct_experience")[0]["photo"].startswith("data:image/jpeg")
+    assert errore(lambda: plan.decide(dict(foto, immagine="manca.jpg"), "direct_experience"))
+    assert errore(lambda: plan.decide(dict(foto, immagine="https://x/y.jpg"), "direct_experience"))
+    assert errore(lambda: plan.decide(dict(foto, immagine="../../etc/hosts"), "direct_experience"))
+
+    # Alternanza: singole tipografiche scuro/chiaro, il carosello conta scuro;
+    # dentro il carosello prima e ultima scure, i fatti chiari.
+    idee = [dict(badge="Prioritario", format="Thought leadership", title="Uno a"),
+            dict(badge="Prioritario", format="Mito da sfatare", title="Due b"),
+            dict(dati, title="Tre c"),
+            dict(badge="Prioritario", format="Esperienza diretta", title="Quattro d")]
+    cs, ss, _ = plan.build(idee)
+    assert [x["surface"] for x in ss] == ["dark", "light", "light"], [x["surface"] for x in ss]
+    surf = [s["surface"] for s in cs[0]["slides"]]
+    assert surf[0] == surf[-1] == "dark" and surf[1] == "light", surf
+    assert templates.surface_for(dict(kind="figure", gain=True), 1, 4) == "dark"
+    return "barratura, cifre/verde, citazione, foto e alternanza verificate"
+
+
+# ---------------------------------------------------------------------------
 @prova("i nomi degli asset e gli URL su Buffer coincidono")
 def _nomi():
     import names, plan, publish_buffer as pb, week

@@ -115,6 +115,28 @@ width:108% height:50%`). Se il titolo ha una barratura, l'accento di colore
 `*parola*` si spegne: un solo segno per titolo. Non si barrano mai **nomi di
 clienti, cifre o dati**. Quale parola: §7-ter.
 
+## 6-bis. Poco testo: i budget per slide
+
+Regola di Fabio del 2/11/2026: **«non usare troppo testo nelle slide»**. Un
+post e' un manifesto, non un paragrafo: titolo di 3–8 parole, una frase di
+supporto. I numeri vivono in `plan.BUDGET` (caratteri, asterischi esclusi):
+
+| Testo | Massimo | Se manca il campo breve ed è troppo lungo |
+|---|---|---|
+| Titolo (`titolo_post`, altrimenti `title`) | 60 caratteri, 3–8 parole | **si ferma**: il titolo non si taglia, serve `titolo_post` |
+| Supporto (`sottotitolo_post`, altrimenti `visual_hook`/`hook`) | 1 frase, 110 | tagliato al primo confine naturale |
+| Sintesi (`closing`/`myth_closing`) | 140 | tagliato al primo confine naturale |
+| Elenco (`punti_post`, altrimenti `points`) | 3 voci da 80 | voci tagliate; quelle in più **tolte** |
+| Riga di scorecard | 60 | tagliata al primo confine naturale |
+| Citazione | 140 | **si ferma**: una citazione non si taglia |
+| Sotto-titolo CTA | 90 | — (testo fisso in `plan._cta_for`) |
+| Occhiello | 24 | — (etichette fisse, verificate dalle prove) |
+
+Il font non si rimpicciolisce per far stare il testo: si accorcia il testo. Il
+taglio automatico avviene al primo confine naturale (fine frase, due punti,
+punto e virgola, lineetta), mai a meta' parola; il titolo e le citazioni non si
+tagliano mai.
+
 ## 7. Divieti
 
 1. **Mai rendere il marchio come testo.** Si usa il vettoriale.

@@ -22,11 +22,32 @@ import tempfile
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 ok = []
-def prova(nome):
+def prova(nome, titoli_di_prova=False):
     def deco(f):
-        ok.append((nome, f))
+        ok.append((nome, f, titoli_di_prova))
         return f
     return deco
+
+
+@contextlib.contextmanager
+def _titoli_di_prova():
+    """Le prove su nomi e rifacimenti girano sul report VERO, che puo' non
+    avere ancora `titolo_post` (dal 2/11/2026 un titolo oltre 60 caratteri
+    ferma il piano: e' giusto, ma non e' cio' che queste prove controllano).
+    Qui, solo per la durata della prova, un titolo segnaposto; il report non
+    viene toccato su disco."""
+    import build_report, plan
+    added = []
+    for idea in build_report.ideas:
+        if (not idea.get("titolo_post")
+                and len((idea.get("title") or "").replace("*", "")) > plan.BUDGET["titolo"]):
+            idea["titolo_post"] = "Titolo di prova della slide"
+            added.append(idea)
+    try:
+        yield
+    finally:
+        for idea in added:
+            del idea["titolo_post"]
 
 
 # ---------------------------------------------------------------------------
@@ -138,7 +159,76 @@ def _selezione():
 
 
 # ---------------------------------------------------------------------------
-@prova("i nomi degli asset e gli URL su Buffer coincidono")
+@prova("poco testo sulle slide: budget, tagli ai confini, stop sul titolo")
+def _budget():
+    import plan, templates
+    B = plan.BUDGET
+
+    # Il titolo non si taglia mai: troppo lungo e senza titolo_post -> stop.
+    lungo = dict(format="Thought leadership", badge="Prioritario",
+                 title="Un titolo da report lunghissimo che spiega tutto per filo e per segno")
+    try:
+        plan.build([lungo])
+    except plan.PlanError as e:
+        assert "titolo_post" in str(e) and "Un titolo da report" in str(e), e
+    else:
+        raise AssertionError("un titolo oltre %d caratteri e' passato" % B["titolo"])
+    breve = dict(lungo, titolo_post="Un titolo *breve*")
+    assert plan.slides_for(breve, "thought_leadership")[0]["title"] == "Un titolo *breve*"
+    for campo, val in (("titolo_post", "x" * 61), ("sottotitolo_post", "x" * 111)):
+        try:
+            plan.slides_for(dict(breve, **{campo: val}), "thought_leadership")
+        except plan.PlanError:
+            pass
+        else:
+            raise AssertionError("%s oltre budget e' passato" % campo)
+
+    # Supporto: una frase, tagliata a un confine, mai a meta' parola.
+    t, n = plan.fit("Prima frase breve. Seconda frase che non serve.", B["supporto"], True)
+    assert t == "Prima frase breve." and n, (t, n)
+    lunga = ("Il mito: le violazioni dei tool di sviluppo AI riguardano solo chi le "
+             "subisce direttamente — se la tua azienda non ha un account, nulla.")
+    t, n = plan.fit(lunga, B["supporto"], True)
+    assert len(t) <= B["supporto"] and t.endswith("direttamente."), t
+    t, n = plan.fit("parola " * 40, 60)
+    assert len(t) <= 60 and t.endswith("parola…"), t
+    assert plan.fit("Corta.", 60) == ("Corta.", "")
+
+    # Elenco: al massimo 3 voci entro 80, le altre si tolgono (non si rimpicciolisce).
+    idea = dict(format="Riflessione di chiusura", badge="Prioritario", title="Cinque cose brevi",
+                points=["Voce numero %d, abbastanza lunga da dover essere tagliata a un "
+                        "confine: qui finisce la parte utile e comincia il resto." % i
+                        for i in range(5)], closing="x " * 200)
+    sl = plan.slides_for(idea, "closing_list")
+    liste = [s_ for s_ in sl if s_["kind"] == "checklist"]
+    assert len(liste) == 1 and len(liste[0]["items"]) == B["voci"], liste
+    assert all(len(v) <= B["voce"] for v in liste[0]["items"]), liste[0]["items"]
+    sintesi = next(s_ for s_ in sl if s_["kind"] == "statement")
+    assert len(sintesi["body"]) <= B["corpo"], len(sintesi["body"])
+
+    # Scorecard, citazione, CTA, occhielli.
+    dati = dict(format="Carosello dati", badge="Prioritario", title="I conti", is_myth=True,
+                points=["%d — una descrizione decisamente troppo lunga per una riga di "
+                        "scorecard, che deve stare in sessanta caratteri." % i for i in (1, 2, 3)])
+    righe = next(s_ for s_ in plan.slides_for(dati, "data_carousel") if s_["kind"] == "scorecard")["rows"]
+    assert all(len(d_) <= B["scorecard"] for _, d_ in righe), righe
+    try:
+        plan.quote_for(dict(title="x", citazione="x" * 141, autore="Nome"))
+    except plan.PlanError:
+        pass
+    else:
+        raise AssertionError("una citazione oltre budget e' passata: non si taglia")
+    for pt in ("data_carousel", "compliance_carousel"):
+        cta = plan._cta_for({}, pt)
+        assert len(cta["cta_sub"]) <= B["cta"], cta["cta_sub"]
+    occhielli = [v["label"] for v in templates.POST_TYPES.values()] + [
+        "I numeri", "Il dato", "I punti", "In sintesi", "Chi l'ha detto"]
+    assert all(len(o) <= B["occhiello"] for o in occhielli), [o for o in occhielli if len(o) > B["occhiello"]]
+    return "titolo fermato, supporto/voci/sintesi/scorecard entro budget, citazione non tagliata"
+
+
+# ---------------------------------------------------------------------------
+@prova("i nomi degli asset e gli URL su Buffer coincidono", titoli_di_prova=True)
 def _nomi():
     import names, plan, publish_buffer as pb, week
 
@@ -202,7 +292,7 @@ def _formato():
 
 
 # ---------------------------------------------------------------------------
-@prova("il ciclo con l'umano: ripetibile, e rifa' un post solo")
+@prova("il ciclo con l'umano: ripetibile, e rifa' un post solo", titoli_di_prova=True)
 def _rifacimento():
     import names, plan, render, week
     from playwright.async_api import async_playwright
@@ -337,9 +427,11 @@ def _performance():
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
     falliti = 0
-    for nome, f in ok:
+    for nome, f, titoli in ok:
         try:
-            print("  ok    %-58s %s" % (nome, f() or ""))
+            with (_titoli_di_prova() if titoli else contextlib.nullcontext()):
+                esito = f()
+            print("  ok    %-58s %s" % (nome, esito or ""))
         except Exception as e:
             falliti += 1
             print("  FALLITO %-56s %s: %s" % (nome, type(e).__name__, e))

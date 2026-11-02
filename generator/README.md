@@ -45,7 +45,8 @@ scelta dei template non si toccano: `plan.py` deriva le slide dal report.
 ## Flusso settimanale
 
 1. **Ricerca** trend/news della settimana (fuori da questo codice).
-2. **Contenuti**: aggiorna `build_report.py` (trend, competitor, 7 idee) e
+2. **Contenuti**: aggiorna `build_report.py` (trend, competitor, 7 idee, e per
+   ogni idea Prioritario `titolo_post` ≤ 60 caratteri e `sottotitolo_post`) e
    `captions.py` (testi dei post). In `week.py` imposta la nuova `DATE`.
    Le slide **non** si scrivono a mano: le deriva `plan.py` dal report.
 3. **Controlla la scelta dei template**: `python3 plan.py` stampa quale tipo di
@@ -93,6 +94,24 @@ stampate idea per idea da `python3 plan.py`:
 | un mito (`myth` o `is_myth`) senza `barrato` | barrata la parola dopo «quindi è»/«quindi», o l'unica `*parola*` accentata | se non è univoca: nessuna barratura |
 | cifre in apertura dei punti («42% …», «800.000 — …») | carosello dati non-mito: la prima fa la **copertina dati**; ≥3 restanti → scorecard, 1–2 → slide cifra | — (nelle singole il titolo resta il post) |
 | una cifra con segno e argomento di guadagno («−12 ore…», «+18% di ricavi»), o `positivo` | quella cifra/parola in verde, slide scura | `positivo` che non compare → si ferma |
+
+**Poco testo** (regola di brand, `plan.BUDGET`): le slide usano prima i campi
+brevi `titolo_post`, `sottotitolo_post`, `punti_post`; i campi lunghi restano
+per il report e le caption.
+
+| Testo | Massimo | Se manca il campo breve ed è troppo lungo |
+|---|---|---|
+| Titolo (`titolo_post`, altrimenti `title`) | 60 caratteri, 3–8 parole | **si ferma**: il titolo non si taglia, serve `titolo_post` |
+| Supporto (`sottotitolo_post`, altrimenti `visual_hook`/`hook`) | 1 frase, 110 | tagliato al primo confine naturale |
+| Sintesi (`closing`/`myth_closing`) | 140 | tagliato al primo confine naturale |
+| Elenco (`punti_post`, altrimenti `points`) | 3 voci da 80 | voci tagliate; quelle in più **tolte** |
+| Riga di scorecard | 60 | tagliata al primo confine naturale |
+| Citazione | 140 | **si ferma**: una citazione non si taglia |
+| Sotto-titolo CTA | 90 | — (testo fisso in `plan._cta_for`) |
+| Occhiello | 24 | — (etichette fisse, verificate dalle prove) |
+
+`python3 plan.py` stampa per ogni idea i testi usati, la lunghezza contro il
+budget e cosa è stato tagliato.
 
 **Chiaro/scuro**: fra i post della settimana si alternano scuro e chiaro (i
 caroselli, le foto e le citazioni contano come scuri); dentro un carosello

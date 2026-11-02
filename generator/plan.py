@@ -78,6 +78,12 @@ ogni idea (tipo, layout, barratura, cifra, superficie):
    scura. Dentro un carosello il fondo segue il registro: argomentazione scura,
    fatti/elenchi chiari, prima e ultima pagina scure
    (`templates.surface_for`).
+7. **Poco testo.** Ogni testo ha un budget (`BUDGET`). Le slide usano prima i
+   campi brevi `titolo_post`, `sottotitolo_post`, `punti_post`. Senza, il
+   titolo oltre 60 caratteri FERMA il piano (non si taglia un titolo a caso);
+   supporto, sintesi, voci e righe si tagliano al primo confine naturale, mai
+   a meta' parola, e le voci in piu' si tolgono. Le citazioni non si tagliano:
+   oltre budget si ferma.
 """
 import os
 import re
@@ -258,10 +264,86 @@ def _clean(text):
     return _EMOJI.sub("", text or "").strip()
 
 
-def _short_title(title, limit=90):
-    """Il titolo per le slide interne: intero se sta, altrimenti tagliato su un
-    confine naturale. Tagliare a 58 caratteri produceva «…la violazione non mi»."""
-    return title if len(title.replace("*", "")) <= limit else _headline(title, 58)[0]
+# ---------------------------------------------------------------------------
+# Quanto testo sta su una slide (regola di Fabio, 2/11/2026: «non usare troppo
+# testo nelle slide»). Caratteri, asterischi dell'accento esclusi.
+# ---------------------------------------------------------------------------
+BUDGET = dict(
+    occhiello=24,   # l'etichetta in alto
+    titolo=60,      # il titolo a manifesto: 3-8 parole, come nei mock
+    supporto=110,   # la frase di supporto: UNA frase
+    corpo=140,      # il testo della slide di sintesi
+    voce=80,        # una voce di elenco
+    voci=3,         # quante voci per elenco (le altre si tolgono)
+    scorecard=60,   # la descrizione di una riga della scorecard
+    citazione=140,  # una citazione: non si taglia mai, si ferma
+    cta=90,         # la frase sotto il titolo della CTA
+)
+
+# Dove si puo' tagliare: fine frase, due punti, punto e virgola, lineetta.
+_BOUNDARY = re.compile(r"[.?!](?=\s)|[:;](?=\s)|\s[—–-](?=\s)")
+
+
+def fit(text, limit, one_sentence=False):
+    """Il testo dentro il suo budget: (testo, nota del taglio o "").
+
+    Taglia al primo confine naturale che lascia almeno 20 caratteri e sta nel
+    budget; se non ce n'e', all'ultima parola intera, con «…». Mai a meta'
+    parola. Il font non si rimpicciolisce: si accorcia il testo.
+    """
+    t = " ".join(_clean(text).split())
+    note = ""
+    if one_sentence:
+        parts = re.split(r"(?<=[.?!])\s+(?=[A-ZÀ-Ý«\"])", t, maxsplit=1)
+        if len(parts) > 1:
+            t, note = parts[0], "tagliato a fine frase"
+    if len(t) <= limit:
+        return t, note
+    for m in _BOUNDARY.finditer(t):
+        end = m.start() + (1 if t[m.start()] in ".?!" else 0)
+        cand = t[:end].rstrip(" ,;:—–-")
+        if len(cand) + 1 > limit:
+            break
+        if len(cand) >= 20:
+            # Tagliata ai due punti o a una lineetta, la frase chiude col punto.
+            return (cand if cand[-1] in ".?!" else cand + "."), "tagliato a un confine"
+    cut = t[:limit - 1]
+    cut = cut[:cut.rindex(" ")] if " " in cut else cut
+    return cut.rstrip(" ,;:—–-") + "…", "tagliato a parola intera"
+
+
+def headline_for(idea):
+    """Il titolo della slide: `titolo_post` se c'e', altrimenti `title` se sta
+    nel budget. Altrimenti si ferma: un titolo non si taglia a caso."""
+    t = idea.get("titolo_post") or idea.get("title") or ""
+    n = len(t.replace("*", ""))
+    if n > BUDGET["titolo"]:
+        if idea.get("titolo_post"):
+            raise PlanError("titolo_post di %d caratteri (massimo %d): accorcialo. "
+                            "Idea: %r" % (n, BUDGET["titolo"], idea.get("title")))
+        raise PlanError(
+            "il titolo dell'idea ha %d caratteri, troppi per una slide (massimo %d).\n"
+            "Aggiungi `titolo_post` all'idea: un titolo a manifesto di 3-8 parole, "
+            "fedele all'idea. Non lo taglio da solo: un titolo tagliato a caso "
+            "diventa un post pubblicato sbagliato. Idea: %r"
+            % (n, BUDGET["titolo"], idea.get("title")))
+    return t
+
+
+def _support_for(idea, fallback):
+    """La frase di supporto: `sottotitolo_post`, oppure il testo lungo tagliato."""
+    if idea.get("sottotitolo_post"):
+        t = idea["sottotitolo_post"]
+        if len(t) > BUDGET["supporto"]:
+            raise PlanError("sottotitolo_post di %d caratteri (massimo %d). Idea: %r"
+                            % (len(t), BUDGET["supporto"], idea.get("title")))
+        return t, ""
+    return fit(fallback, BUDGET["supporto"], one_sentence=True)
+
+
+def _log(d, field, text, budget, note=""):
+    d.setdefault("texts", []).append((field, text, budget, note))
+    return text
 
 
 def _is_myth(idea, post_type):
@@ -291,7 +373,7 @@ def _strikeable(word, title):
 
 def strike_word(idea, post_type):
     """La parola da barrare nel titolo, o None. Solleva se `barrato` e' invalido."""
-    title = idea.get("title") or ""
+    title = headline_for(idea)
     if idea.get("barrato"):
         why = _strikeable(idea["barrato"], title)
         if why:
@@ -336,6 +418,10 @@ def quote_for(idea):
     if not idea.get("autore"):
         raise PlanError("citazione senza autore: non si pubblica una frase senza "
                         "chi l'ha detta. Idea: %r" % idea.get("title"))
+    if len(idea["citazione"]) > BUDGET["citazione"]:
+        raise PlanError("citazione di %d caratteri (massimo %d): una citazione non "
+                        "si taglia, si sceglie piu' corta. Idea: %r"
+                        % (len(idea["citazione"]), BUDGET["citazione"], idea.get("title")))
     return dict(kind="quote", quote=idea["citazione"], who=idea["autore"],
                 role=idea.get("ruolo"))
 
@@ -371,12 +457,11 @@ def _cta_for(idea, post_type):
         title=idea.get("cta_title") or CTA_TITLES.get(
             post_type, "Serve qualcuno che se ne *occupi*"),
         cta_title="Scrivici su digitiamo.com" if compliance else "Parliamone su digitiamo.com",
+        # Entro BUDGET["cta"] (90): verificato in test_pipeline.py.
         cta_sub=(
-            "AI Business Academy Digitiamo: formazione e progetti mirati sui casi "
-            "d'uso reali della tua azienda."
+            "AI Business Academy: formazione sui casi d'uso reali della tua azienda."
             if compliance else
-            "Team Augmentation Digitiamo: AI Engineer e sviluppatori senior che si "
-            "integrano nel tuo team."
+            "Team Augmentation: AI Engineer senior che lavorano nel tuo team."
         ),
     )
 
@@ -387,7 +472,9 @@ def decide(idea, post_type):
     Ritorna un dizionario leggibile — e' anche cio' che `python3 plan.py`
     stampa, perche' chi rivede capisca il perche' di ogni grafica.
     """
-    points = list(idea.get("points") or [])
+    # `punti_post`: versioni brevi dei punti, per le slide. I `points` lunghi
+    # restano per il report e le caption.
+    points = list(idea.get("punti_post") or idea.get("points") or [])
     numeric, prose = _rows_from_points(points)
     hook_fig = FIGURE_RE.match(idea.get("hook") or "")
     if hook_fig and len(hook_fig.group(1).strip()) <= MAX_FIGURE:
@@ -395,7 +482,7 @@ def decide(idea, post_type):
     gains = [f for f, d in numeric if is_gain(f, d)]
     positivo = idea.get("positivo")
     if positivo:
-        haystack = " ".join([idea.get("title") or ""] + points)
+        haystack = " ".join([headline_for(idea)] + points)
         if positivo.lower() not in haystack.lower():
             raise PlanError("positivo=%r non compare ne' nel titolo ne' nei punti: "
                             "il verde segna un guadagno che c'e'. Idea: %r"
@@ -404,6 +491,7 @@ def decide(idea, post_type):
     myth = _is_myth(idea, post_type)
     data_cover = (post_type == "data_carousel" and not myth and bool(numeric))
     return dict(
+        headline=headline_for(idea),
         strike=strike_word(idea, post_type),
         photo=photo_for(idea),
         quote=quote_for(idea),
@@ -420,15 +508,19 @@ def slides_for(idea, post_type, d=None):
     spec = templates.POST_TYPES[post_type]
     label = spec["label"]
     source = idea.get("news") or None
-    title = _accent(idea.get("title", ""))
+    head = _log(d, "titolo", d["headline"], BUDGET["titolo"])
+    title = _accent(head)
+    long_support = idea.get("visual_hook") or idea.get("hook") or (idea.get("points") or [""])[0]
 
     if spec["format"] == "single":
         # Un'immagine sola. Citazione > titolo; la foto, se c'e', fa da fondo.
         if d["quote"]:
             one = dict(d["quote"], eyebrow=label)
+            _log(d, "citazione", d["quote"]["quote"], BUDGET["citazione"])
         else:
-            box = _clean(idea.get("visual_hook") or idea.get("hook") or (idea.get("points") or [""])[0])
-            one = dict(kind="single", eyebrow=label, box=box, title=title,
+            box, note = _support_for(idea, long_support)
+            one = dict(kind="single", eyebrow=label,
+                       box=_log(d, "supporto", box, BUDGET["supporto"], note), title=title,
                        strike=d["strike"], gain=d["positivo"],
                        logos=idea.get("logos"), diagram=idea.get("diagram"))
         if d["photo"]:
@@ -437,15 +529,17 @@ def slides_for(idea, post_type, d=None):
         return [one]
 
     numeric, prose = list(d["numeric"]), d["prose"]
+    sub, note = _support_for(idea, long_support)
     if d["data_cover"]:
         fig, desc = numeric.pop(0)
         num, unit = _split_figure(fig)
+        say, snote = fit(desc, BUDGET["supporto"], one_sentence=True)
         cover = dict(kind="data_cover", eyebrow=label, figure=num, unit=unit,
-                     say=desc, subtitle=idea.get("title", "").replace("*", ""),
-                     gain=fig in d["gains"])
+                     say=_log(d, "cifra", say, BUDGET["supporto"], snote),
+                     subtitle=head.replace("*", ""), gain=fig in d["gains"])
     else:
         cover = dict(kind="hook", eyebrow=label, title=title,
-                     subtitle=_clean(idea.get("visual_hook") or idea.get("hook", "")),
+                     subtitle=_log(d, "supporto", sub, BUDGET["supporto"], note),
                      strike=d["strike"], gain=d["positivo"])
     if d["photo"]:
         cover.update(photo=d["photo"], photo_alt=idea.get("immagine_alt", ""))
@@ -457,37 +551,48 @@ def slides_for(idea, post_type, d=None):
     # si confrontano a colpo d'occhio invece di scorrere.
     if len(numeric) >= 3:
         gains = [f for f, _ in numeric if f in d["gains"]]
-        out.append(dict(kind="scorecard", eyebrow="I numeri", rows=numeric,
+        rows = []
+        for f, desc in numeric:
+            t, n = fit(desc, BUDGET["scorecard"], one_sentence=True)
+            rows.append((f, _log(d, "riga %s" % f, t, BUDGET["scorecard"], n)))
+        out.append(dict(kind="scorecard", eyebrow="I numeri", rows=rows,
                         gains=gains, gain=bool(gains), source=source))
     else:
         for figure, desc in numeric:
             num, unit = _split_figure(figure)
+            t, n = fit(desc, BUDGET["supporto"], one_sentence=True)
             out.append(dict(kind="figure", eyebrow="Il dato", figure=num,
-                            unit=unit, say=desc, source=source,
-                            gain=figure in d["gains"]))
+                            unit=unit, say=_log(d, "cifra %s" % figure, t, BUDGET["supporto"], n),
+                            source=source, gain=figure in d["gains"]))
 
-    # I punti in prosa vanno in un ELENCO, non in slide con titolo.
-    #
-    # I `points` del report sono frasi esplicative complete, non coppie
-    # titolo+corpo. Il primo tentativo ne ricavava un titolo tagliandole, e
-    # produceva frammenti come «Ma il 72% delle grandi aziende ha progetti
-    # avanzati contro il». La forma corretta per una frase intera e' una voce
-    # di elenco: il layout `checklist` esiste e la regge senza inventare nulla.
-    head = _short_title(idea.get("title", ""))
-    for i in range(0, len(prose), 3):
-        chunk = prose[i:i + 3]
-        out.append(dict(kind="checklist", eyebrow="I punti",
-                        title=_accent(head) if i == 0 else head.replace("*", ""),
-                        items=chunk, source=source))
+    # I punti in prosa vanno in UN elenco di al massimo BUDGET["voci"] voci,
+    # ognuna dentro BUDGET["voce"]: i punti in piu' si tolgono (e lo si dice),
+    # il font non si rimpicciolisce. Sono frasi intere, non coppie titolo+corpo:
+    # ricavarne un titolo tagliandole produceva frammenti.
+    if prose:
+        items = []
+        for p_ in prose[:BUDGET["voci"]]:
+            t, n = fit(p_, BUDGET["voce"], one_sentence=True)
+            items.append(_log(d, "voce", t, BUDGET["voce"], n))
+        if len(prose) > BUDGET["voci"]:
+            _log(d, "elenco", "", BUDGET["voci"],
+                 "%d voci tolte (massimo %d)" % (len(prose) - BUDGET["voci"], BUDGET["voci"]))
+        out.append(dict(kind="checklist", eyebrow="I punti", title=title,
+                        items=items, source=source))
 
-    # La chiusura: il titolo viene dal titolo dell'IDEA (corto e affidabile),
-    # non ricavato tagliando la prosa della chiusura.
+    # La chiusura: il titolo e' quello del post, il corpo la chiusura accorciata.
     tail = idea.get("closing") or idea.get("myth_closing")
     if tail:
+        body, n = fit(tail, BUDGET["corpo"])
         out.append(dict(kind="statement", eyebrow="In sintesi",
-                        title=head, body=tail))
+                        title=head.replace("*", ""),
+                        body=_log(d, "sintesi", body, BUDGET["corpo"], n)))
 
-    out.append(_cta_for(idea, post_type))
+    cta = _cta_for(idea, post_type)
+    if len(cta["title"].replace("*", "")) > BUDGET["titolo"]:
+        raise PlanError("cta_title di %d caratteri (massimo %d). Idea: %r"
+                        % (len(cta["title"].replace("*", "")), BUDGET["titolo"], idea.get("title")))
+    out.append(cta)
     for i, sl in enumerate(out):
         sl["surface"] = templates.surface_for(sl, i, len(out))
     return out
@@ -523,6 +628,14 @@ def _why(d, slides, fmt):
     kinds = [s["kind"] for s in slides]
     surf = [s.get("surface", "?") for s in slides]
     fig = d["numeric"][0][0] if d["numeric"] else "—"
+    lines = []
+    for field, text, budget, note in d.get("texts", []):
+        flag = "  <- %s" % note if note else ""
+        if text:
+            lines.append("  %-14s %3d/%-3d «%s»%s" % (field, len(text.replace("*", "")),
+                                                    budget, text, flag))
+        else:
+            lines.append("  %-14s %s" % (field, note))
     return ("layout %s · barrato %s · cifra %s%s · superficie %s%s%s"
             % (" > ".join(kinds) if fmt == "carousel" else kinds[0],
                repr(d["strike"]) if d["strike"] else "—", fig,
@@ -530,7 +643,7 @@ def _why(d, slides, fmt):
                " (singola: il titolo resta il post)" if fmt == "single" and d["numeric"] else "",
                "/".join(surf),
                " · verde: %s" % ", ".join(d["gains"]) if d["gains"] else "",
-               " · foto" if d["photo"] else ""))
+               " · foto" if d["photo"] else "")) + "".join("\n     " + x for x in lines)
 
 
 # ---------------------------------------------------------------------------

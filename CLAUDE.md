@@ -76,6 +76,25 @@ Ogni settimana si modificano **solo i file di contenuto**:
 | `generator/week.py` | `DATE`, i rifacimenti (`REDO`) e le eventuali correzioni a mano |
 | `generator/captions.py` | i testi dei post per Buffer |
 
+**Ogni idea Prioritario ha anche i testi brevi per le slide** (regola di
+Fabio, 2/11/2026: «non usare troppo testo nelle slide»). I campi lunghi
+(`title`, `hook`, `points`) restano per il report e le caption; le slide usano
+prima questi:
+
+- `titolo_post` — il titolo a manifesto, **≤ 60 caratteri**, 3–8 parole,
+  corto e incisivo, fedele all'idea (nessun fatto nuovo). **Obbligatorio se
+  `title` supera 60 caratteri: senza, `plan.py` si ferma**;
+- `sottotitolo_post` — una sola frase di supporto, ≤ 110 caratteri;
+- `barrato` — la parola del titolo da barrare, **scelta di proposito** (mai
+  un nome di cliente, una cifra o un dato);
+- `punti_post` — facoltativo: versioni brevi dei punti (≤ 80 caratteri; per
+  le cifre «9 — piattaforme violate in un mese»).
+
+Senza i campi brevi, supporto, elenchi e sintesi vengono tagliati da soli al
+primo confine naturale (e `python3 plan.py` lo segnala), ma un testo scritto
+corto è sempre meglio di uno tagliato. Budget completi in
+`generator/brand-spec.md` §6.
+
 `generator/performance.py` **non** è tra questi: è codice, non contenuto
 settimanale. Calcola da sé, a ogni generazione del report, il bilancio della
 settimana precedente da Buffer — vedi «Il report si apre con "Come sono
@@ -103,7 +122,7 @@ Poi, in locale, per vedere cosa esce:
 ```bash
 cd generator
 python3 test_pipeline.py     # le prove della pipeline: nessuna rete, niente toccato
-python3 plan.py              # mostra quale template è stato scelto per ogni idea
+python3 plan.py              # per ogni idea: template, layout, testi usati e lunghezza/budget
 python3 render.py all        # tutto in settimane/<data>/: report PDF, caroselli, singole
 python3 preview.py           # sfoglia le slide nel browser, come su LinkedIn
 ```
@@ -223,6 +242,8 @@ Due cose sono **default automatici**, non scelte redazionali:
 - **La barratura.** Nei miti è ricavata dal titolo: controlla che sia la parola
   dell'affermazione smentita. Per sceglierla a mano, o per barrare una parola
   in un post che non è un mito, scrivi `barrato` nell'idea.
+- **I testi tagliati.** `python3 plan.py` segna con `<- tagliato` ogni testo
+  accorciato da solo: se il taglio non regge, scrivi il campo breve.
 - **Il titolo della CTA.** Il report non ha un campo per questo, quindi viene da
   un default per tipo di post (`plan.CTA_TITLES`). È la prima cosa da rileggere.
 
@@ -372,14 +393,15 @@ l'approvazione umana resta obbligatoria.
 
 ## Le prove
 
-`python3 generator/test_pipeline.py` — sei prove, nessuna rete, nessun
+`python3 generator/test_pipeline.py` — sette prove, nessuna rete, nessun
 asset pubblicato toccato. Girano anche in CI **prima** del render:
 
 1. **La scelta del template** su nove diciture reali, più il rifiuto di un
    formato ignoto: indovinare un template significa pubblicare un post
    sbagliato. E **le scelte guidate dal contenuto**: barratura (ricavata e
    rifiutata), cifre e verde, citazione senza autore, foto fuori repo,
-   alternanza chiaro/scuro.
+   alternanza chiaro/scuro. E **i budget di testo**: titolo lungo che ferma il
+   piano, tagli ai confini, voci in più tolte, citazione mai tagliata.
 2. **I nomi degli asset e gli URL su Buffer coincidono** — il bug la cui unica
    manifestazione sarebbe una bozza che punta a un URL inesistente, visibile
    giorni dopo, alla pubblicazione.

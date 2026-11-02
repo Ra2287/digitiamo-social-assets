@@ -36,9 +36,9 @@ rilanciarlo è sicuro e non produce doppioni. Per rifare un post c'è
 già pubblicato, e non cambiare `DATE`: la settimana è quella che è.
 
 **2. Non scrivere HTML/CSS nuovo per le slide.** Le grafiche si **derivano dal
-report**: scrivi le idee in `generator/build_report.py` e `plan.py` scegli il
-template e la sequenza di slide leggendo il campo `format` di ogni idea. Non
-serve scegliere nulla a mano.
+report**: scrivi le idee in `generator/build_report.py` e `plan.py` sceglie il
+template dal campo `format` e il layout dalla forma del contenuto (citazione,
+foto, cifre, parola da barrare). Non serve scegliere nulla a mano.
 
 Questa regola esiste per un motivo preciso: le esecuzioni del 31 agosto e del
 7 settembre hanno prodotto **due design diversi** perché ognuna ha riscritto
@@ -191,10 +191,26 @@ parole chiave** (le diciture cambiano fra un'esecuzione e l'altra):
 la stringa esatta. Aggiungi una regola in `plan.FORMAT_RULES` o allinea la
 dicitura nel report: un template indovinato diventa un post pubblicato sbagliato.
 
-Dentro un carosello, i punti dell'idea vengono distribuiti così: tre o più punti
-che aprono con una cifra diventano **una scorecard**; uno o due diventano slide
-**cifra**; i punti in prosa diventano **elenco** (sono frasi intere, non coppie
-titolo+corpo, e ricavarne un titolo tagliandole produce frammenti).
+Il `format` decide il **tipo**; la **forma del contenuto** decide il layout
+(dal 2/11/2026). `python3 plan.py` stampa, per ogni idea, layout, parola
+barrata, cifra e superficie. Le regole, tutte deterministiche:
+
+- `citazione` + `autore` → layout citazione (senza autore si ferma: mai
+  citazioni inventate o anonime);
+- `immagine` (file nella repo) → foto vera con velatura; altrimenti tipografica;
+- `barrato` → quella parola barrata a mano (deve stare nel titolo; mai cifre,
+  mai nomi propri); nei miti, senza `barrato`, la parola dopo «quindi è» o
+  l'unica `*parola*` accentata, solo se univoca;
+- cifre in apertura dei punti: in un carosello dati che non è un mito la prima
+  fa la **copertina dati**; tre o più restanti → **scorecard**, una o due →
+  slide **cifra**; i punti in prosa → **elenco**;
+- verde solo per un guadagno riconosciuto (segno + argomento: «−12 ore»,
+  «+18% di ricavi») o marcato con `positivo`;
+- chiaro/scuro alternati fra i post della settimana; dentro i caroselli
+  argomentazione scura, fatti chiari, prima e ultima pagina scure.
+
+Dettagli in `generator/README.md` («Il layout segue il contenuto») e nel
+docstring di `plan.py`.
 
 ### Cosa rileggere sempre dopo la generazione
 
@@ -202,7 +218,11 @@ Due cose sono **default automatici**, non scelte redazionali:
 
 - **L'accento sul titolo.** `plan.py` evidenzia l'ultima parola. Spesso è quella
   giusta, a volte no («…riguarda anche *te*» è debole). Si corregge scrivendo
-  `*parola*` nel titolo dell'idea.
+  `*parola*` nel titolo dell'idea. Se il titolo ha una barratura, l'accento si
+  spegne.
+- **La barratura.** Nei miti è ricavata dal titolo: controlla che sia la parola
+  dell'affermazione smentita. Per sceglierla a mano, o per barrare una parola
+  in un post che non è un mito, scrivi `barrato` nell'idea.
 - **Il titolo della CTA.** Il report non ha un campo per questo, quindi viene da
   un default per tipo di post (`plan.CTA_TITLES`). È la prima cosa da rileggere.
 
@@ -352,12 +372,14 @@ l'approvazione umana resta obbligatoria.
 
 ## Le prove
 
-`python3 generator/test_pipeline.py` — cinque prove, nessuna rete, nessun
+`python3 generator/test_pipeline.py` — sei prove, nessuna rete, nessun
 asset pubblicato toccato. Girano anche in CI **prima** del render:
 
 1. **La scelta del template** su nove diciture reali, più il rifiuto di un
    formato ignoto: indovinare un template significa pubblicare un post
-   sbagliato.
+   sbagliato. E **le scelte guidate dal contenuto**: barratura (ricavata e
+   rifiutata), cifre e verde, citazione senza autore, foto fuori repo,
+   alternanza chiaro/scuro.
 2. **I nomi degli asset e gli URL su Buffer coincidono** — il bug la cui unica
    manifestazione sarebbe una bozza che punta a un URL inesistente, visibile
    giorni dopo, alla pubblicazione.
@@ -427,16 +449,24 @@ l'unica forma sicura su una repo pubblica che altri hanno clonato.
 
 ## Regole visive che sbagliano più spesso
 
-- **Il marchio è un file, non del testo.** `brand/logo/digitiamo-wordmark-*.png`.
-  Scriverlo come testo perde il glifo a circuito, che è l'unica cosa distintiva.
-- **I font sono Montserrat (display) e Lato (corpo)**, incorporati in base64.
-  Mai caricarli dalla rete: un `@import` che fallisce produce PNG in un font di
-  fallback, sbagliati e senza errore.
-- **Gli sfondi in `brand/bg/` non sono fondi piatti**: hanno marchio e badge già
-  incorporati, e zone non utilizzabili. Le misure sono in `templates.py`.
-  Ridisegnare il marchio sopra lo duplica.
-- **Il verde `#43ef84` non va su fondo chiaro**: contrasto misurato 1,2:1. Su
-  navy e blu passa (≥3:1). Sul cielo la tinta dati è il blu brand.
+Dal 2 novembre 2026 vale il linguaggio approvato quel giorno (brand-spec.md
+§2–§7). Il sistema precedente — Montserrat/Lato, sfondi Canva con marchio e
+badge incorporati, verde come accento — è **superato**: i suoi file restano
+in `brand/bg/` solo perché gli asset pubblicati ne derivano.
+
+- **Il marchio è un file, non del testo**: il vettoriale
+  `brand/logo/digitiamo-wordmark.svg`, disegnato dal layout (bianco su scuro e
+  foto, blu `#3E00EA` su chiaro). Gli sfondi non lo incorporano più.
+- **Il font è Sora** (400/600/700), incorporato in base64. Mai caricarlo dalla
+  rete: un `@import` che fallisce produce PNG in un font di ripiego, sbagliati
+  e senza errore. Sora non ha «↗»: niente frecce nei bottoni.
+- **Un solo gradiente** (`#3E00EA` → `#070011`) per i post scuri; il chiaro è
+  `#F4F5FA`. Niente badge di categoria, niente filigrana a circuito.
+- **Il verde `#00DC93` è solo per i guadagni e per il bottone CTA**, mai di
+  default, e mai su fondo chiaro (non si legge): una slide con un guadagno è
+  scura.
+- **La barratura a mano** (una parola per titolo) non tocca mai nomi di
+  clienti, cifre o dati.
 - **I logo di terzi** stanno in `brand/third-party/` con la provenienza. Uso
   editoriale, **mai ricolorati**, e mai accostati al marchio Digitiamo in modo
   che suggerisca una partnership. Se un logo non è reperibile, si dichiara
@@ -478,8 +508,11 @@ Senza quella variabile si usa quello di Playwright.
 
 ## Storia utile
 
-Il brand non era in questa repo: è stato ricostruito dai template Canva reali
-del progetto `social-ped` (renderer di produzione). Il marchio non esisteva come
+Il 2 novembre 2026 il sistema visivo è stato sostituito dal linguaggio
+approvato quel giorno (Sora, gradiente unico, barratura, marchio vettoriale) e
+la scelta del layout è diventata guidata dal contenuto. Prima di allora il
+brand era stato ricostruito dai template Canva reali del progetto `social-ped`
+(renderer di produzione). Il marchio non esisteva come
 file ed è stato ricavato dagli sfondi. Cosa manca ancora è annotato in
-`generator/brand-spec.md` §8 — in particolare il **logo vettoriale ufficiale** e
-la copertina News AI, il cui testo incorporato nel PNG non è nei font del brand.
+`generator/brand-spec.md` §8 — in particolare il report PDF interno, che resta
+nel sistema precedente.

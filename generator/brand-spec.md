@@ -2,11 +2,18 @@
 
 > Gate file del protocollo asset (huashu-design §1.a). Ogni design che porta il
 > marchio Digitiamo si basa su questo file. **Nessun valore qui e' inventato**:
-> ognuno e' estratto dagli asset Canva reali del brand — la provenienza e'
-> annotata voce per voce.
+> la provenienza e' annotata voce per voce.
 >
-> Ultima verifica: 2026-09-07 · Fonte primaria: `/Users/fabiopia/social-ped/renderer/assets`
-> (template Canva esportati e usati in produzione dal renderer PED).
+> **Dal 2 novembre 2026 vale il linguaggio approvato quel giorno** (§2–§7): Sora,
+> palette blu/notte/lavanda, un solo gradiente, barratura a mano, marchio
+> vettoriale disegnato dal layout. Il sistema precedente — Montserrat + Lato,
+> sfondi Canva con marchio e badge incorporati, accento verde — e' **superato**
+> e resta descritto in appendice, perche' gli asset gia' pubblicati in
+> `settimane/` ne derivano.
+>
+> Fonte primaria: i 12 post di riferimento approvati il 2/11/2026 (mock HTML
+> Main, Mito, Dati, Chiaro, Interna, Citazione, Caso, Chiusura, News, FotoIrca,
+> FotoIed, Prodotto) e gli asset del sito `digitiamo-site`.
 
 ## 1. Chi e' Digitiamo
 
@@ -32,9 +39,137 @@ riempie lo spazio. **Niente sensazionalismo.** Meglio un post in meno che un pos
 sbagliato.
 
 Implicazione per il design: il registro visivo e' **sobrio e sicuro di se'**, non
-urlato. Il brand ha un accento verde acido, ma lo usa con parsimonia (vedi §3).
+urlato. Il verde esiste, ma solo per i segnali positivi (vedi §3).
 
-## 2. Asset reali (obbligatori, mai ricostruiti)
+## 2. Asset (obbligatori, mai ricostruiti)
+
+| Asset | File | Provenienza |
+|---|---|---|
+| **Marchio vettoriale** | `brand/logo/digitiamo-wordmark.svg` (viewBox 620×250) | team design, 8/9/2026. **Unica sorgente del marchio nei post**: `tokens.wordmark_uri(colore)` toglie lo `<style>` interno e scrive il fill come attributo (un SVG in `<img>` non eredita il CSS della pagina) |
+| Font | `brand/fonts/sora-{latin,latin-ext}-{400,600,700}-normal.woff2` | `@fontsource/sora` 5.2.8 (jsDelivr), scaricati il 2/11/2026. Licenza SIL OFL 1.1 in `brand/fonts/Sora-OFL.txt`. SHA-256 latin-700: `c3337a67…3cfac2` |
+| Barratura a mano | `brand/strike/barratura.svg` | copia di `digitiamo-site/assets/barratura-manuale-blu.svg` (tratto `#60A5FA`) con `preserveAspectRatio="none"`, per stirarsi sulla parola |
+| Loghi di terzi | `brand/third-party/*.svg` | vedi il README di quella cartella: uso editoriale, mai ricolorati |
+| Foto | `brand/photo/` + campo `immagine` delle idee | foto vere con provenienza (`PROVENANCE.md`), mai immagini generate |
+
+Il marchio si disegna **bianco** su scuro e foto, **blu `#3E00EA`** su chiaro,
+230×64 (`object-fit:contain`) in basso a sinistra; 300×84 in alto nella CTA.
+
+## 3. Palette
+
+`brand/tokens.py::COLORS` e' l'unica fonte in codice.
+
+| Token | Hex | Ruolo |
+|---|---|---|
+| `primary` | `#3E00EA` | blu Digitiamo: accento su chiaro, testa del gradiente, marchio su chiaro |
+| `ink` | `#070011` | quasi nero: testo su chiaro, coda del gradiente, testo del bottone CTA |
+| `night` | `#1C073A` | notte: superfici scure piene |
+| `lavender` | `#717FFE` | accento su scuro (`*parola*`), virgolette delle citazioni, tinta dati su scuro |
+| `mist` | `#EBEEFC` | occhielli e testo secondario su scuro |
+| `paper` | `#F4F5FA` | fondo chiaro; testo principale su scuro |
+| `green` | `#00DC93` | **solo** segnali positivi (un guadagno) e il bottone CTA |
+| `body_light` / `muted_light` | `#3A3550` / `#5B5670` | corpo e note su chiaro (mock Chiaro, Interna) |
+
+**Il verde non e' un accento.** Si usa solo per una cifra o parola che e' un
+guadagno (§7-ter) e per il bottone CTA. Mai per default. Su `#F4F5FA` il verde
+non si legge, quindi una slide con un guadagno e' sempre scura.
+
+**Un solo gradiente**: `linear-gradient(180deg,#3E00EA 0%,#070011 100%)`
+(`tokens.GRADIENT`) per i post scuri. Variante chiara: fondo `#F4F5FA`, testo
+`#070011`, accenti `#3E00EA`. Post con foto: foto vera a tutta pagina con
+velatura `rgba(62,0,234,.82) → rgba(62,0,234,.55) 40% → rgba(7,0,17,.92) 80% →
+#070011` (mock FotoIrca); nelle notizie la foto va in bianco e nero,
+moltiplicata sul blu e sfumata nel quasi nero (mock News).
+
+## 4. Tipografia
+
+**Sora sola**, 400 / 600 / 700, incorporata in base64 (`tokens.font_face_css`)
+con i due sottoinsiemi `latin` e `latin-ext` e il loro `unicode-range`. Mai
+caricata dalla rete: un `@import` che fallisce produce PNG in un font di
+ripiego, sbagliati e senza errore.
+
+| Ruolo | Specifica (dai mock) |
+|---|---|
+| Occhiello | 30px, 600, maiuscolo, `letter-spacing:4px`, in alto a sinistra; `#EBEEFC` su scuro, `#3E00EA` su chiaro |
+| Titolo | 700, ~92–112px (auto-fit con tetto 108px), interlinea 1.05, spaziatura −0.03em |
+| Supporto | una frase, 40px, 400, interlinea 1.35 |
+| Piede | 30px: `digitiamo.com` (singole) o il contapagine `01 / 06` (caroselli) |
+
+Sora **non ha il glifo «↗»**: per questo i bottoni CTA non hanno la freccia.
+
+## 5. Formati e geometria
+
+| Formato | Dim. | Uso |
+|---|---|---|
+| Verticale 4:5 | **1200×1500** | tutti i post — imposto da `render.py::_check_size` |
+| A4 @96dpi | 794×1123 | report PED interno (PDF) |
+
+Padding dei mock: 104 sopra, 96 ai lati, 88 sotto. Occhiello a y=104; zona di
+contenuto y 200–1300 (auto-fit, centrata); piede y 1348–1412. Niente piu' zone
+"cotte" negli sfondi: la geometria la decide solo `templates.py`.
+
+## 6. La barratura a mano
+
+Una parola per titolo, al massimo. La parola resta **leggibile**: il tratto le
+passa sopra (`span.strike` relativo, `img` assoluta `left:-4% top:30%
+width:108% height:50%`). Se il titolo ha una barratura, l'accento di colore
+`*parola*` si spegne: un solo segno per titolo. Non si barrano mai **nomi di
+clienti, cifre o dati**. Quale parola: §7-ter.
+
+## 7. Divieti
+
+1. **Mai rendere il marchio come testo.** Si usa il vettoriale.
+2. **Mai un font diverso da Sora** nelle grafiche, mai caricato dalla rete.
+3. **Niente badge di categoria e niente filigrana a circuito**: tolti di
+   proposito dall'utente con il linguaggio del 2/11/2026.
+4. **Niente verde come decorazione** (§3).
+5. **Niente emoji dentro le slide** (nelle caption va bene): `plan.py` toglie
+   quelle degli hook del report.
+6. **Mai foto generate o "a tema"**: una foto vera e con provenienza, oppure la
+   grafica tipografica.
+7. **Non riutilizzare mai un nome file** gia' pubblicato (Buffer scarica
+   l'asset alla pubblicazione effettiva).
+
+## 7-bis. Chiaro e scuro
+
+- **Fra i post della settimana** (ordine del report) si alternano scuro e
+  chiaro; i caroselli contano come scuri (copertina sempre scura), le foto e le
+  citazioni pure. Due post vicini non sembrano uguali.
+- **Dentro un carosello** il fondo segue il registro: argomentazione (apertura,
+  tesi, citazione, sintesi, CTA) scura; fatti da leggere (cifre, scorecard,
+  elenchi, notizie) chiari. Prima e ultima pagina scure.
+  (`templates.surface_for`.)
+
+## 7-ter. Scelte guidate dal contenuto
+
+Le regole complete, con l'ordine di precedenza, sono nel docstring di
+`plan.py` e in `README.md`. In breve: citazione (`citazione` + `autore`) →
+layout citazione; `immagine` → foto; `barrato` o, per i miti, la parola dopo
+«quindi è» / l'unica parola accentata → barratura; cifre in apertura dei punti
+→ copertina dati e scorecard; segno + argomento di guadagno (o `positivo`) →
+verde.
+
+## 8. Cosa manca ancora (onesto)
+
+- **Il report PDF interno** (`generate_html.py`) e le pagine di servizio
+  (`preview.py`, `review.py`, `build_artifact.py`) non sono stati ridisegnati:
+  restano in Montserrat/Lato e palette precedente (`tokens.LEGACY_*`). Non sono
+  post pubblicati.
+- **Icone per tipo di post**: non servono piu' (niente badge), ma i mock
+  avevano badge disegnati; se tornassero, vanno approvati.
+- **Foto**: l'unica foto con provenienza in repo e' quella NASA. Le foto dei
+  casi cliente (Irca, IED…) sono nei mock ma non nella repo: vanno aggiunte con
+  la loro provenienza prima di usarle.
+
+---
+
+# Appendice — il sistema precedente (superato il 2 novembre 2026)
+
+Descrive gli asset da cui derivano i post pubblicati fino a quella data. Gli
+sfondi in `brand/bg/`, i wordmark PNG e `make_editorial_bg.py` **restano nella
+repo** per questo: la storia deve restare ricostruibile. Nessun layout li usa
+piu'.
+
+### 2. Asset reali (obbligatori, mai ricostruiti)
 
 Tutti in `generator/brand/`. Estratti dai PNG Canva; il marchio non esisteva come
 file standalone, e' stato ricavato dagli sfondi con alpha da luminanza.
@@ -82,7 +217,7 @@ Lo spillo e' il nodo del circuito, ripreso dalla `d`. Un nuovo tipo di post
 richiede una nuova icona **costruita con questa grammatica**, non un'icona
 generica presa da una libreria.
 
-## 3. Palette
+### 3. Palette
 
 Estratta per conteggio pixel dominanti sui PNG di sfondo. `brand/tokens.py` e'
 l'unica fonte di verita' in codice; qui c'e' il ragionamento.
@@ -129,7 +264,7 @@ dichiara entrambi:
 | blu | bianco | cielo | verde |
 | cielo | navy | blu | blu |
 
-## 4. Tipografia
+### 4. Tipografia
 
 - **Display: Montserrat** — 800 per titoli e numeri, 700 per etichette/eyebrow.
   Geometrica, larga, maiuscoletto con `letter-spacing` positivo per le eyebrow e
@@ -141,7 +276,7 @@ I quattro `.woff2` sono **incorporati in base64** nei template (`tokens.py::font
 Motivo: il rendering headless non deve dipendere dalla rete. Un `@import` a Google
 Fonts che fallisce produce PNG in un font di fallback — sbagliati e senza errore.
 
-## 5. Formati
+### 5. Formati
 
 | Formato | Dim. | Uso |
 |---|---|---|
@@ -178,7 +313,7 @@ Dall'8 settembre 2026 non e' piu' solo una convenzione: `render.py::_check_size`
 misura ogni PNG prodotto e rifiuta qualunque scostamento, cancellando il file.
 Gli asset fino al 31 agosto restano 1080×1350 e non vanno presi a riferimento.
 
-## 6. Limiti di caratteri (tarati sui box reali)
+### 6. Limiti di caratteri (tarati sui box reali)
 
 Da `social-ped/config/template-registry.json` — misurati sui box dei template a
 1200×1500, non stimati:
@@ -205,7 +340,7 @@ non autorizza. `render.py` impone anche una **soglia di leggibilita'**
 dovesse scendere sotto quella soglia il rendering si interrompe, perche' un
 testo che "sta" solo perche' rimpicciolito a microcarattere non e' pubblicabile.
 
-## 7. Divieti (violazioni viste in produzione)
+### 7. Divieti (violazioni viste in produzione)
 
 1. **Mai rendere il marchio come testo.** `<div>Digitiamo</div>` in un font
    qualsiasi non e' il logo: perde il glifo a circuito, cioe' l'unica cosa
@@ -226,7 +361,7 @@ testo che "sta" solo perche' rimpicciolito a microcarattere non e' pubblicabile.
    dopo la creazione della bozza. Sovrascrivere un file cambia in silenzio
    l'immagine di un post gia' approvato.
 
-## 7-bis. Varieta' di colore: il ritmo per tipo di post
+### 7-bis. Varieta' di colore: il ritmo per tipo di post
 
 Un carosello le cui pagine stanno tutte sullo stesso fondo si legge come una
 sola immagine ripetuta. `templates.POST_TYPES` assegna a ogni formato una
@@ -238,7 +373,7 @@ Il fondo chiaro e' diventato possibile solo dopo aver derivato le varianti
 scure del marchio: con il solo wordmark bianco ogni pagina era **costretta** a
 un fondo scuro, ed e' da li' che nasceva la monotonia.
 
-## 8. Cosa manca ancora (onesto)
+### 8. Cosa manca ancora (onesto)
 
 - ~~**Logo vettoriale ufficiale.**~~ **Arrivato l'8 settembre 2026**:
   `logo/digitiamo-wordmark.svg`. Non ancora in uso dal renderer, per un motivo
@@ -255,7 +390,7 @@ un fondo scuro, ed e' da li' che nasceva la monotonia.
   gradiente non da' un alpha pulito). Se serve, va chiesta come asset separato.
 
 
-## Il marchio vettoriale (dall'8 settembre 2026)
+### Il marchio vettoriale (dall'8 settembre 2026)
 
 `logo/digitiamo-wordmark.svg` — viewBox 620×250, fornito dal team design. E' la
 **sorgente**: i PNG in `logo/` erano stati *estratti* dagli sfondi rasterizzati

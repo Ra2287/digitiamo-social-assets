@@ -101,15 +101,12 @@ def _selezione():
             return True
         return False
 
-    # Barratura: derivata solo dai miti e solo quando e' univoca.
+    # Barratura: solo con `barrato` scelto di proposito, anche nei miti.
     mito = dict(format="Mito da sfatare", badge="Prioritario",
                 title="Il tuo editor gira in una sandbox, quindi è *sicuro*")
-    assert plan.strike_word(mito, "myth") == "sicuro"
-    assert plan.strike_word(dict(mito, title="Se non la uso non mi *riguarda*"), "myth") == "riguarda"
-    assert plan.strike_word(dict(mito, title="L'AI è *veloce* e *sicura*"), "myth") is None
-    assert plan.strike_word(dict(mito, title="Quindi non serve, quindi è inutile"), "myth") is None
-    assert plan.strike_word(dict(mito, title="Gira in sandbox, quindi è *sicuro*"),
-                            "thought_leadership") is None          # non e' un mito
+    assert plan.strike_word(mito, "myth") is None
+    assert plan.strike_word(dict(mito, title="Se non la uso non mi *riguarda*"), "myth") is None
+    assert plan.strike_word(dict(mito, barrato="sicuro"), "myth") == "sicuro"
     tl = dict(format="Thought leadership", title="OpenAI dice di aver risolto 3 problemi")
     assert plan.strike_word(dict(tl, barrato="risolto"), "thought_leadership") == "risolto"
     assert errore(lambda: plan.strike_word(dict(tl, barrato="assente"), "thought_leadership"))

@@ -269,7 +269,7 @@ _PRIMITIVES = """
 
 /* La barratura a mano: la parola resta leggibile, il tratto le passa sopra. */
 .strike { position: relative; display: inline-block; }
-.strike img { position: absolute; left: -4%; top: 30%; width: 108%; height: 50%; }
+.strike img { position: absolute; left: -3%; top: 36%; width: 106%; height: 40%; opacity: .8; }
 
 /* Auto-fit: gli elementi .fit con data-maxh vengono rimpiccioliti fino a
    rientrare nel box (render.py). */

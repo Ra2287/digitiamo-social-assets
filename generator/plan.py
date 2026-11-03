@@ -55,11 +55,9 @@ ogni idea (tipo, layout, barratura, cifra, superficie):
      cifre (non si barra un dato) e non puo' avere l'iniziale maiuscola fuori
      dalla prima parola (sembra un nome proprio: un cliente non si barra). Se
      una condizione non regge, si ferma;
-   - per i **miti** (tipo `myth` o idea con `is_myth`), se `barrato` manca, la
-     si ricava solo quando e' univoca: la parola dopo «quindi è» / «quindi»
-     (una sola occorrenza, non una parola vuota come «non»), oppure l'unica
-     parola accentata `*cosi'*` del titolo. Mai cifre, mai maiuscole;
-   - altrimenti nessuna barratura. Se c'e', l'accento di colore si spegne.
+   - senza `barrato` nessuna barratura, nemmeno nei miti: ricavarla dal
+     titolo cancellava parole che servono a capirlo. La `*parola*` accentata
+     resta un accento di colore. Se c'e' la barratura, l'accento si spegne.
 4. **Cifre.** Una cifra "forte" e' una cifra IN APERTURA di un punto (o
    dell'hook): «42% ...», «800.000 — ...». In un carosello dati che non e' un
    mito, la prima diventa la **copertina dati** (cifra gigante); tre o piu'
@@ -352,10 +350,6 @@ def _is_myth(idea, post_type):
 
 # Parole che dopo «quindi» non sono il cuore dell'affermazione: se capita una
 # di queste la regola non e' univoca e non si barra niente.
-_EMPTY = {"non", "il", "lo", "la", "i", "gli", "le", "un", "uno", "una", "che",
-          "di", "a", "e", "è", "si", "ci", "anche", "piu'", "più"}
-
-
 def _strikeable(word, title):
     """None se la parola si puo' barrare, altrimenti il motivo per non farlo."""
     if not word or " " in word.strip():
@@ -380,18 +374,6 @@ def strike_word(idea, post_type):
             raise PlanError("barrato=%r non va (%s). Idea: %r"
                             % (idea["barrato"], why, title))
         return idea["barrato"]
-    if not _is_myth(idea, post_type):
-        return None
-    found = re.findall(r"\bquindi(?:\s+(?:è|e'|sono|sei))?\s+\*?([^\s*.,;:!?]+)",
-                       title, re.I)
-    if len(found) > 1:
-        return None
-    if found:
-        w = found[0]
-        return None if w.lower() in _EMPTY or _strikeable(w, title) else w
-    accented = re.findall(r"\*([^*]+)\*", title)
-    if len(accented) == 1 and not _strikeable(accented[0], title):
-        return accented[0]
     return None
 
 

@@ -218,8 +218,7 @@ barrata, cifra e superficie. Le regole, tutte deterministiche:
   citazioni inventate o anonime);
 - `immagine` (file nella repo) → foto vera con velatura; altrimenti tipografica;
 - `barrato` → quella parola barrata a mano (deve stare nel titolo; mai cifre,
-  mai nomi propri); nei miti, senza `barrato`, la parola dopo «quindi è» o
-  l'unica `*parola*` accentata, solo se univoca;
+  mai nomi propri); senza `barrato` nessuna barratura, nemmeno nei miti;
 - cifre in apertura dei punti: in un carosello dati che non è un mito la prima
   fa la **copertina dati**; tre o più restanti → **scorecard**, una o due →
   slide **cifra**; i punti in prosa → **elenco**;
@@ -239,9 +238,9 @@ Due cose sono **default automatici**, non scelte redazionali:
   giusta, a volte no («…riguarda anche *te*» è debole). Si corregge scrivendo
   `*parola*` nel titolo dell'idea. Se il titolo ha una barratura, l'accento si
   spegne.
-- **La barratura.** Nei miti è ricavata dal titolo: controlla che sia la parola
-  dell'affermazione smentita. Per sceglierla a mano, o per barrare una parola
-  in un post che non è un mito, scrivi `barrato` nell'idea.
+- **La barratura.** Si usa poco e solo di proposito: scrivi `barrato` nell'idea
+  quando una parola dell'affermazione è davvero quella smentita. Senza
+  `barrato` non si barra nulla, e la `*parola*` accentata resta in colore.
 - **I testi tagliati.** `python3 plan.py` segna con `<- tagliato` ogni testo
   accorciato da solo: se il taglio non regge, scrivi il campo breve.
 - **Il titolo della CTA.** Il report non ha un campo per questo, quindi viene da

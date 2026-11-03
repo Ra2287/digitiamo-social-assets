@@ -83,7 +83,7 @@ stampate idea per idea da `python3 plan.py`:
 
 ```
   2. Il tuo editor di AI coding gira in myth   single · 1 slide
-     layout single · barrato 'sicuro' · cifra — · superficie light
+     layout single · barrato — · cifra — · superficie light
 ```
 
 | Se l'idea ha… | succede | se il dato non regge |
@@ -91,7 +91,7 @@ stampate idea per idea da `python3 plan.py`:
 | `citazione` + `autore` (+ `ruolo`) | singola: layout citazione; carosello: slide citazione dopo la copertina | citazione senza autore → si ferma |
 | `immagine` (file nella repo, percorso dalla radice; `credito`, `immagine_alt` opzionali) | foto vera con velatura: la singola o la copertina | URL, file mancante o fuori repo → si ferma |
 | `barrato` | quella parola del titolo viene barrata a mano | non nel titolo, con cifre, o maiuscola fuori dalla prima parola (nome proprio) → si ferma |
-| un mito (`myth` o `is_myth`) senza `barrato` | barrata la parola dopo «quindi è»/«quindi», o l'unica `*parola*` accentata | se non è univoca: nessuna barratura |
+| nessun `barrato` (anche nei miti) | nessuna barratura; la `*parola*` accentata è in colore | — |
 | cifre in apertura dei punti («42% …», «800.000 — …») | carosello dati non-mito: la prima fa la **copertina dati**; ≥3 restanti → scorecard, 1–2 → slide cifra | — (nelle singole il titolo resta il post) |
 | una cifra con segno e argomento di guadagno («−12 ore…», «+18% di ricavi»), o `positivo` | quella cifra/parola in verde, slide scura | `positivo` che non compare → si ferma |
 

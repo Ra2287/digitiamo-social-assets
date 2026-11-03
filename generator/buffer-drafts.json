@@ -384,47 +384,47 @@
   },
   {
     "date": "2026-11-02",
-    "revision": 0,
+    "revision": 1,
     "slug": "idea3-se-non-uso-quella",
-    "id": "6ae9c70747205d2c399615af",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/carosello_idea3-se-non-uso-quella_2026-11-02.pdf",
+    "id": "6ae9cd2035443b847a00564a",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/carosello_idea3-se-non-uso-quella_2026-11-02-r1.pdf",
     "title": "Se non uso quella piattaforma AI, la violazione non mi *riguarda*",
     "format": "data_carousel"
   },
   {
     "date": "2026-11-02",
-    "revision": 0,
+    "revision": 1,
     "slug": "idea1-openai-dice-di-aver",
-    "id": "6ae9c70735443b847afe3ef6",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea1-openai-dice-di-aver_2026-11-02.png",
-    "title": "OpenAI dice di aver risolto tre problemi aperti della scienza. I matematici rispondono: *aspettate*",
+    "id": "6ae9cd213b7ecdee655de387",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea1-openai-dice-di-aver_2026-11-02-r1.png",
+    "title": "OpenAI dice di aver risolto la scienza. *Aspettate*",
     "format": "thought_leadership"
   },
   {
     "date": "2026-11-02",
-    "revision": 0,
+    "revision": 1,
     "slug": "idea2-il-tuo-editor-di",
-    "id": "6ae9c708f81926b9329225b2",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea2-il-tuo-editor-di_2026-11-02.png",
-    "title": "Il tuo editor di AI coding gira in una sandbox isolata, quindi è *sicuro*",
+    "id": "6ae9cd213b7ecdee655de3c8",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea2-il-tuo-editor-di_2026-11-02-r1.png",
+    "title": "Il tuo editor AI è sicuro in *sandbox*",
     "format": "myth"
   },
   {
     "date": "2026-11-02",
-    "revision": 0,
+    "revision": 1,
     "slug": "idea4-abbiamo-provato-a-far",
-    "id": "6ae9c70835443b847afe3f4b",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea4-abbiamo-provato-a-far_2026-11-02.png",
-    "title": "Abbiamo provato a far \"scappare\" il nostro editor AI dalla sua sandbox. Ecco cosa abbiamo *trovato*",
+    "id": "6ae9cd2235443b847a0056f4",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea4-abbiamo-provato-a-far_2026-11-02-r1.png",
+    "title": "Abbiamo provato a *forzare* il nostro editor AI",
     "format": "direct_experience"
   },
   {
     "date": "2026-11-02",
-    "revision": 0,
+    "revision": 1,
     "slug": "idea5-cosa-vuol-dire-che",
-    "id": "6ae9c708e9a91b5943cda0ed",
-    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea5-cosa-vuol-dire-che_2026-11-02.png",
-    "title": "Cosa vuol dire che una dimostrazione matematica è \"verificata da un computer\", in parole *semplici*",
+    "id": "6ae9cd22e9a91b5943cf9378",
+    "url": "https://raw.githubusercontent.com/Ra2287/digitiamo-social-assets/main/settimane/2026-11-02/brandstyle_idea5-cosa-vuol-dire-che_2026-11-02-r1.png",
+    "title": "Cos'è una dimostrazione verificata dal *computer*",
     "format": "mini_lesson"
   }
 ]

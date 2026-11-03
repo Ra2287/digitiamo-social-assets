@@ -50,7 +50,18 @@ OVERRIDES_FOR = "2026-11-02"
 #
 # Gli slug sono quelli stampati da `python3 plan.py`. Esempio:
 #   REDO = {"idea2-la-sicurezza-dell-ai": 1}
-REDO = {}
+#
+# Rifacimento del 3/11/2026: tutti e 5 i post Prioritario vengono rigenerati
+# con il nuovo linguaggio di brand del 2/11/2026 (Sora, nuovi layout). Gli
+# asset col vecchio sistema erano gia' referenziati da bozze Buffer live,
+# quindi si passa dal ciclo REDO invece di sovrascrivere i file esistenti.
+REDO = {
+    "idea1-openai-dice-di-aver": 1,
+    "idea2-il-tuo-editor-di": 1,
+    "idea3-se-non-uso-quella": 1,
+    "idea4-abbiamo-provato-a-far": 1,
+    "idea5-cosa-vuol-dire-che": 1,
+}
 
 # I post approvati NON corrispondono alle idee del report solo in casi
 # eccezionali (fusione di trend, idee scartate in revisione). Questa settimana

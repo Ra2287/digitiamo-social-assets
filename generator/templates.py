@@ -271,9 +271,9 @@ def _cta(s, sf):
     bottone e' l'unico uso del verde che non e' un segnale positivo."""
     return f"""{_title(s, sf, '1em')}
     {_p('.40em', '.40em', sf['body'], s.get('cta_sub'))}
-    <div style="margin-top:.48em;display:inline-block;padding:.28em .48em;border-radius:999px;
-         background:{C['green']};">
-      <span class="display" style="font-size:.38em;color:{C['ink']};letter-spacing:0;">{esc(s['cta_title'])}</span>
+    <div style="margin-top:.48em;display:inline-flex;align-items:center;justify-content:center;
+         font-size:.38em;line-height:1;padding:.62em 1.1em;border-radius:999px;background:{C['green']};">
+      <span class="display" style="font-size:1em;line-height:1;color:{C['ink']};letter-spacing:0;">{esc(s['cta_title'])}</span>
     </div>"""
 
 
@@ -372,7 +372,15 @@ def _scorecard(s, sf):
             cols = "2.3em 2.2em 1fr"
         else:
             figure, desc = r
-            mid, cols = "", "2.3em 1fr"
+            color = C["green"] if figure in gains and sf["tone"] == "dark" else sf["ink"]
+            # Cifra sopra, descrizione sotto: una cifra con unita' ("1,7 milioni")
+            # in colonna stretta andava a capo e si sovrapponeva.
+            return f"""
+    <div style="padding:.20em 0;border-top:2px solid {sf['neutral']};">
+      <div class="display" style="font-size:.68em;line-height:1.05;letter-spacing:-.03em;white-space:nowrap;
+           color:{color};font-variant-numeric:tabular-nums;">{esc(figure)}</div>
+      <div class="body" style="margin-top:.10em;font-size:.30em;line-height:1.3;color:{sf['body']};">{esc(desc)}</div>
+    </div>"""
         color = C["green"] if figure in gains and sf["tone"] == "dark" else sf["ink"]
         return f"""
     <div style="display:grid;grid-template-columns:{cols};gap:.24em;align-items:baseline;

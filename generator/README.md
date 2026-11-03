@@ -15,19 +15,23 @@ Il principio: **contenuto, layout e brand sono tre cose separate.**
 
 ```
 brand-spec.md        La verità sul brand: asset, palette, font, formati, divieti.
-                     Estratta dai template Canva reali — leggila prima di
+                     Linguaggio approvato il 2/11/2026 — leggila prima di
                      toccare qualsiasi cosa di visivo.
 brand/
-  tokens.py          Palette, font, formati, asset come dati. UNICA fonte.
-  fonts/*.woff2      Montserrat 700/800 + Lato 400/700 (i font del brand)
-  bg/*.png           Gli sfondi Canva reali
-  logo/*.png         Wordmark e icone-categoria, con alpha
+  tokens.py          Palette, gradiente, font, formati, asset come dati. UNICA fonte.
+  fonts/*.woff2      Sora 400/600/700 (latin + latin-ext, OFL) — più i
+                     Montserrat/Lato legacy del solo report interno
+  logo/              Marchio vettoriale (sorgente) + PNG legacy
+  strike/            La barratura a mano del sito
+  bg/*.png           Sfondi Canva del sistema precedente: SUPERATI, conservati
+                     perché gli asset pubblicati ne derivano
 
 build_report.py      ← CONTENUTO della settimana (idee, trend, competitor)
 captions.py          ← TESTI dei post per Buffer
 week.py              la data, i rifacimenti (REDO), le correzioni a mano
 
-plan.py              Dal report alle slide: sceglie il template dal campo `format`
+plan.py              Dal report alle slide: il tipo dal campo `format`, il
+                     layout dalla forma del contenuto (vedi sotto)
 names.py             I nomi dei file degli asset. UNICA fonte (renderer + Buffer)
 templates.py         Layout delle grafiche social (da plan/week a HTML)
 generate_html.py     Layout del report (da build_report.py a HTML)
@@ -41,7 +45,8 @@ scelta dei template non si toccano: `plan.py` deriva le slide dal report.
 ## Flusso settimanale
 
 1. **Ricerca** trend/news della settimana (fuori da questo codice).
-2. **Contenuti**: aggiorna `build_report.py` (trend, competitor, 7 idee) e
+2. **Contenuti**: aggiorna `build_report.py` (trend, competitor, 7 idee, e per
+   ogni idea Prioritario `titolo_post` ≤ 60 caratteri e `sottotitolo_post`) e
    `captions.py` (testi dei post). In `week.py` imposta la nuova `DATE`.
    Le slide **non** si scrivono a mano: le deriva `plan.py` dal report.
 3. **Controlla la scelta dei template**: `python3 plan.py` stampa quale tipo di
@@ -69,6 +74,52 @@ scelta dei template non si toccano: `plan.py` deriva le slide dal report.
    è raggiungibile, non crea niente.
 8. **Approvazione umana** in Buffer. Lo script crea solo bozze, mai post
    programmati.
+
+## Il layout segue il contenuto
+
+`plan.py` sceglie il **tipo** di post dal campo `format` (si ferma se non lo
+riconosce) e il **layout** dalla forma del contenuto. Regole deterministiche,
+stampate idea per idea da `python3 plan.py`:
+
+```
+  2. Il tuo editor di AI coding gira in myth   single · 1 slide
+     layout single · barrato 'sicuro' · cifra — · superficie light
+```
+
+| Se l'idea ha… | succede | se il dato non regge |
+|---|---|---|
+| `citazione` + `autore` (+ `ruolo`) | singola: layout citazione; carosello: slide citazione dopo la copertina | citazione senza autore → si ferma |
+| `immagine` (file nella repo, percorso dalla radice; `credito`, `immagine_alt` opzionali) | foto vera con velatura: la singola o la copertina | URL, file mancante o fuori repo → si ferma |
+| `barrato` | quella parola del titolo viene barrata a mano | non nel titolo, con cifre, o maiuscola fuori dalla prima parola (nome proprio) → si ferma |
+| un mito (`myth` o `is_myth`) senza `barrato` | barrata la parola dopo «quindi è»/«quindi», o l'unica `*parola*` accentata | se non è univoca: nessuna barratura |
+| cifre in apertura dei punti («42% …», «800.000 — …») | carosello dati non-mito: la prima fa la **copertina dati**; ≥3 restanti → scorecard, 1–2 → slide cifra | — (nelle singole il titolo resta il post) |
+| una cifra con segno e argomento di guadagno («−12 ore…», «+18% di ricavi»), o `positivo` | quella cifra/parola in verde, slide scura | `positivo` che non compare → si ferma |
+
+**Poco testo** (regola di brand, `plan.BUDGET`): le slide usano prima i campi
+brevi `titolo_post`, `sottotitolo_post`, `punti_post`; i campi lunghi restano
+per il report e le caption.
+
+| Testo | Massimo | Se manca il campo breve ed è troppo lungo |
+|---|---|---|
+| Titolo (`titolo_post`, altrimenti `title`) | 60 caratteri, 3–8 parole | **si ferma**: il titolo non si taglia, serve `titolo_post` |
+| Supporto (`sottotitolo_post`, altrimenti `visual_hook`/`hook`) | 1 frase, 110 | tagliato al primo confine naturale |
+| Sintesi (`closing`/`myth_closing`) | 140 | tagliato al primo confine naturale |
+| Elenco (`punti_post`, altrimenti `points`) | 3 voci da 80 | voci tagliate; quelle in più **tolte** |
+| Riga di scorecard | 60 | tagliata al primo confine naturale |
+| Citazione | 140 | **si ferma**: una citazione non si taglia |
+| Sotto-titolo CTA | 90 | — (testo fisso in `plan._cta_for`) |
+| Occhiello | 24 | — (etichette fisse, verificate dalle prove) |
+
+`python3 plan.py` stampa per ogni idea i testi usati, la lunghezza contro il
+budget e cosa è stato tagliato.
+
+**Chiaro/scuro**: fra i post della settimana si alternano scuro e chiaro (i
+caroselli, le foto e le citazioni contano come scuri); dentro un carosello
+argomentazione scura, fatti ed elenchi chiari, prima e ultima pagina scure.
+
+**Demo o prove fuori dalla CDN**: `PED_OUT_DIR=/una/cartella python3 render.py
+carousel` scrive lì dentro invece che nella repo, così non nasce nessun nome
+pubblicato in `settimane/`.
 
 ## Regola dei nomi file (non negoziabile)
 
@@ -152,10 +203,8 @@ accetta.
 
 ## Da dove viene il brand
 
-Gli asset in `brand/` non sono ricostruzioni: vengono dai template Canva reali
-usati in produzione dal renderer del progetto `social-ped`. Provenienza di ogni
-singolo valore (incluse le coordinate dei ritagli del logo) in `brand-spec.md`.
-
-Cosa manca ancora, in breve: il logo in **vettoriale** (gli asset sono PNG
-ritagliati), la versione **navy del wordmark** per fondi chiari, e le
-**icone-categoria** oltre a News AI e Webinar. Dettagli in `brand-spec.md` §8.
+Dal 2 novembre 2026 il linguaggio è quello approvato quel giorno (12 post di
+riferimento): Sora, palette blu `#3E00EA` / quasi nero / lavanda, un solo
+gradiente, barratura a mano, marchio vettoriale disegnato dal layout, verde
+solo per i guadagni. Provenienza di ogni valore in `brand-spec.md`; il sistema
+precedente (template Canva di `social-ped`) è descritto lì in appendice.

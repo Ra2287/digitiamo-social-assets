@@ -11,13 +11,14 @@ def para_multiline(s):
     parts = s.split("\n\n")
     return "".join(f"<p>{esc(p)}</p>" for p in parts)
 
-# I font sono quelli del brand (Montserrat/Lato) INCORPORATI in base64: un
+# Il report interno resta in Montserrat/Lato (font legacy, non ridisegnato:
+# vedi brand-spec.md §8), INCORPORATI in base64: un
 # @import a Google Fonts che fallisce produrrebbe un PDF in un font di
 # fallback, senza alcun errore. Vedi brand-spec.md §4.
 CSS = f"""
-{tokens.font_face_css()}
+{tokens.font_face_css(tokens.LEGACY_FONT_FILES)}
 * {{ box-sizing: border-box; }}
-body {{ margin:0; font-family:{tokens.FONTS['body_stack']}; color:{C['navy']}; font-size:14.5px; line-height:1.55; }}
+body {{ margin:0; font-family:{tokens.LEGACY_BODY_STACK}; color:{C['navy']}; font-size:14.5px; line-height:1.55; }}
 .page {{ width:794px; min-height:1123px; padding:64px 60px; position:relative; page-break-after:always; }}
 .page:last-child {{ page-break-after:auto; }}
 /* Sezioni a schede: scorrono e l'interruzione la decide il motore di stampa,

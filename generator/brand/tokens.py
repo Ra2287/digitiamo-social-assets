@@ -1,72 +1,85 @@
 # -*- coding: utf-8 -*-
 """Token di brand Digitiamo — UNICA fonte di verita' per colori, font e formati.
 
-I valori qui NON sono scelte di design fatte a mano: sono estratti dagli asset
-Canva reali del brand (vedi ../brand-spec.md per la provenienza di ognuno).
+I valori vengono dal linguaggio di brand approvato il 2 novembre 2026 (i 12
+post di riferimento, vedi ../brand-spec.md per la provenienza di ognuno).
 Chi modifica questo file sta modificando il brand — aggiornare anche brand-spec.md.
 
 Consumatori:
-  - build_css()  -> CSS inline nei template (nessun artefatto su disco)
-  - generate_html.py (palette del report PDF)
+  - build_css()  -> CSS inline nei template dei post (nessun artefatto su disco)
+  - generate_html.py (solo i font legacy del report PDF interno)
 """
 import base64
 import os
+import re
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ---------------------------------------------------------------------------
-# PALETTE — estratta dai PNG di sfondo Canva (conteggio pixel dominanti)
+# PALETTE — linguaggio di brand approvato il 2 novembre 2026 (brand-spec.md §3)
 # ---------------------------------------------------------------------------
+# Sostituisce la palette ricavata dagli sfondi Canva (#4a3aff, #0e0a48, il verde
+# #43ef84 e il cielo): quella resta solo negli asset gia' pubblicati.
 COLORS = {
-    # Primari
-    "blue": "#4a3aff",       # blu brand: 44.8% di newsai_bg, 81.8% di newsai_cover_bg
-    "navy": "#0e0a48",       # navy profondo: 85.3% di webinar_bg, 17.3% di hiring_bg
-    "green": "#43ef84",      # verde accento: 4.1% di hiring_bg (contesti hiring/energia)
-    "white": "#ffffff",
-    # Tinte derivate (usate per il motivo circuito e i pannelli)
-    "blue_tint": "#6052ff",  # traccia circuito su fondo blu (12.3-12.4%)
-    "navy_tint": "#2c285e",  # traccia circuito su fondo navy (13.3%)
-    # Gradiente cielo (dall'alto verso il basso) di newsai_bg
-    # Azzurro pallido usato come INCHIOSTRO su fondo scuro (accento di testo su
-    # navy e blu). NON e' il gradiente del campo cielo: quello vive in
-    # brand/make_editorial_bg.py (SKY_TOP/SKY_BOTTOM, campionati da newsai_bg) ed
-    # e' cotto dentro editorial_sky.png.
-    #
-    # Prima questo token si chiamava `sky_top` e ce n'erano altri due, `sky_mid`
-    # e `sky_bottom`, mai usati: dichiaravano il gradiente una seconda volta con
-    # valori diversi da quelli reali (#d0f0ff invece di #c5ebff). Il PNG e' la
-    # verita' — il render usa l'immagine, non i token — quindi le slide erano
-    # giuste, ma la discrepanza ha fatto diagnosticare a qualcuno un refuso che
-    # non c'era. Un valore duplicato in due file e' un bug che aspetta.
-    "sky_ink": "#d0f0ff",
-    # Testo — valori tarati sul renderer social-ped (leggibilita' verificata)
-    "text_on_blue": "#eef0ff",   # corpo su pannello blu
-    "text_muted_navy": "#b9c0f5",  # metadati su navy
-    "text_muted_soft": "#c7ccf0",  # ruoli/didascalie su navy
-    "accent_ring": "#2e7bf0",      # anello avatar / accento secondario
-    # Tint chiare per superfici su bianco (report PDF interno)
-    "blue_soft": "#717ffe",  # blu secondario, testo di servizio nel report
-    "tint": "#ebeefc",
+    "primary": "#3E00EA",    # blu Digitiamo: accento su chiaro, testa del gradiente
+    "ink": "#070011",        # quasi nero: testo su chiaro, coda del gradiente
+    "night": "#1C073A",      # notte: superfici scure piene (cerchi, riquadri)
+    "lavender": "#717FFE",   # accento su scuro, virgolette delle citazioni
+    "mist": "#EBEEFC",       # testo secondario e occhielli su scuro
+    "paper": "#F4F5FA",      # fondo chiaro, testo principale su scuro
+    "green": "#00DC93",      # SOLO segnali positivi (un guadagno) e bottone CTA
+    # Grigi di servizio dei mock approvati (Chiaro, Interna): corpo e note su chiaro.
+    "body_light": "#3A3550",
+    "muted_light": "#5B5670",
 }
 
+# L'unico gradiente del sistema, per i post scuri.
+GRADIENT = "linear-gradient(180deg,#3E00EA 0%,#070011 100%)"
+
 # ---------------------------------------------------------------------------
-# TIPOGRAFIA — i font REALI del brand, non sostituti
+# TIPOGRAFIA — Sora sola, 400/600/700
 # ---------------------------------------------------------------------------
-# Montserrat = display (titoli, numeri, etichette). Lato = corpo.
-# I .woff2 sono in brand/fonts/ e vengono incorporati in base64 nei template:
-# nessuna dipendenza di rete al momento del rendering.
+# I .woff2 vengono da @fontsource/sora 5.2.8 (OFL, licenza in fonts/Sora-OFL.txt)
+# e sono incorporati in base64: nessuna dipendenza di rete al momento del
+# rendering. Due sottoinsiemi per peso, come li distribuisce Google Fonts:
+# `latin` copre l'italiano, `latin-ext` il resto (nomi propri stranieri).
 FONTS = {
-    "display": "Montserrat",
-    "body": "Lato",
-    "display_stack": "'Montserrat', 'Helvetica Neue', Arial, sans-serif",
-    "body_stack": "'Lato', 'Helvetica Neue', Arial, sans-serif",
+    "display": "Sora",
+    "body": "Sora",
+    "display_stack": "'Sora', 'Helvetica Neue', Arial, sans-serif",
+    "body_stack": "'Sora', 'Helvetica Neue', Arial, sans-serif",
 }
 
-FONT_FILES = {
-    ("Montserrat", 800): "fonts/Montserrat-800.woff2",
-    ("Montserrat", 700): "fonts/Montserrat-700.woff2",
-    ("Lato", 700): "fonts/Lato-700.woff2",
-    ("Lato", 400): "fonts/Lato-400.woff2",
+_LATIN = ("U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,"
+          "U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,"
+          "U+2215,U+FEFF,U+FFFD")
+_LATIN_EXT = ("U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,"
+              "U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,"
+              "U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF")
+
+# (famiglia, peso, file, unicode-range)
+FONT_FILES = [
+    ("Sora", w, "fonts/sora-%s-%d-normal.woff2" % (sub, w), rng)
+    for w in (400, 600, 700)
+    for sub, rng in (("latin", _LATIN), ("latin-ext", _LATIN_EXT))
+]
+
+# Montserrat + Lato restano SOLO per il report PDF interno (generate_html.py),
+# che non e' un post e non e' stato ridisegnato. Non usarli nelle grafiche.
+LEGACY_FONT_FILES = [
+    ("Montserrat", 800, "fonts/Montserrat-800.woff2", None),
+    ("Montserrat", 700, "fonts/Montserrat-700.woff2", None),
+    ("Lato", 700, "fonts/Lato-700.woff2", None),
+    ("Lato", 400, "fonts/Lato-400.woff2", None),
+]
+LEGACY_BODY_STACK = "'Lato', 'Helvetica Neue', Arial, sans-serif"
+
+# La palette del sistema precedente (ricavata dagli sfondi Canva), SOLO per il
+# report PDF interno, che importa questi nomi da build_report.py. Le grafiche
+# dei post non la usano: per loro vale COLORS.
+LEGACY_COLORS = {
+    "blue": "#4a3aff", "navy": "#0e0a48", "green": "#43ef84", "white": "#ffffff",
+    "blue_soft": "#717ffe", "tint": "#ebeefc",
 }
 
 # ---------------------------------------------------------------------------
@@ -82,21 +95,13 @@ FORMATS = {
 # ASSET
 # ---------------------------------------------------------------------------
 LOGO = {
-    # Il marchio VETTORIALE ufficiale, fornito dal team design l'8 settembre
-    # 2026. E' la sorgente: un solo file per tutti i colori, perche' il fill si
-    # sovrascrive via CSS (la classe `.cls-1`).
+    # Il marchio VETTORIALE ufficiale (team design, 8 settembre 2026). Dal
+    # linguaggio del 2 novembre 2026 e' l'UNICA sorgente del marchio nei post:
+    # il layout lo disegna con `wordmark_uri(colore)` — bianco su scuro e foto,
+    # blu #3E00EA su chiaro. Gli sfondi non hanno piu' il marchio incorporato.
     #
-    # Non e' ancora usato dal renderer, ed e' voluto: il marchio e' COTTO dentro
-    # gli sfondi editoriali (editorial_navy/blue), non disegnato dal layout.
-    # Passare al vettore vuol dire rigenerare gli sfondi con
-    # make_editorial_bg.py, quindi cambiare l'aspetto di ogni slide — un lavoro
-    # deliberato, non un effetto collaterale. Gli asset gia' pubblicati non
-    # devono cambiare.
-    #
-    # Verificato che sia lo stesso marchio dei PNG: ritagliati sull'inchiostro i
-    # rapporti sono 3.561 (PNG) e 3.508 (SVG), e le sagome si sovrappongono al
-    # 91,2%. Lo scarto e' l'antialiasing del PNG, che era stato ESTRATTO dagli
-    # sfondi rasterizzati.
+    # I PNG qui sotto restano per il report PDF interno e per la storia: erano
+    # stati ESTRATTI dagli sfondi Canva (sagome sovrapposte al 91,2% col vettore).
     "wordmark_vector": "logo/digitiamo-wordmark.svg",
 
     "wordmark_white": "logo/digitiamo-wordmark-white.png",  # 245x78, alpha
@@ -126,6 +131,9 @@ THIRD_PARTY = {
     "eu": "third-party/eu-flag.svg",
 }
 
+# SUPERATI dal linguaggio del 2 novembre 2026: nessun layout li usa piu'.
+# Restano nella repo perche' gli asset gia' pubblicati in settimane/ ne
+# derivano, e la storia deve restare ricostruibile (make_editorial_bg.py).
 BACKGROUNDS = {
     # Asset Canva originali
     "news": "bg/newsai_bg.png",
@@ -159,20 +167,41 @@ def data_uri(rel_path):
         ".jpeg": "image/jpeg",
         ".woff2": "font/woff2",
         ".svg": "image/svg+xml",
+        ".webp": "image/webp",
     }[ext]
     return "data:%s;base64,%s" % (mime, raw)
 
 
-def font_face_css():
-    """@font-face con i woff2 del brand incorporati — zero richieste di rete."""
+def font_face_css(files=None):
+    """@font-face con i woff2 incorporati — zero richieste di rete."""
     blocks = []
-    for (family, weight), rel in FONT_FILES.items():
+    for family, weight, rel, rng in (files or FONT_FILES):
         blocks.append(
             "@font-face{font-family:'%s';font-style:normal;font-weight:%d;"
-            "font-display:block;src:url(%s) format('woff2');}"
-            % (family, weight, data_uri(rel))
-        )
+            "font-display:block;src:url(%s) format('woff2');%s}"
+            % (family, weight, data_uri(rel),
+               "unicode-range:%s;" % rng if rng else ""))
     return "\n".join(blocks)
+
+
+def wordmark_uri(fill):
+    """Il marchio vettoriale in un colore, come data: URI.
+
+    Il fill si scrive come attributo e lo <style> interno si toglie: un SVG
+    usato come <img> non eredita il CSS della pagina, quindi la classe `.cls-1`
+    non si puo' sovrascrivere da fuori.
+    """
+    with open(os.path.join(HERE, LOGO["wordmark_vector"]), encoding="utf-8") as f:
+        svg = f.read()
+    svg = re.sub(r"<defs>.*?</defs>", "", svg, flags=re.S)
+    svg = svg.replace('class="cls-1"', 'fill="%s"' % fill)
+    return "data:image/svg+xml;base64," + base64.b64encode(svg.encode("utf-8")).decode("ascii")
+
+
+# La barratura a mano del sito (digitiamo-site/assets/barratura-manuale-blu.svg,
+# tratto #60A5FA), in copia con preserveAspectRatio="none" perche' si stiri
+# sulla parola. Il colore vive nel file: non si ridichiara come token.
+STRIKE = "strike/barratura.svg"
 
 
 def css_variables():
@@ -180,6 +209,7 @@ def css_variables():
     lines = [":root{"]
     for name, value in COLORS.items():
         lines.append("  --c-%s: %s;" % (name.replace("_", "-"), value))
+    lines.append("  --gradient: %s;" % GRADIENT)
     lines.append("  --font-display: %s;" % FONTS["display_stack"])
     lines.append("  --font-body: %s;" % FONTS["body_stack"])
     lines.append("}")
@@ -213,49 +243,39 @@ _PRIMITIVES = """
   position: relative;
   overflow: hidden;
   font-family: var(--font-body);
-  /* la dimensione la impone il template: i formati sono due (4:5 e 1:1) */
+  /* la dimensione la impone il template */
 }
-.slide__bg {
-  position: absolute; inset: 0;
-  width: 100%; height: 100%;
-  display: block;
-  object-fit: cover;
-}
-.slide__layer { position: relative; width: 100%; height: 100%; }
 
-/* Marchio — SEMPRE l'asset reale, mai testo. Vedi brand-spec.md §Divieti. */
-.wordmark { position: absolute; display: block; }
-.brand-icon { position: absolute; display: block; }
-
-/* Tipografia */
+/* Tipografia: Sora sola. Titoli 700 a manifesto, interlinea stretta e
+   spaziatura negativa; occhielli 600 maiuscoli e spaziati (mock approvati). */
 .display {
   font-family: var(--font-display);
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.05;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.03em;
 }
-.display--700 { font-weight: 700; }
 .eyebrow {
   font-family: var(--font-display);
-  font-weight: 700;
+  font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 1.5px;
+  letter-spacing: 4px;
 }
 .body {
   font-family: var(--font-body);
   font-weight: 400;
-  line-height: 1.34;
+  line-height: 1.35;
 }
-.body--bold { font-weight: 700; }
+.body--bold { font-weight: 600; }
+
+/* La barratura a mano: la parola resta leggibile, il tratto le passa sopra. */
+.strike { position: relative; display: inline-block; }
+.strike img { position: absolute; left: -4%; top: 30%; width: 108%; height: 50%; }
 
 /* Auto-fit: gli elementi .fit con data-maxh vengono rimpiccioliti fino a
-   rientrare nel box. Portato dal renderer social-ped, dove risolve il
-   troncamento silenzioso dei titoli lunghi. */
+   rientrare nel box (render.py). */
 .fit { display: block; }
 """
 
 
 if __name__ == "__main__":
-    # Utile solo per ispezione manuale: i template chiamano build_css() e la
-    # inline-ano, quindi non c'e' nessun .css da tenere sincronizzato su disco.
     print(build_css()[:2000])

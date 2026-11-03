@@ -2,10 +2,10 @@
 """Genera l'HTML del report PED settimanale Digitiamo."""
 import html
 
-# La palette NON e' dichiarata qui: viene dai token di brand, estratti dagli
-# asset Canva reali (vedi brand-spec.md). I nomi storici usati dal layout del
-# report sono mappati sui token, cosi' esiste una sola fonte di verita'.
-from brand.tokens import COLORS as _C  # noqa: E402
+# La palette NON e' dichiarata qui: viene dai token di brand. Il report interno
+# non e' stato ridisegnato col linguaggio del 2 novembre 2026, quindi usa la
+# palette precedente (LEGACY_COLORS); i post usano tokens.COLORS.
+from brand.tokens import LEGACY_COLORS as _C  # noqa: E402
 
 C = {
     "navy": _C["navy"],

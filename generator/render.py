@@ -30,17 +30,19 @@ import week
 from brand import tokens
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-OUT_DIR = os.path.abspath(os.path.join(HERE, ".."))
+# La radice della CDN (la repo). `PED_OUT_DIR` la sposta altrove — per una
+# prova o una demo che non deve creare nomi pubblicati dentro settimane/.
+OUT_DIR = os.path.abspath(os.environ.get("PED_OUT_DIR") or os.path.join(HERE, ".."))
 
 # Soglia di leggibilita'. I figli del contenitore sono in em: il piu' piccolo
 # e' ~.24em, quindi con il contenitore a 72px il testo minimo resta ~17px su
 # una tela da 1200px — leggibile in un feed. Sotto questa soglia l'auto-fit
 # "riesce" ma produce microtesto: e' un contenuto da accorciare, non da scalare.
 MIN_CONTAINER_FS = 72
-# Tetto per l'ingrandimento e quota del riquadro da riempire. 128px lascia
-# respirare i titoli piu' corti senza trasformarli in un cartellone; 0.90 evita
-# che il blocco tocchi i bordi del riquadro.
-MAX_CONTAINER_FS = 128
+# Tetto per l'ingrandimento e quota del riquadro da riempire. Con i titoli a
+# 1em, 108px tiene il titolo nella forbice dei mock approvati (92-112px) anche
+# quando il testo e' corto; 0.90 evita che il blocco tocchi i bordi.
+MAX_CONTAINER_FS = 108
 FILL_TARGET = 0.90
 
 # Rimpicciolisce i .fit finche' rientrano in data-maxh. Portato dal renderer
@@ -71,8 +73,11 @@ AUTOFIT_JS = r"""
 
     const slide = (el.closest('.slide') || {}).dataset?.slug || '?';
     const text = (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 70);
+    // La barratura sborda di proposito del 4% per lato (left:-4%, width:108%):
+    // non e' un contenuto che esce dalla cella, quindi non si conta ne' lei ne'
+    // il titolo che la contiene (un titolo va a capo, non sborda di lato).
     const wide = Array.from(el.querySelectorAll('*')).find(
-      (d) => d.scrollWidth > d.clientWidth + 1 && d.clientWidth > 0);
+      (d) => !d.closest('.strike') && !d.querySelector('.strike') && d.scrollWidth > d.clientWidth + 1 && d.clientWidth > 0);
     if (el.scrollHeight > maxh) {
       problems.push({ kind: 'overflow', slide, text,
                       detail: el.scrollHeight + 'px > ' + maxh + 'px' });
@@ -158,7 +163,7 @@ async def _open(browser, html, viewport):
     if problems or clipped:
         raise SystemExit(
             "Rendering interrotto: %d problemi di testo. Accorcia i contenuti "
-            "in week.py — i limiti di caratteri sono in brand-spec.md §6.\n"
+            "in week.py — i limiti di caratteri sono in brand-spec.md (appendice, §6).\n"
             "L'auto-fit e' una rete di sicurezza per piccoli sforamenti, non un "
             "modo per far stare qualunque quantita' di testo."
             % (len(problems) + len(clipped))

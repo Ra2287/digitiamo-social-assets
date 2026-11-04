@@ -3,13 +3,20 @@
 
 Perche' un artifact e non la pagina locale: `preview.html` sta sul disco di chi
 lo genera. Questo va condiviso con chi approva — ed e' il punto del flusso PED,
-dove la pubblicazione richiede sempre un via libera umano.
+dove la pubblicazione richiede sempre un via libera umano, PRIMA che le bozze
+arrivino su Buffer (vedi CLAUDE.md, "Revisione e approvazione").
 
 La pagina **ricorda le decisioni**: usa il capability `artifact`, quindi chi
 apre dopo vede cosa e' stato approvato e cosa no. Lo stato non sta nel DOM: sta
 in un blocco JSON, e ogni azione rigenera il documento e lo ripubblica.
 
-Uso: python3 build_artifact.py   -> scrive artifact.html
+I contenuti NON sono scritti a mano qui: vengono da `plan.content()` (la
+stessa fonte del renderer e di `publish_buffer.py`) e dai PNG gia' generati in
+`settimane/<data>/`. Questo script non genera ne' modifica nessuna grafica:
+mostra solo quello che `render.py` ha gia' prodotto.
+
+Uso: python3 build_artifact.py   -> scrive artifact.html, per la settimana
+corrente (week.DATE)
 """
 import base64
 import io
@@ -18,94 +25,85 @@ import os
 
 from PIL import Image
 
+import build_report
+import names
+import plan
+import templates
+import week
+
 HERE = os.path.dirname(os.path.abspath(__file__))
-DEMOS = os.path.join(HERE, "design-demos")
+ROOT = os.path.dirname(HERE)
 OUT = os.path.join(HERE, "artifact.html")
 
 # Larghezza di revisione: 760px basta per giudicare, e tiene il documento
 # leggero — conta, perche' ogni approvazione ripubblica l'intera pagina.
 REVIEW_W, REVIEW_H, QUALITY = 760, 950, 90
 
-POSTS = [
-    dict(
-        id="newsai",
-        prefix="W37-1-newsai",
-        title="Rassegna News AI",
-        origin="trend 01 + 02 + 04",
-        format="Rassegna News AI",
-        slot="Lun 7/9 · 7:45",
-        note="Sei pagine: copertina, tre notizie, il filo comune, la CTA. Ogni "
-             "notizia porta data e testata nell'occhiello e chiude con il "
-             "richiamo «cosa significa per te» — è la parte che distingue una "
-             "rassegna da un elenco di notizie. I marchi sono quelli ufficiali, "
-             "su campo chiaro perché le loro varianti sono a inchiostro scuro.",
-        flag="Copertina rifatta nei font del brand: non usa più lo sfondo Canva, "
-             "che aveva «News AI» incorporato in un grotesque estraneo al "
-             "sistema e non modificabile. Il marchio Zhipu AI, prima dichiarato "
-             "non reperibile, ora è quello ufficiale dal CDN di Z.ai.",
-    ),
-    dict(
-        id="fatigue",
-        prefix="W37-2-model-fatigue",
-        title="Model fatigue",
-        origin="trend 03",
-        format="Carosello dati",
-        slot="Mar 8/9 · 8:00",
-        note="Dato che il report non aveva, trovato negli articoli: la cadenza "
-             "mediana fra rilasci è passata da 37,5 giorni nel 2023 a 11 nel "
-             "2026. La slide 2 lo mostra come densità — 5 tratti contro 17, "
-             "stessa finestra di sei mesi. Il «da dieci a cinque» ora è una "
-             "citazione attribuita a Suresh Vasudevan, CEO di Clockwork Systems.",
-        flag="I tratti sono la cadenza mediana documentata, non i singoli "
-             "rilasci: è scritto sulla slide.",
-    ),
-    dict(
-        id="agenti",
-        prefix="W37-3-agenti-847",
-        title="Agenti AI in produzione",
-        origin="trend 07 · riframato",
-        format="Carosello dati",
-        slot="Mer 9/9 · 12:15",
-        note="Il post sta sul meccanismo, non su una percentuale: rotazione "
-             "delle credenziali su cicli di ~90 giorni, fallimenti silenziosi, "
-             "agenti orfani, CVE reali. È anche l'argomento del Team "
-             "Augmentation, cosa che il numero non era.",
-        flag="Il «76% su 847 deployment» è stato tolto: la fonte è un post su "
-             "Medium che compare con due firme diverse allo stesso URL, e la "
-             "paternità accademica attribuita da alcune riprese (Stanford, MIT, "
-             "Carnegie Mellon, Nvidia) non è verificabile.",
-    ),
-    dict(
-        id="aiact",
-        prefix="W37-4-ai-act",
-        title="EU AI Act",
-        origin="trend 10 · ricostruito",
-        format="Carosello normativa",
-        slot="Ven 11/9 · 8:00",
-        note="Con le date esatte: Allegato III al 2 dicembre 2027, Allegato I al "
-             "2 agosto 2028, sandbox al 2 agosto 2027, watermarking con "
-             "tolleranza fino al 2 dicembre 2026. E il punto che ribalta la "
-             "lettura corrente: la rilevazione dei bias è stata estesa a tutti i "
-             "sistemi AI, nello stesso pacchetto che ha rinviato le scadenze.",
-        flag="CTA sull'AI Business Academy e non sul Team Augmentation: è "
-             "compliance, non architettura.",
-    ),
-]
+
+def _slot_for(index):
+    """giorno/ora suggeriti per l'idea N-esima, da build_report.publishing."""
+    pubs = getattr(build_report, "publishing", None) or []
+    if 1 <= index <= len(pubs):
+        p = pubs[index - 1]
+        return "%s · %s" % (p.get("day", "—"), p.get("time", "—"))
+    return "—"
 
 
-def slide_uris(prefix):
+def gather_posts():
+    """Le idee Prioritario della settimana corrente, con i loro asset reali.
+
+    Ogni voce punta ai PNG/PDF che `render.py` ha gia' scritto in
+    `settimane/<data>/` (via `names.py`, la stessa fonte del renderer):
+    questa pagina non ne genera di nuovi, mostra solo quelli.
+    """
+    carousels, singles = plan.content()
+    by_slug_c = {c["slug"]: c for c in carousels}
+    by_slug_s = {s["slug"]: s for s in singles}
+
+    posts = []
+    for i, idea in enumerate(build_report.ideas, start=1):
+        if idea.get("badge") != "Prioritario":
+            continue
+        slug = plan._slug(idea, i)
+        label = templates.POST_TYPES.get(
+            (by_slug_c.get(slug) or by_slug_s.get(slug) or {}).get("post_type"),
+            {}).get("label", "—")
+        if slug in by_slug_c:
+            c = by_slug_c[slug]
+            paths = [os.path.join(ROOT, names.carousel_slide(slug, k + 1))
+                     for k in range(len(c["slides"]))]
+        elif slug in by_slug_s:
+            paths = [os.path.join(ROOT, names.single(slug))]
+        else:
+            # Idea Prioritario che il piano non ha generato (caso anomalo:
+            # succede solo se SOSTITUISCE_IL_PIANO ha sostituito l'elenco).
+            continue
+        posts.append(dict(
+            id=slug,
+            title=(idea.get("titolo_post") or idea.get("title")
+                   or slug).replace("*", ""),
+            origin="idea %d del report" % i,
+            format=label,
+            slot=_slot_for(i),
+            note=(idea.get("sottotitolo_post") or idea.get("hook") or
+                  idea.get("visual_hook") or ""),
+            flag=("Parola barrata: «%s»." % idea["barrato"]
+                  if idea.get("barrato") else None),
+            paths=paths,
+        ))
+    return posts
+
+
+def slide_uris(paths):
     out = []
-    i = 1
-    while True:
-        p = os.path.join(DEMOS, "%s_%d.png" % (prefix, i))
+    for p in paths:
         if not os.path.exists(p):
-            break
+            continue
         im = Image.open(p).convert("RGB").resize((REVIEW_W, REVIEW_H), Image.LANCZOS)
         buf = io.BytesIO()
         im.save(buf, "JPEG", quality=QUALITY, optimize=True, progressive=True)
         out.append("data:image/jpeg;base64," +
-                   base64.b64encode(buf.getvalue()).decode("ascii"))
-        i += 1
+                    base64.b64encode(buf.getvalue()).decode("ascii"))
     return out
 
 
@@ -275,11 +273,13 @@ APP = r"""
     PAY.posts.forEach(function (p) { slides += PAY.slides[p.id].length; });
 
     var h = '<header>' +
-      '<div class="eyebrow">Piano editoriale · settimana 37</div>' +
-      '<h1>Quattro post da approvare</h1>' +
-      '<p class="lede">Settimana 7–13 settembre 2026. Contenuti dal report PED, ' +
-      'con la sezione di origine indicata su ogni post. Sfoglia le slide, poi ' +
-      'segna la tua decisione: resta salvata per chi apre dopo.</p>' +
+      '<div class="eyebrow">Piano editoriale · ' + esc(PAY.weekLabel) + '</div>' +
+      '<h1>' + PAY.posts.length + ' post da approvare</h1>' +
+      '<p class="lede">Contenuti dal report PED, con la sezione di origine ' +
+      'indicata su ogni post. Sfoglia le slide, poi segna la tua decisione: ' +
+      'resta salvata per chi apre dopo. Le bozze su Buffer si creano solo dopo ' +
+      'che ogni post qui sotto è "Approvato" (o le modifiche chieste in nota ' +
+      'sono state applicate).</p>' +
       '<div class="tally">' +
       '<div class="t"><div class="n">' + PAY.posts.length + '</div><div class="k">Post</div></div>' +
       '<div class="t"><div class="n">' + slides + '</div><div class="k">Slide</div></div>' +
@@ -353,21 +353,12 @@ APP = r"""
       '</article>';
     });
 
-    h += '<section class="open"><h2>Due cose ancora aperte</h2><ul>' +
-      '<li><b>Conflitto di formato.</b> Questi post sono 1200×1500 e usano il ' +
-      'sistema di brand ricostruito. Il carosello pubblicato dal bot lunedì è ' +
-      '1080×1350 e non lo usa: nello stesso feed convivono male, e il bot ' +
-      'continuerà a produrre nel formato vecchio ogni lunedì.</li>' +
-      '<li><b>La copertina News AI va rifatta nei font del brand.</b> Il testo ' +
-      'incorporato nel PNG («News AI», «Le notizie dal mondo AI») non è ' +
-      'Montserrat né Lato: è un grotesque messo da Canva. Per questo il periodo ' +
-      'sta in una pill — così la differenza tipografica è una gerarchia voluta ' +
-      'e non una stonatura.</li>' +
-      '</ul></section>' +
-      '<p class="foot">' + (canWrite
+    h += '<p class="foot">' + (canWrite
         ? 'Le decisioni si salvano nella pagina: chi la apre dopo le vede.'
         : 'Hai accesso in sola lettura: puoi sfogliare e commentare, non cambiare le decisioni.') +
-      ' Le slide sono bozze rigenerabili da <code>design-demos/make_week37_demos.py</code>.</p>';
+      ' Le slide vengono dalla pipeline del repository (<code>render.py</code>): ' +
+      'questa pagina non le genera e non le modifica — per cambiarle, scrivi ' +
+      'cosa cambiare nella nota del post.</p>';
 
     mount.innerHTML = h;
   }
@@ -484,15 +475,17 @@ APP = r"""
 
 
 def build():
-    slides = {p["id"]: slide_uris(p["prefix"]) for p in POSTS}
+    posts = gather_posts()
+    slides = {p["id"]: slide_uris(p.pop("paths")) for p in posts}
     payload = json.dumps({
-        "posts": [{k: v for k, v in p.items() if k != "prefix"} for p in POSTS],
+        "weekLabel": week.WEEK_LABEL,
+        "posts": posts,
         "slides": slides,
     }, ensure_ascii=False)
 
     return ('<!doctype html>\n<html lang="it"><head><meta charset="utf-8">'
             '<meta name="viewport" content="width=device-width, initial-scale=1">'
-            '<title>Approvazione PED settimana 37</title>'
+            '<title>Approvazione PED %s</title>'
             '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?'
             'family=Montserrat:wght@700;800&family=Lato:wght@400;700&display=swap">'
             '<style id="css">%s</style></head><body>'
@@ -501,7 +494,7 @@ def build():
             '<script id="payload" type="application/json">%s</script>'
             '<script id="state" type="application/json">{}</script>'
             '<script id="app">%s</script>'
-            '</body></html>' % (CSS, payload, APP))
+            '</body></html>' % (week.DATE, CSS, payload, APP))
 
 
 if __name__ == "__main__":

@@ -519,13 +519,46 @@ python3 -m playwright install chromium
 Se Chromium è già presente: `export CHROMIUM_PATH=/percorso/chromium`.
 Senza quella variabile si usa quello di Playwright.
 
-## Revisione e approvazione
+## Revisione e approvazione (obbligatoria, PRIMA delle bozze Buffer)
 
-- `python3 generator/preview.py` — pagina locale per sfogliare le slide.
-- `python3 generator/build_artifact.py` — genera `artifact.html`, la pagina di
-  approvazione condivisibile. Pubblicala con lo strumento Artifact dichiarando
-  `capabilities: {artifact: {}}`: così le decisioni (approvato / da modificare
-  + nota) restano salvate nella pagina per chi la apre dopo.
+Dal 3/11/2026, su richiesta esplicita di Ramona: **le bozze Buffer non si
+creano più subito dopo `render.py`**, né per i caroselli né per le immagini
+singole. Prima deve esserci un giro di revisione/approvazione umano, con la
+possibilità di chiedere modifiche — non solo la creazione automatica della
+bozza seguita da un rifacimento a posteriori.
+
+Flusso corretto per ogni esecuzione (automatica del lunedì compresa):
+
+1. `python3 test_pipeline.py`, `python3 plan.py`, `python3 render.py all` come
+   sempre: generano gli asset in `settimane/<data>/`.
+2. **`python3 generator/build_artifact.py`** — genera `artifact.html`: NON
+   scrive ne' inventa contenuti, legge solo `plan.content()` (la stessa fonte
+   del renderer) e i PNG/PDF che `render.py` ha appena prodotto, per tutte le
+   idee Prioritario (caroselli e immagini singole).
+3. Pubblicalo con lo strumento Artifact dichiarando
+   `capabilities: {artifact: {}}`: la pagina mostra ogni post con le sue
+   slide, e chi la apre può segnare **Approvato** o **Da modificare + una
+   nota** per ciascuno — le decisioni restano salvate nella pagina stessa
+   (capability `artifact`), non in questa sessione.
+4. Consegna il PDF del report e il link della pagina di approvazione a
+   Ramona, e **fermati qui**: non lanciare `publish_buffer.py` né pushare con
+   `[pubblica]` nella stessa esecuzione. Senza un via libera umano non nasce
+   nessuna bozza Buffer.
+5. Quando Ramona conferma (in chat, o tramite le decisioni salvate nella
+   pagina — rileggi l'artifact con `action: "read"` per vederle): per ogni
+   post "Da modificare" applica la nota al contenuto (`build_report.py`,
+   `captions.py`, o `week.CAROUSELS`/`SINGLES`), segnalo in `week.REDO` (vedi
+   «Rifare un post» sopra) e rigenera **solo quello**. Solo a questo punto
+   esegui `publish_buffer.py` (o il push con `[pubblica]`) per creare le
+   bozze — di tutti i post approvati, non solo di quelli rifatti.
+
+Questo vale per **tutti** i post Prioritario della settimana, caroselli e
+immagini singole indifferentemente: non solo per i caroselli.
+
+Altri strumenti di revisione, non sostitutivi di questo passaggio:
+
+- `python3 generator/preview.py` — pagina locale per sfogliare le slide, utile
+  mentre si lavora in sessione, ma non condivisibile con Ramona.
 
 ## Storia utile
 

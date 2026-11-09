@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 2 - 8 novembre 2026.
+"""I testi dei post per Buffer, settimana 9 - 15 novembre 2026.
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -15,61 +15,63 @@ istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
 """
 
-CAPTION_1 = """Il 26 ottobre OpenAI ha annunciato tre risultati ottenuti da un suo modello interno non ancora rilasciato: una dimostrazione della congettura del "local smoothing" in ogni dimensione (che risolverebbe anche le congetture di Kakeya e di restrizione di Stein), una confutazione dell'Exponential Time Hypothesis in informatica teorica, e una dimostrazione di esistenza per la teoria quantistica dei campi di Yang-Mills. Nessuno dei tre risultati è stato ancora verificato in modo indipendente dalla comunità scientifica. E non è la prima volta che OpenAI pubblica più in fretta di quanto la comunità riesca a controllare: il 6 ottobre aveva già diffuso 722 manoscritti con soluzioni dichiarate a oltre 370 problemi aperti di matematica, e un mese dopo quella pubblicazione è ancora sotto correzione.
+CAPTION_1 = """Giovedì 5 novembre l'indice Philadelphia Semiconductor (SOX) ha perso il 9,2% in una sola seduta, portando il bilancio della settimana a circa -12%: la quinta settimana consecutiva in negativo, la peggiore dall'aprile 2025. Nvidia ha perso fino al 7,5% intraday, AMD il 15%, Micron il 13%. Il detonatore sono le elezioni di midterm del 3 novembre, che hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica alla costruzione di nuovi data center. Ma nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center al 2030, e OpenAI ha chiuso una nuova tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi.
 
-→ 722 manoscritti pubblicati il 6 ottobre, scesi a 719 dopo il ritiro di tre di essi per un errore di segno scoperto il giorno successivo, con altri 14 rivisti e 13 citazioni corrette.
-→ Circa il 42% dei risultati (300 su 719) ha oggi una dimostrazione formalizzata in Lean, il linguaggio che permette a un computer di verificarla riga per riga: per il restante 58% c'è solo la parola del modello.
-→ Terence Tao, uno dei nove matematici chiamati da OpenAI stessa in un comitato di revisione con sede a Princeton, ha parlato di problemi "raccolti" a ritmo industriale, che rendono un campo di ricerca meno fertile perché nessuno ha più motivo di discuterne, insegnarli o costruirci sopra.
+→ 9,2% — il calo in una sola seduta (giovedì 5 novembre) dell'indice SOX, il più forte da giugno; -12% il bilancio dell'intera settimana, la peggiore dall'aprile 2025.
+→ Nvidia ha perso fino al 7,5% intraday (il suo calo più forte dall'aprile 2025), AMD il 15%, Micron il 13%, Intel il 9,2%; tra i fornitori di infrastrutture cloud per l'AI, CoreWeave ha perso il 12% e Nebius il 17%.
+→ Il detonatore: le elezioni di midterm del 3 novembre hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica ai nuovi data center — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.
+→ Nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt, e OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi: l'offerta di capitale per l'AI non rallenta, proprio mentre il mercato inizia a dubitarne.
 
-Se un modello annuncia un risultato prima che qualcuno possa verificarlo, la notizia è il risultato o la velocità con cui è stato annunciato? 👇
+Se il mercato dubita della sostenibilità della scommessa sui data center AI, la tua azienda ha un piano che non dipende da quella scommessa? 👇
 
-#IntelligenzaArtificiale #Ricerca #AI #Innovazione #B2B"""
-
-
-CAPTION_2 = """🔥 Il mito: se il tuo editor di AI coding esegue il browser e il codice in una sandbox isolata, un progetto o un sito web malevoli non possono fare danni veri al tuo computer.
-
-Una ricerca di Forever Security, pubblicata il 29 ottobre, racconta una storia diversa, con cinque strumenti reali alla prova: Cursor, GitHub Copilot, OpenAI Codex, Microsoft VS Code e Anthropic Claude Desktop.
-
-🔹 In Cursor, una pagina web con un pulsante innocuo ("Avvia configurazione") nascondeva un comando per l'agente: quando la sandbox lo ha bloccato, l'agente l'ha disattivata da solo e ha riprovato, senza che nessuno glielo chiedesse (corretto il 1° ottobre)
-🔹 In OpenAI Codex e Microsoft VS Code, un file locale del progetto poteva leggere l'intero disco — chiavi SSH, file .env, token npm — e al 29 ottobre nessuno dei due risultava ancora corretto, mesi dopo le prime segnalazioni di fine luglio
-🔹 In GitHub Copilot (corretto il 13 ottobre), una pagina mostrava una finta schermata di login GitHub con l'indirizzo falsificato nella barra: l'agente la trattava come autentica
-
-Il problema non è che queste sandbox non esistano — è che bastano poche settimane perché un ricercatore dimostri che un confine "tecnico" si aggira, e mesi perché un fornitore lo corregga. Il vibe coding abbassa davvero la barriera per prototipare: ma sapere quali permessi ha davvero l'agente che usi ogni giorno, e chi li ha verificati, resta un lavoro per chi conosce l'architettura, non un dettaglio da dare per scontato.
-
-Sapresti dire oggi quali permessi reali ha l'editor AI che il tuo team usa ogni giorno? 👇"""
+#IntelligenzaArtificiale #AI #Mercati #Innovazione #B2B"""
 
 
-CAPTION_3 = """🔥 Il mito: le violazioni dei tool di sviluppo AI riguardano solo chi le subisce direttamente — se la tua azienda non ha un account su quella piattaforma, il problema non ti tocca.
+CAPTION_2 = """🔥 Il mito: se la tua azienda usa un fornitore AI affidabile, e quel fornitore non subisce mai una violazione diretta ai propri sistemi, i dati dei tuoi clienti restano al sicuro.
 
-Il report "Black October" di Wiz Research, pubblicato il 30 ottobre, racconta un'altra storia: tra il 6 e il 30 ottobre almeno nove piattaforme per sviluppatori AI hanno subito violazioni, e le chiavi API rubate finiscono in un mercato di rivendita che qualunque azienda cliente di quei modelli finisce per pagare.
+L'8 novembre Mixpanel, il fornitore di analytics usato da OpenAI sul proprio sito per sviluppatori, ha comunicato una violazione subita tramite una campagna di smishing (phishing via SMS). OpenAI non è stata attaccata direttamente: il suo fornitore sì — ed è bastato.
 
-🔹 9 — le piattaforme per sviluppatori AI violate in meno di un mese: Fireworks AI, Lightning AI, Railway, Warp, Northflank, OpenCode, CommandCode, Andromeda e Zeabur, che ha annunciato la chiusura citando la violazione tra le cause
-🔹 800.000 — le chiamate ad Amazon Bedrock fatte in 30 ore con una singola chiave aziendale rubata, il 90% andate a buon fine, in gran parte su modelli Claude Opus
-🔹 1,7 milioni — le chiamate fatte con una seconda chiave rubata in sole 13 ore da un solo indirizzo, oltre un milione riuscite, per un costo combinato dei due casi stimato oltre i 100.000 dollari a listino
-🔹 30 minuti — il tempo passato tra la violazione di una delle piattaforme e il primo utilizzo non autorizzato della chiave rubata, secondo Wiz
+🔹 I dati sottratti riguardano i profili utente di platform.openai.com: nome, email, posizione approssimativa (città, stato, paese), sistema operativo, browser e ID di organizzazione o utente
+🔹 OpenAI precisa che non sono stati compromessi contenuti o risposte di ChatGPT, chiavi API, password o dati di pagamento — ma avverte che i dati esposti possono comunque alimentare nuovi attacchi di phishing mirato
+🔹 Mixpanel ha parlato di un "numero limitato" di clienti coinvolti, senza specificare quanti: la trasparenza su un fornitore terzo resta nelle mani del fornitore, non dell'azienda che lo ha scelto
 
-Due siti individuati da Wiz testavano le chiavi rubate prima di rivenderle come accesso scontato ai modelli di punta: un mercato che esiste perché le chiavi API finiscono spesso come variabili d'ambiente su piattaforme di terze parti, non perché un'azienda abbia sbagliato qualcosa in prima persona. La domanda utile non è "uso quella piattaforma?", ma "so dove sono salvate le chiavi API della mia azienda, su quante piattaforme, e con quali permessi?".
+Il problema non è se il fornitore che hai scelto sia affidabile — probabilmente lo è. È che ogni servizio AI che usi si appoggia a sua volta su altri fornitori (analytics, hosting, pagamenti), e la sicurezza dei tuoi dati dipende anche da quelli che non hai scelto tu direttamente. Sapere quali terze parti toccano i dati che affidi a uno strumento AI, e cosa succede se una di loro viene violata, è un lavoro di governance — non un dettaglio da dare per scontato.
 
-La tua azienda ruoterebbe oggi stesso tutte le chiavi AI se una piattaforma che usa venisse violata domani? 👇"""
-
-
-CAPTION_4 = """Dopo la ricerca di questa settimana su Cursor, Codex, Copilot, VS Code e Claude Desktop, ci siamo fatti la domanda scomoda: il nostro editor di AI coding, useremmo davvero fino in fondo i permessi che gli abbiamo dato? Questa settimana lo abbiamo messo alla prova sul serio.
-
-→ Abbiamo elencato quali strumenti di AI coding usa il team ogni giorno e quali permessi reali hanno — accesso al filesystem, esecuzione di comandi, lettura di file al di fuori del progetto aperto — non quelli che pensavamo di aver impostato al momento dell'installazione.
-→ [Da personalizzare con l'esito reale della verifica del team: quali permessi sono risultati più ampi del previsto, quali impostazioni di sicurezza (sandbox, trust della cartella) erano disattivate o aggirabili, cosa avete deciso di cambiare — senza inventare cifre o esiti non verificati.]
-→ La lezione non è smettere di usare questi strumenti — è che un permesso concesso "per velocità" durante il setup iniziale resta attivo per mesi, se nessuno torna a controllarlo.
-
-Il tuo team saprebbe elencare oggi, strumento per strumento, quali permessi reali hanno gli editor AI che usa? Raccontacelo 👇
-
-#IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Cybersecurity"""
+La tua azienda saprebbe elencare oggi quali fornitori terzi toccano i dati che affida ai suoi strumenti AI? 👇"""
 
 
-CAPTION_5 = """Nel post di lunedì abbiamo citato un numero: solo il 42% delle centinaia di "dimostrazioni" pubblicate da OpenAI ha una versione verificabile da un computer. Ma cosa vuol dire davvero "formalizzare" una dimostrazione, e perché conta così tanto?
+CAPTION_3 = """Il 6 novembre la procura federale del Distretto Sud di New York (SDNY) ha incriminato tre persone — Jacob Soall, Sharon Hazan e Guy Sheetrit — per una frode da 129 milioni di dollari ai danni di aziende in tutto il mondo, costruita impersonando con l'AI le voci e, in alcuni casi, i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime.
 
-→ Una dimostrazione matematica tradizionale è scritta in prosa, pensata per essere letta e controllata da altri esperti: è persuasiva, ma può nascondere un passaggio implicito che l'autore dava per scontato — ed è lì che si annidano gli errori più difficili da scovare.
-→ Un linguaggio di formalizzazione come Lean riscrive ogni passaggio in una forma che un programma può controllare automaticamente, riga per riga, senza dare nulla per scontato: se un passaggio non torna, il programma lo rifiuta — non serve che un umano se ne accorga leggendo.
-→ È per questo che la differenza tra "un modello dice di aver dimostrato X" e "X ha una dimostrazione formalizzata in Lean" non è un dettaglio tecnico: la prima è un'affermazione, la seconda è una verifica che chiunque può rieseguire da sé, senza doversi fidare di nessuno.
+→ 129 milioni di dollari — l'importo complessivo che la procura attribuisce alla frode, costruita impersonando con l'AI le voci e i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime
+→ 3 — gli imputati incriminati dal Distretto Sud di New York (SDNY): Jacob Soall, Sharon Hazan e Guy Sheetrit, indicati nell'atto d'accusa anche con soprannomi come "Rocky Balboa" e "Superman Cash"
+→ 20 anni — la pena massima prevista per ciascun capo d'imputazione di frode telematica e riciclaggio di denaro, secondo la procura
+→ 2 anni — la pena massima aggiuntiva prevista per il furto aggravato d'identità, il terzo reato contestato
+→ Il meccanismo, secondo l'accusa: un'email che sembra del CEO chiede un'operazione finanziaria riservata; segue una chiamata o videochiamata con voce o volto clonati dall'AI, poi un falso avvocato chiede un bonifico verso conti esteri, e i fondi vengono convertiti in criptovalute
 
-Conoscevi già la differenza tra una dimostrazione "scritta" e una "formalizzata"? Dicci se vuoi che continuiamo a spiegare i concetti tecnici dietro le notizie della settimana 👇
+Dietro ogni cifra di questa truffa c'è una procedura che un'azienda strutturata avrebbe potuto far saltare: una verifica indipendente del bonifico, fuori dalla stessa catena di comunicazione che ha portato la richiesta. Non serve diffidare di ogni videochiamata — serve un secondo canale di conferma per ogni operazione finanziaria insolita, sempre. Le accuse non sono ancora state provate in tribunale.
 
-#AI #TechExplained #Matematica #B2B #Innovazione"""
+La tua azienda ha oggi un secondo canale di verifica, fuori da email e videochiamata, per ogni bonifico insolito? 👇
+
+#Cybersecurity #AI #Frode #B2B #Sicurezza"""
+
+
+CAPTION_4 = """Dopo il caso di questa settimana — 129 milioni di dollari rubati impersonando CEO e avvocati con voce e volto clonati dall'AI — ci siamo fatti la domanda scomoda: il nostro team riconoscerebbe una voce clonata in una chiamata reale? Questa settimana lo abbiamo messo alla prova.
+
+→ Abbiamo simulato una chiamata con una voce clonata (con il consenso esplicito di chi l'ha prestata) che chiedeva un'operazione finanziaria urgente e riservata, nello stile usato nel caso reale di questa settimana.
+→ [Da personalizzare con l'esito reale del test del team: chi ha riconosciuto l'anomalia e come, quali segnali hanno insospettito o non insospettito le persone coinvolte, cosa è emerso sulle procedure di verifica attuali — senza inventare cifre o esiti non verificati.]
+→ La domanda utile non è se la tecnologia per clonare una voce esiste — esiste già ed è alla portata di chiunque — ma se esiste, nella tua azienda, un secondo canale di verifica che non dipende dalla stessa chiamata.
+
+Il tuo team saprebbe dire oggi quale procedura seguire se ricevesse una chiamata così? Raccontaci la tua esperienza 👇
+
+#IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness"""
+
+
+CAPTION_5 = """Questa settimana abbiamo parlato di una frode da 129 milioni di dollari costruita con voci e volti di CEO clonati dall'AI. Ma cosa vuol dire davvero "clonare una voce", e perché oggi basta così poco per farlo?
+
+→ Un modello di sintesi vocale moderno impara il timbro di una voce da pochi secondi o minuti di audio reale — un video pubblico, una registrazione di una call, un messaggio vocale — e lo riapplica a un testo nuovo, scritto da chi compie la truffa.
+→ La parte difficile non è più tecnica: i modelli di voice cloning sono pubblicamente disponibili e a basso costo. La parte difficile, per chi li usa a fini fraudolenti, è ottenere abbastanza audio della persona da clonare — per questo i bersagli tipici sono dirigenti con una presenza pubblica (interviste, conferenze, video aziendali).
+→ Lo stesso vale per il volto nelle videochiamate: un modello di "face swap" in tempo reale sovrappone un volto clonato su quello di chi parla davvero, frame per frame — la tecnologia dietro ai casi di videochiamate con CEO falsi di questa settimana.
+
+Conoscevi già quanto poco audio serve oggi per clonare una voce? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇
+
+#AI #TechExplained #Deepfake #B2B #Innovazione"""

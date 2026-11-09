@@ -32,14 +32,14 @@ import os
 
 # Settimana di pubblicazione. Finisce nei nomi dei file: non riusare mai una
 # combinazione data+slug gia' pubblicata (vedi CLAUDE.md).
-DATE = "2026-11-02"
-WEEK_LABEL = "2 - 8 novembre 2026"
+DATE = "2026-11-09"
+WEEK_LABEL = "9 - 15 novembre 2026"
 
 # A quale settimana appartengono le CORREZIONI qui sotto. Controllato solo se ce
 # ne sono: serve a non riapplicare a una settimana nuova un aggiustamento
 # scritto per quella vecchia, che passerebbe inosservato perche' i nomi dei file
 # sarebbero comunque nuovi.
-OVERRIDES_FOR = "2026-11-02"
+OVERRIDES_FOR = "2026-11-09"
 
 # Rifacimenti: slug del post -> numero di revisione. Ciclo human-in-the-loop.
 #
@@ -51,17 +51,8 @@ OVERRIDES_FOR = "2026-11-02"
 # Gli slug sono quelli stampati da `python3 plan.py`. Esempio:
 #   REDO = {"idea2-la-sicurezza-dell-ai": 1}
 #
-# Rifacimento del 3/11/2026: tutti e 5 i post Prioritario vengono rigenerati
-# con il nuovo linguaggio di brand del 2/11/2026 (Sora, nuovi layout). Gli
-# asset col vecchio sistema erano gia' referenziati da bozze Buffer live,
-# quindi si passa dal ciclo REDO invece di sovrascrivere i file esistenti.
-REDO = {
-    "idea1-openai-dice-di-aver": 1,
-    "idea2-il-tuo-editor-di": 1,
-    "idea3-se-non-uso-quella": 1,
-    "idea4-abbiamo-provato-a-far": 1,
-    "idea5-cosa-vuol-dire-che": 1,
-}
+# Settimana nuova (9/11/2026): nessun rifacimento, prima generazione del lunedi'.
+REDO = {}
 
 # I post approvati NON corrispondono alle idee del report solo in casi
 # eccezionali (fusione di trend, idee scartate in revisione). Questa settimana

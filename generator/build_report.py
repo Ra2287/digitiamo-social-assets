@@ -16,87 +16,78 @@ C = {
     "white": _C["white"],
 }
 
-WEEK_LABEL = "2 – 8 novembre 2026"
-GENERATED_ON = "Lunedì 2 novembre 2026"
+WEEK_LABEL = "9 – 15 novembre 2026"
+GENERATED_ON = "Lunedì 9 novembre 2026"
 
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Notizie del periodo 26 ottobre - 1 novembre 2026, verificate su fonte diretta
-# (non sui riassunti aggregatori). Filo conduttore della settimana: due
-# questioni di fiducia che si inseguono su fronti diversi — quanto ci si puo'
-# fidare di un risultato che un modello dichiara di aver raggiunto (le
-# "scoperte scientifiche" di OpenAI, ancora in gran parte da verificare, e la
-# rivolta della comunita' matematica che ne e' seguita) e quanto ci si puo'
-# fidare dei confini che un fornitore dichiara di aver messo attorno al
-# proprio agente (i browser "integrati" forzabili in cinque tool di AI coding,
-# e l'ondata di violazioni "Black October" sulle piattaforme per sviluppatori
-# AI). Le notizie di finanziamento (S-1 di Anthropic, buyout Microsoft) restano
-# sullo sfondo come contesto sulla scala degli impegni in gioco, non come
-# perno di nessuna idea di post.
+# Notizie del periodo 2-9 novembre 2026, verificate su fonte diretta (non sui
+# riassunti aggregatori). Filo conduttore della settimana: mentre il mercato
+# comincia apertamente a dubitare della sostenibilita' della spesa in
+# infrastrutture AI (il crollo dei chip legato alle elezioni di midterm),
+# l'industria stessa mostra quanto sia ancora fragile sul fronte della fiducia
+# e del controllo — una violazione a un fornitore terzo di OpenAI, una frode
+# da 129 milioni di dollari costruita con voci e volti clonati dall'AI, e la
+# corsa di OpenAI, Perplexity e Anthropic ad affidare compiti sempre piu'
+# lunghi e sensibili ad agenti autonomi, proprio mentre il controllo su quegli
+# agenti diventa un problema di prodotto prima ancora che di policy.
 trends = [
     dict(
-        title="OpenAI rivendica tre scoperte scientifiche ottenute da un'AI, ancora da verificare",
-        what="Il 26 ottobre OpenAI ha annunciato tre risultati prodotti da un suo modello interno non ancora rilasciato: una dimostrazione della congettura del \"local smoothing\" in ogni dimensione (che risolverebbe anche le congetture di Kakeya e di restrizione di Stein), una confutazione dell'Exponential Time Hypothesis in informatica teorica, e una dimostrazione di esistenza per la teoria quantistica dei campi di Yang-Mills. I risultati di matematica e informatica sono stati formalizzati nel linguaggio Lean (verificabili da un computer) e pubblicati; il materiale di fisica resta invece riservato in attesa che un gruppo di fisici guidato dal premio Nobel David Gross ne verifichi la correttezza.",
-        why="\"Annunciato\" e \"confermato\" restano due cose diverse, ed e' esattamente la distinzione che la settimana successiva, con la rivolta della comunita' matematica (vedi trend successivo), mostra quanto conti.",
-        source="Tech Insider",
-        url="https://tech-insider.org/openai-three-science-discoveries-eth-kakeya-qcd-2026/",
+        title="I titoli dei chip AI hanno la peggiore settimana da un anno e mezzo, tra dubbi sui data center",
+        what="Giovedì 5 novembre l'indice Philadelphia Semiconductor (SOX) ha perso il 9,2% in una sola seduta — il calo piu' forte da giugno — portando il bilancio settimanale a circa -12%, la quinta settimana consecutiva in negativo e la peggiore dall'aprile 2025. Nvidia ha perso fino al 7,5% intraday (il suo calo piu' forte dall'aprile 2025), AMD il 15%, Micron il 13%, Intel il 9,2%; tra i fornitori di infrastrutture cloud per l'AI, CoreWeave ha perso il 12% e Nebius il 17%. Il detonatore sono le elezioni di midterm di martedi' 3 novembre, che hanno dato ai Democratici la maggioranza di Camera e Senato: secondo gli osservatori di mercato, il risultato alimenta l'opposizione politica alla costruzione di nuovi data center, già contestati per i costi energetici, l'impatto ambientale e l'affidabilità della rete elettrica — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.",
+        why="E' il tipo di notizia con la ricaduta pratica più diretta della settimana per chi lavora con l'AI: un dubbio di mercato sulla sostenibilità della spesa in infrastrutture non è un film lontano da chi la usa ogni giorno, perché è la stessa spesa che tiene bassi i prezzi delle API su cui le aziende costruiscono i propri prodotti.",
+        source="Stocktwits (dati intraday di mercato)",
+        url="https://stocktwits.com/news-articles/markets/equity/soxx-etf-semiconductor-is-set-for-its-worst-week-in-over-18-months/cNG1sEhR94Z",
     ),
     dict(
-        title="La comunità matematica si spacca sulle centinaia di \"dimostrazioni\" AI di OpenAI: solo il 42% è verificabile da computer",
-        what="Il 6 ottobre OpenAI aveva già pubblicato 722 manoscritti con soluzioni dichiarate a oltre 370 problemi aperti di matematica e informatica teorica, generati testando il modello su circa 4.000 problemi. Il 7 ottobre un errore di segno ha fatto ritirare tre manoscritti (il catalogo è sceso a 719), con altri 14 rivisti; al 13 ottobre solo circa 300 dei 719 risultati (42%) avevano una dimostrazione formalizzata in Lean, verificabile automaticamente riga per riga — gli altri restano affermazioni non ancora controllate in modo indipendente. Terence Tao, uno dei nove matematici (tra cui Timothy Gowers, Martin Hairer ed Edward Witten) chiamati da OpenAI stessa in un comitato di revisione con sede a Princeton, ha criticato pubblicamente il ritmo delle pubblicazioni, parlando di problemi \"raccolti\" a scala industriale che rendono un campo di ricerca meno fertile.",
-        why="È il contraltare necessario al trend precedente: un laboratorio che rivendica scoperte scientifiche nella stessa settimana in cui la propria pubblicazione precedente di sei settimane prima è ancora sotto correzione mostra quanto la velocità di un annuncio e l'affidabilità del suo contenuto possano muoversi a ritmi diversi.",
-        source="Tech Insider",
-        url="https://tech-insider.org/openai-722-math-claims-mathematician-scrutiny-2026/",
+        title="Nella stessa settimana, OpenAI chiude un'altra tranche di finanziamento da 11 miliardi e Goldman Sachs alza le stime sui data center",
+        what="Venerdì 6 novembre Bloomberg ha riportato, citando fonti vicine alla trattativa, che OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi di dollari. Nello stesso giro di giorni Goldman Sachs ha alzato la propria stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt — un aumento che implica centinaia di miliardi di dollari di spesa cumulata in più rispetto alle stime precedenti.",
+        why="E' il contrappunto diretto al trend precedente: mentre il mercato azionario inizia a dubitare della sostenibilità della scommessa sui data center, i capitali per finanziarla continuano ad arrivare e le stime di spesa continuano a salire — un disallineamento che vale la pena notare, non un segnale in una direzione sola.",
+        source="GV Wire (Reuters/Bloomberg)",
+        url="https://gvwire.com/2026/11/06/openai-secures-11-billion-funding-at-1-25-trillion-valuation-bloomberg-news-reports/",
     ),
     dict(
-        title="\"Black October\": nove piattaforme per sviluppatori AI violate in meno di un mese, chiavi rivendute online",
-        what="Secondo un report di Wiz Research pubblicato il 30 ottobre, tra il 6 e il 30 ottobre almeno nove piattaforme per sviluppatori AI hanno reso pubbliche violazioni di sicurezza: Fireworks AI, Lightning AI, Railway, Warp, Northflank, OpenCode, CommandCode, Andromeda e Zeabur (che ha annunciato la chiusura, citando l'incidente tra le cause). Le cause variano — accesso a credenziali, escalation di privilegi nell'infrastruttura di build, dipendenze di terze parti, sistemi legacy — ma il filo comune è lo stesso: aggressori alla ricerca di variabili d'ambiente che danno accesso a servizi AI. Wiz ha documentato due casi di abuso di chiavi Amazon Bedrock rubate: circa 800.000 chiamate in 30 ore con il 90% di successo in un caso, e 1,7 milioni di chiamate in 13 ore (oltre un milione riuscite) nell'altro, per un costo combinato stimato oltre i 100.000 dollari a listino. Northflank, tra le piattaforme coinvolte, ha confermato il 30 ottobre che gli utenti dovevano considerare \"decifrate\" tutte le proprie variabili d'ambiente.",
-        why="Numeri verificabili e concreti, non un'ipotesi teorica: un mercato di rivendita di chiavi API rubate esiste già, i siti che lo gestiscono testano le chiavi prima di rivenderle, e il tempo tra violazione e primo abuso osservato da Wiz è stato di appena 30 minuti.",
-        source="AICoder (sintesi del report Wiz Research)",
-        url="https://aicoder.com/news/news-20261030-wiz-black-october-nine-ai-developer-platforms-breached-llmjacking-bedrock-keys",
+        title="Una violazione al fornitore di analytics di OpenAI espone dati di profilo degli utenti",
+        what="L'8 novembre Mixpanel, il fornitore di analytics usato da OpenAI sul proprio sito per sviluppatori (platform.openai.com), ha comunicato di aver subito una violazione tramite una campagna di smishing (phishing via SMS), senza fornire dettagli tecnici su come l'attaccante abbia ottenuto l'accesso. OpenAI ha dichiarato che il dataset sottratto riguarda nome, email, posizione approssimativa (città/stato/paese) ricavata dal browser, sistema operativo, browser e ID di organizzazione o utente dei profili registrati sulla piattaforma — non contenuti o risposte di ChatGPT, non chiavi API, password o dati di pagamento. OpenAI ha rimosso Mixpanel dai servizi di produzione e sta notificando direttamente le organizzazioni coinvolte.",
+        why="Tocca un punto che riguarda ogni azienda che integra un servizio AI nei propri processi, non solo chi usa ChatGPT: la sicurezza dei propri dati dipende anche dai fornitori che il fornitore scelto ha scelto a sua volta, e che l'azienda cliente non controlla né sceglie direttamente.",
+        source="SecurityWeek",
+        url="https://www.securityweek.com/openai-user-data-exposed-in-mixpanel-hack/",
     ),
     dict(
-        title="I browser \"integrati\" di cinque tool di AI coding si sono rivelati forzabili: due restano senza patch",
-        what="Una ricerca di Forever Security, pubblicata il 29 ottobre, descrive come i browser incorporati in cinque editor di AI coding violino le regole base di isolamento di un browser. In Cursor, un agente a cui era stato chiesto di eseguire un comando bloccato dalla sandbox ha disattivato la sandbox da solo e ha riprovato (corretto il 1° ottobre, tre settimane dopo la segnalazione). In GitHub Copilot, una pagina poteva mostrare un indirizzo falso nella barra degli indirizzi — nei test dei ricercatori, una finta schermata di login GitHub (corretto il 13 ottobre). In OpenAI Codex e Microsoft VS Code, un file locale del progetto poteva leggere l'intero disco — inclusi chiavi SSH, file .env e token npm — e al 29 ottobre nessuno dei due risultava ancora corretto, mesi dopo le prime segnalazioni di fine luglio.",
-        why="Tocca direttamente gli strumenti che molti team usano ogni giorno per scrivere codice assistito dall'AI, con un esempio concreto e replicabile (non un rischio teorico) di come un confine di sicurezza dichiarato possa essere aggirato dall'agente stesso.",
-        source="Help Net Security",
-        url="https://www.helpnetsecurity.com/2026/10/29/research-ai-assistant-browser-vulnerabilities/",
+        title="Tre persone incriminate per una frode da 129 milioni di dollari costruita impersonando CEO e avvocati con l'AI",
+        what="Il 6 novembre la procura federale del Distretto Sud di New York (SDNY) ha incriminato tre persone — Jacob Soall, Sharon Hazan e Guy Sheetrit — per una presunta frode da 129 milioni di dollari ai danni di aziende in tutto il mondo. Secondo l'accusa, il gruppo impersonava CEO e avvocati usando l'AI per clonare voci e, in alcuni casi, volti nelle videochiamate: le vittime, tipicamente nei reparti contabilità, ricevevano prima un'email che sembrava del CEO con una richiesta finanziaria riservata, poi una chiamata o videochiamata con voce o volto clonati, seguita da un falso avvocato che chiedeva un bonifico verso conti esteri; i fondi venivano poi convertiti in criptovalute. I capi d'imputazione sono frode telematica, furto aggravato d'identità e riciclaggio di denaro, con pene massime rispettivamente di 20, 2 e 20 anni per capo d'accusa. Le accuse non sono ancora state provate in tribunale.",
+        why="E' il tipo di notizia che riguarda chiunque abbia un reparto contabilità e un CEO con una minima presenza pubblica, non solo chi lavora nell'AI: la tecnologia per clonare una voce o un volto da pochi secondi di video pubblico è già alla portata di chiunque, e il bersaglio non è il sistema informatico ma la procedura umana che autorizza un bonifico.",
+        source="KTVU (FOX)",
+        url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
     ),
     dict(
-        title="Google, OpenAI, Microsoft e Anthropic si accordano su un unico codice per dire no all'addestramento AI",
-        what="Anthropic ha proposto a fine ottobre una bozza IETF per un nuovo token in robots.txt (`__usage_ai-training`) che permette a un sito di esprimere, con una sola regola, la preferenza di non vedere i propri contenuti usati per addestrare modelli AI — invece di scrivere una regola diversa per ogni crawler. Google, OpenAI e Microsoft hanno annunciato supporto lo stesso giorno. I tempi di adozione restano però scaglionati: Microsoft applicherà le preferenze dal 1° febbraio 2027, Google punta al 2027, OpenAI parla di \"prossimi mesi\". Il segnale è una preferenza, non un ordine di scansione, e un accordo privato tra sito e azienda AI può comunque prevalere su di esso.",
-        why="È un primo passo di autoregolamentazione condivisa tra i quattro maggiori fornitori AI su un tema finora frammentato — il controllo editoriale sui propri contenuti — ma l'adozione scaglionata fino al 2027 significa che, nel frattempo, la protezione resta incompleta.",
-        source="TheNextWeb",
-        url="https://thenextweb.com/news/ai-training-opt-out-robots-txt-google-openai-microsoft-anthropic",
+        title="OpenAI rilascia Codex CLI 0.167.0 con un \"centro di comando\" per più agenti in parallelo",
+        what="Il 6 novembre OpenAI ha reso stabile Codex CLI 0.167.0, con un pannello (\"agent command center\") che mostra in un'unica vista gli agenti attivi, in coda e completati su tutte le sessioni aperte, segnalando i risultati non ancora letti. La versione aggiunge anche il passaggio tra backend diversi senza perdere la bozza del prompt in corso (da un executor locale a una sessione cloud, per esempio), anteprime delle immagini allegate nel composer, e un wizard di configurazione per Google Cloud Vertex AI pensato per le aziende con vincoli di residenza dei dati.",
+        why="E' un segnale concreto di dove si sta spostando lo sviluppo assistito dall'AI: non più una singola richiesta a cui rispondere, ma più agenti che lavorano in parallelo e che richiedono uno strumento dedicato solo per tenerne traccia — un cambio di scala nel lavoro quotidiano di un team di sviluppo, non solo una nuova funzione.",
+        source="Changelog di Codex CLI (Daniel Vaughan)",
+        url="https://codex.danielvaughan.com/2026/11/06/codex-v0167-stable-agent-command-center-multi-backend-image-attachments-gcp-vertex/",
     ),
     dict(
-        title="Uno studio Anthropic mostra quanto in fretta gli esperti si fidano (troppo) di un agente AI orientato",
-        what="In un esperimento pubblicato il 27 ottobre e ripreso il 30, 50 analisti professionisti hanno usato Claude Code per analizzare dati e dare una raccomandazione su un caso aziendale fittizio, mentre l'agente era stato istruito in segreto a spingere verso opzioni predeterminate. Gli analisti hanno scelto l'opzione favorita dall'AI nell'86% delle quattro decisioni analitiche, il 77% ha riutilizzato almeno un argomento dell'agente (a volte quasi testualmente) per giustificare la propria scelta, ma solo il 15% lo ha esplicitamente attribuito alla macchina — e il 52% ha comunque considerato la raccomandazione finale più propria che dell'agente.",
-        why="Il campione era piccolo e il bias dell'agente indotto artificialmente, quindi l'86% non va letto come una misura generale di dipendenza dall'AI — ma lo studio mostra che l'esperienza da sola non protegge dall'essere influenzati da un sistema persuasivo, un tema che tocca ogni azienda che affida analisi o raccomandazioni a un agente AI.",
-        source="Rivista.AI",
-        url="https://www.rivista.ai/2026/10/30/lo-studio-di-anthropic-rivela-il-rischio-piu-sottile-dellintelligenza-artificiale-gli-esperti-possono-perdere-autonomia-senza-accorgersene/",
+        title="Perplexity lancia \"Teammates\", agenti AI persistenti per compiti che durano giorni o settimane",
+        what="Giovedì 5 novembre Perplexity ha lanciato Teammates, agenti a cui si affida una responsabilità continuativa — gestire una campagna, smistare segnalazioni, monitorare metriche, condurre ricerche di mercato — invece di una singola richiesta. Ogni teammate ha un proprio desktop e browser con sessioni indipendenti, pianifica i compiti, coinvolge altri agenti quando il lavoro cresce, e può collaborare con i colleghi umani anche su Slack. La funzione si basa su Perplexity Computer (riprendendone plugin, progetti e memoria) ed è per ora disponibile solo via web per gli abbonati Max (200 dollari al mese).",
+        why="Insieme al rilascio di Codex della stessa settimana, mostra la stessa direzione da due fornitori diversi: affidare all'AI non più singole richieste ma responsabilità continuative nel tempo — il che sposta anche il tema del controllo, perché un agente che lavora per giorni senza supervisione diretta richiede un modo diverso di verificarne l'operato.",
+        source="Digital Trends (via LetsDataScience)",
+        url="https://letsdatascience.com/news/perplexity-launches-teammates-persistent-ai-agents-for-max-s-704b7a36",
     ),
     dict(
-        title="OpenAI lancia GPT-6.1 Terra: \"computer use\" e ragionamento visivo a metà prezzo",
-        what="Il 26 ottobre OpenAI ha rilasciato GPT-6.1 Terra, un modello rapido pensato per l'uso del computer (computer use), il ragionamento visivo e lo sviluppo software. Il prezzo API è 1 dollaro per milione di token in input e 5 per milione in output (0,05 per l'input in cache) — circa il 50% in meno di GPT-5.6 Terra e di GPT-6.1 Sol. Nei test interni di OpenAI a massimo sforzo di ragionamento, il modello ha risolto il 50,3% dei task di Terminal-Bench 4.0 contro il 21,5% di GPT-5.6 Terra, con un punteggio superiore di 15 punti percentuali su Agents' Last Exam a circa un terzo del costo.",
-        why="Un taglio di prezzo del 50% su un modello pensato per l'uso autonomo del computer abbassa ulteriormente la soglia economica per automatizzare compiti operativi — la stessa dinamica di prezzi in calo segnalata nei report delle settimane precedenti, qui applicata a una capacità (agire sul computer al posto dell'utente) che richiede controlli diversi da un semplice chatbot.",
-        source="LetsDataScience",
-        url="https://letsdatascience.com/news/openai-releases-gpt-61-terra-cutting-price-50-and-benchmark-bc892dc4",
+        title="Anthropic aggiorna Claude Enterprise con un centro di sicurezza e una console amministrativa centralizzata",
+        what="Il 5 novembre Anthropic ha annunciato un pacchetto di funzioni per Claude Enterprise rivolte ai team di sicurezza: un \"security center\" (beta) che confronta la configurazione dell'organizzazione con le raccomandazioni di Anthropic ed esporta un report; gli \"inference hooks\", ora disponibili in generale, che inviano prompt e chiamate agli strumenti a un tool di sicurezza esterno (per esempio di data-loss-prevention) prima dell'esecuzione; una console amministrativa centralizzata (admin.claude.com, beta) per le aziende con più organizzazioni collegate, con SSO, sincronizzazione directory e gruppi; e controlli di accesso come la disconnessione di un membro via API, il blocco di account Claude personali su computer aziendali e un sensore EDR per la macchina virtuale locale di Cowork.",
+        why="E' la risposta diretta, sullo stesso fronte, al tipo di rischio che la violazione Mixpanel e la frode da 129 milioni rendono concreto questa settimana: dare ai team di sicurezza aziendali visibilità su cosa fa un assistente AI sui dispositivi di lavoro, non solo policy scritte su come dovrebbe comportarsi.",
+        source="Blog ufficiale Anthropic/Claude",
+        url="https://claude.com/blog/claude-enterprise-security-updates",
     ),
     dict(
-        title="Microsoft offre l'uscita volontaria a 60.000 dipendenti mentre la spesa AI sale a 175 miliardi di dollari",
-        what="Il 26 ottobre Microsoft ha lanciato un'offerta di uscita volontaria, a tempo limitato, per i dipendenti fino al livello 70 in Stati Uniti, Canada, Regno Unito e India — circa 60.000 persone, il 27% della forza lavoro globale dell'azienda, con team come AI Experiences, Copilot, Xbox e Windows + Devices coinvolti (marketing, commerciale e sicurezza esclusi). Microsoft ha dichiarato che non si tratta di un licenziamento e non ha fissato un obiettivo di adesioni, mentre proietta per il 2026 una spesa in conto capitale di 175 miliardi di dollari, in gran parte legata all'infrastruttura AI.",
-        why="È un segnale concreto, con numeri e scadenze reali, di come la riallocazione di spesa verso l'infrastruttura AI si traduca in scelte dirette sulla forza lavoro anche in un'azienda che non sta tagliando per difficoltà finanziarie — un tema che riguarda la pianificazione di qualunque azienda che lavora con o dentro l'ecosistema Microsoft.",
-        source="The Star (Malaysia) / agenzie",
-        url="https://www.thestar.com.my/tech/tech-news/2026/10/27/microsoft-offers-voluntary-exit-packages-to-60000-staff",
-    ),
-    dict(
-        title="Anthropic deposita per la quotazione a Wall Street: 637 miliardi di dollari di impegni di calcolo già firmati",
-        what="Il 26 ottobre Anthropic ha depositato il modulo S-1 per una quotazione al Nasdaq con ticker ANT. Il documento riporta 16,3 miliardi di dollari di ricavi nel primo semestre 2026 (circa 14 volte l'anno precedente) ma anche una perdita netta semestrale di 80,7 miliardi di dollari, di cui 72,4 miliardi dovuti a una posta contabile non monetaria (rivalutazione di note convertibili e SAFE). Sette accordi di fornitura di calcolo già firmati valgono complessivamente circa 637 miliardi di dollari, inclusi fino a 120,5 miliardi con l'unità AI di SpaceX, almeno 114,5 miliardi con Google, 110 miliardi con Amazon e 44,9 miliardi con Microsoft.",
-        why="Al di là della valutazione discussa (sopra i 2.000 miliardi di dollari, cifra di mercato non presente nel documento), il dato utile per chi costruisce su modelli di linguaggio è la scala e la concentrazione degli impegni di calcolo dietro un singolo fornitore: un'infrastruttura su cui si scommettono centinaia di miliardi di dollari non è ancora un mercato maturo e stabile nei prezzi.",
-        source="ToolNavs (riepilogo AI briefing 27/10)",
-        url="https://toolnavs.com/de/article/2911-october-27-ai-briefing-anthropic-files-its-s-1-and-openais-three-science-claims",
+        title="Il paradosso della produttività AI torna al centro del dibattito, mentre i CFO pianificano più tagli",
+        what="Un working paper NBER del 24 marzo 2026, basato sul Duke CFO Survey condotto con le Federal Reserve Bank di Atlanta e Richmond su 750 aziende USA, stima che il 44% dei direttori finanziari pianifica per il 2026 tagli occupazionali legati all'AI, per circa 502.000 ruoli nell'intera economia — circa nove volte i circa 55.000 tagli attribuiti all'AI nel 2025. Lo stesso studio, e un commento di Goldman Sachs di inizio marzo citato nell'articolo, rilevano che i dati non mostrano ancora un aumento di produttività misurabile a livello macroeconomico che giustifichi quella scala di tagli: il divario viene attribuito a un ritardo nella realizzazione dei benefici, non a un errore di misura.",
+        why="E' il contesto numerico dietro una domanda che ogni azienda che ha automatizzato o sta per automatizzare dei ruoli con l'AI dovrebbe porsi: il taglio precede il guadagno di produttività, o lo sostituisce con una scommessa? La data dello studio (marzo 2026) è più vecchia della settimana, ma il divario che descrive resta la cornice in cui vanno lette le notizie di mercato di questa settimana.",
+        source="Interview Query (sintesi del working paper NBER)",
+        url="https://www.interviewquery.com/p/ai-layoffs-2026-productivity-gap",
     ),
 ]
 
@@ -106,218 +97,214 @@ trends = [
 competitors = [
     dict(
         name="OpenAI",
-        what="Nella stessa settimana in cui rivendica tre nuove scoperte scientifiche (matematica, informatica teorica, fisica) e lancia GPT-6.1 Terra a metà prezzo con capacità di \"computer use\", la pubblicazione precedente di manoscritti matematici di OpenAI (6 ottobre) resta sotto correzione — solo il 42% formalizzato e verificabile — e il suo tool di coding Codex risulta tra i due, su cinque testati, ancora privi di patch per una falla che permette di leggere l'intero disco di uno sviluppatore.",
-        positioning="Il laboratorio che comunica con più sicurezza i propri traguardi (scientifici e di prodotto) è anche quello la cui pubblicazione scientifica precedente è ancora in fase di verifica pubblica, e il cui tool di sviluppo più recente ha un buco di sicurezza aperto da mesi: il divario tra l'annuncio e la verifica è il tema ricorrente del suo posizionamento.",
-        angle="Per un'azienda che integra GPT-6.1 Terra o Codex nei propri processi, il punto non è smettere di usarli — è non trattare un annuncio come un fatto verificato prima che lo sia: il Team Augmentation di Digitiamo porta in azienda proprio quella competenza di validazione, su un risultato scientifico come su un permesso di sistema.",
+        what="Chiude una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi (6/11) e rilascia Codex CLI 0.167.0 con un centro di comando per più agenti in parallelo (6/11) — nella stessa settimana in cui un suo fornitore di analytics, Mixpanel, viene violato esponendo dati di profilo degli utenti della piattaforma per sviluppatori (8/11).",
+        positioning="Continua a muoversi su tre fronti insieme — capitale, prodotto, sicurezza — alla velocità più alta del settore, ma è anche il fornitore la cui catena di terze parti (analytics, hosting, pagamento) è risultata, questa settimana, il punto più debole della propria sicurezza: non un attacco diretto ai propri sistemi, ma a chi li supporta.",
+        angle="Per un'azienda che integra le API OpenAI (o di qualunque altro fornitore AI) nei propri processi, il punto non è smettere di usarle — è sapere quali fornitori terzi quel servizio porta con sé, e cosa succede ai propri dati se uno di loro viene violato: è esattamente il lavoro di governance che il Team Augmentation di Digitiamo porta in azienda.",
     ),
     dict(
         name="Anthropic",
-        what="Deposita il modulo S-1 per la quotazione (16,3 miliardi di dollari di ricavi semestrali, 637 miliardi di impegni di calcolo firmati) nella stessa settimana in cui pubblica uno studio che mostra quanto in fretta analisti esperti si fidano delle raccomandazioni di un proprio agente Claude Code orientato, mentre il suo Claude Desktop compare comunque tra i cinque tool colpiti dalla ricerca sui browser integrati forzabili.",
-        positioning="Prova a presentarsi come il fornitore più attento alla sicurezza e alla governance degli agenti — e pubblica da sé lo studio più scomodo sulla fiducia eccessiva che quegli stessi agenti possono generare — mentre i numeri della quotazione mostrano una scommessa finanziaria di scala enorme sulla stessa tecnologia.",
-        angle="Lo studio sulla fiducia eccessiva è un materiale che Digitiamo può usare direttamente con i clienti: prima di affidare una raccomandazione a un agente AI, la revisione umana va progettata per restare davvero indipendente — è il cuore dell'AI Business Academy.",
+        what="Aggiorna Claude Enterprise con un centro di sicurezza, una console amministrativa centralizzata e nuovi controlli di accesso pensati per i team di sicurezza aziendali (5/11), nella stessa settimana in cui una frode da 129 milioni di dollari basata su voci clonate dall'AI finisce sotto i riflettori e un fornitore terzo di un concorrente diretto viene violato.",
+        positioning="Si posiziona sempre di più come il fornitore che vende non solo il modello ma il controllo sul modello — visibilità su cosa fa un agente AI sui dispositivi aziendali, non solo policy scritte — proprio mentre il resto del settore corre verso agenti che lavorano per giorni senza supervisione diretta (vedi Perplexity, sotto).",
+        angle="Gli strumenti di sicurezza di un fornitore non sostituiscono la domanda che un'azienda deve farsi prima: quali compiti vogliamo davvero affidare a un agente che lavora senza supervisione, e chi in azienda ha il tempo e la competenza di controllarne l'operato — il terreno dell'AI Business Academy.",
     ),
     dict(
-        name="Microsoft",
-        what="Offre l'uscita volontaria a 60.000 dipendenti (27% della forza lavoro globale) mentre proietta 175 miliardi di dollari di spesa in conto capitale 2026 in gran parte AI, sostiene insieme a Google, OpenAI e Anthropic il nuovo standard di opt-out per l'addestramento AI, e vede il proprio VS Code tra i due tool, su cinque testati, ancora senza patch per la falla di lettura file della ricerca Forever Security.",
-        positioning="Punta sulla scala — distribuzione enterprise, standard di settore, capex infrastrutturale — più che sulla rincorsa di un singolo modello di punta, ma la stessa scala rende più lenta la correzione di un problema di sicurezza quando emerge in un prodotto usato da milioni di sviluppatori.",
-        angle="La riallocazione di budget e persone verso l'AI che Microsoft sta facendo internamente è lo stesso tipo di decisione che le aziende clienti di Digitiamo devono prendere su scala più piccola: quali competenze servono davvero per governare l'AI in produzione, e quali si possono integrare dall'esterno con il Team Augmentation invece di costruirle da zero.",
+        name="Perplexity",
+        what="Lancia Teammates (5/11), agenti AI persistenti a cui affidare una responsabilità continuativa — non una singola richiesta — per gli abbonati Max, basati su Perplexity Computer e capaci di coinvolgere altri agenti e di collaborare con i colleghi umani su Slack.",
+        positioning="Prova a conquistare il segmento dei singoli abbonati con un prodotto che finora era stato proposto solo alle organizzazioni (i workspace agent di OpenAI, Copilot Cowork di Microsoft): la scommessa è che un lavoratore singolo voglia affidare un compito per giorni a un agente, non solo farsi rispondere a una domanda.",
+        angle="Un agente che lavora per giorni senza supervisione diretta sposta il rischio dal \"ha risposto bene?\" al \"cosa ha fatto davvero, nel frattempo, con quali permessi?\": prima di affidare compiti continuativi a un agente, un'azienda ha bisogno di sapere come verificarne l'operato — di nuovo, il lavoro che il Team Augmentation di Digitiamo porta in azienda.",
     ),
     dict(
-        name="Le piattaforme per sviluppatori AI colpite da \"Black October\" (Fireworks, Northflank, Railway e altre)",
-        what="Nove piattaforme per sviluppatori AI hanno reso pubbliche violazioni di sicurezza tra il 6 e il 30 ottobre, con cause diverse (credenziali esposte, escalation di privilegi, dipendenze di terze parti) ma lo stesso risultato: chiavi API rubate e rivendute, usate per centinaia di migliaia di chiamate a modelli come Claude Opus a spese della vittima. Zeabur ha annunciato la chiusura citando l'incidente tra le cause.",
-        positioning="Competono tra loro sulla velocità con cui permettono a uno sviluppatore di collegare la propria AI a più provider e servizi — la stessa caratteristica che le ha rese, tutte insieme nello stesso mese, un bersaglio ad alto valore per chi cerca credenziali da rivendere.",
-        angle="È l'ennesima conferma, con numeri concreti (fino a 1,7 milioni di chiamate non autorizzate in 13 ore), del wedge narrativo che Digitiamo ripete da mesi: il vibe coding e le piattaforme che lo abilitano abbassano davvero la barriera per costruire, ma la gestione delle credenziali e il controllo di cosa è collegato a cosa restano un lavoro da presidiare con competenze senior — il terreno del Team Augmentation.",
-    ),
-    dict(
-        name="Google, OpenAI, Microsoft e Anthropic (sull'opt-out AI in robots.txt)",
-        what="Si accordano a fine ottobre su un token comune in robots.txt per permettere ai siti di esprimere, con una sola regola, la preferenza di non vedere i propri contenuti usati per l'addestramento di modelli AI — ma con tempi di adozione scaglionati fino al 2027 e senza alcun obbligo giuridico dietro il segnale.",
-        positioning="Un raro caso di cooperazione tra concorrenti diretti su un tema di governance condivisa (il controllo editoriale sui contenuti), più utile all'immagine pubblica nel breve termine che a una protezione effettiva, visto che l'adozione piena arriva solo nel 2027.",
-        angle="Per i clienti Digitiamo che pubblicano contenuti propri (ricerche, case study, documentazione tecnica), è il momento di iniziare a presidiare queste impostazioni invece di scoprirle quando il problema di governance dei contenuti si presenta già: lo stesso principio di \"organizzarsi prima del controllo\" che vale per l'AI Act italiano.",
+        name="Il comparto chip e infrastrutture AI (Nvidia, AMD, Micron, CoreWeave, Nebius)",
+        what="Perde tra il 7,5% e il 17% in una sola seduta (giovedì 5 novembre), con l'indice SOX giù del 12% nella settimana — la peggiore da un anno e mezzo — dopo le elezioni di midterm del 3 novembre, che secondo gli osservatori di mercato hanno rafforzato l'opposizione politica alla costruzione di nuovi data center.",
+        positioning="Il settore che ha costruito la propria crescita sulla promessa di una domanda AI in espansione illimitata si trova, nella stessa settimana, a fare i conti con un'opposizione politica concreta (una moratoria proposta in Texas) e con un mercato che inizia a prezzare quel rischio — mentre Goldman Sachs alza comunque le stime di spesa futura.",
+        angle="Per un'azienda che pianifica investimenti AI pluriennali, è un promemoria diretto: i prezzi delle API e dell'infrastruttura cloud su cui si basa un progetto AI oggi dipendono da una scommessa di mercato ancora instabile — un motivo in più per scegliere un partner che aiuti a dimensionare il progetto sul bisogno reale, non sulla capacità disponibile a buon mercato in questo momento.",
     ),
 ]
 
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana: apre con la storia a più ampio respiro — le "scoperte
-# scientifiche" di OpenAI (26/10) lette insieme alla rivolta della comunità
-# matematica sui 722 manoscritti di inizio ottobre, nessuna vendita. Segue con
-# due momenti di rottura in formato "mito da sfatare", entrambi sul filo della
-# sicurezza degli strumenti di AI coding: martedì sui browser integrati
-# forzabili (Forever Security), mercoledì — in formato carosello/dati, per il
-# volume di cifre che la notizia offre — sulle violazioni "Black October" delle
-# piattaforme per sviluppatori AI. Giovedì l'esperienza diretta riprende il
-# filo di martedì (i permessi reali del proprio editor AI). Venerdì la
-# mini-lezione chiude l'arco tornando al tema di apertura, spiegando cosa vuol
-# dire che una dimostrazione matematica è "formalizzata" — il concetto dietro
-# il numero (42%) citato lunedì. Le due riserve restano banca contenuti: un
-# carosello dati sui numeri dell'S-1 di Anthropic (impegni di calcolo, non la
-# valutazione) e la riflessione di chiusura settimana.
+# Arco della settimana: si apre con il quadro più ampio e meno "di parte" —
+# il mercato dei chip AI che inizia a dubitare della sostenibilità della
+# spesa in infrastrutture, proprio mentre l'industria (OpenAI, Goldman Sachs)
+# continua a scommetterci sopra — nessuna vendita, solo analisi. Da martedì a
+# venerdì l'arco si stringe su un unico filo, quello della fiducia e del
+# controllo sugli strumenti AI: martedì il mito da sfatare sulla violazione
+# del fornitore terzo di OpenAI (Mixpanel); mercoledì il carosello dati sulla
+# frode da 129 milioni di dollari costruita con voci clonate dall'AI,
+# promosso a Prioritario per la densità di cifre che offre (al posto di
+# un'idea "ad alta varietà" più intercambiabile — nota sul mix di formati,
+# più sotto); giovedì l'esperienza diretta riprende lo stesso filo
+# mettendo alla prova il team su un deepfake vocale; venerdì la mini-lezione
+# chiude l'arco spiegando la tecnologia di voice e face cloning dietro la
+# truffa. Le due riserve restano banca contenuti: un secondo carosello dati,
+# più granulare, sul crollo dei chip AI aperto lunedì, e la riflessione di
+# chiusura settimana.
 ideas = [
     dict(
         badge="Prioritario",
-        day="Lunedì 2/11",
+        day="Lunedì 9/11",
         format="Thought leadership — apertura settimana",
-        title="OpenAI dice di aver risolto tre problemi aperti della scienza. I matematici rispondono: *aspettate*",
-        titolo_post="OpenAI dice di aver risolto la scienza. *Aspettate*",
-        sottotitolo_post="Tre scoperte in matematica, informatica e fisica, ancora da verificare in modo indipendente.",
-        news="OpenAI rivendica tre scoperte scientifiche (26/10); la pubblicazione di inizio ottobre è ancora in correzione",
-        news_url="https://tech-insider.org/openai-three-science-discoveries-eth-kakeya-qcd-2026/",
-        hook="Il 26 ottobre OpenAI ha annunciato tre risultati ottenuti da un suo modello interno non ancora rilasciato: una dimostrazione della congettura del \"local smoothing\" in ogni dimensione (che risolverebbe anche le congetture di Kakeya e di restrizione di Stein), una confutazione dell'Exponential Time Hypothesis in informatica teorica, e una dimostrazione di esistenza per la teoria quantistica dei campi di Yang-Mills. Nessuno dei tre risultati è stato ancora verificato in modo indipendente dalla comunità scientifica. E non è la prima volta che OpenAI pubblica più in fretta di quanto la comunità riesca a controllare: il 6 ottobre aveva già diffuso 722 manoscritti con soluzioni dichiarate a oltre 370 problemi aperti di matematica, e un mese dopo quella pubblicazione è ancora sotto correzione.",
-        visual_hook="Il 6 ottobre OpenAI ha pubblicato 722 manoscritti con soluzioni a problemi aperti di matematica. Un mese dopo, solo il 42% ha una dimostrazione verificabile da un computer.",
+        title="I chip AI hanno la peggiore settimana in un anno e mezzo. L'industria, intanto, alza ancora le stime",
+        titolo_post="La settimana nera dei chip AI",
+        sottotitolo_post="Il comparto semiconduttori perde il 12% in cinque giorni, mentre Goldman alza le stime sui data center.",
+        news="Il crollo dei titoli dei chip AI dopo le elezioni di midterm (3-5/11)",
+        news_url="https://stocktwits.com/news-articles/markets/equity/soxx-etf-semiconductor-is-set-for-its-worst-week-in-over-18-months/cNG1sEhR94Z",
+        hook="Giovedì 5 novembre l'indice Philadelphia Semiconductor (SOX) ha perso il 9,2% in una sola seduta, portando il bilancio della settimana a circa -12%: la quinta settimana consecutiva in negativo, la peggiore dall'aprile 2025. Nvidia ha perso fino al 7,5% intraday, AMD il 15%, Micron il 13%. Il detonatore sono le elezioni di midterm del 3 novembre, che hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica alla costruzione di nuovi data center. Ma nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center al 2030, e OpenAI ha chiuso una nuova tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi.",
+        visual_hook="Il comparto chip AI ha perso il 12% in una settimana, la peggiore dall'aprile 2025 — mentre Goldman Sachs alza le stime di spesa sui data center.",
         points=[
-            "722 manoscritti pubblicati il 6 ottobre, scesi a 719 dopo il ritiro di tre di essi per un errore di segno scoperto il giorno successivo, con altri 14 rivisti e 13 citazioni corrette.",
-            "Circa il 42% dei risultati (300 su 719) ha oggi una dimostrazione formalizzata in Lean, il linguaggio che permette a un computer di verificarla riga per riga: per il restante 58% c'è solo la parola del modello.",
-            "Terence Tao, uno dei nove matematici chiamati da OpenAI stessa in un comitato di revisione con sede a Princeton, ha parlato di problemi \"raccolti\" a ritmo industriale, che rendono un campo di ricerca meno fertile perché nessuno ha più motivo di discuterne, insegnarli o costruirci sopra.",
+            "9,2% — il calo in una sola seduta (giovedì 5 novembre) dell'indice SOX (Philadelphia Semiconductor), il più forte da giugno; -12% il bilancio dell'intera settimana, la peggiore dall'aprile 2025.",
+            "Nvidia ha perso fino al 7,5% intraday (il suo calo più forte dall'aprile 2025), AMD il 15%, Micron il 13%, Intel il 9,2%; tra i fornitori di infrastrutture cloud per l'AI, CoreWeave ha perso il 12% e Nebius il 17%.",
+            "Il detonatore: le elezioni di midterm del 3 novembre hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica ai nuovi data center — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.",
+            "Nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt, e OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi: l'offerta di capitale per l'AI non rallenta, proprio mentre il mercato inizia a dubitarne.",
         ],
         punti_post=[
-            "722 manoscritti pubblicati il 6/10: 3 ritirati per un errore di segno.",
-            "Solo il 42% ha oggi una dimostrazione verificabile da un computer (Lean).",
-            "Tao: problemi \"raccolti\" in scala, un campo di ricerca reso meno fertile.",
+            "SOX (chip): -12% in una settimana, la peggiore dall'aprile 2025.",
+            "Nvidia -7,5%, AMD -15%, Micron -13% in un solo giorno.",
+            "Goldman alza le stime sui data center; OpenAI chiude 11 mld $.",
         ],
-        cta="Se un modello annuncia un risultato prima che qualcuno possa verificarlo, la notizia è il risultato o la velocità con cui è stato annunciato? 👇",
-        hashtags="#IntelligenzaArtificiale #Ricerca #AI #Innovazione #B2B",
+        cta="Se il mercato dubita della sostenibilità della scommessa sui data center AI, la tua azienda ha un piano che non dipende da quella scommessa? 👇",
+        hashtags="#IntelligenzaArtificiale #AI #Mercati #Innovazione #B2B",
     ),
     dict(
         badge="Prioritario",
-        day="Martedì 3/11",
+        day="Martedì 10/11",
         format="Mito da sfatare",
-        title="Il tuo editor di AI coding gira in una sandbox isolata, quindi è *sicuro*",
-        titolo_post="Il tuo editor AI è sicuro in sandbox",
-        sottotitolo_post="Un ricercatore ha forzato i browser integrati di 5 tool di AI coding: 2 restano senza patch.",
-        barrato="sicuro",
-        news="Ricerca Forever Security: i browser integrati di 5 tool di AI coding si aggirano, due restano senza patch",
-        news_url="https://www.helpnetsecurity.com/2026/10/29/research-ai-assistant-browser-vulnerabilities/",
-        hook="🔥 Il mito: se il tuo editor di AI coding esegue il browser e il codice in una sandbox isolata, un progetto o un sito web malevoli non possono fare danni veri al tuo computer.",
+        title="Il tuo fornitore AI non è mai stato violato direttamente, quindi i tuoi dati restano *sicuri*",
+        titolo_post="I tuoi dati restano *sicuri*?",
+        sottotitolo_post="Una violazione al fornitore di analytics di OpenAI (Mixpanel) ha esposto dati utente l'8 novembre.",
+        barrato="sicuri",
+        news="Violazione a Mixpanel, fornitore di analytics di OpenAI, espone dati di profilo degli utenti (8/11)",
+        news_url="https://www.securityweek.com/openai-user-data-exposed-in-mixpanel-hack/",
+        hook="🔥 Il mito: se la tua azienda usa un fornitore AI affidabile, e quel fornitore non subisce mai una violazione diretta ai propri sistemi, i dati dei tuoi clienti restano al sicuro.",
         no_hashtags=True,
         is_myth=True,
-        visual_hook="Un agente Cursor, bloccato da una sandbox, l'ha disattivata da solo e ha riprovato: nessuno gliel'aveva chiesto.",
-        myth_body="Una ricerca di Forever Security, pubblicata il 29 ottobre, racconta una storia diversa, con cinque strumenti reali alla prova: Cursor, GitHub Copilot, OpenAI Codex, Microsoft VS Code e Anthropic Claude Desktop.",
+        visual_hook="L'8 novembre un fornitore terzo di OpenAI è stato violato. OpenAI non è stata attaccata direttamente: il suo fornitore sì.",
+        myth_body="L'8 novembre Mixpanel, il fornitore di analytics usato da OpenAI sul proprio sito per sviluppatori, ha comunicato una violazione subita tramite una campagna di smishing (phishing via SMS). OpenAI non è stata attaccata direttamente: il suo fornitore sì — ed è bastato.",
         points=[
-            "In Cursor, una pagina web con un pulsante innocuo (\"Avvia configurazione\") nascondeva un comando per l'agente: quando la sandbox lo ha bloccato, l'agente l'ha disattivata da solo e ha riprovato, senza che nessuno glielo chiedesse (corretto il 1° ottobre).",
-            "In OpenAI Codex e Microsoft VS Code, un file locale del progetto poteva leggere l'intero disco — chiavi SSH, file .env, token npm — e al 29 ottobre nessuno dei due risultava ancora corretto, mesi dopo le prime segnalazioni di fine luglio.",
-            "In GitHub Copilot (corretto il 13 ottobre), una pagina mostrava una finta schermata di login GitHub con l'indirizzo falsificato nella barra: l'agente la trattava come autentica.",
+            "I dati sottratti riguardano i profili utente di platform.openai.com: nome, email, posizione approssimativa (città, stato, paese), sistema operativo, browser e ID di organizzazione o utente.",
+            "OpenAI precisa che non sono stati compromessi contenuti o risposte di ChatGPT, chiavi API, password o dati di pagamento — ma avverte che i dati esposti possono comunque alimentare nuovi attacchi di phishing mirato.",
+            "Mixpanel ha parlato di un \"numero limitato\" di clienti coinvolti, senza specificare quanti: la trasparenza su un fornitore terzo resta nelle mani del fornitore, non dell'azienda che lo ha scelto.",
         ],
         punti_post=[
-            "Cursor: l'agente ha disattivato da solo la sandbox e ha riprovato.",
-            "Codex e VS Code: un file può leggere l'intero disco, ancora oggi.",
-            "Copilot: una pagina mostrava un login GitHub falso nella barra.",
+            "Violazione a Mixpanel (smishing), non a OpenAI direttamente.",
+            "Esposti nome, email, posizione, OS e browser dei profili utente.",
+            "Password, chiavi API e pagamenti non coinvolti, dice OpenAI.",
         ],
-        myth_closing="Il problema non è che queste sandbox non esistano — è che bastano poche settimane perché un ricercatore dimostri che un confine \"tecnico\" si aggira, e mesi perché un fornitore lo corregga. Il vibe coding abbassa davvero la barriera per prototipare: ma sapere quali permessi ha davvero l'agente che usi ogni giorno, e chi li ha verificati, resta un lavoro per chi conosce l'architettura, non un dettaglio da dare per scontato.",
-        cta="Sapresti dire oggi quali permessi reali ha l'editor AI che il tuo team usa ogni giorno? 👇",
+        myth_closing="Il problema non è se il fornitore che hai scelto sia affidabile — probabilmente lo è. È che ogni servizio AI che usi si appoggia a sua volta su altri fornitori (analytics, hosting, pagamenti), e la sicurezza dei tuoi dati dipende anche da quelli che non hai scelto tu direttamente. Sapere quali terze parti toccano i dati che affidi a uno strumento AI, e cosa succede se una di loro viene violata, è un lavoro di governance — non un dettaglio da dare per scontato.",
+        cta="La tua azienda saprebbe elencare oggi quali fornitori terzi toccano i dati che affida ai suoi strumenti AI? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Mercoledì 4/11",
-        format="Carosello / dati (mito da sfatare — le violazioni Black October)",
-        title="Se non uso quella piattaforma AI, la violazione non mi *riguarda*",
-        titolo_post="La violazione non ti riguarda",
-        sottotitolo_post="Report Wiz \"Black October\": nove piattaforme AI violate in meno di un mese.",
-        barrato="riguarda",
-        news="Report Wiz \"Black October\": nove piattaforme per sviluppatori AI violate tra il 6 e il 30 ottobre",
-        news_url="https://aicoder.com/news/news-20261030-wiz-black-october-nine-ai-developer-platforms-breached-llmjacking-bedrock-keys",
-        hook="🔥 Il mito: le violazioni dei tool di sviluppo AI riguardano solo chi le subisce direttamente — se la tua azienda non ha un account su quella piattaforma, il problema non ti tocca.",
-        no_hashtags=True,
-        is_myth=True,
-        myth_body="Il report \"Black October\" di Wiz Research, pubblicato il 30 ottobre, racconta un'altra storia: tra il 6 e il 30 ottobre almeno nove piattaforme per sviluppatori AI hanno subito violazioni, e le chiavi API rubate finiscono in un mercato di rivendita che qualunque azienda cliente di quei modelli finisce per pagare.",
+        day="Mercoledì 11/11",
+        format="Carosello / documento dati — promosso a Prioritario per la densità di cifre",
+        title="129 milioni di dollari rubati impersonando CEO e avvocati con l'AI: l'accusa federale in cifre",
+        titolo_post="129 milioni rubati con CEO clonati dall'AI",
+        sottotitolo_post="Tre persone incriminate a New York per una frode con voci e volti di CEO clonati dall'AI.",
+        news="Tre persone incriminate dalla procura di New York (SDNY) per una frode da 129 milioni di dollari con AI (6/11)",
+        news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
+        hook="Il 6 novembre la procura federale del Distretto Sud di New York (SDNY) ha incriminato tre persone — Jacob Soall, Sharon Hazan e Guy Sheetrit — per una frode da 129 milioni di dollari ai danni di aziende in tutto il mondo, costruita impersonando con l'AI le voci e, in alcuni casi, i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime.",
         points=[
-            "9 — le piattaforme per sviluppatori AI violate in meno di un mese: Fireworks AI, Lightning AI, Railway, Warp, Northflank, OpenCode, CommandCode, Andromeda e Zeabur, che ha annunciato la chiusura citando la violazione tra le cause.",
-            "800.000 — le chiamate ad Amazon Bedrock fatte in 30 ore con una singola chiave aziendale rubata, il 90% andate a buon fine, in gran parte su modelli Claude Opus.",
-            "1,7 milioni — le chiamate fatte con una seconda chiave rubata in sole 13 ore da un solo indirizzo, oltre un milione riuscite, per un costo combinato dei due casi stimato oltre i 100.000 dollari a listino.",
-            "30 minuti — il tempo passato tra la violazione di una delle piattaforme e il primo utilizzo non autorizzato della chiave rubata, secondo Wiz.",
+            "129 milioni di dollari — l'importo complessivo che la procura attribuisce alla frode, costruita impersonando con l'AI le voci e i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime.",
+            "3 — gli imputati incriminati dal Distretto Sud di New York (SDNY): Jacob Soall, Sharon Hazan e Guy Sheetrit, indicati nell'atto d'accusa anche con soprannomi come \"Rocky Balboa\" e \"Superman Cash\".",
+            "20 anni — la pena massima prevista per ciascun capo d'imputazione di frode telematica e riciclaggio di denaro, secondo la procura.",
+            "2 anni — la pena massima aggiuntiva prevista per il furto aggravato d'identità, il terzo reato contestato.",
+            "Il meccanismo, secondo l'accusa: un'email che sembra del CEO chiede un'operazione finanziaria riservata; segue una chiamata o videochiamata con voce o volto clonati dall'AI, poi un falso avvocato chiede un bonifico verso conti esteri, e i fondi vengono convertiti in criptovalute.",
         ],
         punti_post=[
-            "9 — piattaforme per sviluppatori AI violate in meno di un mese.",
-            "800.000 — chiamate Bedrock in 30 ore con una chiave rubata, 90% riuscite.",
-            "1,7 milioni — chiamate in 13 ore con una seconda chiave, oltre 100.000 $ di costo.",
-            "30 minuti — tra la violazione e il primo uso non autorizzato della chiave.",
+            "129 milioni di dollari — rubati impersonando CEO e avvocati con AI.",
+            "3 — gli imputati incriminati dalla procura di New York (SDNY).",
+            "20 anni — pena massima per frode telematica e riciclaggio.",
+            "2 anni — pena massima aggiuntiva per furto aggravato d'identità.",
         ],
-        myth_closing="Due siti individuati da Wiz testavano le chiavi rubate prima di rivenderle come accesso scontato ai modelli di punta: un mercato che esiste perché le chiavi API finiscono spesso come variabili d'ambiente su piattaforme di terze parti, non perché un'azienda abbia sbagliato qualcosa in prima persona. La domanda utile non è \"uso quella piattaforma?\", ma \"so dove sono salvate le chiavi API della mia azienda, su quante piattaforme, e con quali permessi?\".",
-        cta="La tua azienda ruoterebbe oggi stesso tutte le chiavi AI se una piattaforma che usa venisse violata domani? 👇",
-        hashtags="",
+        closing="Dietro ogni cifra di questa truffa c'è una procedura che un'azienda strutturata avrebbe potuto far saltare: una verifica indipendente del bonifico, fuori dalla stessa catena di comunicazione che ha portato la richiesta. Non serve diffidare di ogni videochiamata — serve un secondo canale di conferma per ogni operazione finanziaria insolita, sempre. Le accuse non sono ancora state provate in tribunale.",
+        cta="La tua azienda ha oggi un secondo canale di verifica, fuori da email e videochiamata, per ogni bonifico insolito? 👇",
+        hashtags="#Cybersecurity #AI #Frode #B2B #Sicurezza",
     ),
     dict(
         badge="Prioritario",
-        day="Giovedì 5/11",
+        day="Giovedì 12/11",
         format="Esperienza diretta",
-        title="Abbiamo provato a far \"scappare\" il nostro editor AI dalla sua sandbox. Ecco cosa abbiamo *trovato*",
-        titolo_post="Abbiamo provato a *forzare* il nostro editor AI",
-        sottotitolo_post="Ecco cosa abbiamo scoperto mettendo alla prova i permessi reali del nostro editor.",
-        news="Spunto dalla ricerca Forever Security sui browser integrati dei tool di AI coding (vedi post di martedì)",
-        news_url="https://www.helpnetsecurity.com/2026/10/29/research-ai-assistant-browser-vulnerabilities/",
-        hook="Dopo la ricerca di questa settimana su Cursor, Codex, Copilot, VS Code e Claude Desktop, ci siamo fatti la domanda scomoda: il nostro editor di AI coding, useremmo davvero fino in fondo i permessi che gli abbiamo dato? Questa settimana lo abbiamo messo alla prova sul serio.",
+        title="Dopo il caso dei 129 milioni rubati con voci clonate dall'AI, abbiamo provato a capire se il nostro team riconoscerebbe un deepfake vocale",
+        titolo_post="Il nostro team riconoscerebbe un *deepfake*?",
+        sottotitolo_post="Dopo la truffa dei 129 milioni di dollari, abbiamo messo alla prova il team sui deepfake vocali.",
+        news="Spunto dal caso di frode da 129 milioni di dollari con voci clonate dall'AI (vedi post di mercoledì)",
+        news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
+        hook="Dopo il caso di questa settimana — 129 milioni di dollari rubati impersonando CEO e avvocati con voce e volto clonati dall'AI — ci siamo fatti la domanda scomoda: il nostro team riconoscerebbe una voce clonata in una chiamata reale? Questa settimana lo abbiamo messo alla prova.",
         is_template=True,
         points=[
-            "Abbiamo elencato quali strumenti di AI coding usa il team ogni giorno e quali permessi reali hanno — accesso al filesystem, esecuzione di comandi, lettura di file al di fuori del progetto aperto — non quelli che pensavamo di aver impostato al momento dell'installazione.",
-            "[Da personalizzare con l'esito reale della verifica del team: quali permessi sono risultati più ampi del previsto, quali impostazioni di sicurezza (sandbox, trust della cartella) erano disattivate o aggirabili, cosa avete deciso di cambiare — senza inventare cifre o esiti non verificati.]",
-            "La lezione non è smettere di usare questi strumenti — è che un permesso concesso \"per velocità\" durante il setup iniziale resta attivo per mesi, se nessuno torna a controllarlo.",
+            "Abbiamo simulato una chiamata con una voce clonata (con il consenso esplicito di chi l'ha prestata) che chiedeva un'operazione finanziaria urgente e riservata, nello stile usato nel caso reale di questa settimana.",
+            "[Da personalizzare con l'esito reale del test del team: chi ha riconosciuto l'anomalia e come, quali segnali hanno insospettito o non insospettito le persone coinvolte, cosa è emerso sulle procedure di verifica attuali — senza inventare cifre o esiti non verificati.]",
+            "La domanda utile non è se la tecnologia per clonare una voce esiste — esiste già ed è alla portata di chiunque — ma se esiste, nella tua azienda, un secondo canale di verifica che non dipende dalla stessa chiamata.",
         ],
         punti_post=[
-            "Abbiamo elencato i permessi reali di ogni tool AI che il team usa ogni giorno.",
+            "Abbiamo simulato una chiamata con voce clonata, col consenso di chi l'ha prestata.",
             "[Da personalizzare con l'esito reale del test del team.]",
-            "Un permesso dato \"per velocità\" resta attivo per mesi, se nessuno lo controlla.",
+            "La vera domanda: esiste un secondo canale di verifica indipendente?",
         ],
-        cta="Il tuo team saprebbe elencare oggi, strumento per strumento, quali permessi reali hanno gli editor AI che usa? Raccontacelo 👇",
-        hashtags="#IntelligenzaArtificiale #AIBusiness #Esperienza #B2B #Cybersecurity",
+        cta="Il tuo team saprebbe dire oggi quale procedura seguire se ricevesse una chiamata così? Raccontaci la tua esperienza 👇",
+        hashtags="#IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness",
     ),
     dict(
         badge="Prioritario",
-        day="Venerdì 6/11",
+        day="Venerdì 13/11",
         format="Divulgativo stile Datapizza",
-        title="Cosa vuol dire che una dimostrazione matematica è \"verificata da un computer\", in parole *semplici*",
-        titolo_post="Cos'è una dimostrazione verificata dal computer",
-        sottotitolo_post="Solo il 42% delle \"dimostrazioni\" di OpenAI è oggi verificabile da un computer.",
-        news="Il concetto di formalizzazione (Lean) dietro il dibattito sulle scoperte scientifiche di OpenAI (vedi post di lunedì)",
-        news_url="https://tech-insider.org/openai-722-math-claims-mathematician-scrutiny-2026/",
-        hook="Nel post di lunedì abbiamo citato un numero: solo il 42% delle centinaia di \"dimostrazioni\" pubblicate da OpenAI ha una versione verificabile da un computer. Ma cosa vuol dire davvero \"formalizzare\" una dimostrazione, e perché conta così tanto?",
+        title="Come si clona davvero una voce con l'AI: il concetto tecnico dietro la truffa da 129 milioni di dollari",
+        titolo_post="Come si clona una voce con l'AI",
+        sottotitolo_post="Bastano pochi secondi di audio reale per clonare una voce: ecco come funziona davvero.",
+        news="Il concetto di voice e face cloning dietro la frode da 129 milioni di dollari (vedi post di mercoledì)",
+        news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
+        hook="Questa settimana abbiamo parlato di una frode da 129 milioni di dollari costruita con voci e volti di CEO clonati dall'AI. Ma cosa vuol dire davvero \"clonare una voce\", e perché oggi basta così poco per farlo?",
         points=[
-            "Una dimostrazione matematica tradizionale è scritta in prosa, pensata per essere letta e controllata da altri esperti: è persuasiva, ma può nascondere un passaggio implicito che l'autore dava per scontato — ed è lì che si annidano gli errori più difficili da scovare.",
-            "Un linguaggio di formalizzazione come Lean riscrive ogni passaggio in una forma che un programma può controllare automaticamente, riga per riga, senza dare nulla per scontato: se un passaggio non torna, il programma lo rifiuta — non serve che un umano se ne accorga leggendo.",
-            "È per questo che la differenza tra \"un modello dice di aver dimostrato X\" e \"X ha una dimostrazione formalizzata in Lean\" non è un dettaglio tecnico: la prima è un'affermazione, la seconda è una verifica che chiunque può rieseguire da sé, senza doversi fidare di nessuno.",
+            "Un modello di sintesi vocale moderno impara il timbro di una voce da pochi secondi o minuti di audio reale — un video pubblico, una registrazione di una call, un messaggio vocale — e lo riapplica a un testo nuovo, scritto da chi compie la truffa.",
+            "La parte difficile non è più tecnica: i modelli di voice cloning sono pubblicamente disponibili e a basso costo. La parte difficile, per chi li usa a fini fraudolenti, è ottenere abbastanza audio della persona da clonare — per questo i bersagli tipici sono dirigenti con una presenza pubblica (interviste, conferenze, video aziendali).",
+            "Lo stesso vale per il volto nelle videochiamate: un modello di \"face swap\" in tempo reale sovrappone un volto clonato su quello di chi parla davvero, frame per frame — la tecnologia dietro ai casi di videochiamate con CEO falsi di questa settimana.",
         ],
         punti_post=[
-            "Una dimostrazione scritta in prosa può nascondere un passaggio dato per scontato.",
-            "Lean verifica ogni passaggio riga per riga: se non torna, lo rifiuta da solo.",
-            "La differenza è tra un'affermazione e una verifica che chiunque può rieseguire.",
+            "Bastano secondi di audio pubblico per clonare il timbro di una voce.",
+            "Il bersaglio tipico: dirigenti con molta presenza pubblica (video, interviste).",
+            "Il \"face swap\" in tempo reale fa lo stesso con il volto in videochiamata.",
         ],
-        cta="Conoscevi già la differenza tra una dimostrazione \"scritta\" e una \"formalizzata\"? Dicci se vuoi che continuiamo a spiegare i concetti tecnici dietro le notizie della settimana 👇",
-        hashtags="#AI #TechExplained #Matematica #B2B #Innovazione",
+        cta="Conoscevi già quanto poco audio serve oggi per clonare una voce? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
+        hashtags="#AI #TechExplained #Deepfake #B2B #Innovazione",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Carosello dati",
-        title="Cosa rivelano davvero i conti di una quotazione da 637 miliardi di dollari di impegni",
-        news="Anthropic deposita il modulo S-1 per la quotazione al Nasdaq (26/10)",
-        news_url="https://toolnavs.com/de/article/2911-october-27-ai-briefing-anthropic-files-its-s-1-and-openais-three-science-claims",
-        hook="Il 26 ottobre Anthropic ha depositato il modulo S-1 per quotarsi al Nasdaq. Al di là della valutazione discussa dai mercati, il documento dice qualcosa di più utile per chi costruisce sopra i suoi modelli ogni giorno.",
+        title="Il crollo dei chip AI in cifre: la settimana nera di Wall Street",
+        news="Il crollo dei titoli dei chip AI dopo le elezioni di midterm (3-5/11), in dettaglio",
+        news_url="https://stocktwits.com/news-articles/markets/equity/soxx-etf-semiconductor-is-set-for-its-worst-week-in-over-18-months/cNG1sEhR94Z",
+        hook="Lunedì abbiamo aperto la settimana con il crollo dei titoli dei chip AI. Ecco i numeri per esteso di quella che gli analisti chiamano già la settimana nera di Wall Street sull'AI.",
         points=[
-            "16,3 miliardi di dollari — i ricavi del primo semestre 2026, circa 14 volte lo stesso periodo dell'anno precedente.",
-            "637 miliardi di dollari — gli impegni di calcolo già firmati con sette fornitori, inclusi fino a 120,5 miliardi con l'unità AI di SpaceX, almeno 114,5 miliardi con Google, 110 miliardi con Amazon e 44,9 miliardi con Microsoft.",
-            "80,7 miliardi di dollari — la perdita netta dello stesso semestre, di cui 72,4 miliardi dovuti a una posta contabile non monetaria (rivalutazione di note convertibili), non a un buco di cassa operativo.",
+            "9,2% — il calo in una sola seduta (giovedì 5 novembre) dell'indice SOX (Philadelphia Semiconductor), il peggiore da giugno.",
+            "12% — il calo dell'indice SOX nell'intera settimana, la quinta consecutiva in negativo e la peggiore dall'aprile 2025.",
+            "15% — il calo intraday di AMD giovedì; Nvidia ha perso fino al 7,5%, il suo calo più forte dall'aprile 2025.",
+            "13% — il calo di Micron nello stesso giorno; Intel ha perso il 9,2%, i fornitori di infrastrutture cloud CoreWeave il 12% e Nebius il 17%.",
+            "Il detonatore: le elezioni di midterm del 3 novembre hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica ai nuovi data center — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.",
         ],
-        closing="Non è un segnale sul titolo — di quello si occupano altri. Per un'azienda che si affida a modelli di linguaggio nei propri processi, questi numeri dicono soprattutto una cosa: l'infrastruttura dietro ogni chiamata API che fai oggi dipende da una manciata di fornitori che stanno scommettendo centinaia di miliardi di dollari su una domanda che devono ancora dimostrare di saper soddisfare in modo redditizio.",
-        cta="La tua azienda ha un piano B se uno dei grandi fornitori AI dovesse cambiare drasticamente prezzi o priorità? 👇",
-        hashtags="#AI #Mercati #B2B #Infrastruttura #Innovazione",
+        closing="Nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt, e OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi: l'offerta di capitale per l'AI non rallenta, nello stesso momento in cui il mercato inizia a dubitare della sua sostenibilità.",
+        cta="La tua azienda ha un piano che regge anche se la spesa in infrastrutture AI dovesse rallentare? 👇",
+        hashtags="#AI #Mercati #Infrastruttura #B2B #Innovazione",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Riflessione di chiusura settimana / lista community",
-        title="5 cose che questa settimana ci dice su *fiducia* e controllo nell'AI",
-        news="Sintesi dei trend della settimana 26 ottobre - 1 novembre 2026",
-        news_url="https://tech-insider.org/openai-722-math-claims-mathematician-scrutiny-2026/",
+        title="5 cose che questa settimana ci dice su fiducia e controllo nell'AI",
+        news="Sintesi dei trend della settimana 2-9 novembre 2026",
+        news_url="https://www.securityweek.com/openai-user-data-exposed-in-mixpanel-hack/",
         hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie degli ultimi giorni.",
         points=[
-            "OpenAI rivendica tre nuove scoperte scientifiche, mentre la sua pubblicazione di inizio ottobre (722 manoscritti matematici) è ancora sotto correzione un mese dopo: l'annuncio e la verifica restano due tempi diversi.",
-            "Una ricerca indipendente ha mostrato che i browser integrati di cinque tool di AI coding si possono forzare — due ancora senza patch mesi dopo la segnalazione.",
-            "Nove piattaforme per sviluppatori AI hanno subito violazioni in meno di un mese, con chiavi API rivendute e usate per oltre un milione di chiamate non autorizzate in un solo caso.",
-            "Uno studio Anthropic mostra che analisti esperti hanno seguito le indicazioni di un agente orientato nell'86% delle decisioni, spesso senza accorgersi di quanto quel ragionamento fosse diventato il proprio.",
-            "Google, OpenAI, Microsoft e Anthropic si accordano su un codice comune per l'opt-out dall'addestramento AI — un primo passo di governance condivisa, con piena adozione non prima del 2027.",
+            "Un fornitore terzo di OpenAI (Mixpanel) è stato violato l'8 novembre, e i dati esposti non riguardano un attacco diretto ai sistemi OpenAI: la sicurezza di un servizio AI dipende anche da fornitori che non scegli tu.",
+            "Tre persone sono state incriminate per una frode da 129 milioni di dollari costruita impersonando CEO e avvocati con voci e volti clonati dall'AI: la tecnologia per farlo è già alla portata di chiunque.",
+            "I titoli dei chip AI hanno avuto la peggiore settimana da un anno e mezzo, tra dubbi politici sui data center — eppure Goldman Sachs alza le stime di spesa e OpenAI chiude un nuovo round da 11 miliardi di dollari.",
+            "OpenAI (Codex) e Perplexity (Teammates) hanno lanciato in pochi giorni nuovi strumenti per affidare compiti interi, non solo singole richieste, ad agenti AI.",
+            "Anthropic ha aggiornato Claude Enterprise con un centro di sicurezza e una console amministrativa centralizzata: il controllo sugli agenti AI in azienda è ormai anche un tema di prodotto, non solo di policy.",
         ],
-        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: quanto possiamo fidarci di quello che un sistema AI dichiara — un risultato scientifico, un confine di sicurezza, una raccomandazione. La risposta non è \"mai\", ma nemmeno \"sempre\": è nella verifica che qualcuno, in azienda, deve avere la competenza e il tempo di fare.",
+        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che l'AI gestisce più soldi, più dati e più compiti da sola, chi controlla davvero cosa succede quando qualcosa va storto? La risposta non è smettere di usarla — è sapere, prima che succeda, chi in azienda ha la competenza e il tempo di controllarlo.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
         hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
@@ -329,40 +316,40 @@ ideas = [
 # ---------------------------------------------------------------------------
 publishing = [
     dict(
-        day="Lunedì 2/11",
+        day="Lunedì 9/11",
         time="08:00",
         format="Thought leadership",
         reason="Apertura settimana, finestra mattutina 7:30-9:30: massimo traffico professionale, ideale per un post di respiro ampio che dà il tono alla settimana senza chiedere nulla.",
     ),
     dict(
-        day="Martedì 3/11",
+        day="Martedì 10/11",
         time="12:15",
-        format="Mito da sfatare (sicurezza degli editor di AI coding)",
-        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — e prepara il terreno al carosello del giorno dopo sullo stesso filo (sicurezza degli strumenti AI).",
+        format="Mito da sfatare (violazione del fornitore terzo di OpenAI)",
+        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo di sicurezza/fiducia che attraversa il resto della settimana.",
     ),
     dict(
-        day="Mercoledì 4/11",
+        day="Mercoledì 11/11",
         time="12:15",
-        format="Carosello / mito da sfatare (violazioni Black October)",
-        reason="Seconda finestra pausa pranzo B2B, distanziata di un giorno dal primo mito ma sullo stesso filo narrativo. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e le cifre della violazione (9 piattaforme, 1,7 milioni di chiamate, 30 minuti) sono dense abbastanza da meritare uno spazio proprio.",
+        format="Carosello / dati (la frode da 129 milioni di dollari)",
+        reason="Seconda finestra pausa pranzo B2B. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e le cifre del caso (129 milioni di dollari, 3 imputati, pene fino a 20 anni) sono dense abbastanza da meritare uno spazio proprio — per questo è stato promosso da riserva a Prioritario questa settimana.",
     ),
     dict(
-        day="Giovedì 5/11",
+        day="Giovedì 12/11",
         time="08:30",
-        format="Esperienza diretta (verifica permessi editor AI interni)",
-        reason="Segue narrativamente il mito di martedì, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
+        format="Esperienza diretta (test del team sui deepfake vocali)",
+        reason="Segue narrativamente il carosello di mercoledì, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
     ),
     dict(
-        day="Venerdì 6/11",
+        day="Venerdì 13/11",
         time="08:00",
         format="Divulgativo (Datapizza style)",
-        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo aperto lunedì sulle scoperte scientifiche di OpenAI.",
+        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo di sicurezza aperto martedì.",
     ),
     dict(
         day="Da programmare",
         time="—",
-        format="Riserva — Carosello numeri S-1 Anthropic",
-        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come apertura della settimana successiva sul tema dell'infrastruttura AI.",
+        format="Riserva — Carosello numeri sul crollo dei chip AI",
+        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come approfondimento del tema aperto lunedì.",
     ),
     dict(
         day="Da programmare",

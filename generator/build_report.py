@@ -218,10 +218,13 @@ ideas = [
             "3 — gli imputati incriminati dalla procura di New York (SDNY).",
             "20 anni — pena massima per frode telematica e riciclaggio.",
             "2 anni — pena massima aggiuntiva per furto aggravato d'identità.",
+            "Mail finta del CEO, poi voce clonata, poi falso avvocato per il bonifico.",
+            "I fondi venivano convertiti in criptovalute dopo il bonifico.",
         ],
         closing="Dietro ogni cifra di questa truffa c'è una procedura che un'azienda strutturata avrebbe potuto far saltare: una verifica indipendente del bonifico, fuori dalla stessa catena di comunicazione che ha portato la richiesta. Non serve diffidare di ogni videochiamata — serve un secondo canale di conferma per ogni operazione finanziaria insolita, sempre. Le accuse non sono ancora state provate in tribunale.",
         cta="La tua azienda ha oggi un secondo canale di verifica, fuori da email e videochiamata, per ogni bonifico insolito? 👇",
         hashtags="#Cybersecurity #AI #Frode #B2B #Sicurezza",
+        senza_cta=True,
     ),
     dict(
         badge="Prioritario",

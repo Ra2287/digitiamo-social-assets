@@ -581,11 +581,16 @@ def slides_for(idea, post_type, d=None):
                         title=closing_title,
                         body=_log(d, "sintesi", body, BUDGET["corpo"], n)))
 
-    cta = _cta_for(idea, post_type)
-    if len(cta["title"].replace("*", "")) > BUDGET["titolo"]:
-        raise PlanError("cta_title di %d caratteri (massimo %d). Idea: %r"
-                        % (len(cta["title"].replace("*", "")), BUDGET["titolo"], idea.get("title")))
-    out.append(cta)
+    # Di default ogni post chiude con la CTA (Team Augmentation o AI Business
+    # Academy a seconda del registro). `senza_cta` toglie quella slide per
+    # un'idea specifica, quando l'offerta non e' pertinente al contenuto:
+    # senza il flag non cambia nulla (nessuna settimana precedente cambia).
+    if not idea.get("senza_cta"):
+        cta = _cta_for(idea, post_type)
+        if len(cta["title"].replace("*", "")) > BUDGET["titolo"]:
+            raise PlanError("cta_title di %d caratteri (massimo %d). Idea: %r"
+                            % (len(cta["title"].replace("*", "")), BUDGET["titolo"], idea.get("title")))
+        out.append(cta)
     for i, sl in enumerate(out):
         sl["surface"] = templates.surface_for(sl, i, len(out))
     return out

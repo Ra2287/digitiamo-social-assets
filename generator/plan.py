@@ -570,9 +570,17 @@ def slides_for(idea, post_type, d=None):
     # risulta una quasi-copia della copertina. `closing_title` lascia
     # scegliere un titolo diverso per la sintesi; senza, il default resta
     # quello di sempre (nessuna settimana precedente cambia).
+    #
+    # Il corpo di default e' la chiusura lunga del report, troncata al primo
+    # confine entro il budget: su una chiusura lunga il taglio puo' fermarsi
+    # a una frase introduttiva, che ripete le stesse parole del titolo
+    # (es. "procedura" + "avrebbe potuto") senza aggiungere l'informazione
+    # concreta che segue nel report. `closing_body` lascia scrivere una
+    # versione breve e autonoma apposta per la slide, che non deve ripetere
+    # il titolo; senza, il default resta quello di sempre.
     tail = idea.get("closing") or idea.get("myth_closing")
     if tail:
-        body, n = fit(tail, BUDGET["corpo"])
+        body, n = fit(idea.get("closing_body") or tail, BUDGET["corpo"])
         closing_title = idea.get("closing_title") or head.replace("*", "")
         if len(closing_title.replace("*", "")) > BUDGET["titolo"]:
             raise PlanError("closing_title di %d caratteri (massimo %d). Idea: %r"

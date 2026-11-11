@@ -562,12 +562,23 @@ def slides_for(idea, post_type, d=None):
         out.append(dict(kind="checklist", eyebrow="I punti", title=title,
                         items=items, source=source))
 
-    # La chiusura: il titolo e' quello del post, il corpo la chiusura accorciata.
+    # La chiusura: di default il titolo e' quello del post (ripetuto dalla
+    # copertina), il corpo la chiusura accorciata. Ripetere il titolo va bene
+    # quando la copertina e' un hook testuale (il mito), ma su un carosello
+    # dati la copertina mostra gia' la cifra gigante e il titolo per esteso
+    # come sottotitolo: la slide di chiusura che ripete lo stesso titolo
+    # risulta una quasi-copia della copertina. `closing_title` lascia
+    # scegliere un titolo diverso per la sintesi; senza, il default resta
+    # quello di sempre (nessuna settimana precedente cambia).
     tail = idea.get("closing") or idea.get("myth_closing")
     if tail:
         body, n = fit(tail, BUDGET["corpo"])
+        closing_title = idea.get("closing_title") or head.replace("*", "")
+        if len(closing_title.replace("*", "")) > BUDGET["titolo"]:
+            raise PlanError("closing_title di %d caratteri (massimo %d). Idea: %r"
+                            % (len(closing_title.replace("*", "")), BUDGET["titolo"], idea.get("title")))
         out.append(dict(kind="statement", eyebrow="In sintesi",
-                        title=head.replace("*", ""),
+                        title=closing_title,
                         body=_log(d, "sintesi", body, BUDGET["corpo"], n)))
 
     cta = _cta_for(idea, post_type)

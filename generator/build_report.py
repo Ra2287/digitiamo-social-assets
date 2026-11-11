@@ -202,6 +202,7 @@ ideas = [
         title="129 milioni di dollari rubati impersonando CEO e avvocati con l'AI: l'accusa federale in cifre",
         titolo_post="129 milioni rubati con CEO clonati dall'AI",
         sottotitolo_post="Tre persone incriminate a New York per una frode con voci e volti di CEO clonati dall'AI.",
+        closing_title="Una procedura avrebbe potuto *fermarla*",
         news="Tre persone incriminate dalla procura di New York (SDNY) per una frode da 129 milioni di dollari con AI (6/11)",
         news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
         hook="Il 6 novembre la procura federale del Distretto Sud di New York (SDNY) ha incriminato tre persone — Jacob Soall, Sharon Hazan e Guy Sheetrit — per una frode da 129 milioni di dollari ai danni di aziende in tutto il mondo, costruita impersonando con l'AI le voci e, in alcuni casi, i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime.",

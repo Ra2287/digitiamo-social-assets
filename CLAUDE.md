@@ -509,6 +509,23 @@ I post citano notizie reali. Regole dal brief dell'agente PED:
 - Se un dato ha una qualifica (analisi indipendente, non istituzionale), quella
   qualifica va sulla slide.
 
+### Fonti: tech/AI, e anche design (dal 12/11/2026)
+
+La ricerca settimanale non si ferma alle testate tech: copre anche **trend di
+design, innovazione e AI applicata al design** (richiesta di Fabio,
+12/11/2026). Almeno un trend del report deve venire da qui, se nella settimana
+c'è una notizia che regge le regole sopra. Punti di partenza, non un elenco
+chiuso — e i fatti si verificano comunque sulla fonte primaria:
+
+| Area | Dove guardare |
+|---|---|
+| Trend di design e innovazione | Dezeen, Designboom, Fast Company (sezione Design), It's Nice That, Creative Bloq, Wallpaper*, Domus, Interni |
+| UX e prodotto | Nielsen Norman Group, Smashing Magazine, UX Collective |
+| AI nel design (fonti primarie) | blog e changelog di Figma, Adobe (Firefly), Canva, Framer, Runway; annunci di Google, OpenAI, Anthropic sugli strumenti di design |
+
+UX Collective è una piattaforma aperta su Medium: come per il caso del 7
+settembre, un articolo lì è un'opinione da verificare, non una fonte.
+
 ## Ambiente
 
 ```bash

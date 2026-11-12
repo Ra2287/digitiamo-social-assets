@@ -137,7 +137,7 @@ def cover_page():
 def toc_page():
     items = [
         ("01", "Come sono andati i post", "Bilancio della settimana precedente: pubblicati, in sospeso, metriche"),
-        ("02", "Trend del settore", "8-10 sviluppi chiave della settimana, con fonti"),
+        ("02", "Trend del settore", "8-10 sviluppi chiave della settimana, tra tech, AI e design, con fonti"),
         ("03", "Analisi competitor", "5 player che si sono mossi in modo significativo"),
         ("04", "Idee di post (PED)", "7 idee: 5 Prioritario + 2 Riserva, arco narrativo settimanale"),
         ("05", "Suggerimenti di pubblicazione", "Calendario, orari e ragionamento sulla frequenza"),
@@ -155,7 +155,7 @@ def toc_page():
   {rows}
   <div style="margin-top:40px; background:{C['tint']}; border-radius:12px; padding:22px 24px;">
     <div style="font-weight:800; font-size:13px; color:{C['brand']}; text-transform:uppercase; margin-bottom:8px;">Nota metodologica</div>
-    <div style="font-size:13px; color:#3a3d6b;">Le notizie sono state raccolte da fonti dirette (comunicati stampa, testate tech verificate) negli ultimi 7 giorni. Le idee di post sono pensate come un vero piano editoriale settimanale con un arco narrativo, non come una lista di formati intercambiabili — l'ordine e il collegamento tra i post è intenzionale.</div>
+    <div style="font-size:13px; color:#3a3d6b;">Le notizie sono state raccolte da fonti dirette (comunicati stampa, testate tech e di design verificate) negli ultimi 7 giorni. Le idee di post sono pensate come un vero piano editoriale settimanale con un arco narrativo, non come una lista di formati intercambiabili — l'ordine e il collegamento tra i post è intenzionale.</div>
   </div>
 </div>
 """

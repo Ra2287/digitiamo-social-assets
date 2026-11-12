@@ -526,6 +526,22 @@ chiuso — e i fatti si verificano comunque sulla fonte primaria:
 UX Collective è una piattaforma aperta su Medium: come per il caso del 7
 settembre, un articolo lì è un'opinione da verificare, non una fonte.
 
+### Fonti AI: un set di partenza (dal 12/11/2026)
+
+Per non disperdersi in una ricerca generica sull'AI, un set di partenza
+(richiesta di Ramona, 12/11/2026):
+
+| Cadenza | Fonte |
+|---|---|
+| Quotidiana, 5 minuti | TLDR AI, The Rundown, più un giro veloce su Techmeme |
+| Settimanale, più in profondità | The Batch (DeepLearning.AI), il blog di Simon Willison |
+| Pratica/tecnica | Latent Space, il canale YouTube di Andrej Karpathy |
+| Quadro d'insieme | Stratechery, Exponential View, più una fonte scettica/critica a scelta, per bilanciare |
+
+Come per il design: punti di partenza, non un elenco chiuso, e i fatti si
+verificano comunque sulla fonte primaria citata, non sul riassunto di queste
+testate.
+
 ## Ambiente
 
 ```bash

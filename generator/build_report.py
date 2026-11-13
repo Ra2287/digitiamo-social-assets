@@ -16,78 +16,79 @@ C = {
     "white": _C["white"],
 }
 
-WEEK_LABEL = "9 – 15 novembre 2026"
-GENERATED_ON = "Lunedì 9 novembre 2026"
+WEEK_LABEL = "16 – 22 novembre 2026"
+GENERATED_ON = "Lunedì 16 novembre 2026"
 
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Notizie del periodo 2-9 novembre 2026, verificate su fonte diretta (non sui
-# riassunti aggregatori). Filo conduttore della settimana: mentre il mercato
-# comincia apertamente a dubitare della sostenibilita' della spesa in
-# infrastrutture AI (il crollo dei chip legato alle elezioni di midterm),
-# l'industria stessa mostra quanto sia ancora fragile sul fronte della fiducia
-# e del controllo — una violazione a un fornitore terzo di OpenAI, una frode
-# da 129 milioni di dollari costruita con voci e volti clonati dall'AI, e la
-# corsa di OpenAI, Perplexity e Anthropic ad affidare compiti sempre piu'
-# lunghi e sensibili ad agenti autonomi, proprio mentre il controllo su quegli
-# agenti diventa un problema di prodotto prima ancora che di policy.
+# Notizie del periodo 6-13 novembre 2026, verificate su fonte diretta (non sui
+# riassunti aggregatori). Filo conduttore della settimana: gli agenti AI
+# smettono di essere una demo e diventano prodotto in ufficio (Anthropic),
+# nella creativita' (Adobe), nel rapporto con i clienti (OpenAI) e nel lavoro
+# quotidiano misurato con numeri reali, non proiezioni (Salesforce) — mentre,
+# nello stesso giro di giorni, un fornitore AI non rispetta una promessa
+# contrattuale scritta nero su bianco (Notion/Fireworks) e un attaccante usa
+# lo stesso tipo di strumento — un framework di agenti AI — per violare
+# un'azienda (Chainstack). Chiude il quadro il recupero parziale dei chip AI
+# dopo il crollo della settimana precedente, e l'uscita di Google DeepMind
+# dalla sola chat verso robotica industriale e genomica.
 trends = [
     dict(
-        title="I titoli dei chip AI hanno la peggiore settimana da un anno e mezzo, tra dubbi sui data center",
-        what="Giovedì 5 novembre l'indice Philadelphia Semiconductor (SOX) ha perso il 9,2% in una sola seduta — il calo piu' forte da giugno — portando il bilancio settimanale a circa -12%, la quinta settimana consecutiva in negativo e la peggiore dall'aprile 2025. Nvidia ha perso fino al 7,5% intraday (il suo calo piu' forte dall'aprile 2025), AMD il 15%, Micron il 13%, Intel il 9,2%; tra i fornitori di infrastrutture cloud per l'AI, CoreWeave ha perso il 12% e Nebius il 17%. Il detonatore sono le elezioni di midterm di martedi' 3 novembre, che hanno dato ai Democratici la maggioranza di Camera e Senato: secondo gli osservatori di mercato, il risultato alimenta l'opposizione politica alla costruzione di nuovi data center, già contestati per i costi energetici, l'impatto ambientale e l'affidabilità della rete elettrica — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.",
-        why="E' il tipo di notizia con la ricaduta pratica più diretta della settimana per chi lavora con l'AI: un dubbio di mercato sulla sostenibilità della spesa in infrastrutture non è un film lontano da chi la usa ogni giorno, perché è la stessa spesa che tiene bassi i prezzi delle API su cui le aziende costruiscono i propri prodotti.",
-        source="Stocktwits (dati intraday di mercato)",
-        url="https://stocktwits.com/news-articles/markets/equity/soxx-etf-semiconductor-is-set-for-its-worst-week-in-over-18-months/cNG1sEhR94Z",
+        title="Anthropic trasforma Claude in una suite per ufficio, a pochi mesi da una possibile IPO",
+        what="Il 10 novembre Anthropic ha ampliato l'offerta \"da ufficio\" di Claude con Claude Sheets (fogli di calcolo) e Claude Whiteboards, affiancandoli ai già annunciati Claude Docs e Slides, e ha anticipato l'arrivo di Claude Data e Claude Meetings. Ha introdotto anche connettori interattivi che permettono di lavorare dentro app partner (Adobe, Atlassian) senza cambiare scheda, più plugin di Salesforce (beta), NetSuite e Workday (beta) con competenze integrate per preparazione vendite, analisi finanziaria e pratiche HR come ferie e note spese. L'annuncio arriva, secondo diversi osservatori, in un momento di preparazione a una possibile quotazione in borsa di Anthropic.",
+        why="Broad appeal diretto: è la stessa battaglia per il posto di lavoro quotidiano che Microsoft combatte con Copilot e Google con Gemini in Workspace, e riguarda ogni azienda che deve decidere quali strumenti AI abilitare per i propri team.",
+        source="Constellation Research",
+        url="https://www.constellationr.com/insights/news/anthropic-rounds-out-its-office-ambitions-claude-sheets-whiteboards-and-more",
     ),
     dict(
-        title="Nella stessa settimana, OpenAI chiude un'altra tranche di finanziamento da 11 miliardi e Goldman Sachs alza le stime sui data center",
-        what="Venerdì 6 novembre Bloomberg ha riportato, citando fonti vicine alla trattativa, che OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi di dollari. Nello stesso giro di giorni Goldman Sachs ha alzato la propria stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt — un aumento che implica centinaia di miliardi di dollari di spesa cumulata in più rispetto alle stime precedenti.",
-        why="E' il contrappunto diretto al trend precedente: mentre il mercato azionario inizia a dubitare della sostenibilità della scommessa sui data center, i capitali per finanziarla continuano ad arrivare e le stime di spesa continuano a salire — un disallineamento che vale la pena notare, non un segnale in una direzione sola.",
-        source="GV Wire (Reuters/Bloomberg)",
-        url="https://gvwire.com/2026/11/06/openai-secures-11-billion-funding-at-1-25-trillion-valuation-bloomberg-news-reports/",
+        title="OpenAI porta le aziende dentro ChatGPT con i Business Agent verificati",
+        what="Il 10 novembre OpenAI ha lanciato in beta, per ora negli Stati Uniti e per aziende di e-commerce e servizi online, i \"Business Agent\": agenti che rappresentano un marchio dentro ChatGPT quando l'azienda viene citata in una risposta. Un'azienda rivendica e verifica la propria organizzazione nel nuovo \"Business Hub\" (verifica tramite telefono, email aziendale, dominio del sito o Shopify, con controllo d'identità via Persona), imposta le istruzioni e il contesto del proprio agente, e consulta dati su quante volte viene citata nelle risposte di ChatGPT e su quali argomenti emerge. Le chat con un business agent restano etichettate e separate dalla conversazione principale dell'utente.",
+        why="Cambia il modo in cui i consumatori scopriranno e parleranno con le aziende prima ancora di arrivare al loro sito: un impatto diretto su marketing e relazione col cliente, visibile a un pubblico ampio anche fuori dagli addetti ai lavori.",
+        source="Let's Data Science (The Verge)",
+        url="https://letsdatascience.com/news/openai-launches-verified-business-agents-in-chatgpt-beta-a88f185a",
     ),
     dict(
-        title="Una violazione al fornitore di analytics di OpenAI espone dati di profilo degli utenti",
-        what="L'8 novembre Mixpanel, il fornitore di analytics usato da OpenAI sul proprio sito per sviluppatori (platform.openai.com), ha comunicato di aver subito una violazione tramite una campagna di smishing (phishing via SMS), senza fornire dettagli tecnici su come l'attaccante abbia ottenuto l'accesso. OpenAI ha dichiarato che il dataset sottratto riguarda nome, email, posizione approssimativa (città/stato/paese) ricavata dal browser, sistema operativo, browser e ID di organizzazione o utente dei profili registrati sulla piattaforma — non contenuti o risposte di ChatGPT, non chiavi API, password o dati di pagamento. OpenAI ha rimosso Mixpanel dai servizi di produzione e sta notificando direttamente le organizzazioni coinvolte.",
-        why="Tocca un punto che riguarda ogni azienda che integra un servizio AI nei propri processi, non solo chi usa ChatGPT: la sicurezza dei propri dati dipende anche dai fornitori che il fornitore scelto ha scelto a sua volta, e che l'azienda cliente non controlla né sceglie direttamente.",
-        source="SecurityWeek",
-        url="https://www.securityweek.com/openai-user-data-exposed-in-mixpanel-hack/",
+        title="Adobe trasforma Firefly in uno \"studio creativo AI\" con agenti sempre attivi (Adobe MAX)",
+        what="Il 10 novembre, ad Adobe MAX a Miami Beach, Adobe ha ampliato Firefly come \"AI creative studio\": il Creative Agent lavora ora dentro Firefly e nei principali programmi Creative Cloud (Photoshop, Premiere, Illustrator, InDesign, After Effects, Frame.io), con una \"Plan Mode\" che mostra il piano prima di eseguirlo e agenti \"always-on\" (anteprima) che lavorano in background su compiti ricorrenti anche quando l'utente è assente. Arrivano anche Firefly Design (beta: illustrazione, foto, animazione, 3D e stampa in un solo spazio) e Firefly Builder (beta privata), che trasforma una descrizione in linguaggio naturale in un sito, una presentazione o un'app funzionante senza scrivere codice. Secondo il report Creators' Toolkit di Adobe, il 78% dei creator dichiara che l'AI generativa ha accelerato la crescita del proprio business.",
+        why="Trend di design e innovazione: mostra gli strumenti creativi diventare agentic, con ricadute dirette su chi produce contenuti e grafica per il marketing — rilevante per un pubblico ampio, non solo per i designer.",
+        source="Adobe (news.adobe.com)",
+        url="https://news.adobe.com/news/2026/11/adobe-firefly-expands",
     ),
     dict(
-        title="Tre persone incriminate per una frode da 129 milioni di dollari costruita impersonando CEO e avvocati con l'AI",
-        what="Il 6 novembre la procura federale del Distretto Sud di New York (SDNY) ha incriminato tre persone — Jacob Soall, Sharon Hazan e Guy Sheetrit — per una presunta frode da 129 milioni di dollari ai danni di aziende in tutto il mondo. Secondo l'accusa, il gruppo impersonava CEO e avvocati usando l'AI per clonare voci e, in alcuni casi, volti nelle videochiamate: le vittime, tipicamente nei reparti contabilità, ricevevano prima un'email che sembrava del CEO con una richiesta finanziaria riservata, poi una chiamata o videochiamata con voce o volto clonati, seguita da un falso avvocato che chiedeva un bonifico verso conti esteri; i fondi venivano poi convertiti in criptovalute. I capi d'imputazione sono frode telematica, furto aggravato d'identità e riciclaggio di denaro, con pene massime rispettivamente di 20, 2 e 20 anni per capo d'accusa. Le accuse non sono ancora state provate in tribunale.",
-        why="E' il tipo di notizia che riguarda chiunque abbia un reparto contabilità e un CEO con una minima presenza pubblica, non solo chi lavora nell'AI: la tecnologia per clonare una voce o un volto da pochi secondi di video pubblico è già alla portata di chiunque, e il bersaglio non è il sistema informatico ma la procedura umana che autorizza un bonifico.",
-        source="KTVU (FOX)",
-        url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
+        title="Google DeepMind porta l'AI nei robot di fabbrica e nella genetica, con Gemini Robotics 2.5 e AlphaGenome 2",
+        what="L'11 novembre Google DeepMind ha rilasciato Gemini Robotics 2.5, descritto come il suo modello vision-language-action più capace: testato su oltre 200 compiti, con tassi di successo dal 30% al 100% a seconda del compito e il 20-30% più veloce della versione precedente; in un progetto pilota con Mercedes-Benz ha impacchettato componenti auto con un tasso di successo del 96%. È in distribuzione con partner come Apptronik, Agile Robots e Boston Dynamics. Lo stesso giorno DeepMind ha rilasciato AlphaGenome 2, un modello che predice come le sequenze di DNA e le loro varianti influenzano i diversi tipi di cellule umane, costruito sui dati dell'Human Cell Atlas — non approvato per uso clinico o diagnostico.",
+        why="Mostra l'AI uscire dalla chat ed entrare nel mondo fisico e nella ricerca scientifica: due ambiti lontani dal software gestionale ma che colpiscono l'immaginazione di un pubblico ampio, con un esempio industriale (Mercedes-Benz) facilmente comprensibile.",
+        source="SiliconANGLE",
+        url="https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model",
     ),
     dict(
-        title="OpenAI rilascia Codex CLI 0.167.0 con un \"centro di comando\" per più agenti in parallelo",
-        what="Il 6 novembre OpenAI ha reso stabile Codex CLI 0.167.0, con un pannello (\"agent command center\") che mostra in un'unica vista gli agenti attivi, in coda e completati su tutte le sessioni aperte, segnalando i risultati non ancora letti. La versione aggiunge anche il passaggio tra backend diversi senza perdere la bozza del prompt in corso (da un executor locale a una sessione cloud, per esempio), anteprime delle immagini allegate nel composer, e un wizard di configurazione per Google Cloud Vertex AI pensato per le aziende con vincoli di residenza dei dati.",
-        why="E' un segnale concreto di dove si sta spostando lo sviluppo assistito dall'AI: non più una singola richiesta a cui rispondere, ma più agenti che lavorano in parallelo e che richiedono uno strumento dedicato solo per tenerne traccia — un cambio di scala nel lavoro quotidiano di un team di sviluppo, non solo una nuova funzione.",
-        source="Changelog di Codex CLI (Daniel Vaughan)",
-        url="https://codex.danielvaughan.com/2026/11/06/codex-v0167-stable-agent-command-center-multi-backend-image-attachments-gcp-vertex/",
+        title="Notion conferma: la violazione al fornitore AI Fireworks ha esposto chat di alcuni clienti, nonostante la promessa di \"zero data retention\"",
+        what="Notion ha comunicato che una violazione subita dal proprio fornitore di infrastruttura AI, Fireworks AI (intrusione iniziata il 6 ottobre, con accesso ai sistemi di produzione confermato il 24 ottobre), ha esposto le trascrizioni delle chat AI di una minoranza degli spazi di lavoro — meno dell'1%, secondo Notion — usate per la funzione \"Insights\" e per l'inferenza di modelli open-weight. Fireworks aveva un impegno contrattuale di \"zero data retention\" con Notion, ma le indagini di Notion hanno trovato che i dati erano stati comunque conservati sugli endpoint usati. Notion ha notificato Fireworks il 2 novembre, ricevuto conferma dell'accesso non autorizzato il 6 novembre, si è disconnessa dal fornitore, ha cancellato i dati e disabilitato Insights durante l'indagine.",
+        why="Colpisce un prodotto usatissimo nel lavoro quotidiano di moltissime aziende e mostra che anche una garanzia contrattuale scritta nero su bianco può non reggere nei fatti — un rischio pratico, non teorico, per chiunque affidi dati a un fornitore AI.",
+        source="Notion (centro assistenza)",
+        url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
     ),
     dict(
-        title="Perplexity lancia \"Teammates\", agenti AI persistenti per compiti che durano giorni o settimane",
-        what="Giovedì 5 novembre Perplexity ha lanciato Teammates, agenti a cui si affida una responsabilità continuativa — gestire una campagna, smistare segnalazioni, monitorare metriche, condurre ricerche di mercato — invece di una singola richiesta. Ogni teammate ha un proprio desktop e browser con sessioni indipendenti, pianifica i compiti, coinvolge altri agenti quando il lavoro cresce, e può collaborare con i colleghi umani anche su Slack. La funzione si basa su Perplexity Computer (riprendendone plugin, progetti e memoria) ed è per ora disponibile solo via web per gli abbonati Max (200 dollari al mese).",
-        why="Insieme al rilascio di Codex della stessa settimana, mostra la stessa direzione da due fornitori diversi: affidare all'AI non più singole richieste ma responsabilità continuative nel tempo — il che sposta anche il tema del controllo, perché un agente che lavora per giorni senza supervisione diretta richiede un modo diverso di verificarne l'operato.",
-        source="Digital Trends (via LetsDataScience)",
-        url="https://letsdatascience.com/news/perplexity-launches-teammates-persistent-ai-agents-for-max-s-704b7a36",
+        title="Gli \"AI coworker\" di Salesforce crescono di 21 volte in tre mesi: le aziende iniziano davvero a delegare lavoro vero agli agenti",
+        what="Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in soli tre mesi. Tra i casi citati: Fulton Bank lo usa per oltre 20 casi d'uso su circa 3.000 utenti; Adecco Group lo sta estendendo a 40 paesi; in un caso (BACA Systems) una domanda che richiedeva 45-60 minuti di ricerca manuale tra più schermate ha trovato risposta in pochi istanti. Il coworker costa 50 dollari per utente al mese, in aggiunta alle licenze Salesforce esistenti.",
+        why="Dato sorprendente e pratico: mostra con numeri concreti, non proiezioni, che l'AI agentica sta passando dalla demo all'uso quotidiano in azienda — il cuore del posizionamento di Digitiamo su Team Augmentation e AI Business Academy. I dati sono diffusi da Salesforce stessa e non sono stati verificati in modo indipendente.",
+        source="Salesforce (comunicato ufficiale)",
+        url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
     ),
     dict(
-        title="Anthropic aggiorna Claude Enterprise con un centro di sicurezza e una console amministrativa centralizzata",
-        what="Il 5 novembre Anthropic ha annunciato un pacchetto di funzioni per Claude Enterprise rivolte ai team di sicurezza: un \"security center\" (beta) che confronta la configurazione dell'organizzazione con le raccomandazioni di Anthropic ed esporta un report; gli \"inference hooks\", ora disponibili in generale, che inviano prompt e chiamate agli strumenti a un tool di sicurezza esterno (per esempio di data-loss-prevention) prima dell'esecuzione; una console amministrativa centralizzata (admin.claude.com, beta) per le aziende con più organizzazioni collegate, con SSO, sincronizzazione directory e gruppi; e controlli di accesso come la disconnessione di un membro via API, il blocco di account Claude personali su computer aziendali e un sensore EDR per la macchina virtuale locale di Cowork.",
-        why="E' la risposta diretta, sullo stesso fronte, al tipo di rischio che la violazione Mixpanel e la frode da 129 milioni rendono concreto questa settimana: dare ai team di sicurezza aziendali visibilità su cosa fa un assistente AI sui dispositivi di lavoro, non solo policy scritte su come dovrebbe comportarsi.",
-        source="Blog ufficiale Anthropic/Claude",
-        url="https://claude.com/blog/claude-enterprise-security-updates",
+        title="Un attaccante usa un framework di agenti AI per violare un fornitore di infrastruttura blockchain",
+        what="Il 12 novembre Chainstack, fornitore di infrastruttura blockchain, ha reso noto che un attaccante — entrato il 26 ottobre attraverso un'istanza Grafana esposta su internet e lasciata con le credenziali di amministratore di default — ha raggiunto l'ambiente di produzione il 29 ottobre usando un framework di agenti AI (ARTEX) per condurre l'attacco, prima che Chainstack bloccasse l'accesso il 31 ottobre. Sono stati esposti nomi, email e hash delle password dei clienti; Chainstack dichiara che i servizi rivolti ai clienti non si sono mai fermati e ha chiesto ai clienti di ruotare le credenziali dei nodi.",
+        why="È il rovescio della medaglia del trend Salesforce della stessa settimana: non un'azienda che usa agenti AI per lavorare meglio, ma un attaccante reale che ha usato lo stesso tipo di strumento per automatizzare una violazione — una controversia con forte presa su un pubblico ampio.",
+        source="The Block",
+        url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
     ),
     dict(
-        title="Il paradosso della produttività AI torna al centro del dibattito, mentre i CFO pianificano più tagli",
-        what="Un working paper NBER del 24 marzo 2026, basato sul Duke CFO Survey condotto con le Federal Reserve Bank di Atlanta e Richmond su 750 aziende USA, stima che il 44% dei direttori finanziari pianifica per il 2026 tagli occupazionali legati all'AI, per circa 502.000 ruoli nell'intera economia — circa nove volte i circa 55.000 tagli attribuiti all'AI nel 2025. Lo stesso studio, e un commento di Goldman Sachs di inizio marzo citato nell'articolo, rilevano che i dati non mostrano ancora un aumento di produttività misurabile a livello macroeconomico che giustifichi quella scala di tagli: il divario viene attribuito a un ritardo nella realizzazione dei benefici, non a un errore di misura.",
-        why="E' il contesto numerico dietro una domanda che ogni azienda che ha automatizzato o sta per automatizzare dei ruoli con l'AI dovrebbe porsi: il taglio precede il guadagno di produttività, o lo sostituisce con una scommessa? La data dello studio (marzo 2026) è più vecchia della settimana, ma il divario che descrive resta la cornice in cui vanno lette le notizie di mercato di questa settimana.",
-        source="Interview Query (sintesi del working paper NBER)",
-        url="https://www.interviewquery.com/p/ai-layoffs-2026-productivity-gap",
+        title="I chip AI recuperano parte del terreno perso, dopo la peggiore settimana in un anno e mezzo",
+        what="Dopo il crollo registrato nella settimana del 3-7 novembre (indice SOX -12%, la peggiore dall'aprile 2025, dopo le elezioni di midterm del 3 novembre), i titoli dei semiconduttori hanno recuperato parzialmente lunedì 9 novembre. Gli analisti descrivono il movimento come gli investitori che iniziano a guardare oltre la correzione legata ai risultati elettorali, con Nvidia che resta comunque sotto osservazione per le polemiche emerse nei giorni precedenti.",
+        why="Contesto pratico diretto per chi valuta il costo di infrastruttura e API AI nei prossimi mesi: lo segnaliamo come coda del trend aperto la settimana scorsa nel PED, non come notizia nuova a sé — un rimbalzo non chiude la domanda sulla sostenibilità della spesa.",
+        source="Stocktwits",
+        url="https://stocktwits.com/news-articles/markets/equity/amd-avgo-intc-mu-chip-stocks-inch-higher-as-investors-look-past-midterms-led-selloff-nvidia-controversy/cNGAD0CR9eR",
     ),
 ]
 
@@ -97,221 +98,220 @@ trends = [
 competitors = [
     dict(
         name="OpenAI",
-        what="Chiude una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi (6/11) e rilascia Codex CLI 0.167.0 con un centro di comando per più agenti in parallelo (6/11) — nella stessa settimana in cui un suo fornitore di analytics, Mixpanel, viene violato esponendo dati di profilo degli utenti della piattaforma per sviluppatori (8/11).",
-        positioning="Continua a muoversi su tre fronti insieme — capitale, prodotto, sicurezza — alla velocità più alta del settore, ma è anche il fornitore la cui catena di terze parti (analytics, hosting, pagamento) è risultata, questa settimana, il punto più debole della propria sicurezza: non un attacco diretto ai propri sistemi, ma a chi li supporta.",
-        angle="Per un'azienda che integra le API OpenAI (o di qualunque altro fornitore AI) nei propri processi, il punto non è smettere di usarle — è sapere quali fornitori terzi quel servizio porta con sé, e cosa succede ai propri dati se uno di loro viene violato: è esattamente il lavoro di governance che il Team Augmentation di Digitiamo porta in azienda.",
+        what="Lancia in beta i Business Agent verificati dentro ChatGPT (10/11): le aziende idonee (per ora e-commerce e servizi online, solo USA) rivendicano un profilo nel Business Hub, si verificano e lasciano che un proprio agente risponda ai clienti dentro la chat, con dati su citazioni e argomenti di scoperta.",
+        positioning="Si muove per diventare il punto di ingresso dove i consumatori scoprono e interagiscono con i marchi, prima ancora di arrivare al sito dell'azienda — una scommessa sulla distribuzione, non solo sul modello.",
+        angle="Per un'azienda italiana B2B la domanda non è ancora \"mi serve un Business Agent\" (il programma è per ora USA/e-commerce), ma chi presidierà, quando arriverà anche qui, il contenuto e il tono con cui un agente non controllato direttamente dall'azienda risponderà per suo conto — un lavoro di governance, non di marketing spontaneo.",
     ),
     dict(
         name="Anthropic",
-        what="Aggiorna Claude Enterprise con un centro di sicurezza, una console amministrativa centralizzata e nuovi controlli di accesso pensati per i team di sicurezza aziendali (5/11), nella stessa settimana in cui una frode da 129 milioni di dollari basata su voci clonate dall'AI finisce sotto i riflettori e un fornitore terzo di un concorrente diretto viene violato.",
-        positioning="Si posiziona sempre di più come il fornitore che vende non solo il modello ma il controllo sul modello — visibilità su cosa fa un agente AI sui dispositivi aziendali, non solo policy scritte — proprio mentre il resto del settore corre verso agenti che lavorano per giorni senza supervisione diretta (vedi Perplexity, sotto).",
-        angle="Gli strumenti di sicurezza di un fornitore non sostituiscono la domanda che un'azienda deve farsi prima: quali compiti vogliamo davvero affidare a un agente che lavora senza supervisione, e chi in azienda ha il tempo e la competenza di controllarne l'operato — il terreno dell'AI Business Academy.",
+        what="Amplia l'offerta da ufficio di Claude con Sheets e Whiteboards, anticipa Data e Meetings, e aggiunge connettori interattivi con Salesforce, NetSuite e Workday (10/11), in un momento di preparazione a una possibile IPO.",
+        positioning="Si propone sempre più come alternativa diretta a Microsoft 365 e Google Workspace, non solo come fornitore di modello — la stessa battaglia per il posto di lavoro quotidiano che Microsoft combatte con Copilot e Google con Gemini.",
+        angle="Più strumenti AI finiscono nello stesso posto di lavoro, più cresce il bisogno di qualcuno che decida quali abilitare, con quali permessi e per chi: esattamente il lavoro che il Team Augmentation di Digitiamo porta in azienda prima che la scelta la faccia il reparto IT da solo, in affanno.",
     ),
     dict(
-        name="Perplexity",
-        what="Lancia Teammates (5/11), agenti AI persistenti a cui affidare una responsabilità continuativa — non una singola richiesta — per gli abbonati Max, basati su Perplexity Computer e capaci di coinvolgere altri agenti e di collaborare con i colleghi umani su Slack.",
-        positioning="Prova a conquistare il segmento dei singoli abbonati con un prodotto che finora era stato proposto solo alle organizzazioni (i workspace agent di OpenAI, Copilot Cowork di Microsoft): la scommessa è che un lavoratore singolo voglia affidare un compito per giorni a un agente, non solo farsi rispondere a una domanda.",
-        angle="Un agente che lavora per giorni senza supervisione diretta sposta il rischio dal \"ha risposto bene?\" al \"cosa ha fatto davvero, nel frattempo, con quali permessi?\": prima di affidare compiti continuativi a un agente, un'azienda ha bisogno di sapere come verificarne l'operato — di nuovo, il lavoro che il Team Augmentation di Digitiamo porta in azienda.",
+        name="Adobe",
+        what="Ad Adobe MAX (10/11) trasforma Firefly in uno \"studio creativo AI\" con agenti sempre attivi dentro Photoshop, Premiere, Illustrator e gli altri programmi Creative Cloud, più Firefly Builder per generare siti e prototipi da descrizioni in linguaggio naturale.",
+        positioning="Prova a restare il punto di riferimento per i professionisti creativi proprio nel momento in cui strumenti più generalisti (ChatGPT, Gemini, i modelli immagine dei concorrenti) permettono a chiunque di generare immagini: la risposta è portare l'agente dentro gli strumenti professionali, non sostituirli.",
+        angle="Un'agenzia o un reparto marketing che adotta questi strumenti guadagna velocità, ma rischia di perdere coerenza di brand se nessuno definisce prima regole e guardrail per l'agente — il terreno dell'AI Business Academy, pensata su casi d'uso reali e non su formazione generica allo strumento.",
     ),
     dict(
-        name="Il comparto chip e infrastrutture AI (Nvidia, AMD, Micron, CoreWeave, Nebius)",
-        what="Perde tra il 7,5% e il 17% in una sola seduta (giovedì 5 novembre), con l'indice SOX giù del 12% nella settimana — la peggiore da un anno e mezzo — dopo le elezioni di midterm del 3 novembre, che secondo gli osservatori di mercato hanno rafforzato l'opposizione politica alla costruzione di nuovi data center.",
-        positioning="Il settore che ha costruito la propria crescita sulla promessa di una domanda AI in espansione illimitata si trova, nella stessa settimana, a fare i conti con un'opposizione politica concreta (una moratoria proposta in Texas) e con un mercato che inizia a prezzare quel rischio — mentre Goldman Sachs alza comunque le stime di spesa futura.",
-        angle="Per un'azienda che pianifica investimenti AI pluriennali, è un promemoria diretto: i prezzi delle API e dell'infrastruttura cloud su cui si basa un progetto AI oggi dipendono da una scommessa di mercato ancora instabile — un motivo in più per scegliere un partner che aiuti a dimensionare il progetto sul bisogno reale, non sulla capacità disponibile a buon mercato in questo momento.",
+        name="Salesforce",
+        what="Comunica che Agentforce Coworker ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi (4/11), con casi come Fulton Bank (20+ casi d'uso, circa 3.000 utenti) e Adecco Group (40 paesi).",
+        positioning="Prova a dimostrare con numeri di adozione reale, non solo demo, che gli agenti AI sono già al lavoro nelle aziende — la prova che il mercato chiede da mesi, anche se i dati vengono dall'azienda stessa.",
+        angle="Una crescita di 21 volte in tre mesi è anche un segnale di rischio: quante di quelle aziende hanno davvero qualcuno che decide a cosa l'agente può accedere, prima che l'adozione superi la governance? È lo stesso nodo del caso Chainstack della stessa settimana, letto dal lato di chi adotta invece che da chi subisce.",
+    ),
+    dict(
+        name="Google (DeepMind)",
+        what="Rilascia Gemini Robotics 2.5 (robot più capaci, testati con Mercedes-Benz) e AlphaGenome 2 (predizione genetica) nello stesso giorno (11/11).",
+        positioning="Mostra l'ampiezza della ricerca DeepMind oltre la chat — robotica industriale e biologia computazionale — in un momento in cui i concorrenti diretti (OpenAI, Anthropic) si concentrano su agenti da ufficio e assistenti.",
+        angle="Per un'azienda italiana la ricaduta diretta oggi è limitata (robotica e genomica restano lontane dal software gestionale), ma segnala dove la capacità dei modelli di base migliora più in fretta: un buon argomento per non fermare la formazione dei team tecnici alla sola \"AI generativa per i testi\".",
     ),
 ]
 
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana: si apre con il quadro più ampio e meno "di parte" —
-# il mercato dei chip AI che inizia a dubitare della sostenibilità della
-# spesa in infrastrutture, proprio mentre l'industria (OpenAI, Goldman Sachs)
-# continua a scommetterci sopra — nessuna vendita, solo analisi. Da martedì a
-# venerdì l'arco si stringe su un unico filo, quello della fiducia e del
-# controllo sugli strumenti AI: martedì il mito da sfatare sulla violazione
-# del fornitore terzo di OpenAI (Mixpanel); mercoledì il carosello dati sulla
-# frode da 129 milioni di dollari costruita con voci clonate dall'AI,
-# promosso a Prioritario per la densità di cifre che offre (al posto di
-# un'idea "ad alta varietà" più intercambiabile — nota sul mix di formati,
-# più sotto); giovedì l'esperienza diretta riprende lo stesso filo
-# mettendo alla prova il team su un deepfake vocale; venerdì la mini-lezione
-# chiude l'arco spiegando la tecnologia di voice e face cloning dietro la
-# truffa. Le due riserve restano banca contenuti: un secondo carosello dati,
-# più granulare, sul crollo dei chip AI aperto lunedì, e la riflessione di
-# chiusura settimana.
+# Arco della settimana: gli agenti AI smettono di essere una demo — si apre
+# lunedì con il quadro d'insieme (Salesforce, Anthropic, OpenAI, Adobe tutti
+# nella stessa settimana), nessuna vendita. Martedì il mito da sfatare sul
+# fornitore AI di Notion che non ha rispettato la promessa di "zero data
+# retention". Mercoledì il carosello dati sui numeri di adozione di
+# Agentforce Coworker (promosso a Prioritario per la densità di cifre, al
+# posto di una seconda idea "ad alta varietà" — nota sul mix di formati, più
+# sotto: questa settimana offre un solo trend davvero da mito, non due, quindi
+# lo schema si adatta con giudizio). Giovedì l'esperienza diretta riprende il
+# filo del mito verificando le clausole di data retention dei fornitori AI del
+# team. Venerdì la mini-lezione spiega cos'è davvero un "agente AI" e perché
+# lo stesso strumento può far crescere un'azienda (Salesforce) o far entrare
+# un attaccante (Chainstack). Le due riserve restano banca contenuti: un
+# carosello numeri sul rimbalzo dei chip AI, e la riflessione di chiusura.
 ideas = [
     dict(
         badge="Prioritario",
-        day="Lunedì 9/11",
+        day="Lunedì 16/11",
         format="Thought leadership — apertura settimana",
-        title="I chip AI hanno la peggiore settimana in un anno e mezzo. L'industria, intanto, alza ancora le stime",
-        titolo_post="La settimana nera dei chip AI",
-        sottotitolo_post="Il comparto semiconduttori perde il 12% in cinque giorni, mentre Goldman alza le stime sui data center.",
-        news="Il crollo dei titoli dei chip AI dopo le elezioni di midterm (3-5/11)",
-        news_url="https://stocktwits.com/news-articles/markets/equity/soxx-etf-semiconductor-is-set-for-its-worst-week-in-over-18-months/cNG1sEhR94Z",
-        hook="Giovedì 5 novembre l'indice Philadelphia Semiconductor (SOX) ha perso il 9,2% in una sola seduta, portando il bilancio della settimana a circa -12%: la quinta settimana consecutiva in negativo, la peggiore dall'aprile 2025. Nvidia ha perso fino al 7,5% intraday, AMD il 15%, Micron il 13%. Il detonatore sono le elezioni di midterm del 3 novembre, che hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica alla costruzione di nuovi data center. Ma nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center al 2030, e OpenAI ha chiuso una nuova tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi.",
-        visual_hook="Il comparto chip AI ha perso il 12% in una settimana, la peggiore dall'aprile 2025 — mentre Goldman Sachs alza le stime di spesa sui data center.",
+        title="Questa settimana gli agenti AI sono usciti dalla demo: Salesforce, Anthropic, OpenAI e Adobe li hanno messi al lavoro vero — e qualcuno li ha usati anche per attaccare",
+        titolo_post="Gli agenti AI non sono più una demo",
+        sottotitolo_post="Anthropic, OpenAI, Adobe e Salesforce li hanno messi al lavoro vero questa settimana.",
+        news="Agentforce Coworker di Salesforce supera i 185.000 utenti, +21 volte in tre mesi (4/11)",
+        news_url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
+        hook="Questa settimana quattro grandi fornitori hanno smesso di parlare di \"agenti AI\" come una demo e li hanno trasformati in prodotto: il 4 novembre Salesforce ha comunicato che il suo \"coworker\" AI ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi. Il 10 novembre Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud. Nello stesso giro di giorni, un fornitore di infrastruttura blockchain (Chainstack) ha reso noto che un attaccante ha usato lo stesso tipo di strumento — un framework di agenti AI — per violare i propri sistemi.",
+        visual_hook="Quattro grandi fornitori hanno trasformato gli agenti AI da demo a prodotto nella stessa settimana — e un attaccante ha usato lo stesso tipo di strumento per violare un'azienda.",
         points=[
-            "9,2% — il calo in una sola seduta (giovedì 5 novembre) dell'indice SOX (Philadelphia Semiconductor), il più forte da giugno; -12% il bilancio dell'intera settimana, la peggiore dall'aprile 2025.",
-            "Nvidia ha perso fino al 7,5% intraday (il suo calo più forte dall'aprile 2025), AMD il 15%, Micron il 13%, Intel il 9,2%; tra i fornitori di infrastrutture cloud per l'AI, CoreWeave ha perso il 12% e Nebius il 17%.",
-            "Il detonatore: le elezioni di midterm del 3 novembre hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica ai nuovi data center — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.",
-            "Nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt, e OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi: l'offerta di capitale per l'AI non rallenta, proprio mentre il mercato inizia a dubitarne.",
+            "185.000 — gli utenti attivi di Agentforce Coworker di Salesforce a inizio novembre, con un uso cresciuto di 21 volte in tre mesi: il segnale più concreto di adozione reale visto finora.",
+            "Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende.",
+            "Un fornitore di infrastruttura blockchain, Chainstack, ha reso noto che un attaccante ha usato lo stesso tipo di strumento — un framework di agenti AI — per violare i propri sistemi: la tecnologia che fa crescere l'adozione può accelerare anche l'attacco.",
         ],
         punti_post=[
-            "SOX (chip): -12% in una settimana, la peggiore dall'aprile 2025.",
-            "Nvidia -7,5%, AMD -15%, Micron -13% in un solo giorno.",
-            "Goldman alza le stime sui data center; OpenAI chiude 11 mld $.",
+            "Agentforce Coworker: 185.000 utenti, +21 volte in tre mesi.",
+            "Anthropic, OpenAI e Adobe: agenti al lavoro in ufficio e creatività.",
+            "Un attacco reale ha usato lo stesso tipo di framework di agenti.",
         ],
-        cta="Se il mercato dubita della sostenibilità della scommessa sui data center AI, la tua azienda ha un piano che non dipende da quella scommessa? 👇",
-        hashtags="#IntelligenzaArtificiale #AI #Mercati #Innovazione #B2B",
+        cta="La tua azienda sta già misurando quanto lavoro reale affida agli agenti AI, o lo guarda ancora da fuori? 👇",
+        hashtags="#IntelligenzaArtificiale #AI #AgentiAI #Innovazione #B2B",
     ),
     dict(
         badge="Prioritario",
-        day="Martedì 10/11",
+        day="Martedì 17/11",
         format="Mito da sfatare",
-        title="Il tuo fornitore AI non è mai stato violato direttamente, quindi i tuoi dati restano *sicuri*",
-        titolo_post="I tuoi dati restano *sicuri*?",
-        sottotitolo_post="Una violazione al fornitore di analytics di OpenAI (Mixpanel) ha esposto dati utente l'8 novembre.",
-        barrato="sicuri",
-        news="Violazione a Mixpanel, fornitore di analytics di OpenAI, espone dati di profilo degli utenti (8/11)",
-        news_url="https://www.securityweek.com/openai-user-data-exposed-in-mixpanel-hack/",
-        hook="🔥 Il mito: se la tua azienda usa un fornitore AI affidabile, e quel fornitore non subisce mai una violazione diretta ai propri sistemi, i dati dei tuoi clienti restano al sicuro.",
+        title="Il contratto con il tuo fornitore AI dice \"zero data retention\". Quindi i tuoi dati restano *intoccati*",
+        titolo_post="I tuoi dati restano *intoccati*?",
+        sottotitolo_post="Una violazione al fornitore AI di Notion ha esposto chat nonostante la promessa \"zero retention\".",
+        barrato="intoccati",
+        news="Notion conferma l'esposizione di chat AI nella violazione al fornitore Fireworks (confermata 6/11)",
+        news_url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
+        hook="🔥 Il mito: se il contratto con il tuo fornitore AI promette \"zero data retention\" — l'impegno a non conservare i tuoi dati — allora quei dati restano al sicuro, punto.",
         no_hashtags=True,
         is_myth=True,
-        visual_hook="L'8 novembre un fornitore terzo di OpenAI è stato violato. OpenAI non è stata attaccata direttamente: il suo fornitore sì.",
-        myth_body="L'8 novembre Mixpanel, il fornitore di analytics usato da OpenAI sul proprio sito per sviluppatori, ha comunicato una violazione subita tramite una campagna di smishing (phishing via SMS). OpenAI non è stata attaccata direttamente: il suo fornitore sì — ed è bastato.",
+        visual_hook="Fireworks aveva un impegno contrattuale di \"zero data retention\" con Notion. Le indagini hanno trovato che i dati erano stati conservati comunque.",
+        myth_body="Notion ha comunicato che una violazione al proprio fornitore di infrastruttura AI, Fireworks AI, ha esposto le chat AI di una minoranza dei propri spazi di lavoro. Fireworks aveva con Notion un impegno contrattuale di \"zero data retention\": il contratto c'era. Le indagini di Notion hanno trovato che i dati erano stati conservati comunque sugli endpoint usati.",
         points=[
-            "I dati sottratti riguardano i profili utente di platform.openai.com: nome, email, posizione approssimativa (città, stato, paese), sistema operativo, browser e ID di organizzazione o utente.",
-            "OpenAI precisa che non sono stati compromessi contenuti o risposte di ChatGPT, chiavi API, password o dati di pagamento — ma avverte che i dati esposti possono comunque alimentare nuovi attacchi di phishing mirato.",
-            "Mixpanel ha parlato di un \"numero limitato\" di clienti coinvolti, senza specificare quanti: la trasparenza su un fornitore terzo resta nelle mani del fornitore, non dell'azienda che lo ha scelto.",
+            "L'intrusione è iniziata il 6 ottobre ed è arrivata ai sistemi di produzione di Fireworks il 24 ottobre; Fireworks ha notificato Notion il 2 novembre e confermato l'accesso non autorizzato il 6 novembre.",
+            "Esposte le trascrizioni delle chat AI usate per la funzione \"Insights\" (che classifica come i membri di un'azienda usano l'AI) e per l'inferenza di modelli open-weight — meno dell'1% degli spazi di lavoro Notion, secondo l'azienda.",
+            "Notion si è disconnessa da Fireworks, ha cancellato i dati conservati lì, disabilitato Insights durante l'indagine e consiglia a chi è coinvolto di ruotare password e chiavi incollate nelle chat AI nel periodo interessato.",
         ],
         punti_post=[
-            "Violazione a Mixpanel (smishing), non a OpenAI direttamente.",
-            "Esposti nome, email, posizione, OS e browser dei profili utente.",
-            "Password, chiavi API e pagamenti non coinvolti, dice OpenAI.",
+            "Intrusione dal 6 ottobre; accesso confermato il 6 novembre.",
+            "Esposte chat AI di meno dell'1% degli spazi Notion.",
+            "Il contratto \"zero data retention\" non ha retto nei fatti.",
         ],
-        myth_closing="Il problema non è se il fornitore che hai scelto sia affidabile — probabilmente lo è. È che ogni servizio AI che usi si appoggia a sua volta su altri fornitori (analytics, hosting, pagamenti), e la sicurezza dei tuoi dati dipende anche da quelli che non hai scelto tu direttamente. Sapere quali terze parti toccano i dati che affidi a uno strumento AI, e cosa succede se una di loro viene violata, è un lavoro di governance — non un dettaglio da dare per scontato.",
-        cta="La tua azienda saprebbe elencare oggi quali fornitori terzi toccano i dati che affida ai suoi strumenti AI? 👇",
+        myth_closing="Il problema non è se il tuo fornitore AI sia in malafede — probabilmente non lo è. È che una clausola contrattuale descrive un impegno, non una verifica tecnica: senza un controllo periodico su cosa succede davvero ai dati lungo la catena di sub-fornitori, un'azienda scopre che la promessa non ha retto solo quando arriva la notifica di violazione.",
+        cta="La tua azienda ha mai verificato, oltre al contratto, cosa succede davvero ai dati lungo la catena dei fornitori AI che usa? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Mercoledì 11/11",
+        day="Mercoledì 18/11",
         format="Carosello / documento dati — promosso a Prioritario per la densità di cifre",
-        title="129 milioni di dollari rubati impersonando CEO e avvocati con l'AI: l'accusa federale in cifre",
-        titolo_post="129 milioni rubati con CEO clonati dall'AI",
-        sottotitolo_post="Tre persone incriminate a New York per una frode con voci e volti di CEO clonati dall'AI.",
-        closing_title="Una procedura avrebbe potuto *fermarla*",
-        closing_body="Una verifica indipendente del bonifico, fuori dalla stessa catena di comunicazione che ha ricevuto la richiesta.",
-        news="Tre persone incriminate dalla procura di New York (SDNY) per una frode da 129 milioni di dollari con AI (6/11)",
-        news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
-        hook="Il 6 novembre la procura federale del Distretto Sud di New York (SDNY) ha incriminato tre persone — Jacob Soall, Sharon Hazan e Guy Sheetrit — per una frode da 129 milioni di dollari ai danni di aziende in tutto il mondo, costruita impersonando con l'AI le voci e, in alcuni casi, i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime.",
+        title="Gli agenti AI al lavoro vero: i numeri dietro la crescita di 21 volte in tre mesi di Agentforce Coworker",
+        titolo_post="Agenti AI al lavoro: i numeri",
+        sottotitolo_post="Salesforce dichiara 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi.",
+        closing_title="Chi decide cosa può fare l'agente?",
+        closing_body="Prima di misurare quanto lavoro delega un agente, qualcuno deve aver deciso a cosa può accedere.",
+        news="Salesforce annuncia che Agentforce Coworker supera i 185.000 utenti, +21 volte in tre mesi (4/11)",
+        news_url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
+        hook="Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in appena tre mesi.",
         points=[
-            "129 milioni di dollari — l'importo complessivo che la procura attribuisce alla frode, costruita impersonando con l'AI le voci e i volti di CEO e avvocati nelle videochiamate con i reparti contabilità delle vittime.",
-            "3 — gli imputati incriminati dal Distretto Sud di New York (SDNY): Jacob Soall, Sharon Hazan e Guy Sheetrit, indicati nell'atto d'accusa anche con soprannomi come \"Rocky Balboa\" e \"Superman Cash\".",
-            "20 anni — la pena massima prevista per ciascun capo d'imputazione di frode telematica e riciclaggio di denaro, secondo la procura.",
-            "2 anni — la pena massima aggiuntiva prevista per il furto aggravato d'identità, il terzo reato contestato.",
-            "Il meccanismo, secondo l'accusa: un'email che sembra del CEO chiede un'operazione finanziaria riservata; segue una chiamata o videochiamata con voce o volto clonati dall'AI, poi un falso avvocato chiede un bonifico verso conti esteri, e i fondi vengono convertiti in criptovalute.",
+            "185.000 — gli utenti attivi di Agentforce Coworker a inizio novembre 2026, secondo i dati diffusi da Salesforce.",
+            "21 volte — la crescita dell'uso del coworker AI in appena tre mesi, secondo Salesforce (dato dell'azienda stessa, non verificato in modo indipendente).",
+            "50 dollari — il costo mensile per utente del coworker AI, in aggiunta alle licenze Salesforce già pagate dall'azienda.",
+            "3.000 — gli utenti di Fulton Bank che usano il coworker AI su oltre 20 casi d'uso diversi, dalle verifiche interne al supporto ai clienti.",
+            "40 — i paesi in cui Adecco Group sta estendendo l'uso del coworker AI nei propri processi, secondo Salesforce.",
         ],
         punti_post=[
-            "129 milioni di dollari — rubati impersonando CEO e avvocati con AI.",
-            "3 — gli imputati incriminati dalla procura di New York (SDNY).",
-            "20 anni — pena massima per frode telematica e riciclaggio.",
-            "2 anni — pena massima aggiuntiva per furto aggravato d'identità.",
-            "Mail finta del CEO, poi voce clonata, poi falso avvocato per il bonifico.",
-            "I fondi venivano convertiti in criptovalute dopo il bonifico.",
+            "185.000 — utenti attivi su Agentforce Coworker (inizio novembre).",
+            "21 volte — crescita dell'uso in tre mesi (dato Salesforce).",
+            "50 $ — costo mensile per utente, oltre alle licenze Salesforce.",
+            "3.000 — utenti Fulton Bank, oltre 20 casi d'uso.",
+            "40 — paesi in cui Adecco Group lo sta estendendo.",
         ],
-        closing="Dietro ogni cifra di questa truffa c'è una procedura che un'azienda strutturata avrebbe potuto far saltare: una verifica indipendente del bonifico, fuori dalla stessa catena di comunicazione che ha portato la richiesta. Non serve diffidare di ogni videochiamata — serve un secondo canale di conferma per ogni operazione finanziaria insolita, sempre. Le accuse non sono ancora state provate in tribunale.",
-        cta="La tua azienda ha oggi un secondo canale di verifica, fuori da email e videochiamata, per ogni bonifico insolito? 👇",
-        hashtags="#Cybersecurity #AI #Frode #B2B #Sicurezza",
-        senza_cta=True,
+        closing="Il salto di adozione è reale, non solo marketing: in tre mesi l'uso di un agente che pianifica ed esegue compiti da solo è cresciuto di 21 volte. Ma un'adozione che corre più veloce della governance lascia scoperta una domanda semplice: chi, in azienda, ha deciso a quali sistemi e dati l'agente può accedere, e chi controlla cosa fa davvero quando lavora senza supervisione diretta? I dati di crescita vengono da Salesforce stessa e non sono stati verificati in modo indipendente.",
+        cta="La tua azienda misura la crescita dell'uso degli agenti AI, o anche i permessi che gli ha dato? 👇",
+        hashtags="#AgentiAI #IntelligenzaArtificiale #Innovazione #B2B #Automazione",
     ),
     dict(
         badge="Prioritario",
-        day="Giovedì 12/11",
+        day="Giovedì 19/11",
         format="Esperienza diretta",
-        title="Dopo il caso dei 129 milioni rubati con voci clonate dall'AI, abbiamo provato a capire se il nostro team riconoscerebbe un deepfake vocale",
-        titolo_post="Il nostro team riconoscerebbe un *deepfake*?",
-        sottotitolo_post="Dopo la truffa dei 129 milioni di dollari, abbiamo messo alla prova il team sui deepfake vocali.",
-        news="Spunto dal caso di frode da 129 milioni di dollari con voci clonate dall'AI (vedi post di mercoledì)",
-        news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
-        hook="Dopo il caso di questa settimana — 129 milioni di dollari rubati impersonando CEO e avvocati con voce e volto clonati dall'AI — ci siamo fatti la domanda scomoda: il nostro team riconoscerebbe una voce clonata in una chiamata reale? Questa settimana lo abbiamo messo alla prova.",
+        title="Dopo il caso Notion/Fireworks, abbiamo controllato se la \"zero data retention\" dei nostri fornitori AI era davvero attiva",
+        titolo_post="Zero data retention: lo abbiamo *verificato*",
+        sottotitolo_post="Dopo il caso Notion, abbiamo riletto i contratti AI del team e verificato le impostazioni reali.",
+        news="Spunto dal caso Notion/Fireworks AI, promessa di \"zero data retention\" non rispettata (vedi post di martedì)",
+        news_url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
+        hook="Dopo il caso di questa settimana — un fornitore AI che prometteva contrattualmente \"zero data retention\" e non l'ha rispettata — ci siamo fatti la domanda scomoda: i fornitori AI che usiamo noi rispettano davvero quello che promettono? Questa settimana abbiamo riletto i contratti e controllato le impostazioni reali, non solo quello che c'è scritto nelle condizioni.",
         is_template=True,
         points=[
-            "Abbiamo simulato una chiamata con una voce clonata (con il consenso esplicito di chi l'ha prestata) che chiedeva un'operazione finanziaria urgente e riservata, nello stile usato nel caso reale di questa settimana.",
-            "[Da personalizzare con l'esito reale del test del team: chi ha riconosciuto l'anomalia e come, quali segnali hanno insospettito o non insospettito le persone coinvolte, cosa è emerso sulle procedure di verifica attuali — senza inventare cifre o esiti non verificati.]",
-            "La domanda utile non è se la tecnologia per clonare una voce esiste — esiste già ed è alla portata di chiunque — ma se esiste, nella tua azienda, un secondo canale di verifica che non dipende dalla stessa chiamata.",
+            "Abbiamo elencato tutti i fornitori AI usati dal team (modelli, strumenti di scrittura, trascrizione, analytics) e per ciascuno cercato la clausola di data retention nel contratto o nei termini di servizio.",
+            "[Da personalizzare con l'esito reale della verifica del team: quali fornitori avevano impostazioni diverse da quanto promesso nel contratto, cosa avete dovuto disattivare o cambiare, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi di fornitori o esiti non verificati.]",
+            "La domanda utile non è se un contratto esista — quasi sempre esiste — ma se qualcuno in azienda lo ha mai messo alla prova chiedendo al fornitore una prova tecnica, non solo una dichiarazione scritta.",
         ],
         punti_post=[
-            "Abbiamo simulato una chiamata con voce clonata, col consenso di chi l'ha prestata.",
-            "[Da personalizzare con l'esito reale del test del team.]",
-            "La vera domanda: esiste un secondo canale di verifica indipendente?",
+            "Abbiamo elencato tutti i fornitori AI del team e le loro clausole.",
+            "[Da personalizzare con l'esito reale della verifica del team.]",
+            "La vera domanda: qualcuno ha mai messo alla prova il contratto?",
         ],
-        cta="Il tuo team saprebbe dire oggi quale procedura seguire se ricevesse una chiamata così? Raccontaci la tua esperienza 👇",
+        cta="La tua azienda ha mai chiesto a un fornitore AI una prova tecnica della \"zero data retention\", non solo una dichiarazione scritta? Raccontaci 👇",
         hashtags="#IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness",
     ),
     dict(
         badge="Prioritario",
-        day="Venerdì 13/11",
+        day="Venerdì 20/11",
         format="Divulgativo stile Datapizza",
-        title="Come si clona davvero una voce con l'AI: il concetto tecnico dietro la truffa da 129 milioni di dollari",
-        titolo_post="Come si clona una voce con l'AI",
-        sottotitolo_post="Bastano pochi secondi di audio reale per clonare una voce: ecco come funziona davvero.",
-        news="Il concetto di voice e face cloning dietro la frode da 129 milioni di dollari (vedi post di mercoledì)",
-        news_url="https://www.ktvu.com/news/three-accused-ai-impersonate-ceos-fraud-scheme",
-        hook="Questa settimana abbiamo parlato di una frode da 129 milioni di dollari costruita con voci e volti di CEO clonati dall'AI. Ma cosa vuol dire davvero \"clonare una voce\", e perché oggi basta così poco per farlo?",
+        title="Cos'è davvero un \"agente AI\", e perché lo stesso strumento può far crescere un'azienda o far entrare un attaccante",
+        titolo_post="Cos'è davvero un agente AI",
+        sottotitolo_post="La differenza tra un chatbot che risponde e un agente che agisce da solo sui tuoi sistemi.",
+        news="Spunto dai lanci \"agentic\" della settimana e dal caso Chainstack (vedi post di lunedì)",
+        news_url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
+        hook="Questa settimana abbiamo parlato di agenti AI che pianificano compiti, lavorano dentro Photoshop o aiutano i clienti a scoprire un'azienda su ChatGPT — e di un attaccante che ha usato lo stesso tipo di strumento per violare un'azienda. Ma cosa vuol dire davvero \"agente AI\", e perché non è solo un chatbot più furbo?",
         points=[
-            "Un modello di sintesi vocale moderno impara il timbro di una voce da pochi secondi o minuti di audio reale — un video pubblico, una registrazione di una call, un messaggio vocale — e lo riapplica a un testo nuovo, scritto da chi compie la truffa.",
-            "La parte difficile non è più tecnica: i modelli di voice cloning sono pubblicamente disponibili e a basso costo. La parte difficile, per chi li usa a fini fraudolenti, è ottenere abbastanza audio della persona da clonare — per questo i bersagli tipici sono dirigenti con una presenza pubblica (interviste, conferenze, video aziendali).",
-            "Lo stesso vale per il volto nelle videochiamate: un modello di \"face swap\" in tempo reale sovrappone un volto clonato su quello di chi parla davvero, frame per frame — la tecnologia dietro ai casi di videochiamate con CEO falsi di questa settimana.",
+            "Un chatbot risponde a una domanda e si ferma lì. Un agente AI, invece, riceve un obiettivo, decide da solo i passaggi per raggiungerlo e usa degli \"strumenti\" — accesso a un database, a una casella email, a un sistema aziendale — per eseguirli senza bisogno di istruzioni passo-passo.",
+            "Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: nel caso Chainstack di questa settimana, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.",
+            "La domanda da farsi prima di dare un obiettivo a un agente AI, in azienda o nelle mani sbagliate, è sempre la stessa: a cosa può accedere davvero, e chi se ne accorge se usa quell'accesso in un modo che non ci si aspettava?",
         ],
         punti_post=[
-            "Bastano secondi di audio pubblico per clonare il timbro di una voce.",
-            "Il bersaglio tipico: dirigenti con molta presenza pubblica (video, interviste).",
-            "Il \"face swap\" in tempo reale fa lo stesso con il volto in videochiamata.",
+            "Un chatbot risponde; un agente AI agisce da solo sui tuoi sistemi.",
+            "Chainstack: un attaccante ha usato un framework di agenti per violare.",
+            "La domanda chiave: a cosa accede l'agente, e chi lo controlla?",
         ],
-        cta="Conoscevi già quanto poco audio serve oggi per clonare una voce? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
-        hashtags="#AI #TechExplained #Deepfake #B2B #Innovazione",
+        cta="Conoscevi già la differenza tra un chatbot e un agente AI che agisce da solo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
+        hashtags="#AI #TechExplained #AgentiAI #B2B #Innovazione",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Carosello dati",
-        title="Il crollo dei chip AI in cifre: la settimana nera di Wall Street",
-        news="Il crollo dei titoli dei chip AI dopo le elezioni di midterm (3-5/11), in dettaglio",
-        news_url="https://stocktwits.com/news-articles/markets/equity/soxx-etf-semiconductor-is-set-for-its-worst-week-in-over-18-months/cNG1sEhR94Z",
-        hook="Lunedì abbiamo aperto la settimana con il crollo dei titoli dei chip AI. Ecco i numeri per esteso di quella che gli analisti chiamano già la settimana nera di Wall Street sull'AI.",
+        title="Il rimbalzo dei chip AI dopo il crollo: i numeri della settimana di recupero",
+        news="Il recupero parziale dei titoli dei semiconduttori dopo il crollo della settimana del 3-7 novembre",
+        news_url="https://stocktwits.com/news-articles/markets/equity/amd-avgo-intc-mu-chip-stocks-inch-higher-as-investors-look-past-midterms-led-selloff-nvidia-controversy/cNGAD0CR9eR",
+        hook="La settimana scorsa abbiamo aperto il PED con il crollo dei chip AI. Questa settimana i titoli hanno recuperato parte del terreno perso: ecco cosa dicono gli analisti su cosa è cambiato e cosa no.",
         points=[
-            "9,2% — il calo in una sola seduta (giovedì 5 novembre) dell'indice SOX (Philadelphia Semiconductor), il peggiore da giugno.",
-            "12% — il calo dell'indice SOX nell'intera settimana, la quinta consecutiva in negativo e la peggiore dall'aprile 2025.",
-            "15% — il calo intraday di AMD giovedì; Nvidia ha perso fino al 7,5%, il suo calo più forte dall'aprile 2025.",
-            "13% — il calo di Micron nello stesso giorno; Intel ha perso il 9,2%, i fornitori di infrastrutture cloud CoreWeave il 12% e Nebius il 17%.",
-            "Il detonatore: le elezioni di midterm del 3 novembre hanno dato ai Democratici la maggioranza di Camera e Senato, alimentando l'opposizione politica ai nuovi data center — in Texas la governatrice eletta ha proposto una moratoria sulle nuove costruzioni.",
+            "12% — il calo dell'indice SOX nella settimana del 3-7 novembre, la peggiore dall'aprile 2025, dopo le elezioni di midterm del 3 novembre.",
+            "Gli analisti descrivono il recupero di lunedì 9 novembre come investitori che iniziano a guardare oltre la correzione legata ai risultati elettorali, non come un segnale che i dubbi di fondo sulla spesa in data center siano spariti.",
+            "Nvidia resta sotto osservazione per le polemiche emerse nei giorni precedenti, secondo gli stessi report che descrivono il recupero del settore.",
         ],
-        closing="Nella stessa settimana Goldman Sachs ha alzato la stima di capacità globale dei data center nel 2030 da 217 a 273 gigawatt, e OpenAI ha chiuso una prima tranche di finanziamento da 11 miliardi di dollari a una valutazione di 1.250 miliardi: l'offerta di capitale per l'AI non rallenta, nello stesso momento in cui il mercato inizia a dubitare della sua sostenibilità.",
-        cta="La tua azienda ha un piano che regge anche se la spesa in infrastrutture AI dovesse rallentare? 👇",
-        hashtags="#AI #Mercati #Infrastruttura #B2B #Innovazione",
+        closing="Un rimbalzo non è una risposta alla domanda che ci siamo fatti la settimana scorsa — se la spesa in infrastrutture AI sia sostenibile quanto si sperava — ma solo la prova che il mercato, per ora, resta diviso su quella domanda.",
+        cta="La tua azienda pianifica i costi di infrastruttura AI pensando anche agli scenari in cui i prezzi tornano a salire? 👇",
+        hashtags="#AI #Mercati #Infrastruttura #B2B #Chip",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Riflessione di chiusura settimana / lista community",
-        title="5 cose che questa settimana ci dice su fiducia e controllo nell'AI",
-        news="Sintesi dei trend della settimana 2-9 novembre 2026",
-        news_url="https://www.securityweek.com/openai-user-data-exposed-in-mixpanel-hack/",
+        title="5 cose che questa settimana ci dice sugli agenti AI al lavoro (e su chi li controlla)",
+        news="Sintesi dei trend della settimana 6-13 novembre 2026",
+        news_url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
         hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie degli ultimi giorni.",
         points=[
-            "Un fornitore terzo di OpenAI (Mixpanel) è stato violato l'8 novembre, e i dati esposti non riguardano un attacco diretto ai sistemi OpenAI: la sicurezza di un servizio AI dipende anche da fornitori che non scegli tu.",
-            "Tre persone sono state incriminate per una frode da 129 milioni di dollari costruita impersonando CEO e avvocati con voci e volti clonati dall'AI: la tecnologia per farlo è già alla portata di chiunque.",
-            "I titoli dei chip AI hanno avuto la peggiore settimana da un anno e mezzo, tra dubbi politici sui data center — eppure Goldman Sachs alza le stime di spesa e OpenAI chiude un nuovo round da 11 miliardi di dollari.",
-            "OpenAI (Codex) e Perplexity (Teammates) hanno lanciato in pochi giorni nuovi strumenti per affidare compiti interi, non solo singole richieste, ad agenti AI.",
-            "Anthropic ha aggiornato Claude Enterprise con un centro di sicurezza e una console amministrativa centralizzata: il controllo sugli agenti AI in azienda è ormai anche un tema di prodotto, non solo di policy.",
+            "Gli agenti AI sono usciti dalla fase demo: Salesforce dichiara 185.000 utenti attivi su Agentforce Coworker, con un uso cresciuto di 21 volte in tre mesi.",
+            "Anthropic (Sheets, Whiteboards, connettori), OpenAI (Business Agent in ChatGPT) e Adobe (Creative Agent sempre attivo) hanno messo agenti AI dentro gli strumenti che usiamo ogni giorno, tutti nella stessa settimana.",
+            "Un fornitore AI di Notion (Fireworks) ha esposto chat nonostante un contratto di \"zero data retention\": una promessa scritta non è una verifica tecnica.",
+            "Un attaccante ha usato un framework di agenti AI per violare un fornitore di infrastruttura blockchain (Chainstack): lo stesso tipo di strumento che fa crescere l'adozione può accelerare un attacco.",
+            "I chip AI hanno recuperato parte del terreno perso la settimana precedente, ma gli analisti non lo leggono come la fine dei dubbi sulla sostenibilità della spesa in infrastrutture.",
         ],
-        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che l'AI gestisce più soldi, più dati e più compiti da sola, chi controlla davvero cosa succede quando qualcosa va storto? La risposta non è smettere di usarla — è sapere, prima che succeda, chi in azienda ha la competenza e il tempo di controllarlo.",
+        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che gli agenti AI smettono di essere una demo e iniziano a fare lavoro vero, la domanda non è più \"funzionano?\" ma \"chi ha deciso cosa possono fare, e chi se ne accorge quando sbagliano?\". La risposta non è rallentare l'adozione — è non farla correre più veloce della governance.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
-        hashtags="#AINews #WeeklyRecap #Tech #IntelligenzaArtificiale #B2B",
+        hashtags="#AINews #WeeklyRecap #Tech #AgentiAI #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
 ]
@@ -321,40 +321,40 @@ ideas = [
 # ---------------------------------------------------------------------------
 publishing = [
     dict(
-        day="Lunedì 9/11",
+        day="Lunedì 16/11",
         time="08:00",
         format="Thought leadership",
         reason="Apertura settimana, finestra mattutina 7:30-9:30: massimo traffico professionale, ideale per un post di respiro ampio che dà il tono alla settimana senza chiedere nulla.",
     ),
     dict(
-        day="Martedì 10/11",
+        day="Martedì 17/11",
         time="12:15",
-        format="Mito da sfatare (violazione del fornitore terzo di OpenAI)",
-        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo di sicurezza/fiducia che attraversa il resto della settimana.",
+        format="Mito da sfatare (la promessa \"zero data retention\" non rispettata da Fireworks/Notion)",
+        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo di fiducia/governance che attraversa il resto della settimana.",
     ),
     dict(
-        day="Mercoledì 11/11",
+        day="Mercoledì 18/11",
         time="12:15",
-        format="Carosello / dati (la frode da 129 milioni di dollari)",
-        reason="Seconda finestra pausa pranzo B2B. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e le cifre del caso (129 milioni di dollari, 3 imputati, pene fino a 20 anni) sono dense abbastanza da meritare uno spazio proprio — per questo è stato promosso da riserva a Prioritario questa settimana.",
+        format="Carosello / dati (i numeri di Agentforce Coworker)",
+        reason="Seconda finestra pausa pranzo B2B. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i numeri di adozione (185.000 utenti, 21 volte in tre mesi) sono densi abbastanza da meritare uno spazio proprio — per questo è stato promosso da riserva a Prioritario questa settimana.",
     ),
     dict(
-        day="Giovedì 12/11",
+        day="Giovedì 19/11",
         time="08:30",
-        format="Esperienza diretta (test del team sui deepfake vocali)",
-        reason="Segue narrativamente il carosello di mercoledì, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
+        format="Esperienza diretta (verifica delle clausole \"zero data retention\" dei nostri fornitori AI)",
+        reason="Segue narrativamente il mito di martedì, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
     ),
     dict(
-        day="Venerdì 13/11",
+        day="Venerdì 20/11",
         time="08:00",
         format="Divulgativo (Datapizza style)",
-        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo di sicurezza aperto martedì.",
+        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo sugli agenti AI aperto lunedì.",
     ),
     dict(
         day="Da programmare",
         time="—",
-        format="Riserva — Carosello numeri sul crollo dei chip AI",
-        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come approfondimento del tema aperto lunedì.",
+        format="Riserva — Carosello numeri sul rimbalzo dei chip AI",
+        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come approfondimento del tema aperto nel PED della settimana precedente.",
     ),
     dict(
         day="Da programmare",

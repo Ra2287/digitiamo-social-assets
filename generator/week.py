@@ -32,14 +32,14 @@ import os
 
 # Settimana di pubblicazione. Finisce nei nomi dei file: non riusare mai una
 # combinazione data+slug gia' pubblicata (vedi CLAUDE.md).
-DATE = "2026-11-09"
-WEEK_LABEL = "9 - 15 novembre 2026"
+DATE = "2026-11-16"
+WEEK_LABEL = "16 - 22 novembre 2026"
 
 # A quale settimana appartengono le CORREZIONI qui sotto. Controllato solo se ce
 # ne sono: serve a non riapplicare a una settimana nuova un aggiustamento
 # scritto per quella vecchia, che passerebbe inosservato perche' i nomi dei file
 # sarebbero comunque nuovi.
-OVERRIDES_FOR = "2026-11-09"
+OVERRIDES_FOR = "2026-11-16"
 
 # Rifacimenti: slug del post -> numero di revisione. Ciclo human-in-the-loop.
 #
@@ -51,7 +51,7 @@ OVERRIDES_FOR = "2026-11-09"
 # Gli slug sono quelli stampati da `python3 plan.py`. Esempio:
 #   REDO = {"idea2-la-sicurezza-dell-ai": 1}
 #
-# Settimana nuova (9/11/2026): nessun rifacimento, prima generazione del lunedi'.
+# Settimana nuova (16/11/2026): nessun rifacimento, prima generazione del lunedi'.
 REDO = {}
 
 # I post approvati NON corrispondono alle idee del report solo in casi

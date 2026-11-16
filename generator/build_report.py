@@ -22,18 +22,32 @@ GENERATED_ON = "Lunedì 16 novembre 2026"
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Notizie del periodo 6-13 novembre 2026, verificate su fonte diretta (non sui
-# riassunti aggregatori). Filo conduttore della settimana: gli agenti AI
-# smettono di essere una demo e diventano prodotto in ufficio (Anthropic),
-# nella creativita' (Adobe), nel rapporto con i clienti (OpenAI) e nel lavoro
-# quotidiano misurato con numeri reali, non proiezioni (Salesforce) — mentre,
-# nello stesso giro di giorni, un fornitore AI non rispetta una promessa
-# contrattuale scritta nero su bianco (Notion/Fireworks) e un attaccante usa
-# lo stesso tipo di strumento — un framework di agenti AI — per violare
-# un'azienda (Chainstack). Chiude il quadro il recupero parziale dei chip AI
-# dopo il crollo della settimana precedente, e l'uscita di Google DeepMind
-# dalla sola chat verso robotica industriale e genomica.
+# Rigenerazione del 16 novembre 2026, su richiesta di Ramona ("sostituisci
+# tutto"): ricerca rifatta da zero includendo le due nuove fonti aggiunte in
+# CLAUDE.md lo stesso giorno (Hugging Face Daily Papers, GitHub Trending).
+# Due candidati emersi in un primo giro di ricerca sono stati scartati dopo
+# verifica sulla fonte primaria: la causa Sullivan & Cromwell sulle citazioni
+# legali inventate dall'AI risale ad aprile 2026 (non a questa settimana), e
+# lo studio Berkeley/Nature sull'ECG e il rischio cardiaco è di giugno 2026,
+# solo ripubblicato da un aggregatore il 12/11 — entrambi riproposti da
+# aggregatori con una data di superficie fuorviante. Confermano la regola del
+# repo: verificare sulla fonte diretta, non sul riassunto.
+# Filo conduttore della settimana: gli agenti AI smettono di essere un
+# progetto pilota e diventano infrastruttura di produzione misurata in
+# miliardi di token al giorno (AT&T), mentre la stessa settimana porta nuovi
+# lanci "da ufficio" (Anthropic, OpenAI, Adobe) e nuovi segnali che
+# l'adozione corre più veloce della governance: una promessa contrattuale di
+# "zero data retention" che non regge nei fatti (Notion/Fireworks) e un
+# attaccante che usa lo stesso tipo di strumento — un framework di agenti AI
+# — per violare un'azienda (Chainstack).
 trends = [
+    dict(
+        title="AT&T gestisce quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno",
+        what="Il 14 novembre SiliconANGLE ha riportato, da un intervento di Luke Corbin (vice presidente per la trasformazione digitale e l'AI di AT&T Business) a un evento AWS, che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con l'obiettivo di triplicarli entro il 2027. La piattaforma elabora circa 45 miliardi di token al giorno (da 27 miliardi a marzo 2026) e supera 1 milione di transazioni al mese. Ogni workflow parte con supervisione umana: l'autonomia arriva solo quando l'accuratezza raggiunge la fascia medio-alta del 90%, entro un profilo di rischio accettabile, con monitoraggio continuo del drift dopo la rimozione del controllo umano. I workflow che toccano i clienti passano dalla \"Business Agent Foundry\", un gruppo interno che mappa i processi ed elimina passaggi e dipendenze legacy prima di costruire l'agente; i workflow di produttività personale restano invece liberi. Tra i casi concreti: modifiche agli ordini di installazione fibra automatizzate direttamente sui sistemi mainframe, e tempi di attivazione delle connessioni internet dedicate dimezzati negli edifici già cablati.",
+        why="Dato pratico e sorprendente più che proiezione: un'azienda con milioni di clienti quotidiani mostra, con cifre e soglie precise, cosa vuol dire portare gli agenti AI dalla demo alla produzione — incluso il meccanismo di governance (soglia di accuratezza, supervisione umana) che l'adozione spesso salta. Rilevante per un pubblico ampio, non solo per gli addetti ai lavori del settore telco.",
+        source="SiliconANGLE",
+        url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
+    ),
     dict(
         title="Anthropic trasforma Claude in una suite per ufficio, a pochi mesi da una possibile IPO",
         what="Il 10 novembre Anthropic ha ampliato l'offerta \"da ufficio\" di Claude con Claude Sheets (fogli di calcolo) e Claude Whiteboards, affiancandoli ai già annunciati Claude Docs e Slides, e ha anticipato l'arrivo di Claude Data e Claude Meetings. Ha introdotto anche connettori interattivi che permettono di lavorare dentro app partner (Adobe, Atlassian) senza cambiare scheda, più plugin di Salesforce (beta), NetSuite e Workday (beta) con competenze integrate per preparazione vendite, analisi finanziaria e pratiche HR come ferie e note spese. L'annuncio arriva, secondo diversi osservatori, in un momento di preparazione a una possibile quotazione in borsa di Anthropic.",
@@ -70,23 +84,23 @@ trends = [
         url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
     ),
     dict(
-        title="Gli \"AI coworker\" di Salesforce crescono di 21 volte in tre mesi: le aziende iniziano davvero a delegare lavoro vero agli agenti",
-        what="Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in soli tre mesi. Tra i casi citati: Fulton Bank lo usa per oltre 20 casi d'uso su circa 3.000 utenti; Adecco Group lo sta estendendo a 40 paesi; in un caso (BACA Systems) una domanda che richiedeva 45-60 minuti di ricerca manuale tra più schermate ha trovato risposta in pochi istanti. Il coworker costa 50 dollari per utente al mese, in aggiunta alle licenze Salesforce esistenti.",
-        why="Dato sorprendente e pratico: mostra con numeri concreti, non proiezioni, che l'AI agentica sta passando dalla demo all'uso quotidiano in azienda — il cuore del posizionamento di Digitiamo su Team Augmentation e AI Business Academy. I dati sono diffusi da Salesforce stessa e non sono stati verificati in modo indipendente.",
-        source="Salesforce (comunicato ufficiale)",
-        url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
-    ),
-    dict(
         title="Un attaccante usa un framework di agenti AI per violare un fornitore di infrastruttura blockchain",
         what="Il 12 novembre Chainstack, fornitore di infrastruttura blockchain, ha reso noto che un attaccante — entrato il 26 ottobre attraverso un'istanza Grafana esposta su internet e lasciata con le credenziali di amministratore di default — ha raggiunto l'ambiente di produzione il 29 ottobre usando un framework di agenti AI (ARTEX) per condurre l'attacco, prima che Chainstack bloccasse l'accesso il 31 ottobre. Sono stati esposti nomi, email e hash delle password dei clienti; Chainstack dichiara che i servizi rivolti ai clienti non si sono mai fermati e ha chiesto ai clienti di ruotare le credenziali dei nodi.",
-        why="È il rovescio della medaglia del trend Salesforce della stessa settimana: non un'azienda che usa agenti AI per lavorare meglio, ma un attaccante reale che ha usato lo stesso tipo di strumento per automatizzare una violazione — una controversia con forte presa su un pubblico ampio.",
+        why="È il rovescio della medaglia del trend AT&T della stessa settimana: non un'azienda che governa l'autonomia di un agente con soglie e supervisione, ma un attaccante reale che ha usato lo stesso tipo di strumento senza nessuna delle due cose — una controversia con forte presa su un pubblico ampio.",
         source="The Block",
         url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
     ),
     dict(
+        title="Gli \"AI coworker\" di Salesforce crescono di 21 volte in tre mesi: le aziende iniziano davvero a delegare lavoro vero agli agenti",
+        what="Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in soli tre mesi. Tra i casi citati: Fulton Bank lo usa per oltre 20 casi d'uso su circa 3.000 utenti; Adecco Group lo sta estendendo a 40 paesi. Il coworker costa 50 dollari per utente al mese, in aggiunta alle licenze Salesforce esistenti.",
+        why="Insieme al trend AT&T della stessa settimana, un secondo segnale — stavolta da un fornitore — che l'AI agentica sta passando dalla demo all'uso quotidiano in azienda: i dati sono diffusi da Salesforce stessa e non sono stati verificati in modo indipendente, ma la direzione è la stessa vista da due angolazioni diverse (vendor e adottante).",
+        source="Salesforce (comunicato ufficiale)",
+        url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
+    ),
+    dict(
         title="I chip AI recuperano parte del terreno perso, dopo la peggiore settimana in un anno e mezzo",
         what="Dopo il crollo registrato nella settimana del 3-7 novembre (indice SOX -12%, la peggiore dall'aprile 2025, dopo le elezioni di midterm del 3 novembre), i titoli dei semiconduttori hanno recuperato parzialmente lunedì 9 novembre. Gli analisti descrivono il movimento come gli investitori che iniziano a guardare oltre la correzione legata ai risultati elettorali, con Nvidia che resta comunque sotto osservazione per le polemiche emerse nei giorni precedenti.",
-        why="Contesto pratico diretto per chi valuta il costo di infrastruttura e API AI nei prossimi mesi: lo segnaliamo come coda del trend aperto la settimana scorsa nel PED, non come notizia nuova a sé — un rimbalzo non chiude la domanda sulla sostenibilità della spesa.",
+        why="Contesto pratico diretto per chi valuta il costo di infrastruttura e API AI nei prossimi mesi: lo segnaliamo come coda del trend aperto nel PED precedente, non come notizia nuova a sé — un rimbalzo non chiude la domanda sulla sostenibilità della spesa.",
         source="Stocktwits",
         url="https://stocktwits.com/news-articles/markets/equity/amd-avgo-intc-mu-chip-stocks-inch-higher-as-investors-look-past-midterms-led-selloff-nvidia-controversy/cNGAD0CR9eR",
     ),
@@ -96,6 +110,12 @@ trends = [
 # ANALISI COMPETITOR
 # ---------------------------------------------------------------------------
 competitors = [
+    dict(
+        name="AT&T",
+        what="Rivela (via SiliconANGLE, 14/11) di gestire quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese, con l'obiettivo di triplicare i workflow entro il 2027.",
+        positioning="Non si presenta come fornitore di tecnologia AI ma come caso di adozione su scala: la narrazione è \"abbiamo governato la transizione\", con una struttura interna dedicata (Business Agent Foundry) e soglie di accuratezza esplicite prima di togliere la supervisione umana.",
+        angle="È l'esempio più concreto finora di cosa serve davvero per portare un agente dalla demo alla produzione: non solo il modello, ma un processo che mappa i workflow, fissa soglie di accuratezza e tiene la supervisione umana finché quella soglia non è raggiunta — esattamente il lavoro di governance che il Team Augmentation di Digitiamo porta alle aziende che non hanno una struttura interna come la Foundry di AT&T.",
+    ),
     dict(
         name="OpenAI",
         what="Lancia in beta i Business Agent verificati dentro ChatGPT (10/11): le aziende idonee (per ora e-commerce e servizi online, solo USA) rivendicano un profilo nel Business Hub, si verificano e lasciano che un proprio agente risponda ai clienti dentro la chat, con dati su citazioni e argomenti di scoperta.",
@@ -115,12 +135,6 @@ competitors = [
         angle="Un'agenzia o un reparto marketing che adotta questi strumenti guadagna velocità, ma rischia di perdere coerenza di brand se nessuno definisce prima regole e guardrail per l'agente — il terreno dell'AI Business Academy, pensata su casi d'uso reali e non su formazione generica allo strumento.",
     ),
     dict(
-        name="Salesforce",
-        what="Comunica che Agentforce Coworker ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi (4/11), con casi come Fulton Bank (20+ casi d'uso, circa 3.000 utenti) e Adecco Group (40 paesi).",
-        positioning="Prova a dimostrare con numeri di adozione reale, non solo demo, che gli agenti AI sono già al lavoro nelle aziende — la prova che il mercato chiede da mesi, anche se i dati vengono dall'azienda stessa.",
-        angle="Una crescita di 21 volte in tre mesi è anche un segnale di rischio: quante di quelle aziende hanno davvero qualcuno che decide a cosa l'agente può accedere, prima che l'adozione superi la governance? È lo stesso nodo del caso Chainstack della stessa settimana, letto dal lato di chi adotta invece che da chi subisce.",
-    ),
-    dict(
         name="Google (DeepMind)",
         what="Rilascia Gemini Robotics 2.5 (robot più capaci, testati con Mercedes-Benz) e AlphaGenome 2 (predizione genetica) nello stesso giorno (11/11).",
         positioning="Mostra l'ampiezza della ricerca DeepMind oltre la chat — robotica industriale e biologia computazionale — in un momento in cui i concorrenti diretti (OpenAI, Anthropic) si concentrano su agenti da ufficio e assistenti.",
@@ -131,41 +145,42 @@ competitors = [
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana: gli agenti AI smettono di essere una demo — si apre
-# lunedì con il quadro d'insieme (Salesforce, Anthropic, OpenAI, Adobe tutti
-# nella stessa settimana), nessuna vendita. Martedì il mito da sfatare sul
-# fornitore AI di Notion che non ha rispettato la promessa di "zero data
-# retention". Mercoledì il carosello dati sui numeri di adozione di
-# Agentforce Coworker (promosso a Prioritario per la densità di cifre, al
-# posto di una seconda idea "ad alta varietà" — nota sul mix di formati, più
-# sotto: questa settimana offre un solo trend davvero da mito, non due, quindi
-# lo schema si adatta con giudizio). Giovedì l'esperienza diretta riprende il
-# filo del mito verificando le clausole di data retention dei fornitori AI del
-# team. Venerdì la mini-lezione spiega cos'è davvero un "agente AI" e perché
-# lo stesso strumento può far crescere un'azienda (Salesforce) o far entrare
-# un attaccante (Chainstack). Le due riserve restano banca contenuti: un
-# carosello numeri sul rimbalzo dei chip AI, e la riflessione di chiusura.
+# Arco della settimana (rigenerato il 16/11/2026): lunedì il quadro d'insieme
+# parte da AT&T — il caso più concreto di agenti AI già in produzione su
+# scala, con soglie di governance esplicite — e lo affianca ai lanci "da
+# ufficio" della stessa settimana (Anthropic, OpenAI, Adobe). Martedì il mito
+# da sfatare resta sul fornitore AI di Notion che non ha rispettato la
+# promessa di "zero data retention" (unico trend della settimana che si
+# presta davvero al formato mito: niente secondo mito forzato). Mercoledì il
+# carosello dati entra nei numeri di AT&T (promosso a Prioritario per la
+# densità di cifre, al posto di una seconda idea "ad alta varietà"). Giovedì
+# l'esperienza diretta riprende il filo del mito di martedì verificando le
+# clausole di data retention dei fornitori AI del team. Venerdì la
+# mini-lezione spiega cos'è davvero un "agente AI" a partire dal contrasto
+# fra la governance di AT&T e l'assenza di governance nel caso Chainstack. Le
+# due riserve restano banca contenuti: un carosello numeri sul rimbalzo dei
+# chip AI, e la riflessione di chiusura.
 ideas = [
     dict(
         badge="Prioritario",
         day="Lunedì 16/11",
         format="Thought leadership — apertura settimana",
-        title="Questa settimana gli agenti AI sono usciti dalla demo: Salesforce, Anthropic, OpenAI e Adobe li hanno messi al lavoro vero — e qualcuno li ha usati anche per attaccare",
-        titolo_post="Gli agenti AI non sono più una demo",
-        sottotitolo_post="Anthropic, OpenAI, Adobe e Salesforce li hanno messi al lavoro vero questa settimana.",
-        news="Agentforce Coworker di Salesforce supera i 185.000 utenti, +21 volte in tre mesi (4/11)",
-        news_url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
-        hook="Questa settimana quattro grandi fornitori hanno smesso di parlare di \"agenti AI\" come una demo e li hanno trasformati in prodotto: il 4 novembre Salesforce ha comunicato che il suo \"coworker\" AI ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi. Il 10 novembre Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud. Nello stesso giro di giorni, un fornitore di infrastruttura blockchain (Chainstack) ha reso noto che un attaccante ha usato lo stesso tipo di strumento — un framework di agenti AI — per violare i propri sistemi.",
-        visual_hook="Quattro grandi fornitori hanno trasformato gli agenti AI da demo a prodotto nella stessa settimana — e un attaccante ha usato lo stesso tipo di strumento per violare un'azienda.",
+        title="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne ha già quasi 500 in produzione: 45 miliardi di token elaborati ogni giorno",
+        titolo_post="AT&T: quasi 500 agenti già al lavoro",
+        sottotitolo_post="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne gestisce quasi 500 in produzione.",
+        news="AT&T gestisce quasi 500 workflow agentici in produzione, 45 miliardi di token al giorno (14/11)",
+        news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
+        hook="Questa settimana la differenza fra parlare di agenti AI e farli lavorare davvero si è vista nei numeri: il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese — e un obiettivo di triplicare i workflow entro il 2027. Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud.",
+        visual_hook="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne ha già quasi 500 in produzione, con soglie di accuratezza precise prima di togliere la supervisione umana.",
         points=[
-            "185.000 — gli utenti attivi di Agentforce Coworker di Salesforce a inizio novembre, con un uso cresciuto di 21 volte in tre mesi: il segnale più concreto di adozione reale visto finora.",
-            "Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende.",
-            "Un fornitore di infrastruttura blockchain, Chainstack, ha reso noto che un attaccante ha usato lo stesso tipo di strumento — un framework di agenti AI — per violare i propri sistemi: la tecnologia che fa crescere l'adozione può accelerare anche l'attacco.",
+            "Quasi 500 — i workflow agentici che AT&T gestisce oggi in produzione, con l'obiettivo di triplicarli entro il 2027: non una demo, ma un programma con una struttura interna dedicata (la \"Business Agent Foundry\").",
+            "Ogni workflow parte con supervisione umana: l'autonomia arriva solo quando l'accuratezza raggiunge la fascia medio-alta del 90%, con monitoraggio continuo dopo la rimozione del controllo diretto.",
+            "Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende e Adobe ha reso Firefly uno studio creativo con agenti sempre attivi.",
         ],
         punti_post=[
-            "Agentforce Coworker: 185.000 utenti, +21 volte in tre mesi.",
-            "Anthropic, OpenAI e Adobe: agenti al lavoro in ufficio e creatività.",
-            "Un attacco reale ha usato lo stesso tipo di framework di agenti.",
+            "AT&T: quasi 500 workflow agentici in produzione.",
+            "45 miliardi di token al giorno, soglia d'accuratezza 90%+.",
+            "Anthropic, OpenAI e Adobe: agenti al lavoro in ufficio.",
         ],
         cta="La tua azienda sta già misurando quanto lavoro reale affida agli agenti AI, o lo guarda ancora da fuori? 👇",
         hashtags="#IntelligenzaArtificiale #AI #AgentiAI #Innovazione #B2B",
@@ -203,30 +218,30 @@ ideas = [
         badge="Prioritario",
         day="Mercoledì 18/11",
         format="Carosello / documento dati — promosso a Prioritario per la densità di cifre",
-        title="Gli agenti AI al lavoro vero: i numeri dietro la crescita di 21 volte in tre mesi di Agentforce Coworker",
-        titolo_post="Agenti AI al lavoro: i numeri",
-        sottotitolo_post="Salesforce dichiara 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi.",
-        closing_title="Chi decide cosa può fare l'agente?",
-        closing_body="Prima di misurare quanto lavoro delega un agente, qualcuno deve aver deciso a cosa può accedere.",
-        news="Salesforce annuncia che Agentforce Coworker supera i 185.000 utenti, +21 volte in tre mesi (4/11)",
-        news_url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
-        hook="Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in appena tre mesi.",
+        title="Dentro i quasi 500 agenti AI di AT&T già al lavoro: i numeri della trasformazione agentica più grande vista finora",
+        titolo_post="Agenti AI al lavoro: i numeri di AT&T",
+        sottotitolo_post="Quasi 500 workflow agentici in produzione, 45 miliardi di token elaborati ogni giorno.",
+        closing_title="Chi fissa la soglia per togliere la supervisione?",
+        closing_body="Prima di contare quanti workflow delega un agente, qualcuno deve aver fissato la soglia di accuratezza per farlo lavorare da solo.",
+        news="AT&T gestisce quasi 500 workflow agentici in produzione, 45 miliardi di token al giorno (14/11)",
+        news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
+        hook="Il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione — non una demo, ma un programma con una struttura di governance precisa su quando un agente può lavorare senza supervisione diretta.",
         points=[
-            "185.000 — gli utenti attivi di Agentforce Coworker a inizio novembre 2026, secondo i dati diffusi da Salesforce.",
-            "21 volte — la crescita dell'uso del coworker AI in appena tre mesi, secondo Salesforce (dato dell'azienda stessa, non verificato in modo indipendente).",
-            "50 dollari — il costo mensile per utente del coworker AI, in aggiunta alle licenze Salesforce già pagate dall'azienda.",
-            "3.000 — gli utenti di Fulton Bank che usano il coworker AI su oltre 20 casi d'uso diversi, dalle verifiche interne al supporto ai clienti.",
-            "40 — i paesi in cui Adecco Group sta estendendo l'uso del coworker AI nei propri processi, secondo Salesforce.",
+            "500 — i workflow agentici che AT&T gestisce oggi in produzione (quasi), con l'obiettivo dichiarato di triplicarli entro il 2027.",
+            "45 miliardi — i token AI elaborati ogni giorno dalla piattaforma, saliti da 27 miliardi a marzo 2026.",
+            "1 milione — le transazioni mensili gestite dalla piattaforma di agenti AI di AT&T, secondo l'azienda.",
+            "90 — la soglia di accuratezza (fascia medio-alta, in percentuale) che un workflow deve raggiungere prima che AT&T rimuova la supervisione umana diretta.",
+            "5 volte — il ritorno sugli investimenti in AI di produzione dichiarato da AT&T entro un anno (dato dell'azienda stessa, non verificato in modo indipendente).",
         ],
         punti_post=[
-            "185.000 — utenti attivi su Agentforce Coworker (inizio novembre).",
-            "21 volte — crescita dell'uso in tre mesi (dato Salesforce).",
-            "50 $ — costo mensile per utente, oltre alle licenze Salesforce.",
-            "3.000 — utenti Fulton Bank, oltre 20 casi d'uso.",
-            "40 — paesi in cui Adecco Group lo sta estendendo.",
+            "500 — workflow agentici in produzione (obiettivo: triplicarli nel 2027).",
+            "45 miliardi — token elaborati al giorno (da 27 mld a marzo).",
+            "1 milione — transazioni gestite al mese dalla piattaforma.",
+            "90% — soglia per togliere la supervisione umana.",
+            "5x — ritorno dichiarato sugli investimenti AI in un anno (dato AT&T).",
         ],
-        closing="Il salto di adozione è reale, non solo marketing: in tre mesi l'uso di un agente che pianifica ed esegue compiti da solo è cresciuto di 21 volte. Ma un'adozione che corre più veloce della governance lascia scoperta una domanda semplice: chi, in azienda, ha deciso a quali sistemi e dati l'agente può accedere, e chi controlla cosa fa davvero quando lavora senza supervisione diretta? I dati di crescita vengono da Salesforce stessa e non sono stati verificati in modo indipendente.",
-        cta="La tua azienda misura la crescita dell'uso degli agenti AI, o anche i permessi che gli ha dato? 👇",
+        closing="Il salto di scala è reale: quasi 500 workflow agentici, 45 miliardi di token al giorno, un obiettivo di triplicare tutto entro il 2027. Ma il dettaglio che vale di più non è la scala — è la regola che la rende sostenibile: ogni workflow parte con supervisione umana, e la perde solo quando l'accuratezza supera una soglia fissata in anticipo, non quando qualcuno decide che \"probabilmente va bene così\". I dati di AT&T vengono dall'azienda stessa e non sono stati verificati in modo indipendente.",
+        cta="La tua azienda ha già fissato una soglia esplicita prima di togliere la supervisione umana a un agente AI, o la decisione resta informale? 👇",
         hashtags="#AgentiAI #IntelligenzaArtificiale #Innovazione #B2B #Automazione",
     ),
     dict(
@@ -257,20 +272,20 @@ ideas = [
         badge="Prioritario",
         day="Venerdì 20/11",
         format="Divulgativo stile Datapizza",
-        title="Cos'è davvero un \"agente AI\", e perché lo stesso strumento può far crescere un'azienda o far entrare un attaccante",
+        title="Cos'è davvero un \"agente AI\": la differenza fra i quasi 500 di AT&T e quello usato per violare Chainstack",
         titolo_post="Cos'è davvero un agente AI",
         sottotitolo_post="La differenza tra un chatbot che risponde e un agente che agisce da solo sui tuoi sistemi.",
-        news="Spunto dai lanci \"agentic\" della settimana e dal caso Chainstack (vedi post di lunedì)",
+        news="Spunto dal caso AT&T (vedi post di lunedì) e dal caso Chainstack della stessa settimana",
         news_url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
-        hook="Questa settimana abbiamo parlato di agenti AI che pianificano compiti, lavorano dentro Photoshop o aiutano i clienti a scoprire un'azienda su ChatGPT — e di un attaccante che ha usato lo stesso tipo di strumento per violare un'azienda. Ma cosa vuol dire davvero \"agente AI\", e perché non è solo un chatbot più furbo?",
+        hook="Questa settimana abbiamo raccontato due storie opposte con lo stesso protagonista: AT&T, che gestisce quasi 500 agenti AI in produzione togliendo la supervisione umana solo sopra una soglia di accuratezza fissata in anticipo — e un attaccante che ha usato lo stesso tipo di strumento per violare Chainstack, un fornitore di infrastruttura blockchain. Ma cosa vuol dire davvero \"agente AI\", e perché non è solo un chatbot più furbo?",
         points=[
             "Un chatbot risponde a una domanda e si ferma lì. Un agente AI, invece, riceve un obiettivo, decide da solo i passaggi per raggiungerlo e usa degli \"strumenti\" — accesso a un database, a una casella email, a un sistema aziendale — per eseguirli senza bisogno di istruzioni passo-passo.",
-            "Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: nel caso Chainstack di questa settimana, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.",
+            "Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: AT&T lo governa con soglie di accuratezza esplicite prima di togliere la supervisione; nel caso Chainstack, invece, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.",
             "La domanda da farsi prima di dare un obiettivo a un agente AI, in azienda o nelle mani sbagliate, è sempre la stessa: a cosa può accedere davvero, e chi se ne accorge se usa quell'accesso in un modo che non ci si aspettava?",
         ],
         punti_post=[
             "Un chatbot risponde; un agente AI agisce da solo sui tuoi sistemi.",
-            "Chainstack: un attaccante ha usato un framework di agenti per violare.",
+            "AT&T lo governa con soglie; Chainstack mostra cosa succede senza.",
             "La domanda chiave: a cosa accede l'agente, e chi lo controlla?",
         ],
         cta="Conoscevi già la differenza tra un chatbot e un agente AI che agisce da solo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
@@ -283,13 +298,13 @@ ideas = [
         title="Il rimbalzo dei chip AI dopo il crollo: i numeri della settimana di recupero",
         news="Il recupero parziale dei titoli dei semiconduttori dopo il crollo della settimana del 3-7 novembre",
         news_url="https://stocktwits.com/news-articles/markets/equity/amd-avgo-intc-mu-chip-stocks-inch-higher-as-investors-look-past-midterms-led-selloff-nvidia-controversy/cNGAD0CR9eR",
-        hook="La settimana scorsa abbiamo aperto il PED con il crollo dei chip AI. Questa settimana i titoli hanno recuperato parte del terreno perso: ecco cosa dicono gli analisti su cosa è cambiato e cosa no.",
+        hook="Due settimane fa i chip AI erano crollati del 12% in cinque giorni. Questa settimana i titoli hanno recuperato parte del terreno perso: ecco cosa dicono gli analisti su cosa è cambiato e cosa no.",
         points=[
             "12% — il calo dell'indice SOX nella settimana del 3-7 novembre, la peggiore dall'aprile 2025, dopo le elezioni di midterm del 3 novembre.",
             "Gli analisti descrivono il recupero di lunedì 9 novembre come investitori che iniziano a guardare oltre la correzione legata ai risultati elettorali, non come un segnale che i dubbi di fondo sulla spesa in data center siano spariti.",
             "Nvidia resta sotto osservazione per le polemiche emerse nei giorni precedenti, secondo gli stessi report che descrivono il recupero del settore.",
         ],
-        closing="Un rimbalzo non è una risposta alla domanda che ci siamo fatti la settimana scorsa — se la spesa in infrastrutture AI sia sostenibile quanto si sperava — ma solo la prova che il mercato, per ora, resta diviso su quella domanda.",
+        closing="Un rimbalzo non è una risposta alla domanda che resta aperta da due settimane — se la spesa in infrastrutture AI sia sostenibile quanto si sperava — ma solo la prova che il mercato, per ora, resta diviso su quella domanda.",
         cta="La tua azienda pianifica i costi di infrastruttura AI pensando anche agli scenari in cui i prezzi tornano a salire? 👇",
         hashtags="#AI #Mercati #Infrastruttura #B2B #Chip",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
@@ -299,17 +314,17 @@ ideas = [
         day="Banca contenuti (settimana corrente o successiva)",
         format="Riflessione di chiusura settimana / lista community",
         title="5 cose che questa settimana ci dice sugli agenti AI al lavoro (e su chi li controlla)",
-        news="Sintesi dei trend della settimana 6-13 novembre 2026",
-        news_url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
+        news="Sintesi dei trend della settimana 10-16 novembre 2026",
+        news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
         hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie degli ultimi giorni.",
         points=[
-            "Gli agenti AI sono usciti dalla fase demo: Salesforce dichiara 185.000 utenti attivi su Agentforce Coworker, con un uso cresciuto di 21 volte in tre mesi.",
+            "Gli agenti AI sono arrivati in produzione su scala: AT&T ne gestisce quasi 500, con 45 miliardi di token elaborati al giorno e un obiettivo di triplicarli entro il 2027.",
             "Anthropic (Sheets, Whiteboards, connettori), OpenAI (Business Agent in ChatGPT) e Adobe (Creative Agent sempre attivo) hanno messo agenti AI dentro gli strumenti che usiamo ogni giorno, tutti nella stessa settimana.",
             "Un fornitore AI di Notion (Fireworks) ha esposto chat nonostante un contratto di \"zero data retention\": una promessa scritta non è una verifica tecnica.",
-            "Un attaccante ha usato un framework di agenti AI per violare un fornitore di infrastruttura blockchain (Chainstack): lo stesso tipo di strumento che fa crescere l'adozione può accelerare un attacco.",
-            "I chip AI hanno recuperato parte del terreno perso la settimana precedente, ma gli analisti non lo leggono come la fine dei dubbi sulla sostenibilità della spesa in infrastrutture.",
+            "Un attaccante ha usato un framework di agenti AI per violare un fornitore di infrastruttura blockchain (Chainstack): lo stesso tipo di strumento che fa crescere l'adozione può accelerare un attacco, quando manca la governance che invece AT&T applica.",
+            "I chip AI hanno recuperato parte del terreno perso due settimane fa, ma gli analisti non lo leggono come la fine dei dubbi sulla sostenibilità della spesa in infrastrutture.",
         ],
-        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che gli agenti AI smettono di essere una demo e iniziano a fare lavoro vero, la domanda non è più \"funzionano?\" ma \"chi ha deciso cosa possono fare, e chi se ne accorge quando sbagliano?\". La risposta non è rallentare l'adozione — è non farla correre più veloce della governance.",
+        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che gli agenti AI smettono di essere una demo e iniziano a fare lavoro vero su scala, la domanda non è più \"funzionano?\" ma \"chi ha fissato la soglia per farli lavorare da soli, e chi se ne accorge quando sbagliano?\". AT&T e Chainstack, questa settimana, sono la stessa domanda con due risposte opposte.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
         hashtags="#AINews #WeeklyRecap #Tech #AgentiAI #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
@@ -335,8 +350,8 @@ publishing = [
     dict(
         day="Mercoledì 18/11",
         time="12:15",
-        format="Carosello / dati (i numeri di Agentforce Coworker)",
-        reason="Seconda finestra pausa pranzo B2B. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i numeri di adozione (185.000 utenti, 21 volte in tre mesi) sono densi abbastanza da meritare uno spazio proprio — per questo è stato promosso da riserva a Prioritario questa settimana.",
+        format="Carosello / dati (i numeri dei quasi 500 workflow agentici di AT&T)",
+        reason="Seconda finestra pausa pranzo B2B. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i numeri di AT&T (500 workflow, 45 miliardi di token/giorno, soglia di accuratezza 90%) sono densi abbastanza da meritare uno spazio proprio — per questo è stato promosso da riserva a Prioritario questa settimana.",
     ),
     dict(
         day="Giovedì 19/11",
@@ -348,13 +363,13 @@ publishing = [
         day="Venerdì 20/11",
         time="08:00",
         format="Divulgativo (Datapizza style)",
-        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo sugli agenti AI aperto lunedì.",
+        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo aperto lunedì confrontando governance (AT&T) e assenza di governance (Chainstack).",
     ),
     dict(
         day="Da programmare",
         time="—",
         format="Riserva — Carosello numeri sul rimbalzo dei chip AI",
-        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come approfondimento del tema aperto nel PED della settimana precedente.",
+        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come approfondimento del tema chip aperto due settimane fa.",
     ),
     dict(
         day="Da programmare",

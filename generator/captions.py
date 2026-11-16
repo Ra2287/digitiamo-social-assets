@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 16 - 22 novembre 2026.
+"""I testi dei post per Buffer, settimana 16 - 22 novembre 2026 (rigenerata).
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -15,11 +15,11 @@ istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
 """
 
-CAPTION_1 = """Questa settimana quattro grandi fornitori hanno smesso di parlare di "agenti AI" come una demo e li hanno trasformati in prodotto: il 4 novembre Salesforce ha comunicato che il suo "coworker" AI ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in tre mesi. Il 10 novembre Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud. Nello stesso giro di giorni, un fornitore di infrastruttura blockchain (Chainstack) ha reso noto che un attaccante ha usato lo stesso tipo di strumento — un framework di agenti AI — per violare i propri sistemi.
+CAPTION_1 = """Questa settimana la differenza fra parlare di agenti AI e farli lavorare davvero si è vista nei numeri: il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese — con l'obiettivo di triplicare i workflow entro il 2027. Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud.
 
-→ 185.000 — gli utenti attivi di Agentforce Coworker di Salesforce a inizio novembre, con un uso cresciuto di 21 volte in tre mesi: il segnale più concreto di adozione reale visto finora.
-→ Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende.
-→ Un fornitore di infrastruttura blockchain, Chainstack, ha reso noto che un attaccante ha usato lo stesso tipo di strumento — un framework di agenti AI — per violare i propri sistemi: la tecnologia che fa crescere l'adozione può accelerare anche l'attacco.
+→ Quasi 500 — i workflow agentici che AT&T gestisce oggi in produzione, con l'obiettivo di triplicarli entro il 2027: non una demo, ma un programma con una struttura interna dedicata (la "Business Agent Foundry").
+→ Ogni workflow parte con supervisione umana: l'autonomia arriva solo quando l'accuratezza raggiunge la fascia medio-alta del 90%, con monitoraggio continuo dopo la rimozione del controllo diretto.
+→ Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende e Adobe ha reso Firefly uno studio creativo con agenti sempre attivi.
 
 La tua azienda sta già misurando quanto lavoro reale affida agli agenti AI, o lo guarda ancora da fuori? 👇
 
@@ -39,17 +39,17 @@ Il problema non è se il tuo fornitore AI sia in malafede — probabilmente non 
 La tua azienda ha mai verificato, oltre al contratto, cosa succede davvero ai dati lungo la catena dei fornitori AI che usa? 👇"""
 
 
-CAPTION_3 = """Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in appena tre mesi.
+CAPTION_3 = """Il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione — non una demo, ma un programma con una struttura di governance precisa su quando un agente può lavorare senza supervisione diretta.
 
-→ 185.000 — gli utenti attivi di Agentforce Coworker a inizio novembre 2026, secondo i dati diffusi da Salesforce
-→ 21 volte — la crescita dell'uso del coworker AI in appena tre mesi, secondo Salesforce (dato dell'azienda stessa, non verificato in modo indipendente)
-→ 50 dollari — il costo mensile per utente del coworker AI, in aggiunta alle licenze Salesforce già pagate dall'azienda
-→ 3.000 — gli utenti di Fulton Bank che usano il coworker AI su oltre 20 casi d'uso diversi, dalle verifiche interne al supporto ai clienti
-→ 40 — i paesi in cui Adecco Group sta estendendo l'uso del coworker AI nei propri processi, secondo Salesforce
+→ 500 — i workflow agentici che AT&T gestisce oggi in produzione (quasi), con l'obiettivo dichiarato di triplicarli entro il 2027
+→ 45 miliardi — i token AI elaborati ogni giorno dalla piattaforma, saliti da 27 miliardi a marzo 2026
+→ 1 milione — le transazioni mensili gestite dalla piattaforma di agenti AI di AT&T, secondo l'azienda
+→ 90% — la soglia di accuratezza (fascia medio-alta) che un workflow deve raggiungere prima che AT&T rimuova la supervisione umana diretta
+→ 5 volte — il ritorno sugli investimenti in AI di produzione dichiarato da AT&T entro un anno (dato dell'azienda stessa, non verificato in modo indipendente)
 
-Il salto di adozione è reale, non solo marketing: in tre mesi l'uso di un agente che pianifica ed esegue compiti da solo è cresciuto di 21 volte. Ma un'adozione che corre più veloce della governance lascia scoperta una domanda semplice: chi, in azienda, ha deciso a quali sistemi e dati l'agente può accedere, e chi controlla cosa fa davvero quando lavora senza supervisione diretta? I dati di crescita vengono da Salesforce stessa e non sono stati verificati in modo indipendente.
+Il salto di scala è reale: quasi 500 workflow agentici, 45 miliardi di token al giorno, un obiettivo di triplicare tutto entro il 2027. Ma il dettaglio che vale di più non è la scala — è la regola che la rende sostenibile: ogni workflow parte con supervisione umana, e la perde solo quando l'accuratezza supera una soglia fissata in anticipo, non quando qualcuno decide che "probabilmente va bene così". I dati di AT&T vengono dall'azienda stessa e non sono stati verificati in modo indipendente.
 
-La tua azienda misura la crescita dell'uso degli agenti AI, o anche i permessi che gli ha dato? 👇
+La tua azienda ha già fissato una soglia esplicita prima di togliere la supervisione umana a un agente AI, o la decisione resta informale? 👇
 
 #AgentiAI #IntelligenzaArtificiale #Innovazione #B2B #Automazione"""
 
@@ -65,10 +65,10 @@ La tua azienda ha mai chiesto a un fornitore AI una prova tecnica della "zero da
 #IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness"""
 
 
-CAPTION_5 = """Questa settimana abbiamo parlato di agenti AI che pianificano compiti, lavorano dentro Photoshop o aiutano i clienti a scoprire un'azienda su ChatGPT — e di un attaccante che ha usato lo stesso tipo di strumento per violare un'azienda. Ma cosa vuol dire davvero "agente AI", e perché non è solo un chatbot più furbo?
+CAPTION_5 = """Questa settimana abbiamo raccontato due storie opposte con lo stesso protagonista: AT&T, che gestisce quasi 500 agenti AI in produzione togliendo la supervisione umana solo sopra una soglia di accuratezza fissata in anticipo — e un attaccante che ha usato lo stesso tipo di strumento per violare Chainstack, un fornitore di infrastruttura blockchain. Ma cosa vuol dire davvero "agente AI", e perché non è solo un chatbot più furbo?
 
 → Un chatbot risponde a una domanda e si ferma lì. Un agente AI, invece, riceve un obiettivo, decide da solo i passaggi per raggiungerlo e usa degli "strumenti" — accesso a un database, a una casella email, a un sistema aziendale — per eseguirli senza bisogno di istruzioni passo-passo.
-→ Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: nel caso Chainstack di questa settimana, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.
+→ Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: AT&T lo governa con soglie di accuratezza esplicite prima di togliere la supervisione; nel caso Chainstack, invece, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.
 → La domanda da farsi prima di dare un obiettivo a un agente AI, in azienda o nelle mani sbagliate, è sempre la stessa: a cosa può accedere davvero, e chi se ne accorge se usa quell'accesso in un modo che non ci si aspettava?
 
 Conoscevi già la differenza tra un chatbot e un agente AI che agisce da solo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇

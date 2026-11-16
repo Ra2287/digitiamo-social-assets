@@ -538,6 +538,7 @@ Per non disperdersi in una ricerca generica sull'AI, un set di partenza
 | Pratica/tecnica | Latent Space, il canale YouTube di Andrej Karpathy |
 | Quadro d'insieme | Stratechery, Exponential View, più una fonte scettica/critica a scelta, per bilanciare |
 | Paper e ricerca | Hugging Face Daily Papers — i paper AI del giorno più votati dalla community |
+| Progetti open source | GitHub Trending — i repository più popolari/in tendenza del giorno o della settimana su GitHub |
 
 Come per il design: punti di partenza, non un elenco chiuso, e i fatti si
 verificano comunque sulla fonte primaria citata, non sul riassunto di queste

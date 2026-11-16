@@ -26,17 +26,17 @@ La tua azienda sta già misurando quanto lavoro reale affida agli agenti AI, o l
 #IntelligenzaArtificiale #AI #AgentiAI #Innovazione #B2B"""
 
 
-CAPTION_2 = """🔥 Il mito: se il contratto con il tuo fornitore AI promette "zero data retention" — l'impegno a non conservare i tuoi dati — allora quei dati restano al sicuro, punto.
+CAPTION_2 = """🔥 Il mito: dietro un attacco informatico c'è sempre, in qualche fase, una persona che analizza la falla, scrive l'exploit e lo lancia — un agente AI può aiutare, ma il lavoro vero lo fa ancora un umano esperto.
 
-Notion ha comunicato che una violazione al proprio fornitore di infrastruttura AI, Fireworks AI, ha esposto le chat AI di una minoranza dei propri spazi di lavoro. Fireworks aveva con Notion un impegno contrattuale di "zero data retention": il contratto c'era. Le indagini di Notion hanno trovato che i dati erano stati conservati comunque sugli endpoint usati.
+Il 16 novembre Google ha pubblicato il suo rapporto trimestrale sulle minacce AI, documentando il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante. Il framework, chiamato "exploit_agent", è stato trovato su un server di staging esposto su internet: confronta in automatico il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità introdotte dalla patch, sviluppa l'exploit e lo esegue — senza che una persona intervenga in nessuna fase.
 
-🔹 L'intrusione è iniziata il 6 ottobre ed è arrivata ai sistemi di produzione di Fireworks il 24 ottobre; Fireworks ha notificato Notion il 2 novembre e confermato l'accesso non autorizzato il 6 novembre
-🔹 Esposte le trascrizioni delle chat AI usate per la funzione "Insights" (che classifica come i membri di un'azienda usano l'AI) e per l'inferenza di modelli open-weight — meno dell'1% degli spazi di lavoro Notion, secondo l'azienda
-🔹 Notion si è disconnessa da Fireworks, ha cancellato i dati conservati lì, disabilitato Insights durante l'indagine e consiglia a chi è coinvolto di ruotare password e chiavi incollate nelle chat AI nel periodo interessato
+🔹 Il framework confronta il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità e sviluppa ed esegue l'exploit, tutto senza intervento umano
+🔹 I ricercatori di Google lo hanno trovato su un server di staging esposto su internet, insieme a dati già rubati ad altre organizzazioni e a strumenti per muoversi dentro una rete una volta compromessa
+🔹 Google segnala che questo framework si aggiunge a una lista già nota di strumenti offensivi agentici — tra cui ARTEX, lo stesso usato nell'attacco al fornitore blockchain Chainstack della settimana scorsa
 
-Il problema non è se il tuo fornitore AI sia in malafede — probabilmente non lo è. È che una clausola contrattuale descrive un impegno, non una verifica tecnica: senza un controllo periodico su cosa succede davvero ai dati lungo la catena di sub-fornitori, un'azienda scopre che la promessa non ha retto solo quando arriva la notifica di violazione.
+Il problema non è se la tua azienda abbia budget per attirare hacker esperti — è che il costo di trasformare una falla in un attacco si sta avvicinando a zero, perché la parte più lenta del lavoro la fa ormai un agente AI. Patchare in fretta non basta più se tra la pubblicazione di una patch e il suo sfruttamento non c'è più il tempo che serviva a un umano per capirla.
 
-La tua azienda ha mai verificato, oltre al contratto, cosa succede davvero ai dati lungo la catena dei fornitori AI che usa? 👇"""
+La tua azienda applica le patch di sicurezza entro ore, o ancora entro settimane? 👇"""
 
 
 CAPTION_3 = """Il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione — non una demo, ma un programma con una struttura di governance precisa su quando un agente può lavorare senza supervisione diretta.
@@ -54,23 +54,23 @@ La tua azienda ha già fissato una soglia esplicita prima di togliere la supervi
 #AgentiAI #IntelligenzaArtificiale #Innovazione #B2B #Automazione"""
 
 
-CAPTION_4 = """Dopo il caso di questa settimana — un fornitore AI che prometteva contrattualmente "zero data retention" e non l'ha rispettata — ci siamo fatti la domanda scomoda: i fornitori AI che usiamo noi rispettano davvero quello che promettono? Questa settimana abbiamo riletto i contratti e controllato le impostazioni reali, non solo quello che c'è scritto nelle condizioni.
+CAPTION_4 = """Dopo il caso di questa settimana — una chiave rubata a un fornitore AI ha permesso di inserire un'estensione malevola nel marketplace di un editor di codice assistito da AI — ci siamo fatti la domanda scomoda: le estensioni e i plugin AI che il team installa nei propri editor sono davvero quelli che pensiamo? Questa settimana abbiamo controllato cosa è installato davvero, non solo cosa risulta dalla lista ufficiale.
 
-→ Abbiamo elencato tutti i fornitori AI usati dal team (modelli, strumenti di scrittura, trascrizione, analytics) e per ciascuno cercato la clausola di data retention nel contratto o nei termini di servizio.
-→ [Da personalizzare con l'esito reale della verifica del team: quali fornitori avevano impostazioni diverse da quanto promesso nel contratto, cosa avete dovuto disattivare o cambiare, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi di fornitori o esiti non verificati.]
-→ La domanda utile non è se un contratto esista — quasi sempre esiste — ma se qualcuno in azienda lo ha mai messo alla prova chiedendo al fornitore una prova tecnica, non solo una dichiarazione scritta.
+→ Abbiamo elencato tutte le estensioni e i plugin AI installati negli editor di codice del team (marketplace ufficiali e non), e per ciascuno controllato la fonte e l'ultimo aggiornamento.
+→ [Da personalizzare con l'esito reale della verifica del team: quali estensioni avevano una provenienza poco chiara, cosa avete disinstallato o sostituito, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi o esiti non verificati.]
+→ La domanda utile non è se il marketplace sia affidabile — di norma lo è — ma se qualcuno in azienda controlla periodicamente cosa viene installato, non solo al momento dell'onboarding.
 
-La tua azienda ha mai chiesto a un fornitore AI una prova tecnica della "zero data retention", non solo una dichiarazione scritta? Raccontaci 👇
+La tua azienda controlla periodicamente le estensioni e i plugin AI installati nei suoi editor, o solo al primo giorno? Raccontaci 👇
 
 #IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness"""
 
 
-CAPTION_5 = """Questa settimana abbiamo raccontato due storie opposte con lo stesso protagonista: AT&T, che gestisce quasi 500 agenti AI in produzione togliendo la supervisione umana solo sopra una soglia di accuratezza fissata in anticipo — e un attaccante che ha usato lo stesso tipo di strumento per violare Chainstack, un fornitore di infrastruttura blockchain. Ma cosa vuol dire davvero "agente AI", e perché non è solo un chatbot più furbo?
+CAPTION_5 = """Questa settimana abbiamo raccontato un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante, e un fornitore (Cursor) che ha dovuto bloccare un'estensione malevola finita nel suo marketplace. Ma cosa vuol dire davvero "agente AI offensivo", e in cosa differisce da un normale strumento di sicurezza?
 
-→ Un chatbot risponde a una domanda e si ferma lì. Un agente AI, invece, riceve un obiettivo, decide da solo i passaggi per raggiungerlo e usa degli "strumenti" — accesso a un database, a una casella email, a un sistema aziendale — per eseguirli senza bisogno di istruzioni passo-passo.
-→ Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: AT&T lo governa con soglie di accuratezza esplicite prima di togliere la supervisione; nel caso Chainstack, invece, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.
-→ La domanda da farsi prima di dare un obiettivo a un agente AI, in azienda o nelle mani sbagliate, è sempre la stessa: a cosa può accedere davvero, e chi se ne accorge se usa quell'accesso in un modo che non ci si aspettava?
+→ Uno strumento di sicurezza tradizionale segnala una vulnerabilità e si ferma lì: decide una persona se e come sfruttarla. Un agente AI offensivo, invece, riceve un obiettivo — "trova e sfrutta le falle in questo software" — e porta a termine da solo tutti i passaggi: confronto del codice, sviluppo dell'exploit, esecuzione.
+→ Google ha trovato un framework di questo tipo, chiamato exploit_agent, configurato per analizzare in continuo gli aggiornamenti di sicurezza di software web popolari: più il bersaglio è diffuso, più conviene automatizzare l'attacco su scala.
+→ La stessa logica vale al contrario: più un'azienda rende prevedibile e documentato chi può accedere a cosa — come fa, ad esempio, chi fissa soglie esplicite prima di dare autonomia a un agente — più stringe lo spazio in cui uno strumento come questo può muoversi senza essere notato.
 
-Conoscevi già la differenza tra un chatbot e un agente AI che agisce da solo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇
+Conoscevi già la differenza tra uno strumento di sicurezza tradizionale e un agente AI offensivo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇
 
-#AI #TechExplained #AgentiAI #B2B #Innovazione"""
+#AI #TechExplained #Cybersecurity #B2B #Innovazione"""

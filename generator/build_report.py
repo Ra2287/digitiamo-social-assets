@@ -22,24 +22,32 @@ GENERATED_ON = "Lunedì 16 novembre 2026"
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Rigenerazione del 16 novembre 2026, su richiesta di Ramona ("sostituisci
-# tutto"): ricerca rifatta da zero includendo le due nuove fonti aggiunte in
-# CLAUDE.md lo stesso giorno (Hugging Face Daily Papers, GitHub Trending).
-# Due candidati emersi in un primo giro di ricerca sono stati scartati dopo
-# verifica sulla fonte primaria: la causa Sullivan & Cromwell sulle citazioni
-# legali inventate dall'AI risale ad aprile 2026 (non a questa settimana), e
-# lo studio Berkeley/Nature sull'ECG e il rischio cardiaco è di giugno 2026,
-# solo ripubblicato da un aggregatore il 12/11 — entrambi riproposti da
-# aggregatori con una data di superficie fuorviante. Confermano la regola del
-# repo: verificare sulla fonte diretta, non sul riassunto.
+# Seconda rigenerazione del 16 novembre 2026, su richiesta di Ramona ("le
+# altre sono uguali a prima, cambia proprio stile di news"): la prima
+# riscrittura aveva aggiornato solo il trend AT&T lasciando martedì/
+# giovedì/venerdì identici alla versione precedente (Notion/Fireworks e
+# Chainstack). Qui le notizie di sicurezza sono state sostituite con due
+# storie diverse, entrambe verificate sulla fonte diretta: il rapporto di
+# Google Threat Intelligence Group (via The Register, pubblicato oggi
+# stesso) sul primo caso noto di un agente AI che trasforma da solo una
+# patch di sicurezza in un exploit funzionante, e la violazione confermata
+# da Cursor il 13/11 — una chiave rubata al fornitore AI Fireworks ha
+# permesso di inserire un'estensione Claude Code malevola nel suo
+# marketplace. Chainstack resta in elenco perché il framework usato in
+# quell'attacco (ARTEX) è lo stesso che Google cataloga nel suo rapporto:
+# il collegamento tra le due notizie è reale, non costruito a tavolino.
+# Due candidati di un giro di ricerca precedente erano stati scartati dopo
+# verifica sulla fonte primaria: la causa Sullivan & Cromwell sulle
+# citazioni legali inventate dall'AI risale ad aprile 2026 (non a questa
+# settimana), e lo studio Berkeley/Nature sull'ECG e il rischio cardiaco è
+# di giugno 2026, solo ripubblicato da un aggregatore il 12/11.
 # Filo conduttore della settimana: gli agenti AI smettono di essere un
 # progetto pilota e diventano infrastruttura di produzione misurata in
-# miliardi di token al giorno (AT&T), mentre la stessa settimana porta nuovi
-# lanci "da ufficio" (Anthropic, OpenAI, Adobe) e nuovi segnali che
-# l'adozione corre più veloce della governance: una promessa contrattuale di
-# "zero data retention" che non regge nei fatti (Notion/Fireworks) e un
-# attaccante che usa lo stesso tipo di strumento — un framework di agenti AI
-# — per violare un'azienda (Chainstack).
+# miliardi di token al giorno (AT&T) e nuovi lanci "da ufficio" (Anthropic,
+# OpenAI, Adobe) — mentre sul lato opposto la stessa tecnologia comincia ad
+# automatizzare anche l'attacco: un agente che trasforma da solo una patch
+# in un exploit (Google), e una chiave rubata a un fornitore AI che diventa
+# un'estensione malevola distribuita a migliaia di sviluppatori (Cursor).
 trends = [
     dict(
         title="AT&T gestisce quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno",
@@ -47,6 +55,20 @@ trends = [
         why="Dato pratico e sorprendente più che proiezione: un'azienda con milioni di clienti quotidiani mostra, con cifre e soglie precise, cosa vuol dire portare gli agenti AI dalla demo alla produzione — incluso il meccanismo di governance (soglia di accuratezza, supervisione umana) che l'adozione spesso salta. Rilevante per un pubblico ampio, non solo per gli addetti ai lavori del settore telco.",
         source="SiliconANGLE",
         url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
+    ),
+    dict(
+        title="Google rivela il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante",
+        what="Il 16 novembre il Google Threat Intelligence Group (GTIG) ha pubblicato il suo rapporto trimestrale sulle minacce AI, documentando quello che definisce il primo caso noto di un agente AI che trasforma patch di sicurezza in exploit funzionanti senza alcun intervento umano. I ricercatori hanno trovato un server di staging esposto su internet che ospitava un framework multi-agente chiamato \"exploit_agent\": integra più modelli AI (di frontiera e locali), usa strumenti in lingua russa, ed era configurato per confrontare in continuo il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individuare le vulnerabilità introdotte dalla patch, sviluppare l'exploit ed eseguirlo — tutto in automatico. Lo stesso server conteneva dati già rubati ad altre organizzazioni e strumenti per muoversi dentro una rete una volta compromessa. GTIG segnala che questo framework si aggiunge a una lista già nota di strumenti offensivi agentici, tra cui ARTEX — lo stesso usato nell'attacco al fornitore blockchain Chainstack della settimana scorsa —, CAIRN, CyberStrikeAI, HexStrike AI e PentAGI.",
+        why="Primo caso del suo genere, pubblicato oggi stesso: tocca una paura diffusa e concreta — l'AI che automatizza l'attacco, non solo la difesa — con un meccanismo spiegabile in parole semplici (confronto automatico prima/dopo una patch) e un impatto potenziale su qualunque software web popolare, non su un singolo settore.",
+        source="The Register (su rapporto Google Threat Intelligence Group)",
+        url="https://www.theregister.com/research/2026/11/16/google-ai-agent-turned-a-security-patch-into-a-working-exploit-with-no-human-help/5309926",
+    ),
+    dict(
+        title="Cursor conferma: una chiave rubata al fornitore AI Fireworks ha portato a un'estensione Claude Code malevola sul suo marketplace",
+        what="Il 13 novembre Cursor ha pubblicato i risultati di un'indagine di due settimane su una violazione partita da Fireworks AI, il fornitore di inferenza a cui aveva concesso accesso a un bucket di dati in sola lettura. Un attaccante ha avuto accesso ai sistemi di sviluppo di Fireworks il 24 ottobre, ha usato una chiave esposta per copiare dati dal bucket (tracce di sessioni del 2025 senza Privacy Mode, alcune con credenziali non oscurate), è passato da lì ad alcuni strumenti SaaS interni di Cursor e infine ha caricato, il 29 ottobre, versioni manomesse dell'estensione \"anthropic.claude-code\" nella cache del marketplace VS Code di Cursor — attive per circa 11 ore, scaricabili da un massimo di 5.000 sviluppatori. Il codice incorporato installava una chiave SSH non autorizzata e tentava un tunnel verso un server remoto. Cursor ha bloccato l'ultima attività dell'attaccante il 1° novembre, dichiara che meno dello 0,01% dei clienti ha avuto credenziali API esposte, e precisa che Anthropic non ha mai pubblicato quel pacchetto e il suo prodotto non era vulnerabile.",
+        why="Colpisce uno strumento che moltissimi sviluppatori usano ogni giorno per scrivere codice con l'AI, e mostra lo stesso schema del caso Notion di due settimane fa — un fornitore AI terzo come anello debole della catena — ma con un esito diverso e più diretto: un'estensione malevola distribuita, non solo dati esposti.",
+        source="Unite.AI (su comunicazione ufficiale Cursor)",
+        url="https://www.unite.ai/cursor-traces-breach-to-access-key-exposed-by-fireworks-ai/",
     ),
     dict(
         title="Anthropic trasforma Claude in una suite per ufficio, a pochi mesi da una possibile IPO",
@@ -77,25 +99,11 @@ trends = [
         url="https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model",
     ),
     dict(
-        title="Notion conferma: la violazione al fornitore AI Fireworks ha esposto chat di alcuni clienti, nonostante la promessa di \"zero data retention\"",
-        what="Notion ha comunicato che una violazione subita dal proprio fornitore di infrastruttura AI, Fireworks AI (intrusione iniziata il 6 ottobre, con accesso ai sistemi di produzione confermato il 24 ottobre), ha esposto le trascrizioni delle chat AI di una minoranza degli spazi di lavoro — meno dell'1%, secondo Notion — usate per la funzione \"Insights\" e per l'inferenza di modelli open-weight. Fireworks aveva un impegno contrattuale di \"zero data retention\" con Notion, ma le indagini di Notion hanno trovato che i dati erano stati comunque conservati sugli endpoint usati. Notion ha notificato Fireworks il 2 novembre, ricevuto conferma dell'accesso non autorizzato il 6 novembre, si è disconnessa dal fornitore, ha cancellato i dati e disabilitato Insights durante l'indagine.",
-        why="Colpisce un prodotto usatissimo nel lavoro quotidiano di moltissime aziende e mostra che anche una garanzia contrattuale scritta nero su bianco può non reggere nei fatti — un rischio pratico, non teorico, per chiunque affidi dati a un fornitore AI.",
-        source="Notion (centro assistenza)",
-        url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
-    ),
-    dict(
-        title="Un attaccante usa un framework di agenti AI per violare un fornitore di infrastruttura blockchain",
-        what="Il 12 novembre Chainstack, fornitore di infrastruttura blockchain, ha reso noto che un attaccante — entrato il 26 ottobre attraverso un'istanza Grafana esposta su internet e lasciata con le credenziali di amministratore di default — ha raggiunto l'ambiente di produzione il 29 ottobre usando un framework di agenti AI (ARTEX) per condurre l'attacco, prima che Chainstack bloccasse l'accesso il 31 ottobre. Sono stati esposti nomi, email e hash delle password dei clienti; Chainstack dichiara che i servizi rivolti ai clienti non si sono mai fermati e ha chiesto ai clienti di ruotare le credenziali dei nodi.",
-        why="È il rovescio della medaglia del trend AT&T della stessa settimana: non un'azienda che governa l'autonomia di un agente con soglie e supervisione, ma un attaccante reale che ha usato lo stesso tipo di strumento senza nessuna delle due cose — una controversia con forte presa su un pubblico ampio.",
+        title="Un attaccante usa un framework di agenti AI (ARTEX) per violare un fornitore di infrastruttura blockchain",
+        what="Il 12 novembre Chainstack, fornitore di infrastruttura blockchain, ha reso noto che un attaccante — entrato il 26 ottobre attraverso un'istanza Grafana esposta su internet e lasciata con le credenziali di amministratore di default — ha raggiunto l'ambiente di produzione il 29 ottobre usando un framework di agenti AI (ARTEX) per condurre l'attacco, prima che Chainstack bloccasse l'accesso il 31 ottobre. Sono stati esposti nomi, email e hash delle password dei clienti; Chainstack dichiara che i servizi rivolti ai clienti non si sono mai fermati e ha chiesto ai clienti di ruotare le credenziali dei nodi. Il rapporto GTIG di Google di questa settimana cataloga ARTEX tra i framework offensivi agentici già noti.",
+        why="Collega direttamente il trend Google della stessa settimana: non è un caso isolato, ma uno dei framework che i ricercatori di sicurezza stanno già monitorando come categoria — una controversia con forte presa su un pubblico ampio.",
         source="The Block",
         url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
-    ),
-    dict(
-        title="Gli \"AI coworker\" di Salesforce crescono di 21 volte in tre mesi: le aziende iniziano davvero a delegare lavoro vero agli agenti",
-        what="Il 4 novembre Salesforce ha comunicato che Agentforce Coworker — l'agente AI a cui un dipendente assegna un compito, e che da solo pianifica e coordina i passaggi necessari — ha superato i 185.000 utenti attivi, con un uso cresciuto di 21 volte in soli tre mesi. Tra i casi citati: Fulton Bank lo usa per oltre 20 casi d'uso su circa 3.000 utenti; Adecco Group lo sta estendendo a 40 paesi. Il coworker costa 50 dollari per utente al mese, in aggiunta alle licenze Salesforce esistenti.",
-        why="Insieme al trend AT&T della stessa settimana, un secondo segnale — stavolta da un fornitore — che l'AI agentica sta passando dalla demo all'uso quotidiano in azienda: i dati sono diffusi da Salesforce stessa e non sono stati verificati in modo indipendente, ma la direzione è la stessa vista da due angolazioni diverse (vendor e adottante).",
-        source="Salesforce (comunicato ufficiale)",
-        url="https://www.salesforce.com/news/stories/agentforce-coworker-surpasses-185k-users/",
     ),
     dict(
         title="I chip AI recuperano parte del terreno perso, dopo la peggiore settimana in un anno e mezzo",
@@ -117,6 +125,12 @@ competitors = [
         angle="È l'esempio più concreto finora di cosa serve davvero per portare un agente dalla demo alla produzione: non solo il modello, ma un processo che mappa i workflow, fissa soglie di accuratezza e tiene la supervisione umana finché quella soglia non è raggiunta — esattamente il lavoro di governance che il Team Augmentation di Digitiamo porta alle aziende che non hanno una struttura interna come la Foundry di AT&T.",
     ),
     dict(
+        name="Google",
+        what="In una settimana mostra due facce della stessa tecnologia: Google DeepMind rilascia Gemini Robotics 2.5 e AlphaGenome 2 (11/11), mentre il Google Threat Intelligence Group pubblica il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit (16/11).",
+        positioning="Da un lato spinge l'AI oltre la chat, nella robotica industriale e nella ricerca scientifica; dall'altro si posiziona come l'azienda che per prima documenta pubblicamente i rischi offensivi degli agenti AI, rafforzando la propria credibilità come fonte di sicurezza oltre che come fornitore di modelli.",
+        angle="Il rapporto GTIG è anche un promemoria pratico: se un framework di agenti AI può automatizzare la ricerca di vulnerabilità su software popolari, la velocità di applicazione delle patch diventa una competenza critica — un terreno dove la formazione mirata dell'AI Business Academy ha un impatto diretto e misurabile.",
+    ),
+    dict(
         name="OpenAI",
         what="Lancia in beta i Business Agent verificati dentro ChatGPT (10/11): le aziende idonee (per ora e-commerce e servizi online, solo USA) rivendicano un profilo nel Business Hub, si verificano e lasciano che un proprio agente risponda ai clienti dentro la chat, con dati su citazioni e argomenti di scoperta.",
         positioning="Si muove per diventare il punto di ingresso dove i consumatori scoprono e interagiscono con i marchi, prima ancora di arrivare al sito dell'azienda — una scommessa sulla distribuzione, non solo sul modello.",
@@ -134,32 +148,28 @@ competitors = [
         positioning="Prova a restare il punto di riferimento per i professionisti creativi proprio nel momento in cui strumenti più generalisti (ChatGPT, Gemini, i modelli immagine dei concorrenti) permettono a chiunque di generare immagini: la risposta è portare l'agente dentro gli strumenti professionali, non sostituirli.",
         angle="Un'agenzia o un reparto marketing che adotta questi strumenti guadagna velocità, ma rischia di perdere coerenza di brand se nessuno definisce prima regole e guardrail per l'agente — il terreno dell'AI Business Academy, pensata su casi d'uso reali e non su formazione generica allo strumento.",
     ),
-    dict(
-        name="Google (DeepMind)",
-        what="Rilascia Gemini Robotics 2.5 (robot più capaci, testati con Mercedes-Benz) e AlphaGenome 2 (predizione genetica) nello stesso giorno (11/11).",
-        positioning="Mostra l'ampiezza della ricerca DeepMind oltre la chat — robotica industriale e biologia computazionale — in un momento in cui i concorrenti diretti (OpenAI, Anthropic) si concentrano su agenti da ufficio e assistenti.",
-        angle="Per un'azienda italiana la ricaduta diretta oggi è limitata (robotica e genomica restano lontane dal software gestionale), ma segnala dove la capacità dei modelli di base migliora più in fretta: un buon argomento per non fermare la formazione dei team tecnici alla sola \"AI generativa per i testi\".",
-    ),
 ]
 
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana (rigenerato il 16/11/2026): lunedì il quadro d'insieme
-# parte da AT&T — il caso più concreto di agenti AI già in produzione su
-# scala, con soglie di governance esplicite — e lo affianca ai lanci "da
-# ufficio" della stessa settimana (Anthropic, OpenAI, Adobe). Martedì il mito
-# da sfatare resta sul fornitore AI di Notion che non ha rispettato la
-# promessa di "zero data retention" (unico trend della settimana che si
-# presta davvero al formato mito: niente secondo mito forzato). Mercoledì il
-# carosello dati entra nei numeri di AT&T (promosso a Prioritario per la
-# densità di cifre, al posto di una seconda idea "ad alta varietà"). Giovedì
-# l'esperienza diretta riprende il filo del mito di martedì verificando le
-# clausole di data retention dei fornitori AI del team. Venerdì la
-# mini-lezione spiega cos'è davvero un "agente AI" a partire dal contrasto
-# fra la governance di AT&T e l'assenza di governance nel caso Chainstack. Le
-# due riserve restano banca contenuti: un carosello numeri sul rimbalzo dei
-# chip AI, e la riflessione di chiusura.
+# Arco della settimana (seconda rigenerazione, 16/11/2026): lunedì il quadro
+# d'insieme parte da AT&T — il caso più concreto di agenti AI già in
+# produzione su scala, con soglie di governance esplicite — e lo affianca ai
+# lanci "da ufficio" della stessa settimana (Anthropic, OpenAI, Adobe).
+# Martedì il mito da sfatare passa dal caso Notion/Fireworks (riusato nella
+# prima rigenerazione) al rapporto Google GTIG di oggi stesso: "serve sempre
+# un umano esperto per trasformare una falla in un attacco" — smentito da un
+# framework che lo fa da solo. Mercoledì il carosello dati resta sui numeri
+# di AT&T (unico trend della settimana con la densità di cifre necessaria a
+# un carosello: il caso Cursor ha pochi numeri, non abbastanza per 5 righe di
+# scorecard). Giovedì l'esperienza diretta cambia argomento, dal controllo
+# dei contratti AI al controllo delle estensioni AI installate negli editor
+# del team — spunto diretto dal caso Cursor/Fireworks. Venerdì la
+# mini-lezione spiega cos'è un "agente AI offensivo" a partire dal rapporto
+# Google e dal collegamento con Chainstack (stesso framework, ARTEX). Le due
+# riserve restano banca contenuti: un carosello numeri sul rimbalzo dei chip
+# AI, e la riflessione di chiusura.
 ideas = [
     dict(
         badge="Prioritario",
@@ -170,7 +180,7 @@ ideas = [
         sottotitolo_post="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne gestisce quasi 500 in produzione.",
         news="AT&T gestisce quasi 500 workflow agentici in produzione, 45 miliardi di token al giorno (14/11)",
         news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
-        hook="Questa settimana la differenza fra parlare di agenti AI e farli lavorare davvero si è vista nei numeri: il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese — e un obiettivo di triplicare i workflow entro il 2027. Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud.",
+        hook="Questa settimana la differenza fra parlare di agenti AI e farli lavorare davvero si è vista nei numeri: il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese — con l'obiettivo di triplicare i workflow entro il 2027. Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud.",
         visual_hook="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne ha già quasi 500 in produzione, con soglie di accuratezza precise prima di togliere la supervisione umana.",
         points=[
             "Quasi 500 — i workflow agentici che AT&T gestisce oggi in produzione, con l'obiettivo di triplicarli entro il 2027: non una demo, ma un programma con una struttura interna dedicata (la \"Business Agent Foundry\").",
@@ -189,29 +199,29 @@ ideas = [
         badge="Prioritario",
         day="Martedì 17/11",
         format="Mito da sfatare",
-        title="Il contratto con il tuo fornitore AI dice \"zero data retention\". Quindi i tuoi dati restano *intoccati*",
-        titolo_post="I tuoi dati restano *intoccati*?",
-        sottotitolo_post="Una violazione al fornitore AI di Notion ha esposto chat nonostante la promessa \"zero retention\".",
-        barrato="intoccati",
-        news="Notion conferma l'esposizione di chat AI nella violazione al fornitore Fireworks (confermata 6/11)",
-        news_url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
-        hook="🔥 Il mito: se il contratto con il tuo fornitore AI promette \"zero data retention\" — l'impegno a non conservare i tuoi dati — allora quei dati restano al sicuro, punto.",
+        title="Dietro ogni exploit c'è sempre un hacker esperto che lo scrive e lo lancia. Quindi senza una persona dietro sei al sicuro",
+        titolo_post="Senza un hacker dietro, sei al sicuro",
+        sottotitolo_post="Un agente AI ha trasformato da solo una patch di sicurezza in un exploit, senza aiuto umano.",
+        barrato="sicuro",
+        news="Google (GTIG) rivela il primo agente AI che trasforma da solo una patch in un exploit funzionante (16/11)",
+        news_url="https://www.theregister.com/research/2026/11/16/google-ai-agent-turned-a-security-patch-into-a-working-exploit-with-no-human-help/5309926",
+        hook="🔥 Il mito: dietro un attacco informatico c'è sempre, in qualche fase, una persona che analizza la falla, scrive l'exploit e lo lancia — un agente AI può aiutare, ma il lavoro vero lo fa ancora un umano esperto.",
         no_hashtags=True,
         is_myth=True,
-        visual_hook="Fireworks aveva un impegno contrattuale di \"zero data retention\" con Notion. Le indagini hanno trovato che i dati erano stati conservati comunque.",
-        myth_body="Notion ha comunicato che una violazione al proprio fornitore di infrastruttura AI, Fireworks AI, ha esposto le chat AI di una minoranza dei propri spazi di lavoro. Fireworks aveva con Notion un impegno contrattuale di \"zero data retention\": il contratto c'era. Le indagini di Notion hanno trovato che i dati erano stati conservati comunque sugli endpoint usati.",
+        visual_hook="Il Google Threat Intelligence Group ha trovato un framework di agenti AI (exploit_agent) che confronta da solo le patch di sicurezza e genera exploit funzionanti, senza intervento umano in nessuna fase.",
+        myth_body="Il 16 novembre Google ha pubblicato il suo rapporto trimestrale sulle minacce AI, documentando il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante. Il framework, chiamato \"exploit_agent\", è stato trovato su un server di staging esposto su internet: confronta in automatico il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità introdotte dalla patch, sviluppa l'exploit e lo esegue — senza che una persona intervenga in nessuna fase.",
         points=[
-            "L'intrusione è iniziata il 6 ottobre ed è arrivata ai sistemi di produzione di Fireworks il 24 ottobre; Fireworks ha notificato Notion il 2 novembre e confermato l'accesso non autorizzato il 6 novembre.",
-            "Esposte le trascrizioni delle chat AI usate per la funzione \"Insights\" (che classifica come i membri di un'azienda usano l'AI) e per l'inferenza di modelli open-weight — meno dell'1% degli spazi di lavoro Notion, secondo l'azienda.",
-            "Notion si è disconnessa da Fireworks, ha cancellato i dati conservati lì, disabilitato Insights durante l'indagine e consiglia a chi è coinvolto di ruotare password e chiavi incollate nelle chat AI nel periodo interessato.",
+            "Il framework \"exploit_agent\" confronta il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità e sviluppa ed esegue l'exploit, tutto senza intervento umano.",
+            "I ricercatori di Google lo hanno trovato su un server di staging esposto su internet, insieme a dati già rubati ad altre organizzazioni e a strumenti per muoversi dentro una rete una volta compromessa.",
+            "Google segnala che questo framework si aggiunge a una lista già nota di strumenti offensivi agentici — tra cui ARTEX, lo stesso usato nell'attacco al fornitore blockchain Chainstack della settimana scorsa.",
         ],
         punti_post=[
-            "Intrusione dal 6 ottobre; accesso confermato il 6 novembre.",
-            "Esposte chat AI di meno dell'1% degli spazi Notion.",
-            "Il contratto \"zero data retention\" non ha retto nei fatti.",
+            "exploit_agent: trova e sfrutta falle senza intervento umano.",
+            "Trovato su un server esposto, con dati già rubati ad altri.",
+            "Tra i framework noti anche ARTEX, usato contro Chainstack.",
         ],
-        myth_closing="Il problema non è se il tuo fornitore AI sia in malafede — probabilmente non lo è. È che una clausola contrattuale descrive un impegno, non una verifica tecnica: senza un controllo periodico su cosa succede davvero ai dati lungo la catena di sub-fornitori, un'azienda scopre che la promessa non ha retto solo quando arriva la notifica di violazione.",
-        cta="La tua azienda ha mai verificato, oltre al contratto, cosa succede davvero ai dati lungo la catena dei fornitori AI che usa? 👇",
+        myth_closing="Il problema non è se la tua azienda abbia budget per attirare hacker esperti — è che il costo di trasformare una falla in un attacco si sta avvicinando a zero, perché la parte più lenta del lavoro la fa ormai un agente AI. Patchare in fretta non basta più se tra la pubblicazione di una patch e il suo sfruttamento non c'è più il tempo che serviva a un umano per capirla.",
+        cta="La tua azienda applica le patch di sicurezza entro ore, o ancora entro settimane? 👇",
         hashtags="",
     ),
     dict(
@@ -248,48 +258,48 @@ ideas = [
         badge="Prioritario",
         day="Giovedì 19/11",
         format="Esperienza diretta",
-        title="Dopo il caso Notion/Fireworks, abbiamo controllato se la \"zero data retention\" dei nostri fornitori AI era davvero attiva",
-        titolo_post="Zero data retention: lo abbiamo *verificato*",
-        sottotitolo_post="Dopo il caso Notion, abbiamo riletto i contratti AI del team e verificato le impostazioni reali.",
-        news="Spunto dal caso Notion/Fireworks AI, promessa di \"zero data retention\" non rispettata (vedi post di martedì)",
-        news_url="https://notion.com/help/security-incident-involving-a-third-party-ai-vendor",
-        hook="Dopo il caso di questa settimana — un fornitore AI che prometteva contrattualmente \"zero data retention\" e non l'ha rispettata — ci siamo fatti la domanda scomoda: i fornitori AI che usiamo noi rispettano davvero quello che promettono? Questa settimana abbiamo riletto i contratti e controllato le impostazioni reali, non solo quello che c'è scritto nelle condizioni.",
+        title="Dopo il caso Cursor/Fireworks, abbiamo controllato le estensioni e le dipendenze che il team usa negli editor AI",
+        titolo_post="Estensioni AI: le abbiamo *verificate*",
+        sottotitolo_post="Dopo il caso Cursor, abbiamo controllato estensioni e dipendenze usate negli editor AI del team.",
+        news="Spunto dal caso Cursor/Fireworks AI: chiave rubata, estensione Claude Code malevola nel marketplace (13/11)",
+        news_url="https://www.unite.ai/cursor-traces-breach-to-access-key-exposed-by-fireworks-ai/",
+        hook="Dopo il caso di questa settimana — una chiave rubata a un fornitore AI ha permesso di inserire un'estensione malevola nel marketplace di un editor di codice assistito da AI — ci siamo fatti la domanda scomoda: le estensioni e i plugin AI che il team installa nei propri editor sono davvero quelli che pensiamo? Questa settimana abbiamo controllato cosa è installato davvero, non solo cosa risulta dalla lista ufficiale.",
         is_template=True,
         points=[
-            "Abbiamo elencato tutti i fornitori AI usati dal team (modelli, strumenti di scrittura, trascrizione, analytics) e per ciascuno cercato la clausola di data retention nel contratto o nei termini di servizio.",
-            "[Da personalizzare con l'esito reale della verifica del team: quali fornitori avevano impostazioni diverse da quanto promesso nel contratto, cosa avete dovuto disattivare o cambiare, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi di fornitori o esiti non verificati.]",
-            "La domanda utile non è se un contratto esista — quasi sempre esiste — ma se qualcuno in azienda lo ha mai messo alla prova chiedendo al fornitore una prova tecnica, non solo una dichiarazione scritta.",
+            "Abbiamo elencato tutte le estensioni e i plugin AI installati negli editor di codice del team (marketplace ufficiali e non), e per ciascuno controllato la fonte e l'ultimo aggiornamento.",
+            "[Da personalizzare con l'esito reale della verifica del team: quali estensioni avevano una provenienza poco chiara, cosa avete disinstallato o sostituito, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi o esiti non verificati.]",
+            "La domanda utile non è se il marketplace sia affidabile — di norma lo è — ma se qualcuno in azienda controlla periodicamente cosa viene installato, non solo al momento dell'onboarding.",
         ],
         punti_post=[
-            "Abbiamo elencato tutti i fornitori AI del team e le loro clausole.",
+            "Abbiamo elencato le estensioni AI installate dal team.",
             "[Da personalizzare con l'esito reale della verifica del team.]",
-            "La vera domanda: qualcuno ha mai messo alla prova il contratto?",
+            "La vera domanda: qualcuno le controlla dopo l'onboarding?",
         ],
-        cta="La tua azienda ha mai chiesto a un fornitore AI una prova tecnica della \"zero data retention\", non solo una dichiarazione scritta? Raccontaci 👇",
+        cta="La tua azienda controlla periodicamente le estensioni e i plugin AI installati nei suoi editor, o solo al primo giorno? Raccontaci 👇",
         hashtags="#IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness",
     ),
     dict(
         badge="Prioritario",
         day="Venerdì 20/11",
         format="Divulgativo stile Datapizza",
-        title="Cos'è davvero un \"agente AI\": la differenza fra i quasi 500 di AT&T e quello usato per violare Chainstack",
-        titolo_post="Cos'è davvero un agente AI",
-        sottotitolo_post="La differenza tra un chatbot che risponde e un agente che agisce da solo sui tuoi sistemi.",
-        news="Spunto dal caso AT&T (vedi post di lunedì) e dal caso Chainstack della stessa settimana",
-        news_url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
-        hook="Questa settimana abbiamo raccontato due storie opposte con lo stesso protagonista: AT&T, che gestisce quasi 500 agenti AI in produzione togliendo la supervisione umana solo sopra una soglia di accuratezza fissata in anticipo — e un attaccante che ha usato lo stesso tipo di strumento per violare Chainstack, un fornitore di infrastruttura blockchain. Ma cosa vuol dire davvero \"agente AI\", e perché non è solo un chatbot più furbo?",
+        title="Cos'è un \"exploit agent\": il framework che Google ha scoperto trasformare da solo una patch in un attacco",
+        titolo_post="Cos'è un \"exploit agent\"",
+        sottotitolo_post="Il framework che trasforma da solo una patch di sicurezza in un attacco, senza aiuto umano.",
+        news="Spunto dal rapporto Google GTIG (vedi post di martedì) e dal caso Chainstack",
+        news_url="https://www.theregister.com/research/2026/11/16/google-ai-agent-turned-a-security-patch-into-a-working-exploit-with-no-human-help/5309926",
+        hook="Questa settimana abbiamo raccontato un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante, e un fornitore (Cursor) che ha dovuto bloccare un'estensione malevola finita nel suo marketplace. Ma cosa vuol dire davvero \"agente AI offensivo\", e in cosa differisce da un normale strumento di sicurezza?",
         points=[
-            "Un chatbot risponde a una domanda e si ferma lì. Un agente AI, invece, riceve un obiettivo, decide da solo i passaggi per raggiungerlo e usa degli \"strumenti\" — accesso a un database, a una casella email, a un sistema aziendale — per eseguirli senza bisogno di istruzioni passo-passo.",
-            "Questa capacità di agire, non solo rispondere, è anche il motivo per cui un agente è potente quanto i permessi che gli vengono dati: AT&T lo governa con soglie di accuratezza esplicite prima di togliere la supervisione; nel caso Chainstack, invece, l'attaccante ha usato un framework di agenti AI per automatizzare i passaggi dell'attacco, dopo essere entrato da una singola configurazione lasciata con le credenziali di default.",
-            "La domanda da farsi prima di dare un obiettivo a un agente AI, in azienda o nelle mani sbagliate, è sempre la stessa: a cosa può accedere davvero, e chi se ne accorge se usa quell'accesso in un modo che non ci si aspettava?",
+            "Uno strumento di sicurezza tradizionale segnala una vulnerabilità e si ferma lì: decide una persona se e come sfruttarla. Un agente AI offensivo, invece, riceve un obiettivo — \"trova e sfrutta le falle in questo software\" — e porta a termine da solo tutti i passaggi: confronto del codice, sviluppo dell'exploit, esecuzione.",
+            "Google ha trovato un framework di questo tipo, chiamato exploit_agent, configurato per analizzare in continuo gli aggiornamenti di sicurezza di software web popolari: più il bersaglio è diffuso, più conviene automatizzare l'attacco su scala.",
+            "La stessa logica vale al contrario: più un'azienda rende prevedibile e documentato chi può accedere a cosa — come fa, ad esempio, chi fissa soglie esplicite prima di dare autonomia a un agente — più stringe lo spazio in cui uno strumento come questo può muoversi senza essere notato.",
         ],
         punti_post=[
-            "Un chatbot risponde; un agente AI agisce da solo sui tuoi sistemi.",
-            "AT&T lo governa con soglie; Chainstack mostra cosa succede senza.",
-            "La domanda chiave: a cosa accede l'agente, e chi lo controlla?",
+            "Uno strumento tradizionale segnala; un agente offensivo sfrutta da solo.",
+            "exploit_agent: analizza da solo le patch di software popolari.",
+            "La difesa: sapere sempre chi/cosa può accedere a cosa, e perché.",
         ],
-        cta="Conoscevi già la differenza tra un chatbot e un agente AI che agisce da solo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
-        hashtags="#AI #TechExplained #AgentiAI #B2B #Innovazione",
+        cta="Conoscevi già la differenza tra uno strumento di sicurezza tradizionale e un agente AI offensivo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
+        hashtags="#AI #TechExplained #Cybersecurity #B2B #Innovazione",
     ),
     dict(
         badge="Riserva",
@@ -320,11 +330,11 @@ ideas = [
         points=[
             "Gli agenti AI sono arrivati in produzione su scala: AT&T ne gestisce quasi 500, con 45 miliardi di token elaborati al giorno e un obiettivo di triplicarli entro il 2027.",
             "Anthropic (Sheets, Whiteboards, connettori), OpenAI (Business Agent in ChatGPT) e Adobe (Creative Agent sempre attivo) hanno messo agenti AI dentro gli strumenti che usiamo ogni giorno, tutti nella stessa settimana.",
-            "Un fornitore AI di Notion (Fireworks) ha esposto chat nonostante un contratto di \"zero data retention\": una promessa scritta non è una verifica tecnica.",
-            "Un attaccante ha usato un framework di agenti AI per violare un fornitore di infrastruttura blockchain (Chainstack): lo stesso tipo di strumento che fa crescere l'adozione può accelerare un attacco, quando manca la governance che invece AT&T applica.",
+            "Google ha documentato il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante, senza intervento umano.",
+            "Cursor ha confermato che una chiave rubata a un fornitore AI (Fireworks, lo stesso coinvolto nel caso Notion di due settimane fa) ha portato a un'estensione malevola nel suo marketplace, scaricabile da fino a 5.000 sviluppatori.",
             "I chip AI hanno recuperato parte del terreno perso due settimane fa, ma gli analisti non lo leggono come la fine dei dubbi sulla sostenibilità della spesa in infrastrutture.",
         ],
-        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che gli agenti AI smettono di essere una demo e iniziano a fare lavoro vero su scala, la domanda non è più \"funzionano?\" ma \"chi ha fissato la soglia per farli lavorare da soli, e chi se ne accorge quando sbagliano?\". AT&T e Chainstack, questa settimana, sono la stessa domanda con due risposte opposte.",
+        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che gli agenti AI smettono di essere una demo e iniziano a fare lavoro vero su scala, la stessa tecnologia comincia ad automatizzare anche l'attacco. AT&T e il rapporto Google, questa settimana, sono la stessa domanda — chi governa l'autonomia di un agente, e chi se ne accorge quando manca — con due risposte opposte.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
         hashtags="#AINews #WeeklyRecap #Tech #AgentiAI #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
@@ -344,8 +354,8 @@ publishing = [
     dict(
         day="Martedì 17/11",
         time="12:15",
-        format="Mito da sfatare (la promessa \"zero data retention\" non rispettata da Fireworks/Notion)",
-        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo di fiducia/governance che attraversa il resto della settimana.",
+        format="Mito da sfatare (serve sempre un umano esperto per sfruttare una falla — smentito dal rapporto Google GTIG)",
+        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo di automazione/governance che attraversa il resto della settimana.",
     ),
     dict(
         day="Mercoledì 18/11",
@@ -356,14 +366,14 @@ publishing = [
     dict(
         day="Giovedì 19/11",
         time="08:30",
-        format="Esperienza diretta (verifica delle clausole \"zero data retention\" dei nostri fornitori AI)",
+        format="Esperienza diretta (verifica delle estensioni e dei plugin AI installati negli editor del team)",
         reason="Segue narrativamente il mito di martedì, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
     ),
     dict(
         day="Venerdì 20/11",
         time="08:00",
         format="Divulgativo (Datapizza style)",
-        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo aperto lunedì confrontando governance (AT&T) e assenza di governance (Chainstack).",
+        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo sulla sicurezza aperto martedì collegando Google e Chainstack.",
     ),
     dict(
         day="Da programmare",

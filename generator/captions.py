@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-"""I testi dei post per Buffer, settimana 16 - 22 novembre 2026 (rigenerata).
+"""I testi dei post per Buffer, settimana 23 - 29 novembre 2026.
 
 Post derivati dal report (caso normale): il nome e' `CAPTION_<numero
 dell'idea nel report>` — `CAPTION_1` per la prima idea, e cosi' via, assegnato
@@ -15,62 +15,60 @@ istruzione esplicita del brief PED, un'idea in questo formato non deve
 contenere cifre o fatti aziendali inventati spacciati per reali.
 """
 
-CAPTION_1 = """Questa settimana la differenza fra parlare di agenti AI e farli lavorare davvero si è vista nei numeri: il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese — con l'obiettivo di triplicare i workflow entro il 2027. Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud.
+CAPTION_1 = """Questa settimana il fornitore più centrale dell'intero boom AI ha perso, da un giorno all'altro, l'unico CEO che abbia mai avuto: il 12 novembre Nvidia ha annunciato le dimissioni con effetto immediato di Jensen Huang da Presidente e CEO, dopo 33 anni alla guida dell'azienda che ha fondato nel 1993. Il consiglio non ha fornito alcuna motivazione ufficiale, ha nominato ad interim l'attuale CFO Colette Kress e ha aperto la ricerca di un successore permanente. Cinque giorni dopo, il 17 novembre, Nvidia ha riportato una trimestrale da record — ma il titolo ha comunque ceduto, per l'incertezza sulla governance futura.
 
-→ Quasi 500 — i workflow agentici che AT&T gestisce oggi in produzione, con l'obiettivo di triplicarli entro il 2027: non una demo, ma un programma con una struttura interna dedicata (la "Business Agent Foundry").
-→ Ogni workflow parte con supervisione umana: l'autonomia arriva solo quando l'accuratezza raggiunge la fascia medio-alta del 90%, con monitoraggio continuo dopo la rimozione del controllo diretto.
-→ Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende e Adobe ha reso Firefly uno studio creativo con agenti sempre attivi.
+→ Il 12 novembre Nvidia ha annunciato le dimissioni immediate di Jensen Huang da Presidente e CEO, dopo 33 anni alla guida dell'azienda: nessuna motivazione ufficiale, Colette Kress (CFO) nominata CEO ad interim, ricerca aperta per un successore permanente.
+→ Il 17 novembre Nvidia ha riportato un fatturato trimestrale di 115,8 miliardi di dollari (+103% anno su anno) — ma il titolo ha comunque perso circa il 7% nella settimana, un calo attribuito esplicitamente alle preoccupazioni sulla successione.
+→ È il caso scuola del rischio legato a una singola figura chiave, su scala enorme: numeri da record non bastano se manca chiarezza su chi guida l'azienda da cui dipende la roadmap hardware di quasi ogni progetto AI al mondo.
 
-La tua azienda sta già misurando quanto lavoro reale affida agli agenti AI, o lo guarda ancora da fuori? 👇
+La tua azienda ha un piano esplicito per il giorno in cui una figura chiave — interna o di un fornitore critico — non c'è più? 👇
 
-#IntelligenzaArtificiale #AI #AgentiAI #Innovazione #B2B"""
-
-
-CAPTION_2 = """🔥 Il mito: dietro un attacco informatico c'è sempre, in qualche fase, una persona che analizza la falla, scrive l'exploit e lo lancia — un agente AI può aiutare, ma il lavoro vero lo fa ancora un umano esperto.
-
-Il 16 novembre Google ha pubblicato il suo rapporto trimestrale sulle minacce AI, documentando il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante. Il framework, chiamato "exploit_agent", è stato trovato su un server di staging esposto su internet: confronta in automatico il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità introdotte dalla patch, sviluppa l'exploit e lo esegue — senza che una persona intervenga in nessuna fase.
-
-🔹 Il framework confronta il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità e sviluppa ed esegue l'exploit, tutto senza intervento umano
-🔹 I ricercatori di Google lo hanno trovato su un server di staging esposto su internet, insieme a dati già rubati ad altre organizzazioni e a strumenti per muoversi dentro una rete una volta compromessa
-🔹 Google segnala che questo framework si aggiunge a una lista già nota di strumenti offensivi agentici — tra cui ARTEX, lo stesso usato nell'attacco al fornitore blockchain Chainstack della settimana scorsa
-
-Il problema non è se la tua azienda abbia budget per attirare hacker esperti — è che il costo di trasformare una falla in un attacco si sta avvicinando a zero, perché la parte più lenta del lavoro la fa ormai un agente AI. Patchare in fretta non basta più se tra la pubblicazione di una patch e il suo sfruttamento non c'è più il tempo che serviva a un umano per capirla.
-
-La tua azienda applica le patch di sicurezza entro ore, o ancora entro settimane? 👇"""
+#Nvidia #IntelligenzaArtificiale #Leadership #Governance #B2B"""
 
 
-CAPTION_3 = """Il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione — non una demo, ma un programma con una struttura di governance precisa su quando un agente può lavorare senza supervisione diretta.
+CAPTION_2 = """🔥 Il mito: se un fornitore AI dichiara contrattualmente "zero data retention" sui tuoi prompt, puoi fidarti e non c'è altro da controllare — è una clausola, non una promessa che va verificata nei fatti.
 
-→ 500 — i workflow agentici che AT&T gestisce oggi in produzione (quasi), con l'obiettivo dichiarato di triplicarli entro il 2027
-→ 45 miliardi — i token AI elaborati ogni giorno dalla piattaforma, saliti da 27 miliardi a marzo 2026
-→ 1 milione — le transazioni mensili gestite dalla piattaforma di agenti AI di AT&T, secondo l'azienda
-→ 90% — la soglia di accuratezza (fascia medio-alta) che un workflow deve raggiungere prima che AT&T rimuova la supervisione umana diretta
-→ 5 volte — il ritorno sugli investimenti in AI di produzione dichiarato da AT&T entro un anno (dato dell'azienda stessa, non verificato in modo indipendente)
+Il ricercatore di sicurezza HD Moore ha inviato circa 2 milioni di prompt contenenti link di tracciamento univoci e credenziali finte attraverso provider di inferenza AI su OpenRouter etichettati "Zero Data Retention" (ZDR) — la dichiarazione contrattuale che il fornitore non legge né conserva i dati. Tre provider, tra cui MiniMax, hanno aperto quei link-trappola tra le 40 e le 130 ore dopo l'invio: prova diretta che i prompt venivano letti, nonostante l'etichetta. OpenRouter li ha rimossi dalla piattaforma dopo la segnalazione.
 
-Il salto di scala è reale: quasi 500 workflow agentici, 45 miliardi di token al giorno, un obiettivo di triplicare tutto entro il 2027. Ma il dettaglio che vale di più non è la scala — è la regola che la rende sostenibile: ogni workflow parte con supervisione umana, e la perde solo quando l'accuratezza supera una soglia fissata in anticipo, non quando qualcuno decide che "probabilmente va bene così". I dati di AT&T vengono dall'azienda stessa e non sono stati verificati in modo indipendente.
+🔹 Il test: circa 2 milioni di prompt con link-trappola e credenziali finte, inviati attraverso provider etichettati "zero data retention"
+🔹 Tre provider, tra cui MiniMax, hanno aperto quei link tra le 40 e le 130 ore dopo l'invio — prova che i prompt venivano letti nonostante la clausola
+🔹 OpenRouter ha rimosso i tre provider dopo la segnalazione: l'etichetta da sola non bastava a garantire quello che prometteva
 
-La tua azienda ha già fissato una soglia esplicita prima di togliere la supervisione umana a un agente AI, o la decisione resta informale? 👇
+Il problema non è se il tuo fornitore AI abbia scritto "zero data retention" nel contratto — è che nessuno l'aveva verificato finché un ricercatore indipendente non ha inviato prompt-trappola per controllare. Una clausola di privacy non testata è un'ipotesi, non una garanzia.
 
-#AgentiAI #IntelligenzaArtificiale #Innovazione #B2B #Automazione"""
+La tua azienda ha mai verificato nei fatti, non solo nel contratto, come un fornitore AI tratta i tuoi prompt? 👇"""
 
 
-CAPTION_4 = """Dopo il caso di questa settimana — una chiave rubata a un fornitore AI ha permesso di inserire un'estensione malevola nel marketplace di un editor di codice assistito da AI — ci siamo fatti la domanda scomoda: le estensioni e i plugin AI che il team installa nei propri editor sono davvero quelli che pensiamo? Questa settimana abbiamo controllato cosa è installato davvero, non solo cosa risulta dalla lista ufficiale.
+CAPTION_3 = """🔥 Il mito: una volta che un chatbot ha dei guardrail di sicurezza dichiarati e dei controlli parentali, il rischio per gli utenti più vulnerabili è gestito — il resto è responsabilità di chi lo usa.
 
-→ Abbiamo elencato tutte le estensioni e i plugin AI installati negli editor di codice del team (marketplace ufficiali e non), e per ciascuno controllato la fonte e l'ultimo aggiornamento.
-→ [Da personalizzare con l'esito reale della verifica del team: quali estensioni avevano una provenienza poco chiara, cosa avete disinstallato o sostituito, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi o esiti non verificati.]
-→ La domanda utile non è se il marketplace sia affidabile — di norma lo è — ma se qualcuno in azienda controlla periodicamente cosa viene installato, non solo al momento dell'onboarding.
+Il 17 novembre il procuratore generale dell'Oregon, Dan Rayfield, ha intentato una causa da 2,035 miliardi di dollari contro OpenAI, accusando l'azienda di aver messo consapevolmente in pericolo gli utenti minorenni di ChatGPT e di aver fuorviato il pubblico sulle misure di sicurezza adottate. La causa arriva dopo mesi in cui diverse famiglie hanno già fatto causa a OpenAI per episodi di conversazioni dannose con minori, e dopo che l'azienda aveva introdotto controlli parentali in risposta a quei casi precedenti.
 
-La tua azienda controlla periodicamente le estensioni e i plugin AI installati nei suoi editor, o solo al primo giorno? Raccontaci 👇
+🔹 Il procuratore generale dell'Oregon chiede oltre 2 miliardi di dollari, accusando OpenAI di aver saputo dei rischi per i minori e di non aver agito abbastanza in fretta
+🔹 La causa arriva dopo mesi di azioni legali simili da parte di famiglie, e dopo che OpenAI aveva già introdotto controlli parentali in risposta a episodi precedenti
+🔹 Avere delle misure di sicurezza dichiarate non ha impedito che la pressione legale si materializzasse comunque, con una cifra e un'accusa specifiche
 
-#IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness"""
+Dichiarare dei guardrail non equivale a dimostrare che bastano: la differenza, per chi li costruisce come per chi li usa, è quanto spesso vengono messi davvero alla prova — non solo annunciati.
+
+La tua azienda tratta le misure di sicurezza AI come una casella da spuntare, o come qualcosa da verificare nel tempo? 👇"""
 
 
-CAPTION_5 = """Questa settimana abbiamo raccontato un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante, e un fornitore (Cursor) che ha dovuto bloccare un'estensione malevola finita nel suo marketplace. Ma cosa vuol dire davvero "agente AI offensivo", e in cosa differisce da un normale strumento di sicurezza?
+CAPTION_4 = """Dopo la notizia di questa settimana — un ricercatore ha scoperto che alcuni fornitori di inferenza AI leggevano i prompt nonostante una clausola contrattuale di "zero data retention" — ci siamo fatti la domanda scomoda: sappiamo davvero cosa dicono, nel dettaglio, i contratti dei fornitori AI che usiamo ogni giorno? Questa settimana li abbiamo riletti.
 
-→ Uno strumento di sicurezza tradizionale segnala una vulnerabilità e si ferma lì: decide una persona se e come sfruttarla. Un agente AI offensivo, invece, riceve un obiettivo — "trova e sfrutta le falle in questo software" — e porta a termine da solo tutti i passaggi: confronto del codice, sviluppo dell'exploit, esecuzione.
-→ Google ha trovato un framework di questo tipo, chiamato exploit_agent, configurato per analizzare in continuo gli aggiornamenti di sicurezza di software web popolari: più il bersaglio è diffuso, più conviene automatizzare l'attacco su scala.
-→ La stessa logica vale al contrario: più un'azienda rende prevedibile e documentato chi può accedere a cosa — come fa, ad esempio, chi fissa soglie esplicite prima di dare autonomia a un agente — più stringe lo spazio in cui uno strumento come questo può muoversi senza essere notato.
+→ Abbiamo elencato tutti i fornitori AI terzi che il team usa (modelli, provider di inferenza, estensioni), e per ciascuno recuperato la clausola esatta su conservazione e uso dei dati, non solo il riassunto commerciale.
+→ [Da personalizzare con l'esito reale della verifica del team: quali clausole erano più vaghe del previsto, quali fornitori avete deciso di verificare più a fondo o sostituire, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi o esiti non verificati.]
+→ La domanda utile non è se i contratti esistano — di norma esistono — ma se qualcuno in azienda li rilegge davvero, periodicamente, invece di darli per scontati dopo la firma.
 
-Conoscevi già la differenza tra uno strumento di sicurezza tradizionale e un agente AI offensivo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇
+La tua azienda rilegge periodicamente le clausole sui dati dei fornitori AI che usa, o solo alla firma del contratto? Raccontaci 👇
+
+#IntelligenzaArtificiale #DataPrivacy #Esperienza #B2B #AIBusiness"""
+
+
+CAPTION_5 = """Martedì abbiamo raccontato di tre fornitori AI che leggevano i prompt nonostante una clausola di "zero data retention". Ma come si fa, in pratica, a scoprire che qualcuno sta leggendo dati che ha promesso di non guardare? La risposta di questa settimana: un "canary token".
+
+→ Un canary token è un link o una credenziale finta, unica per ogni destinatario, inserita in un documento o in un messaggio: se qualcuno la apre o la usa, lo sai — perché nessun altro aveva motivo di farlo.
+→ Il ricercatore che ha scoperto il caso OpenRouter ha inserito link-canarino in circa 2 milioni di prompt inviati a provider che dichiaravano di non leggere i dati: quando tre di quei link sono stati aperti, ore o giorni dopo, la prova era inconfutabile.
+→ La stessa logica si può applicare a qualunque flusso di dati aziendali che passa per terzi — fornitori cloud, partner, agenti AI con accesso a documenti — per verificare, non solo per fidarsi, chi accede davvero a cosa.
+
+Conoscevi già questa tecnica per verificare chi accede davvero ai tuoi dati? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇
 
 #AI #TechExplained #Cybersecurity #B2B #Innovazione"""

@@ -16,101 +16,88 @@ C = {
     "white": _C["white"],
 }
 
-WEEK_LABEL = "16 – 22 novembre 2026"
-GENERATED_ON = "Lunedì 16 novembre 2026"
+WEEK_LABEL = "23 – 29 novembre 2026"
+GENERATED_ON = "Lunedì 23 novembre 2026"
 
 # ---------------------------------------------------------------------------
 # TREND DEL SETTORE
 # ---------------------------------------------------------------------------
-# Seconda rigenerazione del 16 novembre 2026, su richiesta di Ramona ("le
-# altre sono uguali a prima, cambia proprio stile di news"): la prima
-# riscrittura aveva aggiornato solo il trend AT&T lasciando martedì/
-# giovedì/venerdì identici alla versione precedente (Notion/Fireworks e
-# Chainstack). Qui le notizie di sicurezza sono state sostituite con due
-# storie diverse, entrambe verificate sulla fonte diretta: il rapporto di
-# Google Threat Intelligence Group (via The Register, pubblicato oggi
-# stesso) sul primo caso noto di un agente AI che trasforma da solo una
-# patch di sicurezza in un exploit funzionante, e la violazione confermata
-# da Cursor il 13/11 — una chiave rubata al fornitore AI Fireworks ha
-# permesso di inserire un'estensione Claude Code malevola nel suo
-# marketplace. Chainstack resta in elenco perché il framework usato in
-# quell'attacco (ARTEX) è lo stesso che Google cataloga nel suo rapporto:
-# il collegamento tra le due notizie è reale, non costruito a tavolino.
-# Due candidati di un giro di ricerca precedente erano stati scartati dopo
-# verifica sulla fonte primaria: la causa Sullivan & Cromwell sulle
-# citazioni legali inventate dall'AI risale ad aprile 2026 (non a questa
-# settimana), e lo studio Berkeley/Nature sull'ECG e il rischio cardiaco è
-# di giugno 2026, solo ripubblicato da un aggregatore il 12/11.
-# Filo conduttore della settimana: gli agenti AI smettono di essere un
-# progetto pilota e diventano infrastruttura di produzione misurata in
-# miliardi di token al giorno (AT&T) e nuovi lanci "da ufficio" (Anthropic,
-# OpenAI, Adobe) — mentre sul lato opposto la stessa tecnologia comincia ad
-# automatizzare anche l'attacco: un agente che trasforma da solo una patch
-# in un exploit (Google), e una chiave rubata a un fornitore AI che diventa
-# un'estensione malevola distribuita a migliaia di sviluppatori (Cursor).
+# Prima generazione della settimana (23/11/2026). Nota editoriale: questa
+# settimana la ricerca ha prodotto SEI trend verificati sulla fonte primaria,
+# non otto-dieci come da indicazione standard. Diversi filoni promettenti
+# sono stati scartati dopo verifica diretta, invece di essere forzati con un
+# caveat (regola esplicita del brief: "un dato che non regge non va usato,
+# nemmeno con un caveat"): il presunto vantaggio del 30% di AMD Instinct
+# MI450X/MI455X su Nvidia Vera Rubin (claim aziendale non verificata in modo
+# indipendente, fonte borncity.com); un presunto attacco "jailbroken AI
+# agent" contro 50+ organizzazioni europee (due versioni incompatibili dei
+# fatti — "BabidiGhost" vs "Operation Snowball" — su fonti non verificabili,
+# nessuna testata di sicurezza con verifica incrociata le riprende); un nuovo
+# modello GPT-5.3-Codex-Spark (risalente in realtà a febbraio 2026, non a
+# questa settimana); uno studio Fortune su AI e produttività sviluppatori
+# (ripubblicazione dello studio METR di luglio 2025, non una notizia nuova).
+# Anche la ricerca dedicata al design (richiesta di Fabio) non ha prodotto
+# un trend abbastanza solido e specifico di QUESTA settimana esatta: i
+# candidati trovati (Figma Config, Adobe Firefly/Adobe MAX, Canva AI 2.0,
+# Runway, Framer) risalgono tutti a settimane o mesi precedenti, e diversi
+# pezzi su UX Collective erano opinioni non verificabili su fonte primaria.
+# Meglio sei trend solidi che dieci forzati.
+#
+# Filo conduttore della settimana: con l'AI che diventa infrastruttura
+# critica — hardware (Nvidia), fornitori di inferenza (OpenRouter), strumenti
+# di lavoro quotidiano (Microsoft/Salesforce) — la domanda che conta di più
+# non è più "funziona?" ma "chi risponde quando qualcosa va storto, ed è
+# verificabile o solo dichiarato?". Il 12 novembre Nvidia ha perso il suo
+# fondatore-CEO da un giorno all'altro, senza successore designato: la
+# trimestrale record del 17 novembre non ha rassicurato il mercato. Nella
+# stessa settimana un ricercatore di sicurezza ha dimostrato che una clausola
+# contrattuale di "zero data retention" può essere semplicemente falsa
+# (OpenRouter), Microsoft e Salesforce hanno scelto di integrarsi sul livello
+# agentico invece di competere (CopilotForce), e l'Oregon ha trasformato in
+# una causa da oltre 2 miliardi di dollari la pressione legale sulla
+# sicurezza dei minori su ChatGPT.
 trends = [
     dict(
-        title="AT&T gestisce quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno",
-        what="Il 14 novembre SiliconANGLE ha riportato, da un intervento di Luke Corbin (vice presidente per la trasformazione digitale e l'AI di AT&T Business) a un evento AWS, che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con l'obiettivo di triplicarli entro il 2027. La piattaforma elabora circa 45 miliardi di token al giorno (da 27 miliardi a marzo 2026) e supera 1 milione di transazioni al mese. Ogni workflow parte con supervisione umana: l'autonomia arriva solo quando l'accuratezza raggiunge la fascia medio-alta del 90%, entro un profilo di rischio accettabile, con monitoraggio continuo del drift dopo la rimozione del controllo umano. I workflow che toccano i clienti passano dalla \"Business Agent Foundry\", un gruppo interno che mappa i processi ed elimina passaggi e dipendenze legacy prima di costruire l'agente; i workflow di produttività personale restano invece liberi. Tra i casi concreti: modifiche agli ordini di installazione fibra automatizzate direttamente sui sistemi mainframe, e tempi di attivazione delle connessioni internet dedicate dimezzati negli edifici già cablati.",
-        why="Dato pratico e sorprendente più che proiezione: un'azienda con milioni di clienti quotidiani mostra, con cifre e soglie precise, cosa vuol dire portare gli agenti AI dalla demo alla produzione — incluso il meccanismo di governance (soglia di accuratezza, supervisione umana) che l'adozione spesso salta. Rilevante per un pubblico ampio, non solo per gli addetti ai lavori del settore telco.",
+        title="Jensen Huang si dimette da CEO e Presidente di Nvidia con effetto immediato, dopo 33 anni, senza successore designato",
+        what="Il 12 novembre Nvidia ha annunciato, con un comunicato ufficiale e un deposito SEC 8-K depositato lo stesso giorno, le dimissioni di Jensen Huang da Presidente, CEO e membro del consiglio, con effetto immediato — dopo 33 anni alla guida dell'azienda che ha fondato nel 1993. Colette Kress, attuale CFO, ha accettato il ruolo di CEO ad interim mantenendo anche la carica di CFO, mentre il consiglio ha nominato Harvey Jones (ex CEO ed Executive Chairman di Synopsys) primo Chairman della storia dell'azienda e ha aperto la ricerca di un successore permanente, valutando candidati interni ed esterni. Né il comunicato né il deposito SEC indicano un motivo per le dimissioni: il board si limita a ringraziare Huang per \"i contributi incommensurabili all'azienda e al settore\". Circolano ricostruzioni di stampa su cause personali della sua uscita, non confermate dalla fonte societaria ufficiale: questo report riporta solo i fatti aziendali verificati.",
+        why="Nvidia è il fornitore critico di hardware per quasi ogni iniziativa AI aziendale al mondo, e il suo fondatore-CEO ne era il volto pubblico più riconoscibile: un cambio improvviso e senza preavviso ai vertici di un fornitore così centrale tocca chiunque pianifichi una roadmap che dipende dai suoi chip, non solo gli addetti ai lavori finanziari.",
+        source="Nvidia (comunicato ufficiale e deposito SEC 8-K)",
+        url="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+    ),
+    dict(
+        title="Nonostante una trimestrale record, il titolo Nvidia cede il 7% nella settimana: il mercato teme il dopo-Huang",
+        what="Il 17 novembre, cinque giorni dopo l'annuncio delle dimissioni di Huang, Nvidia ha riportato i risultati del terzo trimestre dell'anno fiscale 2027: fatturato di 115,8 miliardi di dollari (+103% anno su anno), di cui 107,6 miliardi dalla sola divisione data center, con una guidance per il quarto trimestre di 130 miliardi di dollari. Nonostante numeri da record, il titolo ha perso il 2,9% il 18 novembre — un calo attribuito esplicitamente da più fonti finanziarie alle \"preoccupazioni sulla successione del CEO\" — e ha ceduto complessivamente circa il 7% nella settimana, in un ribasso diffuso che ha coinvolto l'intero comparto dei titoli legati all'AI.",
+        why="È la prima prova concreta di quanto pesi, agli occhi degli investitori, il rischio legato a una singola figura chiave anche nell'azienda più centrale dell'intera infrastruttura AI: numeri da record non bastano a rassicurare il mercato quando manca chiarezza sulla guida futura.",
+        source="Nvidia (investor relations) / Yahoo Finance",
+        url="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/default.aspx",
+    ),
+    dict(
+        title="Un ricercatore di sicurezza scopre che tre fornitori di inferenza AI su OpenRouter leggevano i prompt nonostante la clausola \"zero data retention\"",
+        what="Il ricercatore di sicurezza HD Moore (creatore di Metasploit, fondatore di runZero) ha inviato circa 2 milioni di prompt contenenti link di tracciamento univoci (\"canary token\") e credenziali finte attraverso provider di inferenza AI disponibili su OpenRouter ed etichettati \"Zero Data Retention\" (ZDR) — la dichiarazione contrattuale secondo cui il fornitore non legge né conserva i dati. Tre provider, tra cui MiniMax, hanno aperto quei link-trappola tra le 40 e le 130 ore dopo l'invio: prova diretta che i prompt venivano effettivamente letti, nonostante l'etichetta. OpenRouter ha rimosso i tre provider dalla piattaforma dopo la segnalazione, pubblicata il 20-21 novembre.",
+        why="Tocca una clausola contrattuale che moltissime aziende danno per scontata quando adottano strumenti AI di terze parti, e mostra che un'etichetta di privacy non verificata può essere semplicemente falsa — un problema di fiducia comprensibile anche a chi non è tecnico.",
+        source="The Hacker News",
+        url="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+    ),
+    dict(
+        title="Microsoft ridisegna Copilot come \"motore autonomo del lavoro aziendale\" a Ignite 2026",
+        what="Il 18 novembre, al keynote di apertura di Microsoft Ignite 2026, Satya Nadella ha presentato una revisione profonda di Microsoft 365 Copilot: non più un assistente conversazionale, ma un livello di orchestrazione che agisce in autonomia sui task aziendali, con agenti sempre attivi integrati più in profondità in Office e Teams, e un'enfasi dichiarata su governance e sicurezza degli agenti.",
+        why="Tocca lo strumento Office che la stragrande maggioranza delle aziende italiane usa già ogni giorno: è la stessa battaglia per il \"posto di lavoro quotidiano\" raccontata la settimana scorsa da un altro fornitore, ma questa volta è il fornitore più diffuso nelle PMI italiane a muoversi.",
         source="SiliconANGLE",
-        url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
+        url="https://siliconangle.com/2026/11/18/at-ignite-2026-microsoft-reinvents-copilot-as-the-autonomous-engine-of-enterprise-work/",
     ),
     dict(
-        title="Google rivela il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante",
-        what="Il 16 novembre il Google Threat Intelligence Group (GTIG) ha pubblicato il suo rapporto trimestrale sulle minacce AI, documentando quello che definisce il primo caso noto di un agente AI che trasforma patch di sicurezza in exploit funzionanti senza alcun intervento umano. I ricercatori hanno trovato un server di staging esposto su internet che ospitava un framework multi-agente chiamato \"exploit_agent\": integra più modelli AI (di frontiera e locali), usa strumenti in lingua russa, ed era configurato per confrontare in continuo il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individuare le vulnerabilità introdotte dalla patch, sviluppare l'exploit ed eseguirlo — tutto in automatico. Lo stesso server conteneva dati già rubati ad altre organizzazioni e strumenti per muoversi dentro una rete una volta compromessa. GTIG segnala che questo framework si aggiunge a una lista già nota di strumenti offensivi agentici, tra cui ARTEX — lo stesso usato nell'attacco al fornitore blockchain Chainstack della settimana scorsa —, CAIRN, CyberStrikeAI, HexStrike AI e PentAGI.",
-        why="Primo caso del suo genere, pubblicato oggi stesso: tocca una paura diffusa e concreta — l'AI che automatizza l'attacco, non solo la difesa — con un meccanismo spiegabile in parole semplici (confronto automatico prima/dopo una patch) e un impatto potenziale su qualunque software web popolare, non su un singolo settore.",
-        source="The Register (su rapporto Google Threat Intelligence Group)",
-        url="https://www.theregister.com/research/2026/11/16/google-ai-agent-turned-a-security-patch-into-a-working-exploit-with-no-human-help/5309926",
+        title="Salesforce e Microsoft, storici concorrenti nel software aziendale, si alleano con CopilotForce",
+        what="Tra il 17 e il 19 novembre Salesforce e Microsoft hanno annunciato CopilotForce: il contesto clienti e i flussi di vendita del CRM Salesforce entrano direttamente dentro Microsoft Copilot, Teams e Fabric, con decine di funzioni di vendita integrate — alcune già disponibili al pubblico generale, altre ancora in anteprima.",
+        why="Due fornitori che per anni si sono contesi lo stesso cliente enterprise scelgono di integrarsi invece di competere sul livello agentico: segnala che nessuno dei due vuole restare escluso dal punto dove, da ora, lavoreranno gli agenti AI aziendali.",
+        source="Microsoft (news.microsoft.com/source) / Salesforce",
+        url="https://news.microsoft.com/source/2026/11/17/microsoft-and-salesforce-announce-copilotforce-bringing-trusted-customer-context-and-action-into-microsoft-ai-experiences/",
     ),
     dict(
-        title="Cursor conferma: una chiave rubata al fornitore AI Fireworks ha portato a un'estensione Claude Code malevola sul suo marketplace",
-        what="Il 13 novembre Cursor ha pubblicato i risultati di un'indagine di due settimane su una violazione partita da Fireworks AI, il fornitore di inferenza a cui aveva concesso accesso a un bucket di dati in sola lettura. Un attaccante ha avuto accesso ai sistemi di sviluppo di Fireworks il 24 ottobre, ha usato una chiave esposta per copiare dati dal bucket (tracce di sessioni del 2025 senza Privacy Mode, alcune con credenziali non oscurate), è passato da lì ad alcuni strumenti SaaS interni di Cursor e infine ha caricato, il 29 ottobre, versioni manomesse dell'estensione \"anthropic.claude-code\" nella cache del marketplace VS Code di Cursor — attive per circa 11 ore, scaricabili da un massimo di 5.000 sviluppatori. Il codice incorporato installava una chiave SSH non autorizzata e tentava un tunnel verso un server remoto. Cursor ha bloccato l'ultima attività dell'attaccante il 1° novembre, dichiara che meno dello 0,01% dei clienti ha avuto credenziali API esposte, e precisa che Anthropic non ha mai pubblicato quel pacchetto e il suo prodotto non era vulnerabile.",
-        why="Colpisce uno strumento che moltissimi sviluppatori usano ogni giorno per scrivere codice con l'AI, e mostra lo stesso schema del caso Notion di due settimane fa — un fornitore AI terzo come anello debole della catena — ma con un esito diverso e più diretto: un'estensione malevola distribuita, non solo dati esposti.",
-        source="Unite.AI (su comunicazione ufficiale Cursor)",
-        url="https://www.unite.ai/cursor-traces-breach-to-access-key-exposed-by-fireworks-ai/",
-    ),
-    dict(
-        title="Anthropic trasforma Claude in una suite per ufficio, a pochi mesi da una possibile IPO",
-        what="Il 10 novembre Anthropic ha ampliato l'offerta \"da ufficio\" di Claude con Claude Sheets (fogli di calcolo) e Claude Whiteboards, affiancandoli ai già annunciati Claude Docs e Slides, e ha anticipato l'arrivo di Claude Data e Claude Meetings. Ha introdotto anche connettori interattivi che permettono di lavorare dentro app partner (Adobe, Atlassian) senza cambiare scheda, più plugin di Salesforce (beta), NetSuite e Workday (beta) con competenze integrate per preparazione vendite, analisi finanziaria e pratiche HR come ferie e note spese. L'annuncio arriva, secondo diversi osservatori, in un momento di preparazione a una possibile quotazione in borsa di Anthropic.",
-        why="Broad appeal diretto: è la stessa battaglia per il posto di lavoro quotidiano che Microsoft combatte con Copilot e Google con Gemini in Workspace, e riguarda ogni azienda che deve decidere quali strumenti AI abilitare per i propri team.",
-        source="Constellation Research",
-        url="https://www.constellationr.com/insights/news/anthropic-rounds-out-its-office-ambitions-claude-sheets-whiteboards-and-more",
-    ),
-    dict(
-        title="OpenAI porta le aziende dentro ChatGPT con i Business Agent verificati",
-        what="Il 10 novembre OpenAI ha lanciato in beta, per ora negli Stati Uniti e per aziende di e-commerce e servizi online, i \"Business Agent\": agenti che rappresentano un marchio dentro ChatGPT quando l'azienda viene citata in una risposta. Un'azienda rivendica e verifica la propria organizzazione nel nuovo \"Business Hub\" (verifica tramite telefono, email aziendale, dominio del sito o Shopify, con controllo d'identità via Persona), imposta le istruzioni e il contesto del proprio agente, e consulta dati su quante volte viene citata nelle risposte di ChatGPT e su quali argomenti emerge. Le chat con un business agent restano etichettate e separate dalla conversazione principale dell'utente.",
-        why="Cambia il modo in cui i consumatori scopriranno e parleranno con le aziende prima ancora di arrivare al loro sito: un impatto diretto su marketing e relazione col cliente, visibile a un pubblico ampio anche fuori dagli addetti ai lavori.",
-        source="Let's Data Science (The Verge)",
-        url="https://letsdatascience.com/news/openai-launches-verified-business-agents-in-chatgpt-beta-a88f185a",
-    ),
-    dict(
-        title="Adobe trasforma Firefly in uno \"studio creativo AI\" con agenti sempre attivi (Adobe MAX)",
-        what="Il 10 novembre, ad Adobe MAX a Miami Beach, Adobe ha ampliato Firefly come \"AI creative studio\": il Creative Agent lavora ora dentro Firefly e nei principali programmi Creative Cloud (Photoshop, Premiere, Illustrator, InDesign, After Effects, Frame.io), con una \"Plan Mode\" che mostra il piano prima di eseguirlo e agenti \"always-on\" (anteprima) che lavorano in background su compiti ricorrenti anche quando l'utente è assente. Arrivano anche Firefly Design (beta: illustrazione, foto, animazione, 3D e stampa in un solo spazio) e Firefly Builder (beta privata), che trasforma una descrizione in linguaggio naturale in un sito, una presentazione o un'app funzionante senza scrivere codice. Secondo il report Creators' Toolkit di Adobe, il 78% dei creator dichiara che l'AI generativa ha accelerato la crescita del proprio business.",
-        why="Trend di design e innovazione: mostra gli strumenti creativi diventare agentic, con ricadute dirette su chi produce contenuti e grafica per il marketing — rilevante per un pubblico ampio, non solo per i designer.",
-        source="Adobe (news.adobe.com)",
-        url="https://news.adobe.com/news/2026/11/adobe-firefly-expands",
-    ),
-    dict(
-        title="Google DeepMind porta l'AI nei robot di fabbrica e nella genetica, con Gemini Robotics 2.5 e AlphaGenome 2",
-        what="L'11 novembre Google DeepMind ha rilasciato Gemini Robotics 2.5, descritto come il suo modello vision-language-action più capace: testato su oltre 200 compiti, con tassi di successo dal 30% al 100% a seconda del compito e il 20-30% più veloce della versione precedente; in un progetto pilota con Mercedes-Benz ha impacchettato componenti auto con un tasso di successo del 96%. È in distribuzione con partner come Apptronik, Agile Robots e Boston Dynamics. Lo stesso giorno DeepMind ha rilasciato AlphaGenome 2, un modello che predice come le sequenze di DNA e le loro varianti influenzano i diversi tipi di cellule umane, costruito sui dati dell'Human Cell Atlas — non approvato per uso clinico o diagnostico.",
-        why="Mostra l'AI uscire dalla chat ed entrare nel mondo fisico e nella ricerca scientifica: due ambiti lontani dal software gestionale ma che colpiscono l'immaginazione di un pubblico ampio, con un esempio industriale (Mercedes-Benz) facilmente comprensibile.",
-        source="SiliconANGLE",
-        url="https://siliconangle.com/2026/11/11/google-deepmind-releases-new-advanced-robotics-ai-model-and-next-generation-gene-prediction-model",
-    ),
-    dict(
-        title="Un attaccante usa un framework di agenti AI (ARTEX) per violare un fornitore di infrastruttura blockchain",
-        what="Il 12 novembre Chainstack, fornitore di infrastruttura blockchain, ha reso noto che un attaccante — entrato il 26 ottobre attraverso un'istanza Grafana esposta su internet e lasciata con le credenziali di amministratore di default — ha raggiunto l'ambiente di produzione il 29 ottobre usando un framework di agenti AI (ARTEX) per condurre l'attacco, prima che Chainstack bloccasse l'accesso il 31 ottobre. Sono stati esposti nomi, email e hash delle password dei clienti; Chainstack dichiara che i servizi rivolti ai clienti non si sono mai fermati e ha chiesto ai clienti di ruotare le credenziali dei nodi. Il rapporto GTIG di Google di questa settimana cataloga ARTEX tra i framework offensivi agentici già noti.",
-        why="Collega direttamente il trend Google della stessa settimana: non è un caso isolato, ma uno dei framework che i ricercatori di sicurezza stanno già monitorando come categoria — una controversia con forte presa su un pubblico ampio.",
-        source="The Block",
-        url="https://www.theblock.co/news/ecosystems/2026-11-12-chainstack-security-breach-438509",
-    ),
-    dict(
-        title="I chip AI recuperano parte del terreno perso, dopo la peggiore settimana in un anno e mezzo",
-        what="Dopo il crollo registrato nella settimana del 3-7 novembre (indice SOX -12%, la peggiore dall'aprile 2025, dopo le elezioni di midterm del 3 novembre), i titoli dei semiconduttori hanno recuperato parzialmente lunedì 9 novembre. Gli analisti descrivono il movimento come gli investitori che iniziano a guardare oltre la correzione legata ai risultati elettorali, con Nvidia che resta comunque sotto osservazione per le polemiche emerse nei giorni precedenti.",
-        why="Contesto pratico diretto per chi valuta il costo di infrastruttura e API AI nei prossimi mesi: lo segnaliamo come coda del trend aperto nel PED precedente, non come notizia nuova a sé — un rimbalzo non chiude la domanda sulla sostenibilità della spesa.",
-        source="Stocktwits",
-        url="https://stocktwits.com/news-articles/markets/equity/amd-avgo-intc-mu-chip-stocks-inch-higher-as-investors-look-past-midterms-led-selloff-nvidia-controversy/cNGAD0CR9eR",
+        title="L'Oregon fa causa a OpenAI per oltre 2 miliardi di dollari sulla sicurezza dei minori su ChatGPT",
+        what="Il 17 novembre il procuratore generale dell'Oregon, Dan Rayfield, ha intentato una causa da 2,035 miliardi di dollari contro OpenAI, accusando l'azienda di aver messo consapevolmente in pericolo gli utenti minorenni di ChatGPT e di aver fuorviato il pubblico sulle misure di sicurezza adottate. La causa arriva dopo mesi in cui diverse famiglie hanno già fatto causa a OpenAI per episodi di conversazioni dannose con minori, e dopo che l'azienda aveva introdotto controlli parentali in risposta a quei casi precedenti.",
+        why="Mostra che la pressione legale e normativa sulla sicurezza dei chatbot conversazionali sta diventando concreta, con cifre e azioni legali misurabili — un tema che tocca la fiducia pubblica nell'AI ben oltre gli addetti ai lavori.",
+        source="Oregon Public Broadcasting (OPB), con riscontro su più testate locali indipendenti",
+        url="https://www.opb.org/article/2026/11/17/oregon-ag-sues-openai-claims-company-knowingly-endangers-teens/",
     ),
 ]
 
@@ -119,224 +106,229 @@ trends = [
 # ---------------------------------------------------------------------------
 competitors = [
     dict(
-        name="AT&T",
-        what="Rivela (via SiliconANGLE, 14/11) di gestire quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese, con l'obiettivo di triplicare i workflow entro il 2027.",
-        positioning="Non si presenta come fornitore di tecnologia AI ma come caso di adozione su scala: la narrazione è \"abbiamo governato la transizione\", con una struttura interna dedicata (Business Agent Foundry) e soglie di accuratezza esplicite prima di togliere la supervisione umana.",
-        angle="È l'esempio più concreto finora di cosa serve davvero per portare un agente dalla demo alla produzione: non solo il modello, ma un processo che mappa i workflow, fissa soglie di accuratezza e tiene la supervisione umana finché quella soglia non è raggiunta — esattamente il lavoro di governance che il Team Augmentation di Digitiamo porta alle aziende che non hanno una struttura interna come la Foundry di AT&T.",
+        name="Nvidia",
+        what="Perde il suo fondatore-CEO Jensen Huang con effetto immediato (12/11), senza successore designato; nonostante una trimestrale record (17/11, fatturato +103% anno su anno) il titolo cede circa il 7% nella settimana sulle preoccupazioni di governance.",
+        positioning="Fino a oggi Nvidia si era costruita attorno alla figura di un singolo fondatore-visionario, diventato quasi sinonimo del boom AI stesso: ora deve dimostrare, in tempo reale e sotto gli occhi del mercato, che l'azienda è più grande della persona che l'ha guidata per 33 anni.",
+        angle="È il caso scuola del rischio legato a una singola figura chiave, applicato a scala enorme: ogni azienda che dipende da un singolo fornitore critico, da una singola figura tecnica interna o da un singolo partner AI dovrebbe chiedersi oggi, non quando la crisi arriva, chi prende le decisioni se quella persona non c'è più — esattamente il lavoro di continuità e governance che il Team Augmentation di Digitiamo aiuta a mettere a terra prima che serva davvero.",
     ),
     dict(
-        name="Google",
-        what="In una settimana mostra due facce della stessa tecnologia: Google DeepMind rilascia Gemini Robotics 2.5 e AlphaGenome 2 (11/11), mentre il Google Threat Intelligence Group pubblica il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit (16/11).",
-        positioning="Da un lato spinge l'AI oltre la chat, nella robotica industriale e nella ricerca scientifica; dall'altro si posiziona come l'azienda che per prima documenta pubblicamente i rischi offensivi degli agenti AI, rafforzando la propria credibilità come fonte di sicurezza oltre che come fornitore di modelli.",
-        angle="Il rapporto GTIG è anche un promemoria pratico: se un framework di agenti AI può automatizzare la ricerca di vulnerabilità su software popolari, la velocità di applicazione delle patch diventa una competenza critica — un terreno dove la formazione mirata dell'AI Business Academy ha un impatto diretto e misurabile.",
+        name="Microsoft",
+        what="A Ignite 2026 (18/11) ridisegna Copilot come livello di orchestrazione autonomo per il lavoro aziendale, con agenti sempre attivi dentro Office e Teams, e nella stessa settimana (17-19/11) annuncia con Salesforce l'integrazione CopilotForce.",
+        positioning="Si muove su due fronti insieme — rendere Copilot più autonomo e portare dentro al proprio ecosistema il contesto CRM di un concorrente storico — per restare il punto di ingresso unico dove un'azienda gestisce lavoro e dati, invece di competere strumento per strumento.",
+        angle="Più un singolo fornitore diventa il \"sistema operativo\" del lavoro quotidiano, più aumenta la posta in gioco di chi decide quali agenti abilitare, con quali permessi e su quali dati — una scelta che richiede competenze specifiche, non la configurazione di default lasciata all'IT da solo: il terreno dell'AI Business Academy, pensata sui casi d'uso reali dell'azienda cliente.",
+    ),
+    dict(
+        name="Salesforce",
+        what="Accetta di portare il proprio contesto clienti e i flussi di vendita dentro Microsoft Copilot con CopilotForce (17-19/11), dopo anni passati a competere direttamente con gli strumenti Microsoft sul terreno enterprise.",
+        positioning="Sceglie l'interoperabilità con un concorrente storico piuttosto che isolare i propri dati CRM in un ecosistema chiuso, scommettendo che restare presente ovunque lavorino i team vendita valga più del controllo esclusivo sull'interfaccia.",
+        angle="Per un'azienda cliente, la domanda pratica diventa chi presidia le regole quando i dati commerciali più sensibili iniziano a fluire anche dentro lo strumento di un altro fornitore — un lavoro di governance dei permessi che il Team Augmentation di Digitiamo porta in azienda prima che la scelta la faccia il reparto IT da solo, in affanno.",
     ),
     dict(
         name="OpenAI",
-        what="Lancia in beta i Business Agent verificati dentro ChatGPT (10/11): le aziende idonee (per ora e-commerce e servizi online, solo USA) rivendicano un profilo nel Business Hub, si verificano e lasciano che un proprio agente risponda ai clienti dentro la chat, con dati su citazioni e argomenti di scoperta.",
-        positioning="Si muove per diventare il punto di ingresso dove i consumatori scoprono e interagiscono con i marchi, prima ancora di arrivare al sito dell'azienda — una scommessa sulla distribuzione, non solo sul modello.",
-        angle="Per un'azienda italiana B2B la domanda non è ancora \"mi serve un Business Agent\" (il programma è per ora USA/e-commerce), ma chi presidierà, quando arriverà anche qui, il contenuto e il tono con cui un agente non controllato direttamente dall'azienda risponderà per suo conto — un lavoro di governance, non di marketing spontaneo.",
-    ),
-    dict(
-        name="Anthropic",
-        what="Amplia l'offerta da ufficio di Claude con Sheets e Whiteboards, anticipa Data e Meetings, e aggiunge connettori interattivi con Salesforce, NetSuite e Workday (10/11), in un momento di preparazione a una possibile IPO.",
-        positioning="Si propone sempre più come alternativa diretta a Microsoft 365 e Google Workspace, non solo come fornitore di modello — la stessa battaglia per il posto di lavoro quotidiano che Microsoft combatte con Copilot e Google con Gemini.",
-        angle="Più strumenti AI finiscono nello stesso posto di lavoro, più cresce il bisogno di qualcuno che decida quali abilitare, con quali permessi e per chi: esattamente il lavoro che il Team Augmentation di Digitiamo porta in azienda prima che la scelta la faccia il reparto IT da solo, in affanno.",
-    ),
-    dict(
-        name="Adobe",
-        what="Ad Adobe MAX (10/11) trasforma Firefly in uno \"studio creativo AI\" con agenti sempre attivi dentro Photoshop, Premiere, Illustrator e gli altri programmi Creative Cloud, più Firefly Builder per generare siti e prototipi da descrizioni in linguaggio naturale.",
-        positioning="Prova a restare il punto di riferimento per i professionisti creativi proprio nel momento in cui strumenti più generalisti (ChatGPT, Gemini, i modelli immagine dei concorrenti) permettono a chiunque di generare immagini: la risposta è portare l'agente dentro gli strumenti professionali, non sostituirli.",
-        angle="Un'agenzia o un reparto marketing che adotta questi strumenti guadagna velocità, ma rischia di perdere coerenza di brand se nessuno definisce prima regole e guardrail per l'agente — il terreno dell'AI Business Academy, pensata su casi d'uso reali e non su formazione generica allo strumento.",
+        what="Affronta una causa da oltre 2 miliardi di dollari dello stato dell'Oregon (17/11) sulla sicurezza dei minori su ChatGPT, nella stessa settimana in cui resta il fornitore AI più citato nelle conversazioni enterprise su agenti e automazione.",
+        positioning="Si trova a gestire in parallelo due narrazioni opposte — il fornitore AI più ambizioso sul fronte agentico e di prodotto, e il bersaglio principale della pressione legale e normativa sulla sicurezza dei chatbot conversazionali — un equilibrio che pesa sulla fiducia pubblica nel marchio.",
+        angle="Per un'azienda B2B la lezione non riguarda solo la sicurezza dei minori: riguarda quanto in fretta la pressione legale e reputazionale su un fornitore AI possa materializzarsi, e quanto sia prudente non far dipendere i processi critici da un singolo fornitore senza un piano di governance e di controllo esplicito.",
     ),
 ]
 
 # ---------------------------------------------------------------------------
 # 7 IDEE DI POST
 # ---------------------------------------------------------------------------
-# Arco della settimana (seconda rigenerazione, 16/11/2026): lunedì il quadro
-# d'insieme parte da AT&T — il caso più concreto di agenti AI già in
-# produzione su scala, con soglie di governance esplicite — e lo affianca ai
-# lanci "da ufficio" della stessa settimana (Anthropic, OpenAI, Adobe).
-# Martedì il mito da sfatare passa dal caso Notion/Fireworks (riusato nella
-# prima rigenerazione) al rapporto Google GTIG di oggi stesso: "serve sempre
-# un umano esperto per trasformare una falla in un attacco" — smentito da un
-# framework che lo fa da solo. Mercoledì il carosello dati resta sui numeri
-# di AT&T (unico trend della settimana con la densità di cifre necessaria a
-# un carosello: il caso Cursor ha pochi numeri, non abbastanza per 5 righe di
-# scorecard). Giovedì l'esperienza diretta cambia argomento, dal controllo
-# dei contratti AI al controllo delle estensioni AI installate negli editor
-# del team — spunto diretto dal caso Cursor/Fireworks. Venerdì la
-# mini-lezione spiega cos'è un "agente AI offensivo" a partire dal rapporto
-# Google e dal collegamento con Chainstack (stesso framework, ARTEX). Le due
-# riserve restano banca contenuti: un carosello numeri sul rimbalzo dei chip
-# AI, e la riflessione di chiusura.
+# Arco della settimana (prima generazione, 23/11/2026): lunedì il quadro
+# d'insieme parte dalla notizia più grande e trasversale — le dimissioni di
+# Jensen Huang da Nvidia e la reazione del mercato nonostante la trimestrale
+# record — inquadrata come caso di rischio legato a una singola figura
+# chiave, senza vendita. Martedì e mercoledì due miti da sfatare, entrambi
+# sul tema "una dichiarazione di sicurezza/conformità non equivale a una
+# garanzia verificata": il caso OpenRouter (clausola "zero data retention"
+# non rispettata) e il caso Oregon/OpenAI (guardrail dichiarati non bastano
+# a prevenire la causa). Giovedì l'esperienza diretta riprende il filo di
+# martedì: la rilettura dei contratti dei fornitori AI del team. Venerdì la
+# mini-lezione spiega il meccanismo tecnico dietro la scoperta di martedì
+# (il "canary token"), chiudendo l'arco sicurezza/fiducia. Le due riserve
+# restano banca contenuti: un carosello dati sui numeri della trimestrale
+# Nvidia (l'unico trend della settimana con densità di cifre sufficiente per
+# un carosello — nessun secondo candidato da promuovere a Prioritario questa
+# settimana), e la riflessione di chiusura.
 ideas = [
     dict(
         badge="Prioritario",
-        day="Lunedì 16/11",
+        day="Lunedì 23/11",
         format="Thought leadership — apertura settimana",
-        title="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne ha già quasi 500 in produzione: 45 miliardi di token elaborati ogni giorno",
-        titolo_post="AT&T: quasi 500 agenti già al lavoro",
-        sottotitolo_post="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne gestisce quasi 500 in produzione.",
-        news="AT&T gestisce quasi 500 workflow agentici in produzione, 45 miliardi di token al giorno (14/11)",
-        news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
-        hook="Questa settimana la differenza fra parlare di agenti AI e farli lavorare davvero si è vista nei numeri: il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione, con 45 miliardi di token elaborati al giorno e oltre 1 milione di transazioni al mese — con l'obiettivo di triplicare i workflow entro il 2027. Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori per Salesforce, NetSuite e Workday; OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende; e Adobe, ad Adobe MAX, ha messo agenti sempre attivi dentro Photoshop, Premiere e gli altri programmi Creative Cloud.",
-        visual_hook="Mentre Anthropic, OpenAI e Adobe lanciano agenti per l'ufficio, AT&T ne ha già quasi 500 in produzione, con soglie di accuratezza precise prima di togliere la supervisione umana.",
+        title="Jensen Huang lascia Nvidia da un giorno all'altro, senza successore: il rischio legato a una singola figura chiave diventa reale su scala mondiale",
+        titolo_post="Nvidia perde il suo fondatore-CEO",
+        sottotitolo_post="Jensen Huang si dimette da CEO con effetto immediato, senza un successore designato.",
+        news="Nvidia annuncia le dimissioni immediate di Jensen Huang da CEO, senza successore designato (12/11)",
+        news_url="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
+        hook="Questa settimana il fornitore più centrale dell'intero boom AI ha perso, da un giorno all'altro, l'unico CEO che abbia mai avuto: il 12 novembre Nvidia ha annunciato le dimissioni con effetto immediato di Jensen Huang da Presidente e CEO, dopo 33 anni alla guida dell'azienda che ha fondato nel 1993. Il consiglio non ha fornito alcuna motivazione ufficiale, ha nominato ad interim l'attuale CFO Colette Kress e ha aperto la ricerca di un successore permanente. Cinque giorni dopo, il 17 novembre, Nvidia ha riportato una trimestrale da record — ma il titolo ha comunque ceduto, per l'incertezza sulla governance futura.",
+        visual_hook="Il fornitore più centrale del boom AI perde il suo unico CEO da un giorno all'altro, senza successore designato: anche una trimestrale record non basta a rassicurare il mercato.",
         points=[
-            "Quasi 500 — i workflow agentici che AT&T gestisce oggi in produzione, con l'obiettivo di triplicarli entro il 2027: non una demo, ma un programma con una struttura interna dedicata (la \"Business Agent Foundry\").",
-            "Ogni workflow parte con supervisione umana: l'autonomia arriva solo quando l'accuratezza raggiunge la fascia medio-alta del 90%, con monitoraggio continuo dopo la rimozione del controllo diretto.",
-            "Nella stessa settimana Anthropic ha ampliato Claude con fogli di calcolo, lavagne e connettori diretti con Salesforce, NetSuite e Workday, mentre OpenAI ha portato dentro ChatGPT i primi Business Agent verificati delle aziende e Adobe ha reso Firefly uno studio creativo con agenti sempre attivi.",
+            "Il 12 novembre Nvidia ha annunciato le dimissioni immediate di Jensen Huang da Presidente e CEO, dopo 33 anni alla guida dell'azienda: nessuna motivazione ufficiale, Colette Kress (CFO) nominata CEO ad interim, ricerca aperta per un successore permanente.",
+            "Il 17 novembre Nvidia ha riportato un fatturato trimestrale di 115,8 miliardi di dollari (+103% anno su anno) — ma il titolo ha comunque perso circa il 7% nella settimana, un calo attribuito esplicitamente alle preoccupazioni sulla successione.",
+            "È il caso scuola del rischio legato a una singola figura chiave, su scala enorme: numeri da record non bastano se manca chiarezza su chi guida l'azienda da cui dipende la roadmap hardware di quasi ogni progetto AI al mondo.",
         ],
         punti_post=[
-            "AT&T: quasi 500 workflow agentici in produzione.",
-            "45 miliardi di token al giorno, soglia d'accuratezza 90%+.",
-            "Anthropic, OpenAI e Adobe: agenti al lavoro in ufficio.",
+            "Nvidia: dimissioni immediate di Jensen Huang, nessun successore.",
+            "Trimestrale record (+103%), ma titolo giù 7% nella settimana.",
+            "Il rischio chiave-persona, applicato alla scala più grande.",
         ],
-        cta="La tua azienda sta già misurando quanto lavoro reale affida agli agenti AI, o lo guarda ancora da fuori? 👇",
-        hashtags="#IntelligenzaArtificiale #AI #AgentiAI #Innovazione #B2B",
+        cta="La tua azienda ha un piano esplicito per il giorno in cui una figura chiave — interna o di un fornitore critico — non c'è più? 👇",
+        hashtags="#Nvidia #IntelligenzaArtificiale #Leadership #Governance #B2B",
     ),
     dict(
         badge="Prioritario",
-        day="Martedì 17/11",
+        day="Martedì 24/11",
         format="Mito da sfatare",
-        title="Dietro ogni exploit c'è sempre un hacker esperto che lo scrive e lo lancia. Quindi senza una persona dietro sei al sicuro",
-        titolo_post="Senza un hacker dietro, sei al sicuro",
-        sottotitolo_post="Un agente AI ha trasformato da solo una patch di sicurezza in un exploit, senza aiuto umano.",
+        title="Il fornitore dichiara \"zero data retention\" sui tuoi prompt aziendali. Quindi i tuoi dati sono al sicuro",
+        titolo_post="I tuoi prompt sono al sicuro",
+        sottotitolo_post="OpenRouter ha rimosso 3 fornitori che leggevano i prompt nonostante la clausola zero data retention.",
         barrato="sicuro",
-        news="Google (GTIG) rivela il primo agente AI che trasforma da solo una patch in un exploit funzionante (16/11)",
-        news_url="https://www.theregister.com/research/2026/11/16/google-ai-agent-turned-a-security-patch-into-a-working-exploit-with-no-human-help/5309926",
-        hook="🔥 Il mito: dietro un attacco informatico c'è sempre, in qualche fase, una persona che analizza la falla, scrive l'exploit e lo lancia — un agente AI può aiutare, ma il lavoro vero lo fa ancora un umano esperto.",
+        news="OpenRouter rimuove 3 fornitori di inferenza AI dopo la scoperta di furto di prompt nonostante l'etichetta ZDR (20-21/11)",
+        news_url="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+        hook="🔥 Il mito: se un fornitore AI dichiara contrattualmente \"zero data retention\" sui tuoi prompt, puoi fidarti e non c'è altro da controllare — è una clausola, non una promessa che va verificata nei fatti.",
         no_hashtags=True,
         is_myth=True,
-        visual_hook="Il Google Threat Intelligence Group ha trovato un framework di agenti AI (exploit_agent) che confronta da solo le patch di sicurezza e genera exploit funzionanti, senza intervento umano in nessuna fase.",
-        myth_body="Il 16 novembre Google ha pubblicato il suo rapporto trimestrale sulle minacce AI, documentando il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante. Il framework, chiamato \"exploit_agent\", è stato trovato su un server di staging esposto su internet: confronta in automatico il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità introdotte dalla patch, sviluppa l'exploit e lo esegue — senza che una persona intervenga in nessuna fase.",
+        visual_hook="Un ricercatore di sicurezza ha inviato 2 milioni di prompt con link-trappola attraverso provider etichettati \"zero data retention\": tre di loro li hanno aperti, anche giorni dopo.",
+        myth_body="Il ricercatore di sicurezza HD Moore ha inviato circa 2 milioni di prompt contenenti link di tracciamento univoci e credenziali finte attraverso provider di inferenza AI su OpenRouter etichettati \"Zero Data Retention\" (ZDR) — la dichiarazione contrattuale che il fornitore non legge né conserva i dati. Tre provider, tra cui MiniMax, hanno aperto quei link-trappola tra le 40 e le 130 ore dopo l'invio: prova diretta che i prompt venivano letti, nonostante l'etichetta. OpenRouter li ha rimossi dalla piattaforma dopo la segnalazione.",
         points=[
-            "Il framework \"exploit_agent\" confronta il codice prima e dopo gli aggiornamenti di sicurezza di software web popolari, individua le vulnerabilità e sviluppa ed esegue l'exploit, tutto senza intervento umano.",
-            "I ricercatori di Google lo hanno trovato su un server di staging esposto su internet, insieme a dati già rubati ad altre organizzazioni e a strumenti per muoversi dentro una rete una volta compromessa.",
-            "Google segnala che questo framework si aggiunge a una lista già nota di strumenti offensivi agentici — tra cui ARTEX, lo stesso usato nell'attacco al fornitore blockchain Chainstack della settimana scorsa.",
+            "Il test: circa 2 milioni di prompt con link-trappola e credenziali finte, inviati attraverso provider etichettati \"zero data retention\".",
+            "Tre provider, tra cui MiniMax, hanno aperto quei link tra le 40 e le 130 ore dopo l'invio — prova che i prompt venivano letti nonostante la clausola.",
+            "OpenRouter ha rimosso i tre provider dopo la segnalazione: l'etichetta da sola non bastava a garantire quello che prometteva.",
         ],
         punti_post=[
-            "exploit_agent: trova e sfrutta falle senza intervento umano.",
-            "Trovato su un server esposto, con dati già rubati ad altri.",
-            "Tra i framework noti anche ARTEX, usato contro Chainstack.",
+            "2 milioni di prompt-trappola inviati a provider \"zero retention\".",
+            "3 provider li hanno aperti: la clausola non reggeva nei fatti.",
+            "OpenRouter li ha rimossi dopo la scoperta.",
         ],
-        myth_closing="Il problema non è se la tua azienda abbia budget per attirare hacker esperti — è che il costo di trasformare una falla in un attacco si sta avvicinando a zero, perché la parte più lenta del lavoro la fa ormai un agente AI. Patchare in fretta non basta più se tra la pubblicazione di una patch e il suo sfruttamento non c'è più il tempo che serviva a un umano per capirla.",
-        cta="La tua azienda applica le patch di sicurezza entro ore, o ancora entro settimane? 👇",
+        myth_closing="Il problema non è se il tuo fornitore AI abbia scritto \"zero data retention\" nel contratto — è che nessuno l'aveva verificato finché un ricercatore indipendente non ha inviato prompt-trappola per controllare. Una clausola di privacy non testata è un'ipotesi, non una garanzia.",
+        cta="La tua azienda ha mai verificato nei fatti, non solo nel contratto, come un fornitore AI tratta i tuoi prompt? 👇",
         hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Mercoledì 18/11",
-        format="Carosello / documento dati — promosso a Prioritario per la densità di cifre",
-        title="Dentro i quasi 500 agenti AI di AT&T già al lavoro: i numeri della trasformazione agentica più grande vista finora",
-        titolo_post="Agenti AI al lavoro: i numeri di AT&T",
-        sottotitolo_post="Quasi 500 workflow agentici in produzione, 45 miliardi di token elaborati ogni giorno.",
-        closing_title="Chi fissa la soglia per togliere la supervisione?",
-        closing_body="Prima di contare quanti workflow delega un agente, qualcuno deve aver fissato la soglia di accuratezza per farlo lavorare da solo.",
-        news="AT&T gestisce quasi 500 workflow agentici in produzione, 45 miliardi di token al giorno (14/11)",
-        news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
-        hook="Il 14 novembre è emerso che AT&T gestisce oggi quasi 500 workflow agentici in produzione — non una demo, ma un programma con una struttura di governance precisa su quando un agente può lavorare senza supervisione diretta.",
+        day="Mercoledì 25/11",
+        format="Mito da sfatare",
+        title="Un chatbot con guardrail di sicurezza dichiarati ha reso le conversazioni con gli utenti più vulnerabili un problema sotto controllo",
+        titolo_post="Guardrail non vuol dire controllo",
+        sottotitolo_post="L'Oregon fa causa a OpenAI per oltre 2 miliardi di dollari sulla sicurezza dei minori su ChatGPT.",
+        barrato="controllo",
+        news="L'Oregon intenta una causa da 2,035 miliardi di dollari contro OpenAI sulla sicurezza dei minori su ChatGPT (17/11)",
+        news_url="https://www.opb.org/article/2026/11/17/oregon-ag-sues-openai-claims-company-knowingly-endangers-teens/",
+        hook="🔥 Il mito: una volta che un chatbot ha dei guardrail di sicurezza dichiarati e dei controlli parentali, il rischio per gli utenti più vulnerabili è gestito — il resto è responsabilità di chi lo usa.",
+        no_hashtags=True,
+        is_myth=True,
+        visual_hook="Il procuratore generale dell'Oregon accusa OpenAI di aver messo in pericolo consapevolmente gli utenti minorenni di ChatGPT, nonostante le misure di sicurezza dichiarate pubblicamente.",
+        myth_body="Il 17 novembre il procuratore generale dell'Oregon, Dan Rayfield, ha intentato una causa da 2,035 miliardi di dollari contro OpenAI, accusando l'azienda di aver messo consapevolmente in pericolo gli utenti minorenni di ChatGPT e di aver fuorviato il pubblico sulle misure di sicurezza adottate. La causa arriva dopo mesi in cui diverse famiglie hanno già fatto causa a OpenAI per episodi di conversazioni dannose con minori, e dopo che l'azienda aveva introdotto controlli parentali in risposta a quei casi precedenti.",
         points=[
-            "500 — i workflow agentici che AT&T gestisce oggi in produzione (quasi), con l'obiettivo dichiarato di triplicarli entro il 2027.",
-            "45 miliardi — i token AI elaborati ogni giorno dalla piattaforma, saliti da 27 miliardi a marzo 2026.",
-            "1 milione — le transazioni mensili gestite dalla piattaforma di agenti AI di AT&T, secondo l'azienda.",
-            "90 — la soglia di accuratezza (fascia medio-alta, in percentuale) che un workflow deve raggiungere prima che AT&T rimuova la supervisione umana diretta.",
-            "5 volte — il ritorno sugli investimenti in AI di produzione dichiarato da AT&T entro un anno (dato dell'azienda stessa, non verificato in modo indipendente).",
+            "Il procuratore generale dell'Oregon chiede oltre 2 miliardi di dollari, accusando OpenAI di aver saputo dei rischi per i minori e di non aver agito abbastanza in fretta.",
+            "La causa arriva dopo mesi di azioni legali simili da parte di famiglie, e dopo che OpenAI aveva già introdotto controlli parentali in risposta a episodi precedenti.",
+            "Avere delle misure di sicurezza dichiarate non ha impedito che la pressione legale si materializzasse comunque, con una cifra e un'accusa specifiche.",
         ],
         punti_post=[
-            "500 — workflow agentici in produzione (obiettivo: triplicarli nel 2027).",
-            "45 miliardi — token elaborati al giorno (da 27 mld a marzo).",
-            "1 milione — transazioni gestite al mese dalla piattaforma.",
-            "90% — soglia per togliere la supervisione umana.",
-            "5x — ritorno dichiarato sugli investimenti AI in un anno (dato AT&T).",
+            "Oregon: causa da oltre 2 miliardi di dollari contro OpenAI.",
+            "Accusa: pericolo noto per i minori, misure insufficienti.",
+            "Arriva dopo mesi di cause simili e controlli già introdotti.",
         ],
-        closing="Il salto di scala è reale: quasi 500 workflow agentici, 45 miliardi di token al giorno, un obiettivo di triplicare tutto entro il 2027. Ma il dettaglio che vale di più non è la scala — è la regola che la rende sostenibile: ogni workflow parte con supervisione umana, e la perde solo quando l'accuratezza supera una soglia fissata in anticipo, non quando qualcuno decide che \"probabilmente va bene così\". I dati di AT&T vengono dall'azienda stessa e non sono stati verificati in modo indipendente.",
-        cta="La tua azienda ha già fissato una soglia esplicita prima di togliere la supervisione umana a un agente AI, o la decisione resta informale? 👇",
-        hashtags="#AgentiAI #IntelligenzaArtificiale #Innovazione #B2B #Automazione",
+        myth_closing="Dichiarare dei guardrail non equivale a dimostrare che bastano: la differenza, per chi li costruisce come per chi li usa, è quanto spesso vengono messi davvero alla prova — non solo annunciati.",
+        cta="La tua azienda tratta le misure di sicurezza AI come una casella da spuntare, o come qualcosa da verificare nel tempo? 👇",
+        hashtags="",
     ),
     dict(
         badge="Prioritario",
-        day="Giovedì 19/11",
+        day="Giovedì 26/11",
         format="Esperienza diretta",
-        title="Dopo il caso Cursor/Fireworks, abbiamo controllato le estensioni e le dipendenze che il team usa negli editor AI",
-        titolo_post="Estensioni AI: le abbiamo *verificate*",
-        sottotitolo_post="Dopo il caso Cursor, abbiamo controllato estensioni e dipendenze usate negli editor AI del team.",
-        news="Spunto dal caso Cursor/Fireworks AI: chiave rubata, estensione Claude Code malevola nel marketplace (13/11)",
-        news_url="https://www.unite.ai/cursor-traces-breach-to-access-key-exposed-by-fireworks-ai/",
-        hook="Dopo il caso di questa settimana — una chiave rubata a un fornitore AI ha permesso di inserire un'estensione malevola nel marketplace di un editor di codice assistito da AI — ci siamo fatti la domanda scomoda: le estensioni e i plugin AI che il team installa nei propri editor sono davvero quelli che pensiamo? Questa settimana abbiamo controllato cosa è installato davvero, non solo cosa risulta dalla lista ufficiale.",
+        title="Dopo il caso OpenRouter, abbiamo riletto i contratti dei fornitori AI che usiamo per capire cosa dicono davvero sulla conservazione dei dati",
+        titolo_post="Contratti AI: li abbiamo *riletti*",
+        sottotitolo_post="Dopo il caso OpenRouter, abbiamo riletto le clausole di conservazione dati dei fornitori AI che usiamo.",
+        news="Spunto dal caso OpenRouter: tre fornitori leggevano i prompt nonostante la clausola \"zero data retention\" (20-21/11)",
+        news_url="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+        hook="Dopo la notizia di questa settimana — un ricercatore ha scoperto che alcuni fornitori di inferenza AI leggevano i prompt nonostante una clausola contrattuale di \"zero data retention\" — ci siamo fatti la domanda scomoda: sappiamo davvero cosa dicono, nel dettaglio, i contratti dei fornitori AI che usiamo ogni giorno? Questa settimana li abbiamo riletti.",
         is_template=True,
         points=[
-            "Abbiamo elencato tutte le estensioni e i plugin AI installati negli editor di codice del team (marketplace ufficiali e non), e per ciascuno controllato la fonte e l'ultimo aggiornamento.",
-            "[Da personalizzare con l'esito reale della verifica del team: quali estensioni avevano una provenienza poco chiara, cosa avete disinstallato o sostituito, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi o esiti non verificati.]",
-            "La domanda utile non è se il marketplace sia affidabile — di norma lo è — ma se qualcuno in azienda controlla periodicamente cosa viene installato, non solo al momento dell'onboarding.",
+            "Abbiamo elencato tutti i fornitori AI terzi che il team usa (modelli, provider di inferenza, estensioni), e per ciascuno recuperato la clausola esatta su conservazione e uso dei dati, non solo il riassunto commerciale.",
+            "[Da personalizzare con l'esito reale della verifica del team: quali clausole erano più vaghe del previsto, quali fornitori avete deciso di verificare più a fondo o sostituire, quali domande il fornitore non ha saputo rispondere subito — senza inventare nomi o esiti non verificati.]",
+            "La domanda utile non è se i contratti esistano — di norma esistono — ma se qualcuno in azienda li rilegge davvero, periodicamente, invece di darli per scontati dopo la firma.",
         ],
         punti_post=[
-            "Abbiamo elencato le estensioni AI installate dal team.",
-            "[Da personalizzare con l'esito reale della verifica del team.]",
-            "La vera domanda: qualcuno le controlla dopo l'onboarding?",
+            "Abbiamo riletto i contratti dei fornitori AI del team.",
+            "[Da personalizzare con l'esito reale della verifica.]",
+            "La vera domanda: qualcuno li rilegge dopo la firma?",
         ],
-        cta="La tua azienda controlla periodicamente le estensioni e i plugin AI installati nei suoi editor, o solo al primo giorno? Raccontaci 👇",
-        hashtags="#IntelligenzaArtificiale #Cybersecurity #Esperienza #B2B #AIBusiness",
+        cta="La tua azienda rilegge periodicamente le clausole sui dati dei fornitori AI che usa, o solo alla firma del contratto? Raccontaci 👇",
+        hashtags="#IntelligenzaArtificiale #DataPrivacy #Esperienza #B2B #AIBusiness",
     ),
     dict(
         badge="Prioritario",
-        day="Venerdì 20/11",
+        day="Venerdì 27/11",
         format="Divulgativo stile Datapizza",
-        title="Cos'è un \"exploit agent\": il framework che Google ha scoperto trasformare da solo una patch in un attacco",
-        titolo_post="Cos'è un \"exploit agent\"",
-        sottotitolo_post="Il framework che trasforma da solo una patch di sicurezza in un attacco, senza aiuto umano.",
-        news="Spunto dal rapporto Google GTIG (vedi post di martedì) e dal caso Chainstack",
-        news_url="https://www.theregister.com/research/2026/11/16/google-ai-agent-turned-a-security-patch-into-a-working-exploit-with-no-human-help/5309926",
-        hook="Questa settimana abbiamo raccontato un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante, e un fornitore (Cursor) che ha dovuto bloccare un'estensione malevola finita nel suo marketplace. Ma cosa vuol dire davvero \"agente AI offensivo\", e in cosa differisce da un normale strumento di sicurezza?",
+        title="Cos'è un \"canary token\" (link-trappola): lo strumento che ha smascherato chi non rispettava la promessa \"zero data retention\"",
+        titolo_post="Cos'è un \"canary token\"",
+        sottotitolo_post="Il link-trappola che ha svelato chi leggeva i prompt nonostante la promessa di non farlo.",
+        news="Spunto dal caso OpenRouter (vedi post di martedì): il canary token che ha smascherato 3 provider (20-21/11)",
+        news_url="https://thehackernews.com/2026/11/openrouter-drops-3-providers-after.html",
+        hook="Martedì abbiamo raccontato di tre fornitori AI che leggevano i prompt nonostante una clausola di \"zero data retention\". Ma come si fa, in pratica, a scoprire che qualcuno sta leggendo dati che ha promesso di non guardare? La risposta di questa settimana: un \"canary token\".",
         points=[
-            "Uno strumento di sicurezza tradizionale segnala una vulnerabilità e si ferma lì: decide una persona se e come sfruttarla. Un agente AI offensivo, invece, riceve un obiettivo — \"trova e sfrutta le falle in questo software\" — e porta a termine da solo tutti i passaggi: confronto del codice, sviluppo dell'exploit, esecuzione.",
-            "Google ha trovato un framework di questo tipo, chiamato exploit_agent, configurato per analizzare in continuo gli aggiornamenti di sicurezza di software web popolari: più il bersaglio è diffuso, più conviene automatizzare l'attacco su scala.",
-            "La stessa logica vale al contrario: più un'azienda rende prevedibile e documentato chi può accedere a cosa — come fa, ad esempio, chi fissa soglie esplicite prima di dare autonomia a un agente — più stringe lo spazio in cui uno strumento come questo può muoversi senza essere notato.",
+            "Un canary token è un link o una credenziale finta, unica per ogni destinatario, inserita in un documento o in un messaggio: se qualcuno la apre o la usa, lo sai — perché nessun altro aveva motivo di farlo.",
+            "Il ricercatore che ha scoperto il caso OpenRouter ha inserito link-canarino in circa 2 milioni di prompt inviati a provider che dichiaravano di non leggere i dati: quando tre di quei link sono stati aperti, ore o giorni dopo, la prova era inconfutabile.",
+            "La stessa logica si può applicare a qualunque flusso di dati aziendali che passa per terzi — fornitori cloud, partner, agenti AI con accesso a documenti — per verificare, non solo per fidarsi, chi accede davvero a cosa.",
         ],
         punti_post=[
-            "Uno strumento tradizionale segnala; un agente offensivo sfrutta da solo.",
-            "exploit_agent: analizza da solo le patch di software popolari.",
-            "La difesa: sapere sempre chi/cosa può accedere a cosa, e perché.",
+            "Canary token: un link-trappola unico per destinatario.",
+            "2 milioni inviati, 3 aperti: la prova che i dati erano letti.",
+            "La stessa logica vale per qualunque fornitore terzo con accesso ai tuoi dati.",
         ],
-        cta="Conoscevi già la differenza tra uno strumento di sicurezza tradizionale e un agente AI offensivo? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
+        cta="Conoscevi già questa tecnica per verificare chi accede davvero ai tuoi dati? Dicci se vuoi che continuiamo a spiegare la tecnologia dietro le notizie della settimana 👇",
         hashtags="#AI #TechExplained #Cybersecurity #B2B #Innovazione",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Carosello dati",
-        title="Il rimbalzo dei chip AI dopo il crollo: i numeri della settimana di recupero",
-        news="Il recupero parziale dei titoli dei semiconduttori dopo il crollo della settimana del 3-7 novembre",
-        news_url="https://stocktwits.com/news-articles/markets/equity/amd-avgo-intc-mu-chip-stocks-inch-higher-as-investors-look-past-midterms-led-selloff-nvidia-controversy/cNGAD0CR9eR",
-        hook="Due settimane fa i chip AI erano crollati del 12% in cinque giorni. Questa settimana i titoli hanno recuperato parte del terreno perso: ecco cosa dicono gli analisti su cosa è cambiato e cosa no.",
+        title="Dentro la trimestrale record di Nvidia, arrivata nel pieno della crisi di leadership: i numeri di una settimana turbolenta",
+        titolo_post="Agenti AI al lavoro: i numeri di Nvidia",
+        sottotitolo_post="Trimestrale record, cinque giorni dopo le dimissioni del fondatore-CEO: i numeri di una settimana turbolenta.",
+        closing_title="Chi guida l'azienda quando il titolo non si fida?",
+        closing_body="I numeri dicono che la domanda di chip AI non rallenta. Il mercato dice che la domanda sulla governance pesa comunque.",
+        news="Nvidia riporta una trimestrale record il 17/11, cinque giorni dopo le dimissioni di Jensen Huang; il titolo cede il 7% nella settimana",
+        news_url="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Announces-Financial-Results-for-Third-Quarter-Fiscal-2027/default.aspx",
+        hook="Il 17 novembre, cinque giorni dopo l'uscita di scena improvvisa di Jensen Huang, Nvidia ha riportato la trimestrale più alta della sua storia. Il mercato, però, ha reagito al contrario di quello che i numeri avrebbero fatto pensare.",
         points=[
-            "12% — il calo dell'indice SOX nella settimana del 3-7 novembre, la peggiore dall'aprile 2025, dopo le elezioni di midterm del 3 novembre.",
-            "Gli analisti descrivono il recupero di lunedì 9 novembre come investitori che iniziano a guardare oltre la correzione legata ai risultati elettorali, non come un segnale che i dubbi di fondo sulla spesa in data center siano spariti.",
-            "Nvidia resta sotto osservazione per le polemiche emerse nei giorni precedenti, secondo gli stessi report che descrivono il recupero del settore.",
+            "115,8 miliardi di dollari — il fatturato del terzo trimestre fiscale 2027, in crescita del 103% anno su anno.",
+            "107,6 miliardi — la quota di quel fatturato arrivata dalla sola divisione data center.",
+            "130 miliardi — la guidance di fatturato che Nvidia indica per il quarto trimestre.",
+            "2,9% — il calo del titolo Nvidia il 18 novembre, il giorno dopo la trimestrale, attribuito alle preoccupazioni sulla successione del CEO.",
+            "7% — il calo complessivo del titolo nella settimana, in un ribasso che ha coinvolto l'intero comparto dei titoli AI.",
         ],
-        closing="Un rimbalzo non è una risposta alla domanda che resta aperta da due settimane — se la spesa in infrastrutture AI sia sostenibile quanto si sperava — ma solo la prova che il mercato, per ora, resta diviso su quella domanda.",
-        cta="La tua azienda pianifica i costi di infrastruttura AI pensando anche agli scenari in cui i prezzi tornano a salire? 👇",
-        hashtags="#AI #Mercati #Infrastruttura #B2B #Chip",
+        punti_post=[
+            "115,8 mld $ — fatturato Q3 (+103% anno su anno).",
+            "107,6 mld $ — solo dalla divisione data center.",
+            "130 mld $ — guidance per il quarto trimestre.",
+            "-2,9% — il titolo il giorno dopo la trimestrale.",
+            "-7% — calo complessivo nella settimana.",
+        ],
+        closing="I numeri della trimestrale dicono che la domanda di infrastruttura AI non si è fermata. Il comportamento del titolo, nella stessa settimana, dice che gli investitori stanno valutando qualcos'altro: chi guiderà l'azienda da cui dipende buona parte dell'infrastruttura AI mondiale, e quando lo sapremo.",
+        cta="La tua azienda valuta anche il rischio di governance dei fornitori critici, non solo i loro numeri trimestrali? 👇",
+        hashtags="#Nvidia #AI #Mercati #Infrastruttura #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
     dict(
         badge="Riserva",
         day="Banca contenuti (settimana corrente o successiva)",
         format="Riflessione di chiusura settimana / lista community",
-        title="5 cose che questa settimana ci dice sugli agenti AI al lavoro (e su chi li controlla)",
-        news="Sintesi dei trend della settimana 10-16 novembre 2026",
-        news_url="https://siliconangle.com/2026/11/14/att-uses-agentic-ai-to-reinvent-business-processes-from-the-ground-up/",
+        title="5 cose che questa settimana ci dice su governance, fiducia e AI (e su chi decide quando qualcosa va storto)",
+        news="Sintesi dei trend della settimana 16-23 novembre 2026",
+        news_url="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition",
         hook="Chiudiamo la settimana con quello che ci portiamo a casa dalle notizie degli ultimi giorni.",
         points=[
-            "Gli agenti AI sono arrivati in produzione su scala: AT&T ne gestisce quasi 500, con 45 miliardi di token elaborati al giorno e un obiettivo di triplicarli entro il 2027.",
-            "Anthropic (Sheets, Whiteboards, connettori), OpenAI (Business Agent in ChatGPT) e Adobe (Creative Agent sempre attivo) hanno messo agenti AI dentro gli strumenti che usiamo ogni giorno, tutti nella stessa settimana.",
-            "Google ha documentato il primo caso noto di un agente AI che trasforma da solo una patch di sicurezza in un exploit funzionante, senza intervento umano.",
-            "Cursor ha confermato che una chiave rubata a un fornitore AI (Fireworks, lo stesso coinvolto nel caso Notion di due settimane fa) ha portato a un'estensione malevola nel suo marketplace, scaricabile da fino a 5.000 sviluppatori.",
-            "I chip AI hanno recuperato parte del terreno perso due settimane fa, ma gli analisti non lo leggono come la fine dei dubbi sulla sostenibilità della spesa in infrastrutture.",
+            "Nvidia ha perso il suo fondatore-CEO da un giorno all'altro, senza successore designato: anche un'azienda da trimestrali record non è immune al rischio legato a una singola figura chiave.",
+            "OpenRouter ha scoperto che tre fornitori di inferenza AI leggevano i prompt nonostante una clausola di \"zero data retention\": una promessa contrattuale non verificata può semplicemente essere falsa.",
+            "Microsoft ha ridisegnato Copilot come motore autonomo del lavoro a Ignite 2026, e nella stessa settimana ha integrato il CRM di Salesforce — due storici concorrenti che scelgono di integrarsi sul livello agentico.",
+            "L'Oregon ha fatto causa a OpenAI per oltre 2 miliardi di dollari sulla sicurezza dei minori su ChatGPT, dopo mesi di cause simili: la pressione legale sui chatbot conversazionali si sta materializzando in cifre concrete.",
+            "Il filo comune: man mano che l'AI diventa infrastruttura critica — hardware, fornitori, strumenti di lavoro — la domanda che conta di più non è più \"funziona?\" ma \"chi risponde quando qualcosa va storto, ed è verificabile o solo dichiarato?\".",
         ],
-        closing="Una settimana che racconta la stessa domanda da angolazioni diverse: man mano che gli agenti AI smettono di essere una demo e iniziano a fare lavoro vero su scala, la stessa tecnologia comincia ad automatizzare anche l'attacco. AT&T e il rapporto Google, questa settimana, sono la stessa domanda — chi governa l'autonomia di un agente, e chi se ne accorge quando manca — con due risposte opposte.",
+        closing="Una settimana che, da angolazioni diverse, ha raccontato la stessa domanda: con l'AI che diventa infrastruttura su cui si costruisce — chip, fornitori di inferenza, strumenti di lavoro quotidiano — la fiducia dichiarata conta sempre meno di quella verificabile.",
         cta="Qual è la notizia di questa settimana che ti ha fatto riflettere di più? 👇",
-        hashtags="#AINews #WeeklyRecap #Tech #AgentiAI #B2B",
+        hashtags="#AINews #WeeklyRecap #Tech #Governance #B2B",
         carousel_note="Idea di riserva: gli asset non vengono generati salvo attivazione.",
     ),
 ]
@@ -346,40 +338,40 @@ ideas = [
 # ---------------------------------------------------------------------------
 publishing = [
     dict(
-        day="Lunedì 16/11",
+        day="Lunedì 23/11",
         time="08:00",
         format="Thought leadership",
         reason="Apertura settimana, finestra mattutina 7:30-9:30: massimo traffico professionale, ideale per un post di respiro ampio che dà il tono alla settimana senza chiedere nulla.",
     ),
     dict(
-        day="Martedì 17/11",
+        day="Martedì 24/11",
         time="12:15",
-        format="Mito da sfatare (serve sempre un umano esperto per sfruttare una falla — smentito dal rapporto Google GTIG)",
-        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo di automazione/governance che attraversa il resto della settimana.",
+        format="Mito da sfatare (\"zero data retention\" non garantita — caso OpenRouter)",
+        reason="Finestra pausa pranzo 12:00-13:00, giorno a massimo traffico B2B. Formato diretto e polarizzante, pensato per generare commenti più che reach — apre il filo fiducia/verifica che attraversa il resto della settimana.",
     ),
     dict(
-        day="Mercoledì 18/11",
-        time="12:15",
-        format="Carosello / dati (i numeri dei quasi 500 workflow agentici di AT&T)",
-        reason="Seconda finestra pausa pranzo B2B. Il formato documento/carosello ha oggi il tasso di engagement più alto su LinkedIn, e i numeri di AT&T (500 workflow, 45 miliardi di token/giorno, soglia di accuratezza 90%) sono densi abbastanza da meritare uno spazio proprio — per questo è stato promosso da riserva a Prioritario questa settimana.",
-    ),
-    dict(
-        day="Giovedì 19/11",
+        day="Mercoledì 25/11",
         time="08:30",
-        format="Esperienza diretta (verifica delle estensioni e dei plugin AI installati negli editor del team)",
+        format="Mito da sfatare (guardrail dichiarati non bastano — causa Oregon/OpenAI)",
+        reason="Finestra mattutina, per dare risalto a un tema delicato (sicurezza dei minori) in un momento di lettura più attenta rispetto alla pausa pranzo; varia l'orario rispetto al mito di martedì per non ripetere lo stesso slot due giorni di fila.",
+    ),
+    dict(
+        day="Giovedì 26/11",
+        time="08:00",
+        format="Esperienza diretta (rilettura dei contratti dei fornitori AI del team)",
         reason="Segue narrativamente il mito di martedì, nella finestra mattutina. Reach tipicamente più basso di un carosello, ma è il formato che storicamente genera più commenti e messaggi diretti da decision maker — va mantenuto in calendario anche se il reach atteso è minore.",
     ),
     dict(
-        day="Venerdì 20/11",
-        time="08:00",
-        format="Divulgativo (Datapizza style)",
-        reason="Contenuto divulgativo a bassa frizione, adatto a chiusura settimana lavorativa quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo sulla sicurezza aperto martedì collegando Google e Chainstack.",
+        day="Venerdì 27/11",
+        time="12:15",
+        format="Divulgativo (Datapizza style — cos'è un canary token)",
+        reason="Pausa pranzo di chiusura settimana, quando i decision maker scorrono il feed con più calma; nessuna CTA commerciale, chiude l'arco narrativo su fiducia e verifica aperto martedì.",
     ),
     dict(
         day="Da programmare",
         time="—",
-        format="Riserva — Carosello numeri sul rimbalzo dei chip AI",
-        reason="Banca contenuti: utile se la settimana ha margine per un sesto post, o come approfondimento del tema chip aperto due settimane fa.",
+        format="Riserva — Carosello numeri sulla trimestrale Nvidia",
+        reason="Banca contenuti: unico trend della settimana con densità di cifre sufficiente per un carosello — utile se la settimana ha margine per un sesto post, o come approfondimento la settimana successiva se la vicenda Nvidia evolve.",
     ),
     dict(
         day="Da programmare",
